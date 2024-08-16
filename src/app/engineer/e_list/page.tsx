@@ -2,9 +2,9 @@ import {
   CleaningMethod_Comprehensive,
   CleaningMethod_nomal,
   DocumentIssuance,
-} from '@/app/ui/(Bteam)atom/checkbox/CheckboxInput';
-import MenuIntroduction from '@/app/ui/(Bteam)atom/dropdown/MenuIntroduction';
-import BasicDateCalendar from '@/app/ui/(Bteam)atom/schedule_table/schedule';
+} from '@/app/ui/minsuk/(Bteam)atom/checkbox/CheckboxInput';
+import MenuIntroduction from '@/app/ui/minsuk/(Bteam)atom/dropdown/MenuIntroduction';
+import BasicDateCalendar from '@/app/ui/minsuk/(Bteam)atom/schedule_table/schedule';
 import React from 'react';
 
 export default function Page() {

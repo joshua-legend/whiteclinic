@@ -3,6 +3,15 @@
 import React from 'react';
 import { MultiPurposeButton } from './ui/(Bteam)atomize/button/Button';
 import { MultiPurposeInput } from './ui/(Bteam)atomize/input/MultiPurposeInput';
+import MenuIntroduction from './ui/(Bteam)atom/dropdown/MenuIntroduction';
+import DropDownBar from './ui/(Bteam)atom/dropdown/DropDownBar';
+import {
+  AllowanceRates,
+  CleaningItem,
+  Documents,
+  PaymentMethods,
+  WeekDays,
+} from './ui/(Bteam)atom/dropdown/DropDownList';
 
 export default function Home() {
   return (
@@ -50,6 +59,22 @@ export default function Home() {
 
         <h1>계산된 값</h1>
         <MultiPurposeInput CalFn={() => console.log('CalFn Called')} />
+      </div>
+      <div>
+        <h1>세척품목</h1>
+        <DropDownBar contentName="세척품목" contentList={CleaningItem} />
+
+        <h1>결제방식</h1>
+        <DropDownBar contentName="결제방식" contentList={PaymentMethods} />
+
+        <h1>증빙서류</h1>
+        <DropDownBar contentName="증빙서류" contentList={Documents} />
+
+        <h1>수당률</h1>
+        <DropDownBar contentName="" contentList={AllowanceRates} />
+
+        <h1>급여요일</h1>
+        <DropDownBar contentName="" contentList={WeekDays} />
       </div>
     </main>
   );

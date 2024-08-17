@@ -3,10 +3,10 @@
 import React from 'react';
 
 import BasicDateCalendar from '@/app/ui/minsuk/(Bteam)atom/schedule_table/schedule';
-import { styled } from '@mui/system';
 import ActionAreaCard from '@/app/ui/minsuk/(Bteam)atom/schedule_table/card';
 import { WallMounted } from '@/app/ui/minsuk/(Bteam)atom/checkbox/CheckboxInput';
 import MenuIntroduction from '@/app/ui/minsuk/(Bteam)atom/dropdown/MenuIntroduction';
+import { styled } from '@mui/material';
 
 const PageContainer = styled('div')({
   display: 'flex',

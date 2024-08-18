@@ -13,37 +13,25 @@ export const MultiPurposeInput: React.FC<InputProps> = (props) => {
     if ('name' in props && 'contact' in props && 'address' in props) {
       return (
         <>
-          <input type="text" placeholder="Name" value={props.name} onChange={handleChange} />
-          <input type="text" placeholder="Contact" value={props.contact} onChange={handleChange} />
-          <input type="text" placeholder="Address" value={props.address} onChange={handleChange} />
+          <input type="text" placeholder="성함" onChange={handleChange} />
+          <input type="text" placeholder="연락처" onChange={handleChange} />
+          <input type="text" placeholder="주소" onChange={handleChange} />
         </>
       );
     } else if ('ps' in props) {
       return (
         <textarea
-          className="resize-none"
-          placeholder="Enter details"
-          value={props.ps}
+          className="resize-none w-8"
+          placeholder="특이사항을 입력해주세요"
           onChange={handleChange}
         />
       );
     } else if ('discount' in props) {
-      return (
-        <input
-          type="number"
-          placeholder="Discount"
-          value={props.discount}
-          onChange={handleChange}
-        />
-      );
+      return <input type="text" placeholder="할인율을 입력해주세요" onChange={handleChange} />;
     } else if ('thisYear' in props) {
-      return (
-        <input type="number" placeholder="Year" value={props.thisYear} onChange={handleChange} />
-      );
+      return <input type="text" placeholder="연도를 입력해주세요" onChange={handleChange} />;
     } else if ('modelEA' in props) {
-      return (
-        <input type="number" placeholder="Model EA" value={props.modelEA} onChange={handleChange} />
-      );
+      return <input type="text" placeholder="수량을 입력해주세요" onChange={handleChange} />;
     } else if ('CalFn' in props) {
       return <input onChange={props.CalFn} placeholder="계산된 값 출력"></input>;
     }

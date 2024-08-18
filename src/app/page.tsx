@@ -77,7 +77,7 @@ export default function Home() {
         <DropDownBar contentName="급여요일" contentList={WeekDays} />
       </div>
       <div>
-        <EngineerContent engineerName="박형식" />
+        <EngineerContent engineerName="박형식" engineerDate="2024-06-24" />
       </div>
     </main>
   );

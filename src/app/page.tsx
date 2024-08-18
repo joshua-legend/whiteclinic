@@ -1,9 +1,8 @@
 'use client';
 
 import React from 'react';
-import { MultiPurposeButton } from './ui/(Bteam)atomize/button/Button';
+import { MultiPurposeButton } from './ui/(Bteam)atomize/button/MultiPurposeButton';
 import { MultiPurposeInput } from './ui/(Bteam)atomize/input/MultiPurposeInput';
-import MenuIntroduction from './ui/(Bteam)atom/dropdown/MenuIntroduction';
 import DropDownBar from './ui/(Bteam)atom/dropdown/DropDownBar';
 import {
   AllowanceRates,
@@ -43,22 +42,22 @@ export default function Home() {
       </div>
       <div>
         <h1>고객 정보</h1>
-        <MultiPurposeInput name="고객 성함" contact="고객 연락처" address="의뢰지" />
+        <MultiPurposeInput name="고객 성함" contact="고객 연락처" address="주소지" />
 
         <h1>특이 사항</h1>
         <MultiPurposeInput ps="특이사항을 적어주세요." />
 
         <h1>할인율</h1>
-        <MultiPurposeInput discount={15} />
+        <MultiPurposeInput discount={15} CalFn={() => console.log('CalFn Called')} />
+
+        <h1>할인된 값</h1>
+        <MultiPurposeInput calResult={0} />
 
         <h1>연도입력</h1>
         <MultiPurposeInput thisYear={2024} />
 
         <h1>세척 대수</h1>
         <MultiPurposeInput modelEA={10} />
-
-        <h1>계산된 값</h1>
-        <MultiPurposeInput CalFn={() => console.log('CalFn Called')} />
       </div>
       <div>
         <h1>세척품목</h1>

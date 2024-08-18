@@ -16,7 +16,7 @@
 // 고객 정보타입 ( 이름, 전화번호, 의뢰지 ) / 기사 정보타입 ( 이름, 전화번호, 거주지)
 type AnyInfoType = {
   name: string | undefined;
-  contact: number | string | undefined;
+  contact: string | undefined;
   address: string | undefined;
 };
 
@@ -28,6 +28,7 @@ type AllStringType = {
 // 할인율 or 할인여부 수기설정 타입
 type DiscountRatioType = {
   discount: number | undefined;
+  CalFn: () => void;
 };
 
 // 년도 수기설정 타입
@@ -42,7 +43,7 @@ type AllNumberType = {
 
 // 계산식 함수 타입
 type CalculateFnType = {
-  CalFn: () => void;
+  calResult: number;
 };
 
 export type InputProps =

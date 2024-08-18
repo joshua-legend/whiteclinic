@@ -1,5 +1,14 @@
 import React, { ChangeEvent, useState } from 'react';
-import { InputProps } from './input';
+import { InputProps } from './inputTypes';
+import { Box, TextField } from '@mui/material';
+import {
+  CustomerInfoInput,
+  DiscountRatioInputRenderer,
+  DiscountValueRenderer,
+  ExtraInfoRenderer,
+  ProductQuantityInputRenderer,
+  YearInputRenderer,
+} from './inputRenderer';
 
 // 여러종류의 양식검증을 위한 다용도 인풋 컴포넌트
 export const MultiPurposeInput: React.FC<InputProps> = (props) => {
@@ -11,29 +20,17 @@ export const MultiPurposeInput: React.FC<InputProps> = (props) => {
 
   const renderInputField = () => {
     if ('name' in props && 'contact' in props && 'address' in props) {
-      return (
-        <>
-          <input type="text" placeholder="성함" onChange={handleChange} />
-          <input type="text" placeholder="연락처" onChange={handleChange} />
-          <input type="text" placeholder="주소" onChange={handleChange} />
-        </>
-      );
+      return <CustomerInfoInput name="고객 성함" contact="고객 연락처" address="주소지" />;
     } else if ('ps' in props) {
-      return (
-        <textarea
-          className="resize-none w-8"
-          placeholder="특이사항을 입력해주세요"
-          onChange={handleChange}
-        />
-      );
+      return <ExtraInfoRenderer ps="특이사항을 적어주세요." />;
     } else if ('discount' in props) {
-      return <input type="text" placeholder="할인율을 입력해주세요" onChange={handleChange} />;
+      return <DiscountRatioInputRenderer discount={15} CalFn={() => console.log('CalFn Called')} />;
     } else if ('thisYear' in props) {
-      return <input type="text" placeholder="연도를 입력해주세요" onChange={handleChange} />;
+      return <YearInputRenderer thisYear={2024} />;
     } else if ('modelEA' in props) {
-      return <input type="text" placeholder="수량을 입력해주세요" onChange={handleChange} />;
-    } else if ('CalFn' in props) {
-      return <input onChange={props.CalFn} placeholder="계산된 값 출력"></input>;
+      return <ProductQuantityInputRenderer modelEA={1} />;
+    } else if ('calResult' in props) {
+      return <DiscountValueRenderer calResult={0} />;
     }
     return null;
   };

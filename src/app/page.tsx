@@ -11,6 +11,7 @@ import {
   PaymentMethods,
   WeekDays,
 } from './ui/(Bteam)atom/dropdown/DropDownList';
+import EngineerContent from './ui/(Bteam)atom/schedule_table/engineerContent';
 
 export default function Home() {
   return (
@@ -70,10 +71,13 @@ export default function Home() {
         <DropDownBar contentName="증빙서류" contentList={Documents} />
 
         <h1>수당률</h1>
-        <DropDownBar contentName="" contentList={AllowanceRates} />
+        <DropDownBar contentName="수당률" contentList={AllowanceRates} />
 
         <h1>급여요일</h1>
-        <DropDownBar contentName="" contentList={WeekDays} />
+        <DropDownBar contentName="급여요일" contentList={WeekDays} />
+      </div>
+      <div>
+        <EngineerContent engineerName="박형식" />
       </div>
     </main>
   );

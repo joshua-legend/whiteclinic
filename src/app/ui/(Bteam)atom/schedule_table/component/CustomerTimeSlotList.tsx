@@ -1,7 +1,8 @@
 import { Box, Typography } from '@mui/material';
-import { workTimeLine } from '../workTimeLine';
+
 import CustomerTimeSlot from './CustomerTimeSlot';
 import { CustomerTimeSlotListProps } from '../ts/customerType';
+import { workTimeLine } from '../ts/workTimeLine';
 
 //고객과 기사의 time을 매핑한 결과를 화면에 출력시키는 컴포넌트
 const CustomerTimeSlotList = ({ engineerDate, orderInfo }: CustomerTimeSlotListProps) => {

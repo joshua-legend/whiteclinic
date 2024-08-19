@@ -6,13 +6,10 @@ const CustomerDetails = ({ customer }: CustomerDetailsProps) => {
     return <div> </div>;
   }
 
-  const customerPrice = customer.totalPrice;
-  const priceDefine = customerPrice / 10000 + '만원';
-
   return (
     <div>
       {customer.customerName} - {customer.customerContact} - {customer.customerAddress} -
-      {customer.cleaningType} - {customer.modelEA} - {priceDefine}
+      {customer.cleaningType} - {customer.modelEA} - {customer.totalPrice}
     </div>
   );
 };

@@ -1,19 +1,23 @@
 import React, { ChangeEvent, useState } from 'react';
+import { InputProps } from './inputTypes';
+import { Box, TextField } from '@mui/material';
 import {
   CustomerInfoInput,
-  DailyIncomeInputRenderer,
   DiscountRatioInputRenderer,
   DiscountValueRenderer,
   ExtraInfoRenderer,
-  ProductNameInputRenderer,
   ProductQuantityInputRenderer,
-  TotalIncomeInputRenderer,
   YearInputRenderer,
 } from './inputRenderer';
-import InputProps from './inputTypes';
 
 // 여러종류의 양식검증을 위한 다용도 인풋 컴포넌트
 export const MultiPurposeInput: React.FC<InputProps> = (props) => {
+  const [value, setValue] = useState<string | number | undefined>('');
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setValue(e.target.value);
+  };
+
   const renderInputField = () => {
     if ('name' in props && 'contact' in props && 'address' in props) {
       return <CustomerInfoInput name="고객 성함" contact="고객 연락처" address="주소지" />;
@@ -27,12 +31,6 @@ export const MultiPurposeInput: React.FC<InputProps> = (props) => {
       return <ProductQuantityInputRenderer modelEA={1} />;
     } else if ('calResult' in props) {
       return <DiscountValueRenderer calResult={0} />;
-    } else if ('dailyIncome' in props) {
-      return <DailyIncomeInputRenderer dailyIncome={0} />;
-    } else if ('totalIncome' in props) {
-      return <TotalIncomeInputRenderer totalIncome={0} />;
-    } else if ('productName' in props) {
-      return <ProductNameInputRenderer productName="분류 불가능한 세척품목" />;
     }
     return null;
   };

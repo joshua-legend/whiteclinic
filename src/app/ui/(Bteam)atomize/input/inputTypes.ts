@@ -46,6 +46,7 @@ type CalculateFnType = {
   calResult: number;
 };
 
+// 인풋 프롭 유니온타입 지정
 type InputProps =
   | AnyInfoType
   | AllStringType

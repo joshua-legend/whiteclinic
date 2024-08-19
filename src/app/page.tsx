@@ -11,7 +11,7 @@ import {
   PaymentMethods,
   WeekDays,
 } from './ui/(Bteam)atom/dropdown/DropDownList';
-import EngineerContent from './ui/(Bteam)atom/schedule_table/engineerContent';
+import EngineerContent from './ui/(Bteam)atom/schedule_table/component/engineerContent';
 
 export default function Home() {
   return (

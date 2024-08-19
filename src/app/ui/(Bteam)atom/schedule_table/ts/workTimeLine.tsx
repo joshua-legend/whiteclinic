@@ -1,4 +1,4 @@
-import { DropDownListProps } from '../dropdown/DropDownList';
+import { DropDownListProps } from '../../dropdown/DropDownList';
 
 export const workTimeLine: DropDownListProps[] = [
   { label: '8시 이전' },

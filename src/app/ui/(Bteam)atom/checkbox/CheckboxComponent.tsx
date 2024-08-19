@@ -1,17 +1,23 @@
-import React from 'react';
-import { Checkbox as MUICheckbox, FormControlLabel } from '@mui/material';
+'use client';
 
-export type CheckBoxProps = {
+import React, { useState } from 'react';
+import { LabelType } from './CheckboxInput';
+
+type CheckboxProps = {
   label: string;
-  checked: boolean;
-  handleCheck: (checked: boolean) => void;
 };
 
-export const CustomCheckbox = ({ label, checked, handleCheck }: CheckBoxProps) => {
+const Checkbox = ({ label }: CheckboxProps) => {
+  const [isChecked, setIsChecked] = useState(false);
+
   return (
-    <FormControlLabel
-      control={<MUICheckbox checked={checked} onChange={(e) => handleCheck(e.target.checked)} />}
-      label={label}
-    />
+    <div>
+      <input type="checkbox" checked={isChecked} onChange={() => setIsChecked(!isChecked)} />
+      {label}
+    </div>
   );
+};
+
+export const CheckboxInput = ({ label }: { label: LabelType }) => {
+  return <Checkbox label={label} />;
 };

@@ -16,13 +16,14 @@ import { MenuButton as BaseMenuButton } from '@mui/base/MenuButton';
 import { MenuItem as BaseMenuItem, menuItemClasses } from '@mui/base/MenuItem';
 // MUI의 기본 MenuItem 컴포넌트를 BaseMenuItem이라는 이름으로 가져오고, menuItemClasses도 가져옴.
 
-import { styled } from '@mui/system';
+import styled from 'styled-components';
 // styled 함수는 MUI의 스타일링 유틸리티를 가져옴.
 
 import { CssTransition } from '@mui/base/Transitions';
 // MUI에서 제공하는 CSS 전환 효과를 위한 컴포넌트를 가져옴.
 
 import { PopupContext } from '@mui/base/Unstable_Popup';
+
 // MUI의 Unstable_Popup에서 PopupContext를 가져옴. (비안정적이므로 주의 필요)
 
 export default function MenuIntroduction() {

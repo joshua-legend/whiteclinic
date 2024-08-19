@@ -117,11 +117,11 @@ export const DiscountValueRenderer: React.FC<InputProps> = (props: InputProps) =
     return (
       <TextField
         id="DiscountCal"
-        label="할인된 금액 출력"
         InputProps={{
           readOnly: true,
         }}
         variant="standard"
+        placeholder="할인된 금액 출력"
       />
     );
   }
@@ -131,12 +131,12 @@ export const DiscountValueRenderer: React.FC<InputProps> = (props: InputProps) =
 export const DailyIncomeInputRenderer: React.FC<InputProps> = (props: InputProps) => {
   if ('dailyIncome' in props) {
     return (
-      <FormControl fullWidth sx={{ m: 1 }}>
-        <InputLabel htmlFor="outlined-adornment-amount">Amount</InputLabel>
+      <FormControl fullWidth sx={{ m: 1, width: 200 }}>
+        <InputLabel htmlFor="수당">수당</InputLabel>
         <OutlinedInput
-          id="outlined-adornment-amount"
-          startAdornment={<InputAdornment position="start">$</InputAdornment>}
-          label="Amount"
+          id="dailyIncome"
+          endAdornment={<InputAdornment position="start">원</InputAdornment>}
+          label="수당"
         />
       </FormControl>
     );
@@ -146,12 +146,19 @@ export const DailyIncomeInputRenderer: React.FC<InputProps> = (props: InputProps
 // 수당합계 인풋 렌더러
 export const TotalIncomeInputRenderer: React.FC<InputProps> = (props: InputProps) => {
   if ('totalIncome' in props) {
-    return <></>;
+    return <TextField id="outlined-basic" label="수당 합계" variant="outlined" />;
   }
 };
 // 분류 불가능한 세척품목 인풋 렌더러
 export const ProductNameInputRenderer: React.FC<InputProps> = (props: InputProps) => {
   if ('productName' in props) {
-    return <></>;
+    return (
+      <TextField
+        id="productName"
+        label="품명 직접입력"
+        variant="outlined"
+        placeholder={props.productName}
+      />
+    );
   }
 };

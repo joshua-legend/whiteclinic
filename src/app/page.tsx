@@ -59,6 +59,15 @@ export default function Home() {
 
         <h1>세척 대수</h1>
         <MultiPurposeInput modelEA={10} />
+
+        <h1>수당입력</h1>
+        <MultiPurposeInput dailyIncome={120000} />
+
+        <h1>수당합계</h1>
+        <MultiPurposeInput totalIncome={700000} />
+
+        <h1>분류 불가능한 세척품목</h1>
+        <MultiPurposeInput productName="린나이 드럼세탁기" />
       </div>
       <div>
         <h1>세척품목</h1>

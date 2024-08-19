@@ -1,17 +1,17 @@
 // 분류 불가능한 세척품목 -> 수기작성필요
-// type UnusualProductType = {
-//   productName: string | undefined;
-// };
+type UnusualProductType = {
+  productName: string | undefined;
+};
 
-// 수당 타입
-// type DailySalaryType = {
-//   dailySalary: number;
-// };
+// 수당 타입 퍼센티지 적용 -> 원으로 표기
+type DailyIncomeType = {
+  dailyIncome: number;
+};
 
-// 수당합계 타입
-// type TotalSalaryType = {
-//   totalSalary: number;
-// };
+// 수당합계 타입 퍼센티지 적용 -> 원으로 표기
+type TotalIncomeType = {
+  totalIncome: number;
+};
 
 // 고객 정보타입 ( 이름, 전화번호, 의뢰지 ) / 기사 정보타입 ( 이름, 전화번호, 거주지)
 type AnyInfoType = {
@@ -36,7 +36,7 @@ type SpecificYearType = {
   thisYear: number | undefined;
 };
 
-// 세척품목 갯수 / 수당 타입 / 수당합계 타입
+// 세척품목 갯수
 type AllNumberType = {
   modelEA: number;
 };
@@ -46,10 +46,15 @@ type CalculateFnType = {
   calResult: number;
 };
 
-export type InputProps =
+type InputProps =
   | AnyInfoType
   | AllStringType
   | DiscountRatioType
   | SpecificYearType
   | AllNumberType
-  | CalculateFnType;
+  | CalculateFnType
+  | TotalIncomeType
+  | DailyIncomeType
+  | UnusualProductType;
+
+export default InputProps;

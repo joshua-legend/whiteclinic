@@ -1,6 +1,13 @@
 import React from 'react';
-import { Box, Input, TextField } from '@mui/material';
-import { NumberInput } from '@mui/base/Unstable_NumberInput/NumberInput';
+import {
+  Box,
+  FormControl,
+  Input,
+  InputAdornment,
+  InputLabel,
+  OutlinedInput,
+  TextField,
+} from '@mui/material';
 import QuantityInput from './customNumberInput';
 import InputProps from './inputTypes';
 
@@ -74,6 +81,44 @@ export const ProductQuantityInputRenderer: React.FC<InputProps> = (props: InputP
 // 할인율 자동계산 후 출력인풋 렌더러
 export const DiscountValueRenderer: React.FC<InputProps> = (props: InputProps) => {
   if ('calResult' in props) {
-    return <input placeholder="할인된 값 출력" readOnly></input>;
+    return (
+      <TextField
+        id="DiscountCal"
+        label="할인된 금액 출력"
+        InputProps={{
+          readOnly: true,
+        }}
+        variant="standard"
+      />
+    );
+  }
+};
+
+// 수당입력 인풋 렌더러
+export const DailyIncomeInputRenderer: React.FC<InputProps> = (props: InputProps) => {
+  if ('dailyIncome' in props) {
+    return (
+      <FormControl fullWidth sx={{ m: 1 }}>
+        <InputLabel htmlFor="outlined-adornment-amount">Amount</InputLabel>
+        <OutlinedInput
+          id="outlined-adornment-amount"
+          startAdornment={<InputAdornment position="start">$</InputAdornment>}
+          label="Amount"
+        />
+      </FormControl>
+    );
+  }
+};
+
+// 수당합계 인풋 렌더러
+export const TotalIncomeInputRenderer: React.FC<InputProps> = (props: InputProps) => {
+  if ('totalIncome' in props) {
+    return <TextField id="totalIncome" label="수당 합계" variant="outlined" />;
+  }
+};
+// 분류 불가능한 세척품목 인풋 렌더러
+export const ProductNameInputRenderer: React.FC<InputProps> = (props: InputProps) => {
+  if ('productName' in props) {
+    return <TextField id="unusualProduct" label="분류 불가능한 세척품목" variant="outlined" />;
   }
 };

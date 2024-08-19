@@ -2,7 +2,6 @@ import React from 'react';
 import {
   Box,
   FormControl,
-  Input,
   InputAdornment,
   InputLabel,
   OutlinedInput,
@@ -23,18 +22,26 @@ export const CustomerInfoInput: React.FC<InputProps> = (props: InputProps) => {
         noValidate
         autoComplete="off"
       >
-        <TextField required id="outlined-required" label={props.name} placeholder={props.name} />
+        <TextField
+          required
+          id="outlined-required"
+          label={props.name}
+          placeholder={props.name}
+          size="small"
+        />
         <TextField
           required
           id="outlined-required"
           label={props.contact}
           placeholder={props.contact}
+          size="small"
         />
         <TextField
           required
           id="outlined-required"
           label={props.address}
           placeholder={props.address}
+          size="small"
         />
       </Box>
     );
@@ -44,14 +51,32 @@ export const CustomerInfoInput: React.FC<InputProps> = (props: InputProps) => {
 // 특이사항 입력 인풋 렌더러
 export const ExtraInfoRenderer: React.FC<InputProps> = (props: InputProps) => {
   if ('ps' in props) {
-    return <Input aria-label="ExtraInfoInput" multiline placeholder="특이사항" />;
+    return (
+      <TextField
+        id="outlined-multiline-flexible"
+        label="특이사항"
+        multiline
+        maxRows={4}
+        placeholder="특이사항"
+        fullWidth
+        sx={{ width: 600 }}
+      />
+    );
   }
 };
 
 // 할인율 입력인풋 렌더러
 export const DiscountRatioInputRenderer: React.FC<InputProps> = (props: InputProps) => {
   if ('discount' in props) {
-    return <input type="text" placeholder="할인율을 입력해주세요" onChange={props.CalFn} />;
+    return (
+      <TextField
+        id="discountRatio"
+        placeholder="할인율을 입력해주세요"
+        label="할인율"
+        variant="outlined"
+        onChange={props.CalFn}
+      />
+    );
   }
 };
 
@@ -66,6 +91,14 @@ export const YearInputRenderer: React.FC<InputProps> = (props: InputProps) => {
         InputProps={{ inputProps: { min: 1900, max: new Date().getFullYear() } }}
         // 최소, 최대값 설정
         variant="outlined"
+        sx={{
+          '& input::-webkit-outer-spin-button, & input::-webkit-inner-spin-button': {
+            display: 'none',
+          },
+          '& input[type=number]': {
+            MozAppearance: 'textfield',
+          },
+        }}
       />
     );
   }
@@ -113,12 +146,12 @@ export const DailyIncomeInputRenderer: React.FC<InputProps> = (props: InputProps
 // 수당합계 인풋 렌더러
 export const TotalIncomeInputRenderer: React.FC<InputProps> = (props: InputProps) => {
   if ('totalIncome' in props) {
-    return <TextField id="totalIncome" label="수당 합계" variant="outlined" />;
+    return <></>;
   }
 };
 // 분류 불가능한 세척품목 인풋 렌더러
 export const ProductNameInputRenderer: React.FC<InputProps> = (props: InputProps) => {
   if ('productName' in props) {
-    return <TextField id="unusualProduct" label="분류 불가능한 세척품목" variant="outlined" />;
+    return <></>;
   }
 };

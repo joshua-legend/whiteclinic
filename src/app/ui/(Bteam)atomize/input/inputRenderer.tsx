@@ -146,12 +146,12 @@ export const DailyIncomeInputRenderer: React.FC<InputProps> = (props: InputProps
 // 수당합계 인풋 렌더러
 export const TotalIncomeInputRenderer: React.FC<InputProps> = (props: InputProps) => {
   if ('totalIncome' in props) {
-    return <></>;
+    return <TextField id="totalIncome" label="수당 합계" variant="outlined" />;
   }
 };
 // 분류 불가능한 세척품목 인풋 렌더러
 export const ProductNameInputRenderer: React.FC<InputProps> = (props: InputProps) => {
   if ('productName' in props) {
-    return <></>;
+    return <TextField id="unusualProduct" label="분류 불가능한 세척품목" variant="outlined" />;
   }
 };

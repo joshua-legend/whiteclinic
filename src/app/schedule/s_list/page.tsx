@@ -1,8 +1,7 @@
 'use client';
 
-import KoreanDateCalendar from '@/app/ui/(Bteam)atom/calendar/calendar';
-import ActionAreaCard from '@/app/ui/(Bteam)atom/card/card';
-
+import KoreanDateCalendar from '@/app/ui/(Bteam)atomize/calendar/calendar';
+import ActionAreaCard from '@/app/ui/(Bteam)atomize/card/card';
 import dayjs from 'dayjs';
 import React, { useState } from 'react';
 import styled from 'styled-components';

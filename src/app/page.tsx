@@ -3,16 +3,16 @@
 import React from 'react';
 import { MultiPurposeButton } from './ui/(Bteam)atomize/button/MultiPurposeButton';
 import { MultiPurposeInput } from './ui/(Bteam)atomize/input/MultiPurposeInput';
-import DropDownBar from './ui/(Bteam)atom/dropdown/DropDownBar';
+import DropDownBar from './ui/(Bteam)atomize/dropdown/DropDownBar';
 import {
   AllowanceRates,
   CleaningItem,
   Documents,
   PaymentMethods,
   WeekDays,
-} from './ui/(Bteam)atom/dropdown/DropDownList';
-import EngineerContent from './ui/(Bteam)atom/schedule_table/component/engineerContent';
-import { CheckboxInput } from './ui/(Bteam)atom/checkbox/CheckboxComponent';
+} from './ui/(Bteam)atomize/dropdown/DropDownList';
+import EngineerContent from './ui/(Bteam)atomize/schedule_table/component/engineerContent';
+import { CheckboxInput } from './ui/(Bteam)atomize/checkbox/CheckboxComponent';
 
 export default function Home() {
   return (

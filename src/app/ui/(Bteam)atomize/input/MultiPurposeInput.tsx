@@ -37,5 +37,6 @@ export const MultiPurposeInput: React.FC<InputProps> = (props) => {
     return null;
   };
 
+  // TODO : object 로 변경
   return <div>{renderInputField()}</div>;
 };

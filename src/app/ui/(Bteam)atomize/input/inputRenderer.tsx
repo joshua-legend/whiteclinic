@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Box,
   FormControl,
@@ -9,7 +9,6 @@ import {
 } from '@mui/material';
 import QuantityInput from './customNumberInput';
 import InputProps from './inputTypes';
-import zIndex from '@mui/material/styles/zIndex';
 
 // TODO: 입력값 양식검증은 차후 zod 라이브러리 이용해서 구현하기
 

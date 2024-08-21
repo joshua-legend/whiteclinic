@@ -42,3 +42,17 @@ export const card = {
     large: '150px',
   },
 };
+
+export const boxStyle = {
+  boxWidth: {
+    small: '100px',
+    xlarge: '1000px',
+  },
+  boxHeight: {
+    small: '30px',
+    medium: '70px',
+  },
+  borderRadius: {
+    eight: '8px',
+  },
+};

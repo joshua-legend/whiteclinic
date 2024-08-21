@@ -6,6 +6,8 @@ export const sizes = {
     medium: '16px',
     large: '20px',
     xlarge: '24px',
+    xxlarge: '100px',
+    xxxlarge: '150px',
   },
   padding: {
     small: '4px',

@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { MultiPurposeButton } from './ui/(Bteam)atomize/button/MultiPurposeButton';
 import { MultiPurposeInput } from './ui/(Bteam)atomize/input/MultiPurposeInput';
 import DropDownBar from './ui/(Bteam)atomize/dropdown/DropDownBar';
 import {
@@ -15,8 +14,7 @@ import EngineerContent from './ui/(Bteam)atomize/schedule_table/component/engine
 import { CheckboxInput } from './ui/(Bteam)atomize/checkbox/CheckboxComponent';
 import ButtonFrame from './atom/button/Frame';
 import InputComponent from './atom/input/inputs';
-import { sizes } from '@/styles/sizes';
-import { colors } from '@/styles/colors';
+import { currentYear } from './types';
 
 export default function Home() {
   const testfn = () => console.log('onChange Function Called');
@@ -48,6 +46,7 @@ export default function Home() {
           labelProp="고객 성함"
           placeholderProp="홍길동"
           type="text"
+          helperText="이름을 정확히 입력하세요"
           functionProp={{ CalFn: () => testfn() }}
         />
         <InputComponent labelProp="고객 연락처" placeholderProp="010 - 0000 - 0000" />
@@ -63,18 +62,24 @@ export default function Home() {
         <InputComponent placeholderProp="할인 금액 출력" isReadOnly={true} />
         <h1>연도입력</h1>
         <MultiPurposeInput thisYear={2024} />
-        <InputComponent labelProp="연도" placeholderProp={new Date().getFullYear()} />
+        <InputComponent
+          labelProp="연도"
+          placeholderProp={currentYear}
+          type="number"
+          minValue={Number(currentYear) - 10}
+          maxValue={Number(currentYear)}
+        />
 
         <h1>세척 대수</h1>
         <MultiPurposeInput modelEA={10} />
 
         <h1>수당입력</h1>
         <MultiPurposeInput dailyIncome={120000} />
-        <InputComponent labelProp="수당" />
+        <InputComponent labelProp="수당" adornment="원" />
 
         <h1>수당합계</h1>
         <MultiPurposeInput totalIncome={700000} />
-        <InputComponent labelProp="수당 합계" />
+        <InputComponent labelProp="수당 합계" adornment="원" isDisabled={true} />
         <h1>분류 불가능한 세척품목</h1>
         <MultiPurposeInput productName="린나이 드럼세탁기" />
         <InputComponent labelProp="제품명 입력" />

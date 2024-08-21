@@ -11,3 +11,5 @@
 //   receipt?: string;
 //   isValidate?: boolean;
 // };
+
+export const currentYear = String(new Date().getFullYear());

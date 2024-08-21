@@ -33,5 +33,6 @@ export const sizes = {
   inputSize: {
     width: '180px',
     height: '30px',
+    margin: '10px 15px 10px 0px',
   },
 };

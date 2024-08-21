@@ -17,6 +17,10 @@ export const labels = [
   '빌트인',
   '건조기',
   '휴뮤추가',
+  '홍길동',
+  '이지원',
+  '이지훈',
+  '강민석',
 ] as const;
 
 export type LabelType = (typeof labels)[number];

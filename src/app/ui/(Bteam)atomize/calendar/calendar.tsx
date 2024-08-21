@@ -9,10 +9,10 @@ import 'dayjs/locale/ko'; // Day.js에서 한국어 로케일을 불러옴.
 
 dayjs.locale('ko'); // Day.js의 기본 로케일을 한국어로 설정.
 
-interface KoreanDateCalendarProps {
+type KoreanDateCalendarProps = {
   selectedDate: Dayjs; // 선택된 날짜를 나타내는 Dayjs 타입의 값.
   onDateChange: (newDate: Dayjs | null) => void; // 날짜가 바뀔 때 호출되는 함수. 새 날짜를 인자로 받음.
-}
+};
 
 export default function KoreanDateCalendar({
   selectedDate, // 선택된 날짜를 props로 받음.

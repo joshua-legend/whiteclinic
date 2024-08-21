@@ -6,8 +6,6 @@ export const sizes = {
     medium: '16px',
     large: '20px',
     xlarge: '24px',
-    xxlarge: '100px',
-    xxxlarge: '150px',
   },
   padding: {
     small: '4px',
@@ -24,5 +22,23 @@ export const sizes = {
   gap: {
     small: '2px',
     medium: '4px',
+  },
+};
+
+export const card = {
+  fontSize: {
+    small: '17px',
+    medium: '20px',
+    large: '20px',
+  },
+  cardSize: {
+    small: '100px',
+    medium: '150px',
+    large: '200px',
+  },
+  imgSize: {
+    small: '50px',
+    medium: '100px',
+    large: '150px',
   },
 };

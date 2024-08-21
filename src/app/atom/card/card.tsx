@@ -4,7 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
-import { sizes } from '@/styles/sizes';
+import { card, sizes } from '@/styles/sizes';
 
 //기사별 스킬에따라 분류
 type WallMounted = {
@@ -56,9 +56,9 @@ type Dryer = {
 };
 
 type CardProps = {
-  cardSize: 'small' | 'medium' | 'large' | 'xxlarge' | 'xxxlarge'; //카드의 크기
-  imgSize: 'small' | 'medium' | 'large' | 'xxlarge' | 'xxxlarge'; // 카드안의 이미지의 크기
-  contentSize: 'small' | 'medium' | 'large' | 'xxlarge' | 'xxxlarge'; //내용 글자 크기
+  cardSize: 'small' | 'medium' | 'large'; //카드의 크기
+  imgSize: 'small' | 'medium' | 'large'; // 카드안의 이미지의 크기
+  contentSize: 'small' | 'medium' | 'large'; //내용 글자 크기
   img: string; //카드의 이미지
   content:
     | WallMounted
@@ -76,15 +76,15 @@ type CardProps = {
 };
 
 export const Card = ({
-  cardSize = 'xxxlarge',
-  imgSize = 'xxlarge',
+  cardSize = 'medium',
+  imgSize = 'medium',
   contentSize = 'large',
   img,
   content,
 }: CardProps) => {
-  const CardSize = sizes.fontSize[cardSize];
-  const fontSize = sizes.fontSize[contentSize];
-  const ImageSize = sizes.fontSize[imgSize];
+  const CardSize = card.cardSize[cardSize];
+  const ImageSize = card.imgSize[imgSize];
+  const fontSize = card.fontSize[contentSize];
   return (
     <MuiCard
       sx={{

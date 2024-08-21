@@ -30,7 +30,7 @@ export const Card = ({
         <CardMedia
           component="img" //이미지가 들어간다는것을 명시해줌
           sx={{ width: imgWidth, height: imgHeight }} //이미지의 넓이와 높이 지정
-          image={img} //들어갈 이미지 매칭
+          image={img} //들어갈 이미지 매칭 
         />
         <CardContent>
           <Typography sx={{ fontSize: contentSize }}>{content}</Typography>

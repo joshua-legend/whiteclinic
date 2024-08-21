@@ -13,7 +13,7 @@ import {
 } from './ui/(Bteam)atomize/dropdown/DropDownList';
 import EngineerContent from './ui/(Bteam)atomize/schedule_table/component/engineerContent';
 import { CheckboxInput } from './ui/(Bteam)atomize/checkbox/CheckboxComponent';
-import CheckboxLabels from './atom/checkbox/checkbox';
+
 
 export default function Home() {
   return (
@@ -90,25 +90,7 @@ export default function Home() {
       <div>
         <EngineerContent engineerName="박형식" engineerDate="2024-06-24" />
       </div>
-      <CheckboxInput label="발행완료" />
-      <CheckboxInput label="일반세척" />
-      <CheckboxInput label="종합세척" />
-      <CheckboxInput label="할인적용" />
-      <CheckboxInput label="지급완료" />
-      <CheckboxInput label="벽걸이" />
-      <CheckboxInput label="원웨이" />
-      <CheckboxInput label="포웨이" />
-      <CheckboxInput label="원형" />
-      <CheckboxInput label="스탠드" />
-      <CheckboxInput label="실외기" />
-      <CheckboxInput label="덕트" />
-      <CheckboxInput label="창문형" />
-      <CheckboxInput label="통돌이" />
-      <CheckboxInput label="드럼" />
-      <CheckboxInput label="빌트인" />
-      <CheckboxInput label="건조기" />
-      <CheckboxInput label="휴뮤추가" />
-      <CheckboxLabels/>
+    
     </main>
   );
 }

@@ -13,7 +13,6 @@ import {
 } from './ui/(Bteam)atomize/dropdown/DropDownList';
 import EngineerContent from './ui/(Bteam)atomize/schedule_table/component/engineerContent';
 import { CheckboxInput } from './ui/(Bteam)atomize/checkbox/CheckboxComponent';
-import CheckboxLabels from './atom/checkbox/checkbox';
 
 export default function Home() {
   return (
@@ -108,7 +107,6 @@ export default function Home() {
       <CheckboxInput label="빌트인" />
       <CheckboxInput label="건조기" />
       <CheckboxInput label="휴뮤추가" />
-      <CheckboxLabels/>
     </main>
   );
 }

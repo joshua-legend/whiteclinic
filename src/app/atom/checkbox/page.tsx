@@ -1,10 +1,11 @@
-import * as React from 'react';
-import MyCheckBox from './MyCheckBox';
+import React from 'react';
+import MyCheckBoxList from './MyCheckBoxList';
+import { CheckboxCategory } from './MyCheckBoxData';
 
 const CardPage = () => {
   return (
     <div>
-      <MyCheckBox label="휴무추가" labelSize="large" checkBoxSize="xlarge"></MyCheckBox>
+      <MyCheckBoxList category={CheckboxCategory.Skill} />
     </div>
   );
 };

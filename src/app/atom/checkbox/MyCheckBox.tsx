@@ -1,34 +1,29 @@
+// 라벨을 위한 타입 정의
 import * as React from 'react';
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import { Typography } from '@mui/material';
+import { Typography, Box } from '@mui/material';
 
-import { total } from './checkbox';
-import { sizes } from '../../../styles/sizes';
-import { Engineer, Input, Order, Revenue, Salary } from './checkbox';
-
-type CheckBoxProps = {
-  label: total | '';
-  labelSize?: keyof typeof sizes.fontSize; // 라벨의 크기 지정
-  checkBoxSize?: keyof typeof sizes.fontSize; // 체크박스 크기 지정
+// 라벨
+type MyLabelProps = {
+  text: string;
 };
 
-const MyCheckBox = ({
-  label = '',
-  labelSize = 'medium',
-  checkBoxSize = 'xlarge',
-}: CheckBoxProps) => {
+// 박스
+type MyBoxProps = {
+  checked: boolean;
+};
+
+//라벨+박스
+type MyCheckBoxProps = {
+  label: MyLabelProps;
+  isChecked: MyBoxProps;
+};
+
+export const MyCheckBox = ({ label, isChecked }: MyCheckBoxProps) => {
   return (
-    <FormGroup>
-      <FormControlLabel
-        control={
-          <Checkbox sx={{ '& .MuiSvgIcon-root': { fontSize: sizes.fontSize[checkBoxSize] } }} />
-        }
-        label={<Typography sx={{ labelSize }}>{label}</Typography>}
-      />
-    </FormGroup>
+    <Box display={'flex'} alignItems={'center'}>
+      <Checkbox checked={isChecked.checked} />
+      <Typography>{label.text}</Typography>
+    </Box>
   );
 };
-
-export default MyCheckBox;

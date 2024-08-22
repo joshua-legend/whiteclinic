@@ -5,22 +5,22 @@ const arr: LinkButtonProps[] = [
   {
     href: '/edit',
     iconprops: { icon: <FormatListBulletedIcon /> },
-    labelprops: { text: '엄준식', color: '#dfdfdf', fontSize: 'medium' },
+    labelprops: { text: '엄준식', color: '#dfdfdf', fontSize: '20px' },
   },
   {
     href: '/edit',
     iconprops: { icon: <FormatListBulletedIcon /> },
-    labelprops: { text: '엄준식', color: '#dfdfdf', fontSize: 'medium' },
+    labelprops: { text: '엄준식', color: '#dfdfdf', fontSize: '20px' },
   },
   {
     href: '/edit',
     iconprops: { icon: <FormatListBulletedIcon /> },
-    labelprops: { text: '엄준식', color: '#dfdfdf', fontSize: 'medium' },
+    labelprops: { text: '엄준식', color: '#dfdfdf', fontSize: '20px' },
   },
 ];
 
 const Test = () => {
-  return arr.map((v) => <LinkButton key={v.href} {...v} />);
+  return arr.map((v) => <LinkButton {...v} />);
 };
 
 export default Test;

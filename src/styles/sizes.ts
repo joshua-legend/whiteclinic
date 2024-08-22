@@ -1,7 +1,5 @@
 // sizes.ts
 
-import { Height, Margin } from '@mui/icons-material';
-
 export const sizes = {
   fontSize: {
     small: '12px',
@@ -25,14 +23,36 @@ export const sizes = {
     small: '2px',
     medium: '4px',
   },
-  buttonSize: {
-    width: '220px',
-    height: '50px',
-    letterSpace: '10px',
+};
+
+export const card = {
+  fontSize: {
+    small: '17px',
+    medium: '20px',
+    large: '20px',
   },
-  inputSize: {
-    width: '180px',
-    height: '30px',
-    margin: '10px 15px 10px 0px',
+  cardSize: {
+    small: '100px',
+    medium: '150px',
+    large: '200px',
+  },
+  imgSize: {
+    small: '50px',
+    medium: '100px',
+    large: '150px',
+  },
+};
+
+export const boxStyle = {
+  boxWidth: {
+    small: '100px',
+    xlarge: '1000px',
+  },
+  boxHeight: {
+    small: '30px',
+    medium: '70px',
+  },
+  borderRadius: {
+    eight: '8px',
   },
 };

@@ -46,17 +46,6 @@ type CalculateFnType = {
   calResult?: number;
 };
 
-type inputPlaceholderType =
-  | '고객 성함'
-  | '고객 연락처'
-  | '고객 주소지'
-  | '특이사항 입력'
-  | '할인율을 입력하세요'
-  | '할인 금액 출력'
-  | '2024'
-  | '수량'
-  | '분류 불가능한 세척품목';
-
 // 인풋 프롭 유니온타입 지정
 type InputProps =
   | Partial<AnyInfoType>

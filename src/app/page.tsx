@@ -12,8 +12,6 @@ import {
   WeekDays,
 } from './ui/(Bteam)atomize/dropdown/DropDownList';
 import EngineerContent from './ui/(Bteam)atomize/schedule_table/component/engineerContent';
-import { CheckboxInput } from './ui/(Bteam)atomize/checkbox/CheckboxComponent';
-
 
 export default function Home() {
   return (
@@ -90,7 +88,6 @@ export default function Home() {
       <div>
         <EngineerContent engineerName="박형식" engineerDate="2024-06-24" />
       </div>
-    
     </main>
   );
 }

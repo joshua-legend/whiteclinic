@@ -12,8 +12,8 @@ import {
   WeekDays,
 } from './ui/(Bteam)atomize/dropdown/DropDownList';
 import EngineerContent from './ui/(Bteam)atomize/schedule_table/component/engineerContent';
-import ButtonFrame from './atom/button/Frame';
-import DropdownBox from './atom/dropdown/DropdownBox';
+import ButtonFrame from './atom/buttonframe/Frame';
+import InputComponent from './atom/inputFrame/inputs';
 
 export default function Home() {
   return (
@@ -40,15 +40,21 @@ export default function Home() {
       <div>
         <h1>고객 정보</h1>
         <MultiPurposeInput name="고객 성함" contact="고객 연락처" address="주소지" />
+        <InputComponent labelProp="고객 성함" placeholderProp="홍길동" />
+        <InputComponent labelProp="고객 연락처" placeholderProp="010 - 0000 - 0000" />
+        <InputComponent labelProp="고객 주소지" placeholderProp="상세 주소를 입력하세요" />
 
         <h1>특이 사항</h1>
         <MultiPurposeInput ps="특이사항을 적어주세요." />
+        <InputComponent placeholderProp="특이사항 추가" />
 
         <h1>할인율</h1>
         <MultiPurposeInput discount={15} CalFn={() => console.log('CalFn Called')} />
+        <InputComponent placeholderProp="할인율을 입력하세요" />
 
         <h1>할인된 값</h1>
         <MultiPurposeInput calResult={0} />
+        <InputComponent placeholderProp="할인 금액 출력" isReadOnly={true} />
 
         <h1>연도입력</h1>
         <MultiPurposeInput thisYear={2024} />
@@ -83,7 +89,6 @@ export default function Home() {
       </div>
       <div>
         <h1>atom화 세척품목</h1>
-        <DropdownBox />
       </div>
       <div>
         <EngineerContent engineerName="박형식" engineerDate="2024-06-24" />

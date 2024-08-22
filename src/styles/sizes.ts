@@ -34,6 +34,14 @@ export const sizes = {
   },
 };
 
+export const buttonStyle = {
+  buttonSize: {
+    width: '250px',
+    height: '50px',
+    letterSpacing: '10px',
+  },
+};
+
 export const card = {
   fontSize: {
     small: '17px',
@@ -65,3 +73,6 @@ export const boxStyle = {
     eight: '8px',
   },
 };
+
+// TODO : 컴포넌트 사이즈 규격화 실시합니다...
+// 인풋

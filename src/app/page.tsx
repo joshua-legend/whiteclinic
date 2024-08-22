@@ -12,6 +12,7 @@ import {
   WeekDays,
 } from './ui/(Bteam)atomize/dropdown/DropDownList';
 import EngineerContent from './ui/(Bteam)atomize/schedule_table/component/engineerContent';
+import ButtonFrame from './atom/button/Frame';
 
 export default function Home() {
   return (
@@ -20,25 +21,19 @@ export default function Home() {
       HOME 화면입니다
       <div className="flex flex-col w-full h-fit">
         <div className="flex flex-row w-full h-fit">
-          <MultiPurposeButton submitFn={() => console.log('Cancle Submit!')} text="아니오" />
-          <MultiPurposeButton submitFn={() => console.log('Submit!')} text="등록" />
+          <ButtonFrame text="아니오" />
+          <ButtonFrame text="등록" />
         </div>
         <div>
-          <MultiPurposeButton RegisterFn={() => console.log('Cancle Register!')} text="취소" />
-          <MultiPurposeButton RegisterFn={() => console.log('Register!')} text="등록" />
+          <ButtonFrame text="취소" />
+          <ButtonFrame text="등록" />
         </div>
         <div className="flex flex-row w-full h-fit">
-          <MultiPurposeButton
-            ExRegisterFn={() => console.log('Cancle Extra Register!')}
-            text="등록중지"
-          />
-          <MultiPurposeButton ExRegisterFn={() => console.log('Extra Register!')} text="추가등록" />
+          <ButtonFrame text="등록중지" />
+          <ButtonFrame text="추가등록" />
         </div>
         <div className="flex flex-row w-full h-fit">
-          <MultiPurposeButton
-            salaryCheckFn={() => console.log('Check Salary!')}
-            text="급여사항 확인"
-          />
+          <ButtonFrame text="급여사항확인" />
         </div>
       </div>
       <div>

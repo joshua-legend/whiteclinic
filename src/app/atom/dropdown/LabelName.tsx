@@ -1,6 +1,6 @@
 import { InputLabel } from '@mui/material';
 
-type LabelNameProps = {
+export type LabelNameProps = {
   contentName?: string;
   id?: string;
 };

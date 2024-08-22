@@ -1,6 +1,6 @@
 import { Select, SelectChangeEvent } from '@mui/material';
 
-type DropDownSelectProps = {
+export type DropDownSelectProps = {
   labelSelectId?: string;
   id?: string;
   selectValue?: string;

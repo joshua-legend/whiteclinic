@@ -108,7 +108,7 @@ export default function Home() {
           placeholderProp="분류 불가능한 세척품목"
           type="text"
           isRequired={false}
-          containerWidth={containerStyle.mediumWidth.width}
+          containerWidth={containerStyle.largeWidth.width}
         />
       </div>
       <div>

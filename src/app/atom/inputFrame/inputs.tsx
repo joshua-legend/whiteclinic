@@ -1,4 +1,3 @@
-import { currentYear } from '@/app/types';
 import { NumberInput } from '@/app/ui/(Bteam)atomize/input/customNumberInput';
 import { containerStyle } from '@/styles/sizes';
 import { FormControl, TextField } from '@mui/material';
@@ -17,7 +16,7 @@ type labelType =
 
 type helperTextType =
   | '이름을 정확히 입력하세요'
-  | '- 를 포함하여 입력하세요'
+  | '- 를 제외하고 입력하세요'
   | '주소지를 정확히 입력하세요'
   | '특수문자를 사용할 수 없습니다.'
   | '숫자를 입력할 수 없습니다.'
@@ -27,15 +26,15 @@ type helperTextType =
 
 // 인풋 플레이스홀더 타입
 type inputPlaceholderType =
-  | '홍길동'
-  | '- 를 제외한 번호만 입력하세요'
+  | '이름을 입력하세요'
+  | '`-` 를 제외하고 입력하세요'
   | '상세 주소를 입력하세요'
-  | '특이사항 추가'
+  | '특이사항이 있을 시 기입하세요.'
   | '할인율을 입력하세요'
   | '할인 금액 출력'
   | '수량'
   | '분류 불가능한 세척품목'
-  | typeof currentYear;
+  | '연도 입력';
 
 // 인풋 프롭 유니온타입 지정
 type InputPropses = {
@@ -53,7 +52,7 @@ type InputPropses = {
   isQuantityInput?: boolean;
   isRequired?: boolean;
   helperText?: helperTextType;
-  variableValue?: number;
+  variableValue?: number | string;
   containerWidth?: string;
 };
 

@@ -41,10 +41,10 @@ export default function Home() {
       </div>
       <div>
         <h1>고객 정보</h1>
-        <InputComponent labelProp="고객 성함" placeholderProp="홍길동" type="text" />
+        <InputComponent labelProp="고객 성함" placeholderProp="이름을 입력하세요" type="text" />
         <InputComponent
           labelProp="고객 연락처"
-          placeholderProp="- 를 제외한 번호만 입력하세요"
+          placeholderProp="`-` 를 제외하고 입력하세요"
           type="text"
         />
         <InputComponent
@@ -55,7 +55,8 @@ export default function Home() {
 
         <h1>특이 사항</h1>
         <InputComponent
-          placeholderProp="특이사항 추가"
+          labelProp="특이사항"
+          placeholderProp="특이사항이 있을 시 기입하세요."
           type="text"
           isRequired={false}
           containerWidth={containerStyle.xlargeWidth.width}
@@ -76,10 +77,10 @@ export default function Home() {
           variableValue={testValue}
         />
 
-        <h1>연도입력</h1> 
+        <h1>연도입력</h1>
         <InputComponent
           labelProp="연도"
-          placeholderProp={currentYear}
+          placeholderProp="연도 입력"
           type="number"
           containerWidth={containerStyle.smallWidth.width}
         />

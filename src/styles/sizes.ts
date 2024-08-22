@@ -115,12 +115,5 @@ export const dropdownStyle = {
 export const scheduleStyle = {
   tableStyle: {},
 };
-// TODO : 컴포넌트 사이즈 규격화 실시합니다...
-// 인풋
-// 버튼
-// 체크박스 & 라벨
-// 드롭다운
-// 카드
-// 스케쥴테이블
 
 // TODO : 컴포넌트 사이즈 규격화 실시합니다... top bottom 만 규격화 나머지는 길이에 따라 각자 설정

@@ -13,6 +13,7 @@ import {
 } from './ui/(Bteam)atomize/dropdown/DropDownList';
 import EngineerContent from './ui/(Bteam)atomize/schedule_table/component/engineerContent';
 import ButtonFrame from './atom/button/Frame';
+import DropdownBox from './atom/dropdown/DropdownBox';
 
 export default function Home() {
   return (
@@ -79,6 +80,10 @@ export default function Home() {
 
         <h1>급여요일</h1>
         <DropDownBar contentName="급여요일" contentList={WeekDays} />
+      </div>
+      <div>
+        <h1>atom화 세척품목</h1>
+        <DropdownBox />
       </div>
       <div>
         <EngineerContent engineerName="박형식" engineerDate="2024-06-24" />

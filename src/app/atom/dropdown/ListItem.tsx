@@ -1,16 +1,11 @@
 import { MenuItem } from '@mui/material';
 
-type ListItemProps = {
-  index?: number;
+export type ListItemProps = {
   value: string | number;
 };
 
-const ListItem = ({ index = 0, value = 'default value' }: ListItemProps) => {
-  return (
-    <MenuItem key={index} value={value}>
-      {value}
-    </MenuItem>
-  );
+const ListItem = ({ value = 'default value' }: ListItemProps) => {
+  return <MenuItem value={value}>{value}</MenuItem>;
 };
 
 export default ListItem;

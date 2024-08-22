@@ -1,5 +1,5 @@
+import { CheckBox } from '@mui/material';
 import * as React from 'react';
-import { CheckBox } from '../checkbox/checkbox';
 
 const CardPage = () => {
   return (

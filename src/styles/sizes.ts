@@ -1,5 +1,4 @@
 // sizes.ts
-
 export const sizes = {
   fontSize: {
     small: '12px',

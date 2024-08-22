@@ -3,8 +3,8 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import { Typography } from '@mui/material';
-import { sizes } from '@/styles/sizes';
 import { Engineer, Input, Order, Revenue, Salary } from './checkbox';
+import { sizes } from './sizes';
 
 type CheckBoxProps = {
   label: Order | Revenue | Salary | Engineer | Input | '';

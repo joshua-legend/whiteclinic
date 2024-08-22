@@ -1,5 +1,7 @@
 import { currentYear } from '@/app/types';
+import QuantityInput from '@/app/ui/(Bteam)atomize/input/customNumberInput';
 import { sizes } from '@/styles/sizes';
+import { NumberInput } from '@mui/base/Unstable_NumberInput/NumberInput';
 import { TextField } from '@mui/material';
 
 // 할인율 함수 타입
@@ -41,7 +43,7 @@ type inputPlaceholderType =
   | '분류 불가능한 세척품목'
   | typeof currentYear;
 
-// 인풋 프롭 설정
+// 인풋 프롭 유니온타입 지정
 type InputPropses = {
   labelProp?: labelType;
   placeholderProp?: inputPlaceholderType;
@@ -54,12 +56,8 @@ type InputPropses = {
   isReadOnly?: boolean;
   isDisabled?: boolean;
   helperText?: helperTextType;
-  variableValue?: string | number;
 };
 
-/**
- * 넘버타입 인풋 화살표 없애는 css
- */
 const hideNumberInputArrows = {
   '& input::-webkit-outer-spin-button, & input::-webkit-inner-spin-button': {
     display: 'none',
@@ -75,13 +73,12 @@ const InputComponent = ({
   labelProp,
   isReadOnly = false,
   isDisabled = false,
-  adornment,
+  adornment = '원',
   type = 'text',
   color,
   minValue,
   maxValue,
   helperText = ' ',
-  variableValue,
 }: InputPropses) => {
   return (
     <TextField
@@ -101,7 +98,6 @@ const InputComponent = ({
       type={type}
       onChange={functionProp?.CalFn}
       helperText={helperText}
-      defaultValue={variableValue}
     />
   );
 };

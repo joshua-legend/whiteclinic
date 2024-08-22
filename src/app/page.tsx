@@ -46,6 +46,7 @@ export default function Home() {
           labelProp="고객 성함"
           placeholderProp="홍길동"
           type="text"
+          helperText="이름을 정확히 입력하세요"
           functionProp={{ CalFn: () => testfn() }}
         />
         <InputComponent labelProp="고객 연락처" placeholderProp="010 - 0000 - 0000" />

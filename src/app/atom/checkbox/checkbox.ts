@@ -29,3 +29,5 @@ export type Engineer =
   | '휴무추가'; //기사정보
 
 export type Input = ''; //입력정보
+
+export type total = Order | Revenue | Salary | Engineer;

@@ -40,7 +40,7 @@ type CardProps = {
     | Dryer;
 };
 
-export const Card = ({
+export const MyCard = ({
   cardSize = 'medium',
   imgSize = 'medium',
   contentSize = 'large',
@@ -72,4 +72,4 @@ export const Card = ({
     </MuiCard>
   );
 };
-export default Card;
+export default MyCard;

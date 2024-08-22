@@ -4,15 +4,17 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import { Typography } from '@mui/material';
 
+import { total } from './checkbox';
+import { sizes } from '../../../styles/sizes';
 import { Engineer, Input, Order, Revenue, Salary } from './checkbox';
 
 type CheckBoxProps = {
-  label: Order | Revenue | Salary | Engineer | Input | '';
+  label: total | '';
   labelSize?: 'small' | 'medium' | 'large' | 'xlarge'; // 라벨의 크기 지정
   checkBoxSize?: 'small' | 'medium' | 'large' | 'xlarge'; // 체크박스 크기 지정
 };
 
-export const CheckBox = ({
+const MyCheckBox = ({
   label = '',
   labelSize = 'medium',
   checkBoxSize = 'xlarge',
@@ -33,3 +35,5 @@ export const CheckBox = ({
     </FormGroup>
   );
 };
+
+export default MyCheckBox;

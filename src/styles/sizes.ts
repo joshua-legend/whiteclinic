@@ -39,9 +39,8 @@ export const buttonStyle = {
     width: '250px',
     height: '50px',
     letterSpacing: '10px',
-    
-  }
-}
+  },
+};
 
 export const card = {
   fontSize: {

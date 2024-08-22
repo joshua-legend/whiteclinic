@@ -1,11 +1,10 @@
-'use client';
 
-import BasicDateCalendar from './calendar';
+import Calendar_card from './Calendar_card';
 
 const calendarPage = () => {
   return (
     <div>
-     <BasicDateCalendar/>
+      <Calendar_card />
     </div>
   );
 };

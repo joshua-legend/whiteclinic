@@ -42,7 +42,7 @@ export const buttonStyle = {
   },
 };
 
-export const card = {
+export const cardStyle = {
   fontSize: {
     small: '17px',
     medium: '20px',

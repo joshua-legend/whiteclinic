@@ -1,10 +1,3 @@
-export type LabelProps = {
-  OrderLabel: string[];
-  RevenueLabel: string[];
-  SalaryLabel: string[];
-  EngineerLabel: string[];
-};
-
 export enum CheckboxCategory {
   State = 'State',
   Revenue = 'Revenue',

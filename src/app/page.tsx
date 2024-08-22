@@ -76,7 +76,7 @@ export default function Home() {
           variableValue={testValue}
         />
 
-        <h1>연도입력</h1>
+        <h1>연도입력</h1> 
         <InputComponent
           labelProp="연도"
           placeholderProp={currentYear}

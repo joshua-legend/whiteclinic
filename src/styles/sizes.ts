@@ -34,6 +34,15 @@ export const sizes = {
   },
 };
 
+export const buttonStyle = {
+  buttonSize: {
+    width: '250px',
+    height: '50px',
+    letterSpacing: '10px',
+    
+  }
+}
+
 export const card = {
   fontSize: {
     small: '17px',

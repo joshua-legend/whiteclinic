@@ -1,6 +1,5 @@
 import { currentYear } from '@/app/types';
 import { sizes } from '@/styles/sizes';
-
 import { TextField } from '@mui/material';
 
 // 할인율 함수 타입
@@ -35,12 +34,11 @@ type inputPlaceholderType =
   | '홍길동'
   | '010 - 0000 - 0000'
   | '상세 주소를 입력하세요'
-  | '특이사항 있을 시 추가'
+  | '특이사항 추가'
   | '할인율을 입력하세요'
   | '할인 금액 출력'
   | '수량'
-  | '분류 불가능한 세척품목'
-  | typeof currentYear;
+  | '분류 불가능한 세척품목';
 
 // 인풋 프롭 유니온타입 지정
 type InputPropses = {
@@ -55,6 +53,7 @@ type InputPropses = {
   isReadOnly?: boolean;
   isDisabled?: boolean;
   helperText?: helperTextType;
+  variableValue?: number;
 };
 
 const hideNumberInputArrows = {
@@ -78,6 +77,7 @@ const InputComponent = ({
   minValue,
   maxValue,
   helperText = ' ',
+  variableValue,
 }: InputPropses) => {
   return (
     <TextField
@@ -97,6 +97,7 @@ const InputComponent = ({
       type={type}
       onChange={functionProp?.CalFn}
       helperText={helperText}
+      defaultValue={variableValue}
     />
   );
 };

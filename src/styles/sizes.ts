@@ -1,7 +1,4 @@
 // sizes.ts
-
-import { Height, Margin } from '@mui/icons-material';
-
 export const sizes = {
   fontSize: {
     small: '12px',
@@ -28,7 +25,7 @@ export const sizes = {
   buttonSize: {
     width: '220px',
     height: '50px',
-    letterSpace: '10px',
+    letterSpacing: '10px',
   },
   inputSize: {
     width: '180px',

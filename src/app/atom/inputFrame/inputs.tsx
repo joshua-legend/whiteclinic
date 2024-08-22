@@ -1,11 +1,7 @@
 import { currentYear } from '@/app/types';
-import { sizes } from '@/styles/sizes';
-import { TextField } from '@mui/material';
-
-// 할인율 함수 타입
-type discountFnType = {
-  CalFn: () => void;
-};
+import QuantityInput, { NumberInput } from '@/app/ui/(Bteam)atomize/input/customNumberInput';
+import { containerStyle, inputStyle } from '@/styles/sizes';
+import { FormControl, styled, TextField } from '@mui/material';
 
 // 인풋라벨 타입
 type labelType =
@@ -32,19 +28,21 @@ type helperTextType =
 // 인풋 플레이스홀더 타입
 type inputPlaceholderType =
   | '홍길동'
-  | '010 - 0000 - 0000'
+  | '- 를 제외한 번호만 입력하세요'
   | '상세 주소를 입력하세요'
   | '특이사항 추가'
   | '할인율을 입력하세요'
   | '할인 금액 출력'
   | '수량'
-  | '분류 불가능한 세척품목';
+  | '분류 불가능한 세척품목'
+  | typeof currentYear;
 
 // 인풋 프롭 유니온타입 지정
 type InputPropses = {
+  inputID?: string;
   labelProp?: labelType;
   placeholderProp?: inputPlaceholderType;
-  functionProp?: discountFnType;
+  functionProp?: () => void;
   minValue?: number;
   maxValue?: number;
   adornment?: '원' | '만원';
@@ -52,8 +50,11 @@ type InputPropses = {
   color?: object;
   isReadOnly?: boolean;
   isDisabled?: boolean;
+  isQuantityInput?: boolean;
+  isRequired?: boolean;
   helperText?: helperTextType;
   variableValue?: number;
+  containerWidth?: string;
 };
 
 const hideNumberInputArrows = {
@@ -66,39 +67,48 @@ const hideNumberInputArrows = {
 };
 
 const InputComponent = ({
+  inputID = undefined,
   placeholderProp,
   functionProp,
   labelProp,
   isReadOnly = false,
   isDisabled = false,
-  adornment = '원',
+  isQuantityInput = false,
+  isRequired = true,
+  adornment,
   type = 'text',
   color,
   minValue,
   maxValue,
   helperText = ' ',
   variableValue,
+  containerWidth = '250px',
 }: InputPropses) => {
-  return (
-    <TextField
-      sx={{
-        ...sizes.inputSize,
-        color,
-        ...(type === 'number' && hideNumberInputArrows), // number 타입에만 적용
-      }}
-      placeholder={placeholderProp}
-      InputProps={{
-        inputProps: { min: minValue, max: maxValue },
-        readOnly: isReadOnly,
-        endAdornment: adornment,
-        disabled: isDisabled,
-      }}
-      label={labelProp}
-      type={type}
-      onChange={functionProp?.CalFn}
-      helperText={helperText}
-      defaultValue={variableValue}
-    />
+  return isQuantityInput ? (
+    <NumberInput placeholder="수량" min={0} max={99} />
+  ) : (
+    <FormControl sx={{ ...containerStyle.boxSize, width: containerWidth }}>
+      <TextField
+        sx={{
+          color,
+          ...(type === 'number' && hideNumberInputArrows), // number 타입에만 적용
+        }}
+        placeholder={placeholderProp}
+        InputProps={{
+          inputProps: { min: minValue, max: maxValue },
+          readOnly: isReadOnly,
+          endAdornment: adornment,
+          disabled: isDisabled,
+          required: isRequired,
+        }}
+        id={inputID}
+        label={labelProp}
+        type={type}
+        onChange={functionProp}
+        helperText={helperText}
+        defaultValue={variableValue}
+      />
+    </FormControl>
   );
 };
 

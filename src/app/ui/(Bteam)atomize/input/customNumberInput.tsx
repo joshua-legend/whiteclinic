@@ -7,7 +7,7 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 import { styled } from '@mui/material';
 
-const NumberInput = React.forwardRef(function CustomNumberInput(
+export const NumberInput = React.forwardRef(function CustomNumberInput(
   props: NumberInputProps,
   ref: React.ForwardedRef<HTMLDivElement>
 ) {
@@ -80,7 +80,7 @@ const StyledInput = styled('input')(
   line-height: 1.375;
   color: ${theme.palette.mode === 'dark' ? grey[300] : grey[900]};
   background: ${theme.palette.mode === 'dark' ? grey[900] : '#fff'};
-  border: 1px solid ${theme.palette.mode === 'dark' ? grey[700] : grey[200]};
+  border: 2px solid ${theme.palette.mode === 'dark' ? grey[700] : grey[300]};
   box-shadow: 0px 2px 4px ${
     theme.palette.mode === 'dark' ? 'rgba(0,0,0, 0.5)' : 'rgba(0,0,0, 0.05)'
   };
@@ -113,9 +113,9 @@ const StyledButton = styled('button')(
   font-size: 0.875rem;
   box-sizing: border-box;
   line-height: 1.5;
-  border: 1px solid;
+  border: 2px solid;
   border-radius: 999px;
-  border-color: ${theme.palette.mode === 'dark' ? grey[800] : grey[200]};
+  border-color: ${theme.palette.mode === 'dark' ? grey[800] : grey[300]};
   background: ${theme.palette.mode === 'dark' ? grey[900] : grey[50]};
   color: ${theme.palette.mode === 'dark' ? grey[200] : grey[900]};
   width: 32px;
@@ -127,6 +127,7 @@ const StyledButton = styled('button')(
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 120ms;
+  margin-top: 5px;
 
   &:hover {
     cursor: pointer;

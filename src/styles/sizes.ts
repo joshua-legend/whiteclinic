@@ -23,15 +23,6 @@ export const sizes = {
     small: '2px',
     medium: '4px',
   },
-  buttonSize: {
-    width: '250px',
-    height: '50px',
-    letterSpacing: '10px',
-  },
-  inputSize: {
-    width: '180px',
-    height: '30px',
-  },
 };
 
 export const buttonStyle = {
@@ -39,6 +30,14 @@ export const buttonStyle = {
     width: '250px',
     height: '50px',
     letterSpacing: '10px',
+  },
+};
+
+export const inputStyle = {
+  inputSize: {
+    width: '180px',
+    height: '30px',
+    margin: '10px 8px 10px 0px',
   },
 };
 
@@ -74,19 +73,24 @@ export const boxStyle = {
   },
 };
 
-export const dropdownStyle = {
-  margin: {
-    min: 1,
+export const containerStyle = {
+  boxSize: {
+    padding: '0px 5px',
+    height: '45px',
+    margin: '10px 5px 10px 0px',
   },
-  minWidth: {
-    medium: 120,
+  smallWidth: {
+    width: '100px',
+  },
+  mediumWidth: {
+    width: '200px',
+  },
+  largeWidth: {
+    width: '300px',
+  },
+  xlargeWidth: {
+    width: '750px',
   },
 };
 
-// TODO : 컴포넌트 사이즈 규격화 실시합니다...
-// 인풋
-// 버튼
-// 체크박스 & 라벨
-// 드롭다운
-// 카드
-// 스케쥴테이블
+// TODO : 컴포넌트 사이즈 규격화 실시합니다... top bottom 만 규격화 나머지는 길이에 따라 각자 설정

@@ -12,7 +12,7 @@ export type LinkButtonProps = {
 const LinkButton = ({ href, iconprops, labelprops }: LinkButtonProps) => {
   return (
     <Link href={href} passHref style={{ textDecoration: 'none' }}>
-      <ListItemButton>
+      <ListItemButton >
         <Icon {...iconprops} />
         <Label {...labelprops} />
       </ListItemButton>

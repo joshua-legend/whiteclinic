@@ -13,4 +13,4 @@
 //   isValidate?: boolean;
 // };
 
-export const currentYear = String(new Date().getFullYear);
+export const currentYear = String(new Date().getFullYear());

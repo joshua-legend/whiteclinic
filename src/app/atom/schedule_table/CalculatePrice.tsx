@@ -9,6 +9,7 @@ const CalculatePrice = ({
   divisionNum = 10000,
   priceUnit = '만원',
 }: CalculatePriceProps) => {
+  //삼항넣기
   return (
     <div>
       {priceNum / divisionNum} {priceUnit}

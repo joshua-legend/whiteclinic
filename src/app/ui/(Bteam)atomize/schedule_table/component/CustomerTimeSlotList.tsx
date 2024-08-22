@@ -18,7 +18,7 @@ const CustomerTimeSlotList = ({ engineerDate, orderInfo }: CustomerTimeSlotListP
         })
       ) : (
         <Typography variant="body1" sx={{ color: '#ffffff' }}>
-          정보 없음
+          정보 없음.
         </Typography>
       )}
     </Box>

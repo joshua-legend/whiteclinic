@@ -69,8 +69,18 @@ export const boxStyle = {
     small: '30px',
     medium: '70px',
   },
+  padding: {
+    small: '4px',
+    medium: '8px',
+    large: '12px',
+    xlarge: '16px',
+  },
   borderRadius: {
     eight: '8px',
+  },
+  gap: {
+    small: '2px',
+    medium: '4px',
   },
 };
 
@@ -83,6 +93,9 @@ export const dropdownStyle = {
   },
 };
 
+export const scheduleStyle = {
+  tableStyle: {},
+};
 // TODO : 컴포넌트 사이즈 규격화 실시합니다...
 // 인풋
 // 버튼

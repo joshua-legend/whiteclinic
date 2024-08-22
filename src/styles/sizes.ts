@@ -23,6 +23,15 @@ export const sizes = {
     small: '2px',
     medium: '4px',
   },
+  buttonSize: {
+    width: '250px',
+    height: '50px',
+    letterSpacing: '10px',
+  },
+  inputSize: {
+    width: '180px',
+    height: '30px',
+  },
 };
 
 export const card = {

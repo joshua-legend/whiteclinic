@@ -1,7 +1,7 @@
 import { Typography } from '@mui/material';
 
 export type MyLabelProps = {
-  label: string;
+  label:string ;
 };
 
 const MyLabel = ({ label }: MyLabelProps) => {

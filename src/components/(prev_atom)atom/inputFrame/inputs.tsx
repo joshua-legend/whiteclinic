@@ -1,6 +1,6 @@
-import { NumberInput } from '@/app/ui/(Bteam)atomize/input/customNumberInput';
 import { containerStyle } from '@/styles/sizes';
-import { FormControl, IconButtonProps, TextField } from '@mui/material';
+import { NumberInput } from '@/ui/(Bteam)atomize/input/customNumberInput';
+import { FormControl, TextField } from '@mui/material';
 
 // 인풋라벨 타입
 type labelType =

@@ -1,4 +1,4 @@
-import { CustomerTimeSlotProps } from '@/app/ui/(Bteam)atomize/schedule_table/ts/customerType';
+import { CustomerTimeSlotProps } from '@/ui/(Bteam)atomize/schedule_table/ts/customerType';
 import { boxStyle } from '@/styles/sizes';
 import { Box } from '@mui/material';
 import ContentBox from './ContentBox';

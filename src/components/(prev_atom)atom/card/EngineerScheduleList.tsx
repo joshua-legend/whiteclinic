@@ -2,6 +2,7 @@ import { Schedule } from '@mui/icons-material';
 
 import EngineerScheduleCard, { EngineerScheduleCardProps } from './EngineerScheduleCard';
 import { CardData } from './CardData';
+import { cardStyle } from '@/styles/sizes';
 
 type EngineerScheduleListProps = {
   selectedDate: string;

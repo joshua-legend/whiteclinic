@@ -1,17 +1,17 @@
 'use client';
 
 import React from 'react';
-import DropDownBar from './ui/(Bteam)atomize/dropdown/DropDownBar';
+import DropDownBar from '../ui/(Bteam)atomize/dropdown/DropDownBar';
 import {
   AllowanceRates,
   CleaningItem,
   Documents,
   PaymentMethods,
   WeekDays,
-} from './ui/(Bteam)atomize/dropdown/DropDownList';
-import EngineerContent from './ui/(Bteam)atomize/schedule_table/component/engineerContent';
-import ButtonFrame from '../components/atom/buttonframe/Frame';
-import InputComponent from '../components/atom/inputFrame/inputs';
+} from '../ui/(Bteam)atomize/dropdown/DropDownList';
+import EngineerContent from '../ui/(Bteam)atomize/schedule_table/component/engineerContent';
+import ButtonFrame from '../components/(prev_atom)atom/buttonframe/Frame';
+import InputComponent from '../components/(prev_atom)atom/inputFrame/inputs';
 import { containerStyle } from '@/styles/sizes';
 import { currentYear } from './types';
 

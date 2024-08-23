@@ -1,7 +1,7 @@
 import {
   CustomerDetailsProps,
   CustomerInfo,
-} from '@/app/ui/(Bteam)atomize/schedule_table/ts/customerType';
+} from '@/ui/(Bteam)atomize/schedule_table/ts/customerType';
 import CalculatePrice, { CalculatePriceProps } from './CalculatePrice';
 import { Box } from '@mui/material';
 import ContentBox from './ContentBox';

@@ -1,7 +1,7 @@
 import { Box, Typography } from '@mui/material';
 import { CheckboxCategory, CheckboxData } from './MyCheckBoxData';
 import { MyCheckBox } from './MyCheckBox';
-import { labels } from '@/app/ui/(Bteam)atomize/checkbox/CheckboxInput';
+import { labels } from '@/ui/(Bteam)atomize/checkbox/CheckboxInput';
 
 type MyCheckBoxListProps = {
   category: CheckboxCategory;
@@ -24,4 +24,3 @@ const MyCheckBoxList = ({ category }: MyCheckBoxListProps) => {
 };
 
 export default MyCheckBoxList;
- 

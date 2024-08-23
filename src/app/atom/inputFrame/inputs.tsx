@@ -44,7 +44,7 @@ type InputPropses = {
   functionProp?: () => void;
   minValue?: number;
   maxValue?: number;
-  adornment?: '원' | '만원' | IconButtonProps;
+  adornment?: '원' | '만원';
   type?: 'number' | 'text';
   color?: object;
   isReadOnly?: boolean;

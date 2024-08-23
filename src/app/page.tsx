@@ -86,7 +86,13 @@ export default function Home() {
         />
 
         <h1>세척 대수</h1>
-        <InputComponent isQuantityInput={true} minValue={0} maxValue={99} type="number" />
+        <InputComponent
+          isQuantityInput={true}
+          minValue={0}
+          maxValue={99}
+          placeholderProp="수량"
+          type="number"
+        />
 
         <h1>수당입력</h1>
         <InputComponent

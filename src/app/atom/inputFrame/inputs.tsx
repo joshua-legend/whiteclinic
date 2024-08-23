@@ -1,6 +1,6 @@
 import { NumberInput } from '@/app/ui/(Bteam)atomize/input/customNumberInput';
 import { containerStyle } from '@/styles/sizes';
-import { FormControl, TextField } from '@mui/material';
+import { FormControl, IconButtonProps, TextField } from '@mui/material';
 
 // 인풋라벨 타입
 type labelType =
@@ -44,7 +44,7 @@ type InputPropses = {
   functionProp?: () => void;
   minValue?: number;
   maxValue?: number;
-  adornment?: '원' | '만원';
+  adornment?: '원' | '만원' | IconButtonProps;
   type?: 'number' | 'text';
   color?: object;
   isReadOnly?: boolean;
@@ -84,7 +84,7 @@ const InputComponent = ({
   containerWidth = '250px',
 }: InputPropses) => {
   return isQuantityInput ? (
-    <NumberInput placeholder="수량" min={0} max={99} />
+    <NumberInput />
   ) : (
     <FormControl sx={{ ...containerStyle.boxSize, width: containerWidth }}>
       <TextField

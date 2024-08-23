@@ -10,8 +10,8 @@ import {
   WeekDays,
 } from './ui/(Bteam)atomize/dropdown/DropDownList';
 import EngineerContent from './ui/(Bteam)atomize/schedule_table/component/engineerContent';
-import ButtonFrame from './atom/buttonframe/Frame';
-import InputComponent from './atom/inputFrame/inputs';
+import ButtonFrame from '../components/atom/buttonframe/Frame';
+import InputComponent from '../components/atom/inputFrame/inputs';
 import { containerStyle } from '@/styles/sizes';
 import { currentYear } from './types';
 

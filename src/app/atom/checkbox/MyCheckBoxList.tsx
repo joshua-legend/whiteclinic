@@ -7,20 +7,21 @@ type MyCheckBoxListProps = {
   category: CheckboxCategory;
 };
 
-// const MyCheckBoxList = ({ category }: MyCheckBoxListProps) => {
-//   const filterCheckBox = CheckboxData.filter((item) => item.category === category);
-//   return (
-//     <Box>
-//       <Typography>{category}</Typography>
-//       {filterCheckBox.map((item, index) => (
-//         <MyCheckBox
-//           key={`${category}-${index}`}
-//           label={AllLabels}
-//           isChecked={{ isChecked: item.isChecked }}
-//         />
-//       ))}
-//     </Box>
-//   );
-// };
+const MyCheckBoxList = ({ category }: MyCheckBoxListProps) => {
+  const filterCheckBox = CheckboxData.filter((item) => item.category === category);
+  return (
+    <Box>
+      <Typography>{category}</Typography>
+      {filterCheckBox.map((item, index) => (
+        <MyCheckBox
+          key={`${category}-${index}`}
+          label={item.label}
+          isChecked={{ isChecked: item.isChecked }}
+        />
+      ))}
+    </Box>
+  );
+};
 
-// export default MyCheckBoxList;
+export default MyCheckBoxList;
+ 

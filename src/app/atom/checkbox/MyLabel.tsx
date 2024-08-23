@@ -1,7 +1,8 @@
 import { Typography } from '@mui/material';
+import { AllLabels } from './MyCheckBoxData2';
 
 export type MyLabelProps = {
-  label:string ;
+  label: AllLabels;
 };
 
 const MyLabel = ({ label }: MyLabelProps) => {

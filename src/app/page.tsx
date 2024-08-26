@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import DropDownBar from '../ui/(Bteam)atomize/dropdown/DropDownBar';
 import {
   AllowanceRates,
@@ -14,10 +14,14 @@ import ButtonFrame from '../components/(prev_atom)atom/buttonframe/Frame';
 import InputComponent from '../components/(prev_atom)atom/inputFrame/inputs';
 import { containerStyle } from '@/styles/sizes';
 import { currentYear } from './types';
+import DropdownBox from '@/components/(prev_atom)atom/dropdown/DropdownBox';
+import { SelectChangeEvent } from '@mui/material';
+import LJW_CCheckbox from '@/components/(current_atom)atom/checkbox/LJW_CCheckbox';
 
 export default function Home() {
   const testValue = 35000;
   const testFn = () => console.log('function test');
+
   return (
     // 홈화면입니다.
     <main className="flex min-h-screen flex-col p-6">
@@ -133,9 +137,6 @@ export default function Home() {
 
         <h1>급여요일</h1>
         <DropDownBar contentName="급여요일" contentList={WeekDays} />
-      </div>
-      <div>
-        <EngineerContent engineerName="박형식" engineerDate="2024-06-24" />
       </div>
     </main>
   );

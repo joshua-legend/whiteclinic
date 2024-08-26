@@ -23,6 +23,10 @@ export const sizes = {
     small: '2px',
     medium: '4px',
   },
+  fontWeight: {
+    normal: 400,
+    bold: 700,
+  },
 };
 
 export const buttonStyle = {
@@ -108,15 +112,13 @@ export const containerStyle = {
 
 export const dropdownStyle = {
   margin: {
-    min: 1,
+    min: '1px',
   },
   minWidth: {
-    medium: 120,
+    medium: '120px',
   },
 };
 
 export const scheduleStyle = {
   tableStyle: {},
 };
-
-// TODO : 컴포넌트 사이즈 규격화 실시합니다... top bottom 만 규격화 나머지는 길이에 따라 각자 설정

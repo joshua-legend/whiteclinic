@@ -1,14 +1,16 @@
-import { ListItem } from '@mui/material';
+'use client';
+import { ListItem, SelectChangeEvent } from '@mui/material';
 import DropDownSelect, { DropDownSelectProps } from './DropDownSelect';
 import DropFormControl from './DropFormControl';
 import LabelName, { LabelNameProps } from './LabelName';
 import { ListItemProps } from './ListItem';
+import { useState } from 'react';
 
 //최종 드롭다운 컴포넌트
 type DropDownBoxProps = {
   labelnameprops: LabelNameProps;
   dropdownselectprops: DropDownSelectProps;
-  items: Array<ListItemProps>;
+  items: ListItemProps[];
 };
 
 const DropdownBox = ({ labelnameprops, dropdownselectprops, items }: DropDownBoxProps) => {

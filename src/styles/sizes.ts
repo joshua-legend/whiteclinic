@@ -118,7 +118,3 @@ export const dropdownStyle = {
     medium: '120px',
   },
 };
-
-export const scheduleStyle = {
-  tableStyle: {},
-};

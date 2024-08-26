@@ -26,7 +26,7 @@ const ModifyInput = (
           readOnly: isReadOnly,
           endAdornment: (
             <IconButton onClick={modify}>
-              <FaPencil size={15}/>
+              <FaPencil color="silver" size={18} />
             </IconButton>
           ),
         }}

@@ -1,6 +1,6 @@
 import { Button } from '@mui/material';
 
-type cancleBtnTexts = '등록' | '추가등록' | '급여사항확인';
+type cancleBtnTexts = '취소' | '등록중지' | '아니오';
 type btnType = 'button' | 'reset' | 'submit';
 
 type cancleBtnProps = {
@@ -9,7 +9,7 @@ type cancleBtnProps = {
   btnType?: btnType;
 };
 
-const CancleButton = ({ handleCancle, btnText, btnType }: cancleBtnProps) => {
+const CancleButton = ({ handleCancle, btnText = '취소', btnType = 'button' }: cancleBtnProps) => {
   return (
     <Button type={btnType} sx={{ width: '200px' }} variant="contained" onClick={handleCancle}>
       {btnText}

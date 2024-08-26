@@ -13,7 +13,11 @@ export type infoInputProps = {
   infoLabelType?: infoLabelType;
   infoPholderType?: infoPholderType;
 };
-const InfoInput = ({ inputType, infoLabelType, infoPholderType }: infoInputProps) => {
+const InfoInput = ({
+  inputType = 'text',
+  infoLabelType = '고객 성함',
+  infoPholderType = '이름을 입력하세요',
+}: infoInputProps) => {
   return (
     <FormControl>
       <TextField type={inputType} label={infoLabelType} placeholder={infoPholderType} />

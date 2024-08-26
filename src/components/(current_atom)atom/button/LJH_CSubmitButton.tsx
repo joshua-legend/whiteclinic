@@ -9,7 +9,7 @@ type SubmitBtnProps = {
   btnType?: btnType;
 };
 
-const SubmitButton = ({ handleSubmit, btnText, btnType }: SubmitBtnProps) => {
+const SubmitButton = ({ handleSubmit, btnText = '등록', btnType = 'submit' }: SubmitBtnProps) => {
   return (
     <Button type={btnType} sx={{ width: '200px' }} variant="contained" onClick={handleSubmit}>
       {btnText}

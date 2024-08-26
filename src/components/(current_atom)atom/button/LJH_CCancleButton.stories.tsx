@@ -1,10 +1,10 @@
 // src/components/(current_atom)atom/button/LJS_CSubmitButton.tsx
 
-import SubmitButton from './LJH_CSubmitButton';
+import CancleButton from './LJH_CCancleButton';
 
 const meta = {
-  title: 'components/button/submitButton',
-  component: SubmitButton,
+  title: 'components/button/cancleButton',
+  component: CancleButton,
   argTypes: {},
 };
 

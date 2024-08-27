@@ -16,20 +16,13 @@ type skillLabelType =
 
 type skillLabelProps = {
   skills?: skillLabelType;
-  isDisabled?: boolean;
 };
 
-const SkillCheckBox = ({ skills = '건조기', isDisabled = false }: skillLabelProps) => {
+const SkillCheckBox = ({ skills = '건조기' }: skillLabelProps) => {
   return (
     <FormControl component="fieldset">
       <FormGroup aria-label="position" row>
-        <FormControlLabel
-          value="end"
-          control={<Checkbox />}
-          label={skills}
-          labelPlacement="end"
-          disabled={isDisabled}
-        />
+        <FormControlLabel value="end" control={<Checkbox />} label={skills} labelPlacement="end" />
       </FormGroup>
     </FormControl>
   );

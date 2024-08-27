@@ -13,7 +13,9 @@ export type infoInputProps = {
   infoLabelType?: infoLabelType;
   infoPholderType?: infoPholderType;
 };
+
 const InfoInput = ({
+  inputID,
   inputType = 'text',
   infoLabelType = '고객 성함',
   infoPholderType = '이름을 입력하세요',

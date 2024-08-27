@@ -1,7 +1,7 @@
 import { Box, FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 //세척품목
 
-type productDropownList = {
+export type productDropownList = {
   label?: string;
 };
 
@@ -34,7 +34,7 @@ type ProductDropdownProps = {
 const ProductDropdown = ({
   id,
   label = '제품 카테고리',
-  productItem,
+  productItem = CleaningItem,
   handleChange,
 }: ProductDropdownProps) => {
   return (
@@ -48,8 +48,8 @@ const ProductDropdown = ({
           label={label}
           onChange={handleChange}
         >
-          {productItem?.map((item, i) => (
-            <MenuItem key={i} value={item.label}>
+          {productItem?.map((item, index) => (
+            <MenuItem key={index} value={item.label}>
               {item.label}
             </MenuItem>
           ))}

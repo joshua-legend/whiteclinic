@@ -18,10 +18,12 @@ export const CleaningItem: productDropownList[] = [
   { label: '메인 덕트' },
   { label: '통돌이' },
   { label: '드럼' },
-  { label: '빌트인' },
+  { label: '트윈워시' },
   { label: '건조기' },
   { label: '드럼형 아기사랑 세탁기' },
   { label: '통돌이형 아기사랑 세탁기' },
+  { label: '일반 실외기' },
+  { label: '대형 실외기' },
 ];
 
 type ProductDropdownProps = {

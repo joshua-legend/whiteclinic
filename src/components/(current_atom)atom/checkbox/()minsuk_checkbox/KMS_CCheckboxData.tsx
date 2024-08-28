@@ -2,7 +2,7 @@ export type state = '발행완료' | '지급완료' | '휴무추가';
 
 export type revenue = '종합세척' | '일반세척' | '할인적용';
 
-export type engineerName = '홍길동' | '아무개' | '김콩쥐';
+export type engineerName = string;
 
 export type skill =
   | '벽걸이'
@@ -18,4 +18,4 @@ export type skill =
   | '빌트인'
   | '건조기';
 
-export type allType = state | revenue | engineerName | skill;
+export type allType = state | revenue | skill;

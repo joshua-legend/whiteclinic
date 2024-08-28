@@ -1,22 +1,21 @@
 import { Checkbox, FormControlLabel } from '@mui/material';
-import { allType, skill } from './KMS_CCheckboxData';
+import { allType } from './KMS_CCheckboxData';
 
 type KMS_CCheckboxboxProps = {
   label: allType;
   isChecked?: boolean;
-  handleClick?: () => void;
+  handleChange?: () => void;
 };
 
-const KMS_CCheckbox = ({ label = '김콩쥐', handleClick }: KMS_CCheckboxboxProps) => {
+const KMS_CCheckbox = ({
+  label = '덕트',
+  handleChange,
+  isChecked = true,
+}: KMS_CCheckboxboxProps) => {
   return (
-    <FormControlLabel //
-      control={
-        <Checkbox
-          // checked={isChecked}
-          onChange={handleClick} //
-        />
-      } //
-      label={label} //
+    <FormControlLabel
+      control={<Checkbox defaultChecked={isChecked} onChange={handleChange} />}
+      label={label}
     />
   );
 };

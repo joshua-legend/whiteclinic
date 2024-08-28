@@ -8,7 +8,7 @@ export type MyBoxProps = {
 };
 
 const MyBox = ({ isChecked }: MyBoxProps) => {
-  return <Checkbox checked={isChecked}></Checkbox>;
+  return <Checkbox checked={isChecked} />;
 };
 
 export default MyBox;

@@ -1,5 +1,7 @@
 // colors.ts
 
+import { boxStyle } from './sizes';
+
 export const colors = {
   // 배경 색상 (Background colors)
   background: {
@@ -34,5 +36,12 @@ export const colors = {
   icon: {
     default: '#9FB3D0', // 기본 아이콘 색상
     active: '#1dc4e9', // 활성화된 아이콘 색상
+  },
+
+  button: {
+    black: '#000000',
+    white: '#FFFFFF',
+    blue: '#0000FF',
+    gray: '#D3D3D3',
   },
 } as const;

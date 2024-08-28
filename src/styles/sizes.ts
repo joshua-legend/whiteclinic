@@ -82,7 +82,16 @@ export const boxStyle = {
     medium: '4px',
   },
 };
-
+export const CheckboxStyle = {
+  label: {
+    small: '10px',
+    medium: '20px',
+  },
+  box: {
+    small: '10px',
+    medium: '20px',
+  },
+};
 // TODO : 컴포넌트 사이즈 규격화 실시합니다...
 // 인풋
 
@@ -108,10 +117,10 @@ export const containerStyle = {
 
 export const dropdownStyle = {
   margin: {
-    min: 1,
+    min: '10px',
   },
   minWidth: {
-    medium: 120,
+    medium: '120px',
   },
 };
 

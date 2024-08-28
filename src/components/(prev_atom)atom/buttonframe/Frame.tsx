@@ -9,7 +9,7 @@ type frameProps = {
   onClick?: () => void;
 };
 
-const ButtonFrame = ({
+export const ButtonFrame = ({
   text = '기본값',
   fontSize = 'medium',
   color,

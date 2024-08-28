@@ -14,6 +14,8 @@ import ButtonFrame from '../components/(prev_atom)atom/buttonframe/Frame';
 import InputComponent from '../components/(prev_atom)atom/inputFrame/inputs';
 import { containerStyle } from '@/styles/sizes';
 import { currentYear } from './types';
+import KMS_CDropdown from '@/components/(current_atom)atom/dropdown/()minsuk_dropdown/KMS_CDropdown';
+import KMS_CCheckbox from '@/components/(current_atom)atom/checkbox/()minsuk_checkbox/KMS_CCheckbox';
 
 export default function Home() {
   const testValue = 35000;
@@ -136,6 +138,20 @@ export default function Home() {
       </div>
       <div>
         <EngineerContent engineerName="박형식" engineerDate="2024-06-24" />
+      </div>
+      <div>
+        <h1>세척품목</h1>
+        <KMS_CDropdown type="세척품목" />
+      </div>
+      <div>
+        <KMS_CDropdown type="증빙서류" />
+      </div>
+      <div>
+        <KMS_CDropdown type="결제방식" />
+      </div>
+      <div>
+        <KMS_CDropdown type="급여요일" />
+        <KMS_CCheckbox label="실외기" />
       </div>
     </main>
   );

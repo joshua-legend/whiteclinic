@@ -8,21 +8,26 @@ type infoPholderType =
   | '상세 주소를 입력하세요';
 
 export type infoInputProps = {
-  inputID?: string;
   inputType?: inputType;
   infoLabelType?: infoLabelType;
   infoPholderType?: infoPholderType;
+  handleInput?: () => void;
 };
 
 const InfoInput = ({
-  inputID,
   inputType = 'text',
   infoLabelType = '고객 성함',
   infoPholderType = '이름을 입력하세요',
+  handleInput,
 }: infoInputProps) => {
   return (
     <FormControl>
-      <TextField type={inputType} label={infoLabelType} placeholder={infoPholderType} />
+      <TextField
+        onChange={handleInput}
+        type={inputType}
+        label={infoLabelType}
+        placeholder={infoPholderType}
+      />
     </FormControl>
   );
 };

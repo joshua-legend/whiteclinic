@@ -1,5 +1,6 @@
 import { allType } from '@/components/(current_atom)atom/checkbox/()minsuk_checkbox/KMS_CCheckboxData';
 import { sizes } from '@/styles/sizes';
+import dayjs, { Dayjs } from 'dayjs';
 
 type ButtonContent = '취소' | '등록' | '등록중지' | '추가등록' | '아니오' | '급여사항확인';
 type btnType = 'button' | 'submit' | 'reset';
@@ -130,4 +131,19 @@ export const hideNumberInputArrows = {
   '& input[type=number]': {
     MozAppearance: 'textfield',
   },
+};
+
+// 현재 날짜 초기화
+export const today = dayjs();
+export const currentYear = today.year();
+export const currentMonth = today.month() + 1; // dayjs에서 month()는 0-11을 반환
+export const currentDay = today.date();
+
+// 1900년 1월 1일을 minDate로 설정
+export const minDate = dayjs(`${currentYear}-${currentMonth}-${currentDay}`);
+
+export type datePickerProps = {
+  label: '일정 선택';
+  value: Dayjs | null;
+  onChange: () => void;
 };

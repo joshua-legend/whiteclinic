@@ -13,7 +13,7 @@ import EngineerContent from '../ui/(Bteam)atomize/schedule_table/component/engin
 import ButtonFrame from '../components/(prev_atom)atom/buttonframe/Frame';
 import InputComponent from '../components/(prev_atom)atom/inputFrame/inputs';
 import { containerStyle } from '@/styles/sizes';
-import { currentYear } from './types';
+
 import KMS_CDropdown from '@/components/(current_atom)atom/dropdown/()minsuk_dropdown/KMS_CDropdown';
 import KMS_CCheckbox from '@/components/(current_atom)atom/checkbox/()minsuk_checkbox/KMS_CCheckbox';
 

@@ -7,7 +7,7 @@ type KMS_CCheckboxboxProps = {
   handleClick?: () => void;
 };
 
-const KMS_CCheckbox = ({ label, handleClick }: KMS_CCheckboxboxProps) => {
+const KMS_CCheckbox = ({ label = '김콩쥐', handleClick }: KMS_CCheckboxboxProps) => {
   return (
     <FormControlLabel //
       control={

@@ -33,7 +33,7 @@ const KMS_CInfoInput = ({
           readOnly: isReadonly,
           endAdornment: ismodifiable ? (
             <IconButton>
-              <FaPencil color="silver size={18}" />
+              <FaPencil color="silver" size={18} />
             </IconButton>
           ) : null,
         }}

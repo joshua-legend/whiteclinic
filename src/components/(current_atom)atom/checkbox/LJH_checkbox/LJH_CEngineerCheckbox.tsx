@@ -13,7 +13,6 @@ const CEngineerCheckbox = ({ EngineerName = '기사이름', handleClick }: Engin
           value="end"
           control={<Checkbox onClick={handleClick} />}
           label={EngineerName}
-          labelPlacement="end"
         />
       </FormGroup>
     </FormControl>

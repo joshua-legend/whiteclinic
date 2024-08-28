@@ -10,9 +10,6 @@ const meta = {
 };
 
 export default meta;
-export const Primary = {
-  args: {},
-};
 
 const Template: StoryFn<LJW_CDropdownBoxProps> = (args) => <LJW_CDropdownBox {...args} />;
 

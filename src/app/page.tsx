@@ -13,6 +13,7 @@ import EngineerContent from '../ui/(Bteam)atomize/schedule_table/component/engin
 import ButtonFrame from '../components/(prev_atom)atom/buttonframe/Frame';
 import InputComponent from '../components/(prev_atom)atom/inputFrame/inputs';
 import { containerStyle } from '@/styles/sizes';
+import LJW_CInput from '@/components/(current_atom)atom/input/LJW_CInput';
 
 import KMS_CDropdown from '@/components/(current_atom)atom/dropdown/()minsuk_dropdown/KMS_CDropdown';
 import KMS_CCheckbox from '@/components/(current_atom)atom/checkbox/()minsuk_checkbox/KMS_CCheckbox';
@@ -140,6 +141,7 @@ export default function Home() {
         <EngineerContent engineerName="박형식" engineerDate="2024-06-24" />
       </div>
       <div>
+<<<<<<< Updated upstream
         <h1>세척품목</h1>
         <KMS_CDropdown type="세척품목" />
       </div>
@@ -152,6 +154,10 @@ export default function Home() {
       <div>
         <KMS_CDropdown type="급여요일" />
         <KMS_CCheckbox label="실외기" />
+=======
+        test
+        <LJW_CInput />
+>>>>>>> Stashed changes
       </div>
     </main>
   );

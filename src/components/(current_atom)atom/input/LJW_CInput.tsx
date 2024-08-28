@@ -25,6 +25,7 @@ const LJW_CInput = ({
   return (
     <TextField
       sx={{ ...inputStyle.inputSize }}
+      fullWidth
       label={label}
       variant={variant}
       type={type}

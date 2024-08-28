@@ -5,6 +5,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import 'dayjs/locale/ko';
+import { MonthCalendar } from '@mui/x-date-pickers';
 
 type dateDropdownProps = {
   label: string;
@@ -29,6 +30,7 @@ const DateDropdown = ({ label = '일정 선택', value, onChange }: dateDropdown
     <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="ko">
       <DemoContainer components={['DatePicker']}>
         <DatePicker
+          views={['year', 'month', 'day']}
           slotProps={{
             textField: {
               placeholder: '연 / 월 / 일',

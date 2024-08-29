@@ -13,7 +13,7 @@ export type CButtonProps = {
   fontWeight?: fontWeightProps;
   color?: string;
   type?: btnType;
-  onClick?: () => void;
+  handleClick?: () => void;
 };
 
 export type checkboxProps = {
@@ -145,5 +145,5 @@ export const MIN_DATE = dayjs(`${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DAY}`)
 export type datePickerProps = {
   label?: '일정 선택';
   value?: Dayjs | null;
-  onChange?: () => void;
+  handleChange?: () => void;
 };

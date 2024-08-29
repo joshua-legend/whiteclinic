@@ -5,9 +5,15 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import 'dayjs/locale/ko';
-import { datePickerProps, minDate } from '@/constants/definition';
+import { datePickerProps, MIN_DATE } from '@/constants/definition';
 
-const CDatePicker = ({ label = '일정 선택', value, onChange }: datePickerProps) => {
+/**
+ * @param label 일정 선택 문자열로 타입 고정 되어있음
+ * @param value MIN_DATE - 현재 날짜(yy년 mm월 dd일) static변수로 기본값 설정되어 있음
+ * @param onChange 달력에서 일정선택 시 상태변화 추적함수 전달
+ * @returns MUI DatePicker 컴포넌트 반환
+ */
+const CDatePicker = ({ label = '일정 선택', value = MIN_DATE, onChange }: datePickerProps) => {
   dayjs.locale('ko');
 
   return (
@@ -24,7 +30,7 @@ const CDatePicker = ({ label = '일정 선택', value, onChange }: datePickerPro
           format="YYYY년 MM월 DD일"
           defaultValue={value}
           onChange={onChange}
-          minDate={minDate}
+          minDate={MIN_DATE}
         />
       </DemoContainer>
     </LocalizationProvider>

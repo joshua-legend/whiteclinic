@@ -1,7 +1,7 @@
 import CCheckbox from './CCheckbox';
 
 const meta = {
-  title: 'components/checkbox',
+  title: 'atoms/checkbox',
   component: CCheckbox,
   argTypes: {},
 };

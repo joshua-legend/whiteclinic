@@ -110,7 +110,7 @@ export type InputPropses = {
   inputID?: string;
   labelProp?: labelType;
   placeholderProp?: inputPlaceholderType;
-  functionProp?: () => void;
+  handleInput?: () => void;
   minValue?: number;
   maxValue?: number;
   adornment?: '원';
@@ -134,16 +134,16 @@ export const hideNumberInputArrows = {
 };
 
 // 현재 날짜 초기화
-export const today = dayjs();
-export const currentYear = today.year();
-export const currentMonth = today.month() + 1; // dayjs에서 month()는 0-11을 반환
-export const currentDay = today.date();
+export const TODAY = dayjs();
+export const CURRENT_YEAR = TODAY.year();
+export const CURRENT_MONTH = TODAY.month() + 1; // dayjs에서 month()는 0-11을 반환
+export const CURRENT_DAY = TODAY.date();
 
 // 1900년 1월 1일을 minDate로 설정
-export const minDate = dayjs(`${currentYear}-${currentMonth}-${currentDay}`);
+export const MIN_DATE = dayjs(`${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DAY}`);
 
 export type datePickerProps = {
-  label: '일정 선택';
-  value: Dayjs | null;
-  onChange: () => void;
+  label?: '일정 선택';
+  value?: Dayjs | null;
+  onChange?: () => void;
 };

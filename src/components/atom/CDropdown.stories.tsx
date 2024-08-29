@@ -1,7 +1,7 @@
 import CDropdown from './CDropdown';
 
 const meta = {
-  title: 'components/dropdown',
+  title: 'atoms/dropdown',
   component: CDropdown,
   argTypes: {},
 };

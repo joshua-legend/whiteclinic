@@ -1,7 +1,7 @@
 import CButton from './CButton';
 
 const meta = {
-  title: 'components/button',
+  title: 'atoms/button',
   component: CButton,
   argTypes: {},
 };

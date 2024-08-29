@@ -1,7 +1,7 @@
 import CInput from './CInput';
 
 const meta = {
-  title: 'components/input',
+  title: 'atoms/input',
   component: CInput,
   argTypes: {},
 };

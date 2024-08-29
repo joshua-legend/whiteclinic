@@ -1,7 +1,7 @@
 import { CNumberInput } from './CNumberInput';
 
 const meta = {
-  title: 'components/NumberInput',
+  title: 'atoms/NumberInput',
   component: CNumberInput,
   argTypes: {},
 };

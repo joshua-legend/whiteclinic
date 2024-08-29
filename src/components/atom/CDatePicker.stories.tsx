@@ -1,7 +1,7 @@
 import CDatePicker from './CDatePicker';
 
 const meta = {
-  title: 'components/datePicker',
+  title: 'atoms/datePicker',
   component: CDatePicker,
   argTypes: {},
 };

@@ -1,4 +1,4 @@
-import InputComponent from '@/components/atom/CInput';
+import CInput from '@/components/atom/CInput';
 import { InputPropses } from '@/constants/definition';
 import { Typography } from '@mui/material';
 
@@ -15,7 +15,7 @@ const OptionInput = ({ optionTitle, inputprops }: OptionInputProps) => {
   return (
     <div className="flex p-1 ">
       <Typography variant="subtitle2">{optionTitle}</Typography>
-      <InputComponent {...inputprops} />
+      <CInput {...inputprops} />
     </div>
   );
 };

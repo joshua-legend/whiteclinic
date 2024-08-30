@@ -31,7 +31,7 @@ const CInput = ({
   helperText = ' ',
   containerWidth = '250px',
   color,
-  ...props
+  ...props 
 }: InputPropses) => {
   return (
     <FormControl sx={{ ...containerStyle.boxSize, width: containerWidth }}>

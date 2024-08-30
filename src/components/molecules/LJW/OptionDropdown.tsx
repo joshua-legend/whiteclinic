@@ -16,15 +16,15 @@ type OptionDropdownProps = {
 
 const OptionDropdown = ({ optionTitle, dropdownprops }: OptionDropdownProps) => {
   const [isSelected, setIsSelected] = useState<string>('');
-  //   const handleSelect = (event: SelectChangeEvent) => {
-  //     setIsSelected(event.target.value);
-  //   };
+    const handleSelect = (event: SelectChangeEvent) => {
+      setIsSelected(event.target.value);
+    };
 
   //추천하지 않는 방식. 추후 삭제
-  const handleSelect = () => {
-    const selectValue = (event?.target as HTMLInputElement).value;
-    setIsSelected(selectValue);
-  };
+  // const handleSelect = () => {
+  //   const selectValue = (event?.target as HTMLInputElement).value;
+  //   setIsSelected(selectValue);
+  // };
   return (
     <div className="flex gap-1 p-1">
       <div>

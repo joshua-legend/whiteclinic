@@ -70,7 +70,7 @@ export type DropDownBarProps = {
   contentName?: string;
   contentList?: productDropdownList[];
   handleChange?: (event: SelectChangeEvent) => void;
-  selectedValue?: string | number;
+  selectedValue?: string;
 };
 // 인풋라벨 타입
 type labelType =

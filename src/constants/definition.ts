@@ -1,5 +1,6 @@
 import { allType } from '@/components/(current_atom)atom/checkbox/()minsuk_checkbox/KMS_CCheckboxData';
 import { sizes } from '@/styles/sizes';
+import { SelectChangeEvent } from '@mui/material';
 import dayjs, { Dayjs } from 'dayjs';
 
 type ButtonContent = '취소' | '등록' | '등록중지' | '추가등록' | '아니오' | '급여사항확인';
@@ -22,7 +23,7 @@ export type checkboxProps = {
   handleChange?: () => void;
 };
 
-export type productDropownList = {
+export type productDropdownList = {
   label?: string;
 };
 
@@ -30,7 +31,7 @@ export type NumberInputType = {
   handleChange: () => void;
 };
 
-export const CleaningItem: productDropownList[] = [
+export const CleaningItem: productDropdownList[] = [
   { label: '벽걸이' },
   { label: '원웨이' },
   { label: '포웨이' },
@@ -50,14 +51,14 @@ export const CleaningItem: productDropownList[] = [
   { label: '일반 실외기' },
   { label: '대형 실외기' },
 ];
-export const paymentOptions: productDropownList[] = [
+export const paymentOptions: productDropdownList[] = [
   { label: '계좌이체' },
   { label: '카드결제' },
   { label: '숨고페이' },
   { label: '현장현금결제' },
 ];
 
-export const Documents: productDropownList[] = [
+export const Documents: productDropdownList[] = [
   { label: '간이영수증' },
   { label: '세금계산서' },
   { label: '현금영수증' },
@@ -67,8 +68,8 @@ export const Documents: productDropownList[] = [
 
 export type DropDownBarProps = {
   contentName?: string;
-  contentList?: productDropownList[];
-  handleChange?: () => void;
+  contentList?: productDropdownList[];
+  handleChange?: (event: SelectChangeEvent) => void;
   selectedValue?: string | number;
 };
 // 인풋라벨 타입

@@ -1,4 +1,4 @@
-import { checkboxProps } from '@/constants/definition';
+import { CheckboxProps } from '@/constants/definition';
 import { Checkbox, FormControlLabel } from '@mui/material';
 
 /**
@@ -7,7 +7,7 @@ import { Checkbox, FormControlLabel } from '@mui/material';
  * @param isChecked 체크박스 렌더링 시 체크여부 기본값 boolean으로 전달
  * @returns FormContrlLabel 태그와 함께 자식태그로 Checkbox MUI 컴포넌트 반환
  */
-const CCheckbox = ({ label = '원웨이', handleChange, isChecked = true }: checkboxProps) => {
+const CCheckbox = ({ label = '원웨이', handleChange, isChecked = true }: CheckboxProps) => {
   return (
     <FormControlLabel
       control={<Checkbox defaultChecked={isChecked} onChange={handleChange} />}

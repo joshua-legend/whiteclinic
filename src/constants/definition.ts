@@ -8,22 +8,23 @@ type btnType = 'button' | 'submit' | 'reset';
 type fontSizeProps = keyof typeof sizes.fontSize;
 type fontWeightProps = keyof typeof sizes.fontWeight;
 
-export type CButtonProps = {
+export type ButtonProps = {
   content: ButtonContent;
   fontSize?: fontSizeProps;
   fontWeight?: fontWeightProps;
   color?: string;
+  bgColor?: string;
   type?: btnType;
   handleClick?: () => void;
 };
 
-export type checkboxProps = {
+export type CheckboxProps = {
   label?: allType;
   isChecked?: boolean;
   handleChange?: () => void;
 };
 
-export type productDropdownList = {
+export type ProductDropdownList = {
   label?: string;
 };
 
@@ -31,7 +32,7 @@ export type NumberInputType = {
   handleChange: () => void;
 };
 
-export const CleaningItem: productDropdownList[] = [
+export const CleaningItem: ProductDropdownList[] = [
   { label: '벽걸이' },
   { label: '원웨이' },
   { label: '포웨이' },
@@ -51,14 +52,14 @@ export const CleaningItem: productDropdownList[] = [
   { label: '일반 실외기' },
   { label: '대형 실외기' },
 ];
-export const paymentOptions: productDropdownList[] = [
+export const paymentOptions: ProductDropdownList[] = [
   { label: '계좌이체' },
   { label: '카드결제' },
   { label: '숨고페이' },
   { label: '현장현금결제' },
 ];
 
-export const Documents: productDropdownList[] = [
+export const Documents: ProductDropdownList[] = [
   { label: '간이영수증' },
   { label: '세금계산서' },
   { label: '현금영수증' },
@@ -66,14 +67,28 @@ export const Documents: productDropdownList[] = [
   { label: '필요없음' },
 ];
 
+export const WeekDays: ProductDropdownList[] = [
+  { label: '월요일' },
+  { label: '화요일' },
+  { label: '수요일' },
+  { label: '목요일' },
+  { label: '금요일' },
+  { label: '토요일' },
+  { label: '일요일' },
+];
+
+export const AllowanceRates: ProductDropdownList[] = Array.from({ length: 7 }, (_, index) => ({
+  label: `${50 + index * 5}%`,
+}));
+
 export type DropDownBarProps = {
   contentName?: string;
-  contentList?: productDropdownList[];
+  contentList?: ProductDropdownList[];
   handleChange?: (event: SelectChangeEvent) => void;
   selectedValue?: string;
 };
 // 인풋라벨 타입
-type labelType =
+type LabelType =
   | '고객 성함'
   | '고객 연락처'
   | '고객 주소지'
@@ -84,7 +99,7 @@ type labelType =
   | '수당 합계'
   | '제품명 입력';
 
-type helperTextType =
+type HelperTextType =
   | '이름을 정확히 입력하세요'
   | '- 를 제외하고 입력하세요'
   | '주소지를 정확히 입력하세요'
@@ -95,7 +110,7 @@ type helperTextType =
   | ' ';
 
 // 인풋 플레이스홀더 타입
-type inputPlaceholderType =
+type InputPlaceholderType =
   | '이름을 입력하세요'
   | '`-` 를 제외하고 입력하세요'
   | '상세 주소를 입력하세요'
@@ -109,8 +124,8 @@ type inputPlaceholderType =
 // 인풋 프롭 유니온타입 지정
 export type InputPropses = {
   inputID?: string;
-  labelProp?: labelType;
-  placeholderProp?: inputPlaceholderType;
+  labelProp?: LabelType;
+  placeholderProp?: InputPlaceholderType;
   handleInput?: () => void;
   minValue?: number;
   maxValue?: number;
@@ -120,7 +135,7 @@ export type InputPropses = {
   isReadOnly?: boolean;
   isDisabled?: boolean;
   isRequired?: boolean;
-  helperText?: helperTextType;
+  helperText?: HelperTextType;
   variableValue?: number | string;
   containerWidth?: string;
 };
@@ -143,7 +158,7 @@ export const CURRENT_DAY = TODAY.date();
 // 1900년 1월 1일을 minDate로 설정
 export const MIN_DATE = dayjs(`${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DAY}`);
 
-export type datePickerProps = {
+export type DatePickerProps = {
   label?: '일정 선택';
   value?: Dayjs | null;
   handleChange?: () => void;

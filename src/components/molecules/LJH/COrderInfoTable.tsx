@@ -55,33 +55,37 @@ const rows = [
 
 const OrderInfoTable = () => {
   return (
-    <TableContainer component={Card}>
-      <Table align="center" border={2}>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.tableRow}>
-              <TableCell
-                sx={{
-                  fontSize: 20,
-                  fontWeight: 'bold',
-                  letterSpacing: 5,
-                  backgroundColor: '#f5f5f5',
-                  width: '120px',
-                  height: '30px',
-                  textAlign: 'center',
-                }}
-              >
-                {row.tableRow}
-              </TableCell>
-              <TableCell sx={{ display: 'flex', width: 'full-content' }}>
-                {row.components}
-                {row?.subComponents}
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+    <Table>
+      <TableBody>
+        {rows.map((row) => (
+          <TableRow key={row.tableRow}>
+            <TableCell
+              sx={{
+                fontSize: 14,
+                fontWeight: 'bold',
+                letterSpacing: 5,
+                backgroundColor: '#f5f5f5',
+                width: '120px',
+                textAlign: 'center',
+                border: 'none',
+              }}
+            >
+              {row.tableRow}
+            </TableCell>
+            <TableCell
+              sx={{
+                display: 'flex',
+                width: 'full-content',
+                gap: '10px',
+              }}
+            >
+              {row.components}
+              {row?.subComponents}
+            </TableCell>
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
   );
 };
 

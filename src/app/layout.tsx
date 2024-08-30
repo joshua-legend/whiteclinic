@@ -6,7 +6,7 @@ import Toolbar from "@mui/material/Toolbar";
 import { Typography } from "@mui/material";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import SideNav from "./ui/sidenav";
+import SideNav from "./ui/SideNav";
 
 const drawerWidth = 240;
 const inter = Inter({ subsets: ["latin"] });
@@ -16,11 +16,11 @@ export const metadata: Metadata = {
   description: "White Clinic Management Program",
 };
 
-export default function RootLayout({
+const RootLayout = ({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
+}>) => {
   return (
     <html lang="en">
       <body className={inter.className}>
@@ -64,4 +64,6 @@ export default function RootLayout({
       </body>
     </html>
   );
-}
+};
+
+export default RootLayout;

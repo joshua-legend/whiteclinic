@@ -14,4 +14,4 @@ export const colorStrategies = {
 };
 
 export const determineCurrentColor = (state: 'current' | 'notCurrent') => colorStrategies[state];
-const determineActiveColor = (state: 'active' | 'inactive') => colorStrategies[state];
+export const determineActiveColor = (state: 'active' | 'inactive') => colorStrategies[state];

@@ -3,6 +3,7 @@ import CDatePicker from './CDatePicker';
 const meta = {
   title: 'atoms/datePicker',
   component: CDatePicker,
+  tags: ['autodocs'],
   argTypes: {},
 };
 

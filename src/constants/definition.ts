@@ -17,7 +17,7 @@ export type CButtonProps = {
 };
 
 export type checkboxProps = {
-  label: allType;
+  label?: allType;
   isChecked?: boolean;
   handleChange?: () => void;
 };
@@ -66,10 +66,10 @@ export const Documents: productDropownList[] = [
 ];
 
 export type DropDownBarProps = {
-  contentName: string;
-  contentList: productDropownList[];
-  handleChange: () => void;
-  selectedValue: string | number;
+  contentName?: string;
+  contentList?: productDropownList[];
+  handleChange?: () => void;
+  selectedValue?: string | number;
 };
 // 인풋라벨 타입
 type labelType =

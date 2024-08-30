@@ -3,6 +3,7 @@ import { CNumberInput } from './CNumberInput';
 const meta = {
   title: 'atoms/NumberInput',
   component: CNumberInput,
+  tags: ['autodocs'],
   argTypes: {},
 };
 

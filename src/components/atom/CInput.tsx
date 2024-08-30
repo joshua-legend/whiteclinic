@@ -21,7 +21,8 @@ import { FormControl, TextField } from '@mui/material';
  * @param containerWidth 임시 CSS 스타일 값 차후 삭제 예정 기본값 '250px'
  * @returns FormControl 태그와 자식태그 TextField MUI 태그 반환
  */
-const InputComponent = ({
+
+const CInput = ({
   inputID = undefined,
   isReadOnly = false,
   isDisabled = false,
@@ -58,4 +59,4 @@ const InputComponent = ({
   );
 };
 
-export default InputComponent;
+export default CInput;

@@ -12,7 +12,12 @@ import { DropDownBarProps } from '@/constants/definition';
  * @param handleChange 클라이언트가 선택한 값 변화 적용을 위한 함수
  * @returns 자식 태그로 MenuItem 를 갖는 Select MUI 태그 반환
  */
-const CDropDown = ({ contentName, contentList, selectedValue, handleChange }: DropDownBarProps) => {
+const CDropDown = ({
+  contentName = '선택',
+  contentList,
+  selectedValue,
+  handleChange,
+}: DropDownBarProps) => {
   return (
     <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
       <InputLabel id="demo-select-small-label">{contentName}</InputLabel>

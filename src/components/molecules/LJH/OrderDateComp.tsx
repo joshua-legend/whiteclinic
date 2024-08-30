@@ -1,11 +1,20 @@
 import CDatePicker from '@/components/atom/CDatePicker';
 import { datePickerProps } from '@/constants/definition';
+import { Box } from '@mui/material';
 
 const OrderDateComp = ({ label, value, handleChange }: datePickerProps) => {
   return (
-    <div className="border-solid border-blue-400 w-60">
+    <Box
+      sx={{
+        display: 'grid',
+        gridTemplateColumns: 'col',
+        border: '2px solid black',
+        width: '300px',
+      }}
+    >
+      <div>test</div>
       <CDatePicker value={value} label={label} handleChange={handleChange}></CDatePicker>
-    </div>
+    </Box>
   );
 };
 

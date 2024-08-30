@@ -55,25 +55,30 @@ const rows = [
 
 const OrderInfoTable = () => {
   return (
-    <TableContainer component={Card}>
-      <Table align="center" border={2}>
+    <TableContainer component={Paper}>
+      <Table>
         <TableBody>
           {rows.map((row) => (
             <TableRow key={row.tableRow}>
               <TableCell
                 sx={{
-                  fontSize: 20,
+                  fontSize: 16,
                   fontWeight: 'bold',
                   letterSpacing: 5,
                   backgroundColor: '#f5f5f5',
                   width: '120px',
-                  height: '30px',
                   textAlign: 'center',
+                  border: 'none',
                 }}
               >
                 {row.tableRow}
               </TableCell>
-              <TableCell sx={{ display: 'flex', width: 'full-content' }}>
+              <TableCell
+                sx={{
+                  display: 'flex',
+                  gap: '10px',
+                }}
+              >
                 {row.components}
                 {row?.subComponents}
               </TableCell>

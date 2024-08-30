@@ -1,4 +1,4 @@
-import { CButtonProps } from '@/constants/definition';
+import { ButtonProps } from '@/constants/definition';
 import { Button } from '@mui/material';
 
 /**
@@ -15,12 +15,20 @@ const CButton = ({
   fontSize = 'medium',
   fontWeight = 'bold',
   color,
+  bgColor,
   type = 'button',
   handleClick,
-}: CButtonProps) => {
+}: ButtonProps) => {
   return (
     <Button
-      sx={{ width: '200px', height: '50px', fontSize, color, fontWeight }}
+      sx={{
+        width: '200px',
+        height: '50px',
+        fontSize,
+        color,
+        backgroundColor: { bgColor },
+        fontWeight,
+      }}
       variant="contained"
       onClick={handleClick}
       type={type}

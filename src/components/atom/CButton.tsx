@@ -16,6 +16,7 @@ const CButton = ({
   fontWeight = 'bold',
   color,
   bgColor,
+  hoverColor,
   type = 'button',
   handleClick,
 }: ButtonProps) => {
@@ -26,8 +27,11 @@ const CButton = ({
         height: '50px',
         fontSize,
         color,
-        backgroundColor: { bgColor },
+        backgroundColor: bgColor,
         fontWeight,
+        ':hover': {
+          background: hoverColor || bgColor,
+        },
       }}
       variant="contained"
       onClick={handleClick}

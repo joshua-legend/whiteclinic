@@ -46,11 +46,7 @@ const rows = [
   createData('방문주소', CInput({ labelProp: '고객 주소지', type: 'text', isRequired: true })),
   createData('특이사항', CInput({ labelProp: '특이사항', type: 'text' })),
   createData('결제방식', CDropDown({ contentList: paymentOptions })),
-  createData(
-    '증빙서류',
-    CDropDown({ contentList: Documents }),
-    CCheckbox({ label: '발행완료', isChecked: false })
-  ),
+  createData('증빙서류', CDropDown({ contentList: Documents })),
 ];
 
 const OrderInfoTable = () => {

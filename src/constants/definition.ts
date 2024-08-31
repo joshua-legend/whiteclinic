@@ -2,7 +2,7 @@ import { sizes } from '@/styles/sizes';
 import { SelectChangeEvent } from '@mui/material';
 import dayjs, { Dayjs } from 'dayjs';
 
-type ButtonContent = '취소' | '등록' | '등록중지' | '추가등록' | '아니오' | '급여사항확인';
+export type ButtonContent = '취소' | '등록' | '등록중지' | '추가등록' | '아니오' | '급여사항확인';
 type btnType = 'button' | 'submit' | 'reset';
 type fontSizeProps = keyof typeof sizes.fontSize;
 type fontWeightProps = keyof typeof sizes.fontWeight;
@@ -13,8 +13,9 @@ export type ButtonProps = {
   fontWeight?: fontWeightProps;
   color?: string;
   bgColor?: string;
+  hoverColor?: string;
   type?: btnType;
-  handleClick?: () => void;
+  handleClick?: (event: any) => void;
 };
 
 export type state = '발행완료' | '지급완료' | '휴무추가';
@@ -41,7 +42,7 @@ export type allType = state | revenue | skill;
 
 export type CheckboxProps<T extends allType | engineerName> = {
   label: T;
-  engineerName: engineerName;
+  engineerName?: engineerName;
   isChecked?: boolean;
   handleChange?: () => void;
 };

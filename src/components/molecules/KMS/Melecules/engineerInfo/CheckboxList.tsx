@@ -1,3 +1,5 @@
+'use client';
+
 import CCheckbox from '@/components/atom/CCheckbox';
 import { engineerName } from '@/constants/definition';
 import { Box } from '@mui/material';
@@ -20,14 +22,38 @@ export const NameCheckboxs = () => (
   <Box
     sx={{
       display: 'flex',
-      scrollbarWidth:'hidden',
+      border: '1px solid black',
       backgroundColor: 'gray',
-      width: 'fit-content',
+      width: '100%',
       borderRadius: '10px',
+      overflowX: 'scroll',
+      overflowY: 'hidden',
+      '&::-webkit-scrollbar': {
+        height: '4px',
+      },
+      '&::-webkit-scrollbar-thumb': {
+        backgroundColor: 'darkgray',
+        borderRadius: '2px',
+      },
+      '&::-webkit-scrollbar-track': {
+        backgroundColor: 'lightgray',
+      },
+      scrollbarWidth: 'thin',
+      scrollbarColor: 'darkgray lightgray',
     }}
   >
-    {PersonName.map((name) => (
-      <CCheckbox<engineerName> key={name} label={name} isChecked={false} />
-    ))}
+    <Box
+      sx={{
+        display: 'flex',
+        flexWrap: 'nowrap',
+        // padding: '10px',
+      }}
+    >
+      {PersonName.map((name) => (
+        <Box key={name} sx={{ flexShrink: 0, marginRight: '10px' }}>
+          <CCheckbox<engineerName> label={name} isChecked={false} />
+        </Box>
+      ))}
+    </Box>
   </Box>
 );

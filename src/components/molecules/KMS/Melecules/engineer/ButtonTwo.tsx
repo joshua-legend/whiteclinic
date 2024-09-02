@@ -10,8 +10,8 @@ export type ButtonTwoModalProps = {
   rightColor?: string;
   leftBgColor?: string;
   rightBgBolor?: string;
-  onLeftButton?: () => void;
-  onRightButton?: () => void;
+  onLeftButton?: (event: any) => void;
+  onRightButton?: (event: any) => void;
   modalText?: ButtoModalTextType;
 };
 

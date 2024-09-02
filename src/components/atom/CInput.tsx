@@ -1,5 +1,6 @@
 import { hideNumberInputArrows, InputPropses } from '@/constants/definition';
 import { containerStyle } from '@/styles/sizes';
+import { WidthFull } from '@mui/icons-material';
 
 import { FormControl, TextField } from '@mui/material';
 
@@ -29,9 +30,9 @@ const CInput = ({
   isRequired = true,
   type = 'text',
   helperText = ' ',
-  containerWidth = '250px',
+  containerWidth = '260px',
   color,
-  ...props 
+  ...props
 }: InputPropses) => {
   return (
     <FormControl sx={{ ...containerStyle.boxSize, width: containerWidth }}>

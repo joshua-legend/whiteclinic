@@ -1,3 +1,7 @@
+'use client';
+
+import COrderInfoTableRender from '@/components/organism/COrderInfoTable';
+
 export default function Page() {
-  return <div>지훈</div>;
+  return <COrderInfoTableRender />;
 }

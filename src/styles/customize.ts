@@ -108,6 +108,7 @@ export const StyledButton = styled('button')(
     `
 );
 
+<<<<<<< Updated upstream
 export const StyledScheduleTable = { display: 'flex', gap: '6px' };
 export const StyledScheduleTimeline = { display: 'flex', flexDirection: 'column', gap: '6px' };
 export const StyledTimeSlot = {
@@ -139,4 +140,21 @@ export const StyledCustomerInfo = {
   height: '20px',
   padding: '3px',
   textAlign: 'center',
+=======
+export const StyledTextTableCell = {
+  fontSize: 17,
+  fontWeight: 'bold',
+  letterSpacing: 5,
+  backgroundColor: '#dbdbdb',
+  width: '120px',
+  height: '80px',
+  textAlign: 'center',
+  alignItem: 'center',
+  border: 'none',
+};
+
+export const StyledCompTableCell = {
+  display: 'flex',
+  gap: '15px',
+>>>>>>> Stashed changes
 };

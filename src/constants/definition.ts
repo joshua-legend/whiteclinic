@@ -1,3 +1,13 @@
+<<<<<<< Updated upstream
+=======
+import { allType } from '@/components/(current_atom)atom/checkbox/()minsuk_checkbox/KMS_CCheckboxData';
+import CButton from '@/components/atom/CButton';
+import CCheckbox from '@/components/atom/CCheckbox';
+import CDatePicker from '@/components/atom/CDatePicker';
+import CDropDown from '@/components/atom/CDropdown';
+import CInput from '@/components/atom/CInput';
+import { CNumberInput } from '@/components/atom/CNumberInput';
+>>>>>>> Stashed changes
 import { sizes } from '@/styles/sizes';
 import { SelectChangeEvent } from '@mui/material';
 import dayjs, { Dayjs } from 'dayjs';
@@ -163,6 +173,9 @@ export type InputPropses = {
   containerWidth?: string;
 };
 
+/**
+ number type input 화살표 요소 제거 style
+ */
 export const hideNumberInputArrows = {
   '& input::-webkit-outer-spin-button, & input::-webkit-inner-spin-button': {
     display: 'none',
@@ -241,3 +254,47 @@ export type engineerInfo = {
   engineerSalary: number;
   engineerWorkDay: string;
 };
+
+export type OrderInfoTableProp = {
+  tableRowText: OrderInfoTableRowTextType;
+  component: JSX.Element;
+  subComponent?: JSX.Element;
+};
+
+export type OrderInfoTableRowTextType =
+  | '예약일시'
+  | '고객성함'
+  | '연락처'
+  | '방문주소'
+  | '특이사항'
+  | '결제방식'
+  | '증빙서류'
+  | '발행완료';
+
+export const orderTableTexts: ProductDropdownList[] = [
+  { label: '예약일시' },
+  { label: '고객성함' },
+  { label: '연락처' },
+  { label: '방문주소' },
+  { label: '특이사항' },
+  { label: '결제방식' },
+  { label: '증빙서류' },
+  { label: '발행완료' },
+];
+
+export type SalesInfoTableRowTextType =
+  | '세척품목'
+  | '세척대수'
+  | '세척방식'
+  | '할인여부'
+  | '세척금액'
+  | '특이사항';
+
+export const salesTableTexts: ProductDropdownList[] = [
+  { label: '세척품목' },
+  { label: '세척대수' },
+  { label: '세척방식' },
+  { label: '할인여부' },
+  { label: '세척금액' },
+  { label: '특이사항' },
+];

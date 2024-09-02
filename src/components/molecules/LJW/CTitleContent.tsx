@@ -1,16 +1,20 @@
 import { Typography, TypographyProps } from '@mui/material';
+import { Dayjs } from 'dayjs';
 
-//엔지니어 이름 컴포넌트 - atom으로 이동 고려
+//제목 내용 컴포넌트
 export type CTitleContentProps = {
-  content: string;
+  content: string | Dayjs | null;
   variant?: TypographyProps['variant'];
   subContent?: string;
 };
 const CTitleContent = ({ content, variant = 'h5', subContent }: CTitleContentProps) => {
+  // Dayjs 객체인 경우, 문자열로 변환
+  const formattedContent =
+    typeof content === 'string' || content === null ? content : content.format('YYYY년 MM월 DD일');
+
   return (
     <Typography variant={variant}>
-      {content}
-      {subContent}
+      {formattedContent} {subContent}
     </Typography>
   );
 };

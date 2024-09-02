@@ -109,6 +109,7 @@ export type DropDownBarProps = {
   handleChange?: (event: SelectChangeEvent) => void;
   selectedValue?: string;
 };
+
 // 인풋라벨 타입
 type LabelType =
   | '고객 성함'
@@ -183,7 +184,7 @@ export const MIN_DATE = dayjs(`${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DAY}`)
 export type DatePickerProps = {
   label?: '일정 선택';
   value?: Dayjs | null;
-  handleChange?: () => void;
+  handleChange?: (date: Dayjs | null) => void; //스케쥴에 필요해서 매개변수 입력
 };
 
 //schedule에 표시할 사용자 정보
@@ -224,7 +225,19 @@ export type CustomerTimeSlotProps = {
   customer?: CustomerInfo;
 };
 
-export type CustomerTimeLineProps = {
-  engineerDate: string;
+export type CustomerTimeMappingProps = {
+  selectDate: string;
   orderInfo?: CustomerInfo[];
+};
+
+export type engineerInfo = {
+  engineerName: string;
+  engineerContact: string;
+  engineerAddress: string;
+  engineerAbleItem: string;
+  engineerSignificant: string;
+  engineerClosedDay: string;
+  enginnerClosedDate: string;
+  engineerSalary: number;
+  engineerWorkDay: string;
 };

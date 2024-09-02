@@ -3,18 +3,20 @@ import { Box, ThemeProvider } from '@mui/material';
 import CEngineerTitle from './CEngineerTitle';
 import { CustomerInfo } from '@/constants/definition';
 import CScheduleTimeMapping from './CScheduleTimeMapping';
+import { Dayjs } from 'dayjs';
 
-type CScheduleTimeLineProps = {
+//기사 한 명의 timeLine 컴포넌트
+export type CScheduleTimeLineProps = {
   engineerName: string;
-  engineerDate: string;
+  selectDate: string;
   orderInfo?: CustomerInfo[];
 };
-const CScheduleTimeLine = ({ engineerName, engineerDate, orderInfo }: CScheduleTimeLineProps) => {
+const CScheduleTimeLine = ({ engineerName, selectDate, orderInfo }: CScheduleTimeLineProps) => {
   return (
     <ThemeProvider theme={theme}>
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
         <CEngineerTitle engineerName={engineerName} />
-        <CScheduleTimeMapping engineerDate={engineerDate} orderInfo={orderInfo} />
+        <CScheduleTimeMapping selectDate={selectDate} orderInfo={orderInfo} />
       </Box>
     </ThemeProvider>
   );

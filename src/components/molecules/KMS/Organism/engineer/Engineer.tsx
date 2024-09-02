@@ -5,9 +5,8 @@ import { CheckBox } from '@mui/icons-material';
 import { Paper, Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/material';
 import { ButtonTwo } from '../../Melecules/engineer/ButtonTwo';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { ButtonModal } from '../../Melecules/engineer/ButtonModal';
-import { useRouter } from 'next/router';
 
 type EngineerTableType = '기사성함' | '연락처' | '거주지역' | '가능품목' | '특이사항';
 
@@ -51,7 +50,6 @@ const rows = [
 ];
 
 export const Engineer = () => {
-  const router = useRouter();
   const [showModal, setModal] = useState(false);
 
   const openModal = () => {
@@ -63,14 +61,8 @@ export const Engineer = () => {
   };
 
   const openInfo = () => {
-    if (router.isReady) {
-      router.push('/engineer/e_registration');
-    }
+    window.location.href = '/engineer/e_registration';
   };
-
-  useEffect(() => {
-    //
-  }, [router.isReady, router]);
 
   return (
     <div>

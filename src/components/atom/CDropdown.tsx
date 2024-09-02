@@ -19,12 +19,13 @@ const CDropDown = ({
   handleChange,
 }: DropDownBarProps) => {
   return (
-    <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+    <FormControl sx={{ alignSelf: 'center', minWidth: 120 }} size="small">
       <InputLabel id="demo-select-small-label">{contentName}</InputLabel>
       <Select
         labelId="demo-select-small-label"
         id="demo-select-small"
         value={selectedValue}
+        defaultValue={contentName}
         label={contentName}
         onChange={handleChange}
       >

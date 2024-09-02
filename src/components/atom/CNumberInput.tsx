@@ -10,5 +10,5 @@ import { NumberInput } from './CBaseNumberInput';
  * @returns `<NumberInput min={0} max={99} onChange={handleChange}/>` 태그 반환
  */
 export const CNumberInput = ({ handleChange }: NumberInputType) => {
-  return <NumberInput min={0} max={99} onChange={handleChange} />;
+  return <NumberInput min={0} max={99} onChange={handleChange} placeholder="수량" />;
 };

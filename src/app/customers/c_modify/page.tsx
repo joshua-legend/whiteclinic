@@ -1,3 +1,7 @@
+'use client';
+
+import SalesInfoTable from '@/components/organism/CSalesInfoTable';
+
 export default function Page() {
-  return <div>회원 수정 하기</div>;
+  return <SalesInfoTable />;
 }

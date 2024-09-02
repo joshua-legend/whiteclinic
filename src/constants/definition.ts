@@ -237,7 +237,7 @@ export type engineerInfo = {
   engineerAbleItem: string;
   engineerSignificant: string;
   engineerClosedDay: string;
-  enginnerClosedDate: string;
+  engineerClosedDate: string;
   engineerSalary: number;
   engineerWorkDay: string;
 };

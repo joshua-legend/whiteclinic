@@ -13,7 +13,6 @@ const CScheduleTimeLineList = ({ selectDate = TODAY, engineers }: CScheduleTimeL
     return <div></div>;
   }
 
-  //CTitleContent에서도 사용됨 추후 최적화해야할듯
   const formattedDate = selectDate ? selectDate.format('YYYY-MM-DD') : '';
   return (
     <div>

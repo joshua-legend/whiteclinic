@@ -1,27 +1,16 @@
 import { Box } from '@mui/material';
-import CTitleContent, { CTitleContentProps } from './CTitleContent';
+import CTitleContent from './CTitleContent';
+import { StyledTitleBox } from '@/styles/customize';
 
 //기사 이름 타이틀 컴포넌트
-//backgroundcolro, color 따로 빼기.
+//backgroundcolor, color 따로 빼기.
 type CEngineerTitleProps = {
   engineerName: string;
 };
 
 const CEngineerTitle = ({ engineerName }: CEngineerTitleProps) => {
   return (
-    <Box
-      sx={{
-        backgroundColor: '#007fff',
-        color: '#fff',
-        borderRadius: '8px',
-        textAlign: 'center',
-        width: '1000px',
-        height: '70px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}
-    >
+    <Box sx={{ ...StyledTitleBox, backgroundColor: '#007fff', color: '#fff' }}>
       <CTitleContent variant="namebox" content={engineerName} subContent="기사" />
     </Box>
   );

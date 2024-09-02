@@ -5,7 +5,8 @@ import CScheduleTimeLineList from './CScheduleTimeLineList';
 import { Dayjs } from 'dayjs';
 import { Box, ThemeProvider } from '@mui/material';
 import { theme } from '@/constants/theme';
-import { engineerInfo } from '@/constants/definition';
+import { engineerInfo, TODAY } from '@/constants/definition';
+import { StyledScheduleTable } from '@/styles/customize';
 
 //출력 확인용 임의 데이터
 const engineers: engineerInfo[] = [
@@ -16,7 +17,7 @@ const engineers: engineerInfo[] = [
     engineerAbleItem: '',
     engineerSignificant: '',
     engineerClosedDay: '',
-    enginnerClosedDate: '',
+    engineerClosedDate: '',
     engineerSalary: 0,
     engineerWorkDay: '',
   },
@@ -27,20 +28,20 @@ const engineers: engineerInfo[] = [
     engineerAbleItem: '',
     engineerSignificant: '',
     engineerClosedDay: '',
-    enginnerClosedDate: '',
+    engineerClosedDate: '',
     engineerSalary: 0,
     engineerWorkDay: '',
   },
 ];
 
 const CScheduleTable = () => {
-  const [selectedDate, setSelectedDate] = useState<Dayjs | null>(null);
+  const [selectedDate, setSelectedDate] = useState<Dayjs | null>(TODAY);
   const handleSelect = (date: Dayjs | null) => {
     setSelectedDate(date);
   };
   return (
     <ThemeProvider theme={theme}>
-      <Box sx={{ display: 'flex', gap: '6px' }}>
+      <Box sx={{ ...StyledScheduleTable }}>
         <CDatePicker value={selectedDate} handleChange={handleSelect} />
         <div>
           <CScheduleDateBox dateInfo={selectedDate} />

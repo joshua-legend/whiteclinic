@@ -4,6 +4,7 @@ import CEngineerTitle from './CEngineerTitle';
 import { CustomerInfo } from '@/constants/definition';
 import CScheduleTimeMapping from './CScheduleTimeMapping';
 import { Dayjs } from 'dayjs';
+import { StyledScheduleTimeline } from '@/styles/customize';
 
 //기사 한 명의 timeLine 컴포넌트
 export type CScheduleTimeLineProps = {
@@ -14,7 +15,7 @@ export type CScheduleTimeLineProps = {
 const CScheduleTimeLine = ({ engineerName, selectDate, orderInfo }: CScheduleTimeLineProps) => {
   return (
     <ThemeProvider theme={theme}>
-      <Box sx={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+      <Box sx={{ ...StyledScheduleTimeline }}>
         <CEngineerTitle engineerName={engineerName} />
         <CScheduleTimeMapping selectDate={selectDate} orderInfo={orderInfo} />
       </Box>

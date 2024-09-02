@@ -107,3 +107,36 @@ export const StyledButton = styled('button')(
       }
     `
 );
+
+export const StyledScheduleTable = { display: 'flex', gap: '6px' };
+export const StyledScheduleTimeline = { display: 'flex', flexDirection: 'column', gap: '6px' };
+export const StyledTimeSlot = {
+  display: 'flex',
+  gap: '4px',
+  alignItems: 'center',
+  textAlign: 'center',
+};
+export const StyledTitleBox = {
+  backgroundColor: '#007fff' || '#fff',
+  color: '#fff' || '#007fff',
+  borderRadius: '8px',
+  textAlign: 'center',
+  width: '1000px',
+  height: '70px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+};
+
+export const StyledTimeContent = {
+  width: '100px',
+  height: '30px',
+  padding: '3px',
+  textAlign: 'center',
+};
+
+export const StyledCustomerInfo = {
+  height: '20px',
+  padding: '3px',
+  textAlign: 'center',
+};

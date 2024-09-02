@@ -1,5 +1,12 @@
 'use client';
 
+import { EngineerInfo } from "@/components/molecules/KMS/Organism/engineerInfo/EngineerInfo";
+
+
 export default function Page() {
-  return <div>이동완료</div>;
+  return (
+    <div>
+      <EngineerInfo/>
+    </div>
+  );
 }

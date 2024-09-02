@@ -5,13 +5,17 @@ import CDatePicker from '@/components/atom/CDatePicker';
 import CDropDown from '@/components/atom/CDropdown';
 import CInput from '@/components/atom/CInput';
 import { Documents, OrderInfoTableRowTextType, paymentOptions } from '@/constants/definition';
-import { useState } from 'react';
+import { ComponentProps, useState } from 'react';
 
 /**
  * @returns 주문정보 입력 테이블 컴포넌트
  */
 const OrderInfoTableFrame = () => {
-  const [] = useState();
+  const [customerName, setCustomerName] = useState('');
+
+  const handleChange: ComponentProps<'input'>['onChange'] = (e) => {
+    setCustomerName(e.target.value);
+  };
 
   /**
    * @param tableRow 테이블 첫번째 셀 텍스트 파라미터, 유니온으로 타입지정 되어있음
@@ -35,10 +39,12 @@ const OrderInfoTableFrame = () => {
     writeOrderInfoTable(
       '고객성함',
       CInput({
+        inputID: 'nameInput',
         labelProp: '고객 성함',
         type: 'text',
         isRequired: true,
         placeholderProp: '이름을 입력하세요',
+        handleInput: (e) => handleChange(e),
       })
     ),
     writeOrderInfoTable(

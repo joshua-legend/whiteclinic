@@ -1,16 +1,8 @@
-<<<<<<< Updated upstream
-=======
-import { allType } from '@/components/(current_atom)atom/checkbox/()minsuk_checkbox/KMS_CCheckboxData';
-import CButton from '@/components/atom/CButton';
-import CCheckbox from '@/components/atom/CCheckbox';
-import CDatePicker from '@/components/atom/CDatePicker';
-import CDropDown from '@/components/atom/CDropdown';
-import CInput from '@/components/atom/CInput';
-import { CNumberInput } from '@/components/atom/CNumberInput';
->>>>>>> Stashed changes
 import { sizes } from '@/styles/sizes';
+import { UseInputParameters, UseInputReturnValue } from '@mui/base';
 import { SelectChangeEvent } from '@mui/material';
 import dayjs, { Dayjs } from 'dayjs';
+import { ChangeEvent, ComponentProps } from 'react';
 
 type ButtonContent = '취소' | '등록' | '등록중지' | '추가등록' | '아니오' | '급여사항확인';
 type btnType = 'button' | 'submit' | 'reset';
@@ -51,7 +43,7 @@ export type allType = state | revenue | skill;
 
 export type CheckboxProps<T extends allType | engineerName> = {
   label: T;
-  engineerName: engineerName;
+  engineerName?: engineerName;
   isChecked?: boolean;
   handleChange?: () => void;
 };
@@ -159,7 +151,7 @@ export type InputPropses = {
   inputID?: string;
   labelProp?: LabelType;
   placeholderProp?: InputPlaceholderType;
-  handleInput?: () => void;
+  handleInput?: (eventTarget: ChangeEvent<HTMLInputElement>) => void;
   minValue?: number;
   maxValue?: number;
   adornment?: '원';

@@ -1,4 +1,5 @@
 import { styled } from '@mui/material';
+import { CSSProperties } from 'styled-components';
 
 const blue = {
   100: '#daecff',
@@ -108,6 +109,18 @@ export const StyledButton = styled('button')(
     `
 );
 
+/**
+ number type input 화살표 요소 제거 style
+ */
+export const hideNumberInputArrows = {
+  '& input::-webkit-outer-spin-button, & input::-webkit-inner-spin-button': {
+    display: 'none',
+  },
+  '& input[type=number]': {
+    MozAppearance: 'textfield',
+  },
+};
+
 export const StyledScheduleTable = { display: 'flex', gap: '6px' };
 export const StyledScheduleTimeline = { display: 'flex', flexDirection: 'column', gap: '6px' };
 export const StyledTimeSlot = {
@@ -135,25 +148,33 @@ export const StyledTimeContent = {
   textAlign: 'center',
 };
 
-export const StyledCustomerInfo = {
+export const StyledCustomerInfo: CSSProperties = {
   height: '20px',
   padding: '3px',
   textAlign: 'center',
 };
 
-export const StyledTextTableCell = {
+export const StyledTextTableCell: CSSProperties = {
   fontSize: 17,
   fontWeight: 'bold',
   letterSpacing: 5,
   backgroundColor: '#dbdbdb',
-  width: '120px',
-  height: '80px',
+  width: '150px',
+  height: '100%',
   textAlign: 'center',
-  alignItem: 'center',
+  alignItems: 'center',
   border: 'none',
 };
 
-export const StyledCompTableCell = {
+export const StyledCompTableCell: CSSProperties = {
   display: 'flex',
-  gap: '15px',
+  gap: '10px',
+  height: '100%',
+};
+
+export const StyledButtonContainer: CSSProperties = {
+  flexDirection: 'row',
+  gap: 3,
+  padding: 3,
+  justifyContent: 'center',
 };

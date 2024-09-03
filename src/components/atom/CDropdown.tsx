@@ -13,7 +13,7 @@ import { DropDownBarProps } from '@/constants/definition';
  * @returns 자식 태그로 MenuItem 를 갖는 Select MUI 태그 반환
  */
 const CDropDown = ({
-  contentName = '선택',
+  contentName = '',
   contentList,
   selectedValue,
   handleChange,

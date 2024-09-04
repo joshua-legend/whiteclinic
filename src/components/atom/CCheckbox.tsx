@@ -14,11 +14,11 @@ import {
 const CCheckbox = <T extends allType | engineerName>({
   label,
   handleChange,
-  isChecked = true,
+  isChecked,
 }: CheckboxProps<T>) => {
   return (
     <FormControlLabel
-      control={<Checkbox defaultChecked={isChecked} onChange={handleChange} />}
+      control={<Checkbox checked={isChecked} onChange={handleChange} />}
       label={label}
     />
   );

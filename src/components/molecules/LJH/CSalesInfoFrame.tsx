@@ -26,18 +26,9 @@ const SalesInfoFrame = () => {
     comments: '',
   });
 
-  const [isComposite, toggleIsComposite] = useReducer((state) => {
-    return !state;
-  }, false);
-  const [isRegular, toggleIsRegular] = useReducer((state) => {
-    return !state;
-  }, false);
-  const [isDiscounted, toggleIsDiscounted] = useReducer((state) => {
-    return !state;
-  }, false);
-  const [isModifiable, toggleIsModifiable] = useReducer((state) => {
-    return !state;
-  }, false);
+  const [isComposite, toggleComposite] = useReducer((state) => !state, salesData.isComposite);
+  const [isRegular, toggleRegular] = useReducer((state) => !state, salesData.isRegular);
+  const [isDiscounted, toggleDiscounted] = useReducer((state) => !state, salesData.isDiscounted);
 
   const cleaningItemContext = createContext(cleaningItemInfo);
 
@@ -47,58 +38,12 @@ const SalesInfoFrame = () => {
   const { airconditional, washing } = useContext(cleaningItemContext);
 
   // 수기입력을 위해 수정버튼 클릭 시 세척금액 인풋의 readOnly 속성 false 로 스위치하는 함수
-  const switchModifyState = () => {
-    setSalesData((prevState) => {
-      return { ...prevState, isModifiable: !modifySwitch };
-    });
-  };
 
   // 입력값 setStateAction 으로 최신화 하는 함수
   const salesInfoChangeHandler = (key: string, value: salesInfoValue | null) => {
     if (value) {
       setSalesData((prevState) => ({ ...prevState, [key]: value }));
     }
-  };
-
-  // 세척금액 자동계산 함수
-  const calculateTotalPrice = (
-    quantity: number,
-    isComposite: boolean,
-    isRegular: boolean,
-    isDiscounted: boolean,
-    discountRatio: string,
-    // TODO : 할인율 퍼센티지 적용인지 수기입력 적용인지 피드백 필요 or 둘다 허용
-    item: string
-  ) => {
-    if (!!quantity && !!discountRatio && !!item) {
-      airconditional.map((airconItem) => {
-        airconItem.label === item && isComposite
-          ? setSalesData((prevState) => ({
-              ...prevState,
-              totalPrice: prevState.totalPrice + airconItem.compositePrice,
-            }))
-          : setSalesData((prevState) => ({
-              ...prevState,
-              totalPrice: prevState.totalPrice + airconItem.regularPrice,
-            }));
-      });
-    }
-
-    // 총액 계산 (수량 곱하기)
-    setSalesData((prevState) => ({ ...prevState, totalPrice: prevState.totalPrice * quantity }));
-
-    // 할인 적용( 퍼센트 기호 식별 후 삼항연산 )
-    (isDiscounted && discountRatio.includes('%')) || discountRatio.startsWith('-')
-      ? setSalesData((prevState) => ({
-          ...prevState,
-          totalPrice: prevState.totalPrice * (1 - Number(discountRatio) / 100),
-        }))
-      : setSalesData((prevState) => ({
-          ...prevState,
-          totalPrice: prevState.totalPrice - Number(discountRatio),
-        }));
-
-    return null;
   };
 
   useEffect(() => {
@@ -110,13 +55,13 @@ const SalesInfoFrame = () => {
       '세척품목',
       CDropDown({
         contentList: CleaningItem,
-        handleChange: (event) => salesInfoChangeHandler('item', event?.target.value),
+        handleChange: (event) => salesInfoChangeHandler('item', event.target.value),
       }),
       CInput({
         type: 'text',
         placeholderProp: '분류 불가능한 세척품목',
         labelProp: '제품명 입력',
-        handleInput: (event) => salesInfoChangeHandler('writtenItem', event?.target.value),
+        handleInput: (event) => salesInfoChangeHandler('writtenItem', event.target.value),
         isDisabled: isItemSelected,
       })
     ),
@@ -130,18 +75,17 @@ const SalesInfoFrame = () => {
       '세척방식',
       CCheckbox({
         label: '종합세척',
-        isChecked: false,
+        isChecked: salesData.isComposite,
         handleChange: (event) => {
-          salesInfoChangeHandler('isComposite', event?.target.checked);
-          toggleIsComposite;
+          salesInfoChangeHandler('isComposite', event.target.checked);
+          toggleComposite;
         },
       }),
       CCheckbox({
         label: '일반세척',
-        isChecked: false,
+        isChecked: salesData.isRegular,
         handleChange: (event) => {
-          salesInfoChangeHandler('isRegular', event?.target.checked);
-          toggleIsRegular;
+          salesInfoChangeHandler('isRegular', event.target.checked);
         },
       })
     ),
@@ -149,18 +93,17 @@ const SalesInfoFrame = () => {
       '할인여부',
       CCheckbox({
         label: '할인적용',
-        isChecked: false,
+        isChecked: salesData.isDiscounted,
         handleChange: (event) => {
-          salesInfoChangeHandler('isDiscounted', event?.target.checked);
-          toggleIsDiscounted;
+          salesInfoChangeHandler('isDiscounted', event.target.checked);
         },
       }),
       CInput({
         labelProp: '할인율',
         placeholderProp: '할인율을 입력하세요',
-        isDisabled: isDiscounted,
+        isDisabled: !salesData.isDiscounted,
         type: 'text',
-        handleInput: (event) => salesInfoChangeHandler('discountRatio', event?.target.value),
+        handleInput: (event) => salesInfoChangeHandler('discountRatio', event.target.value),
       })
     ),
     writeInfoTable(
@@ -168,11 +111,13 @@ const SalesInfoFrame = () => {
       CInput({
         isModifiable: modifySwitch,
         type: 'number',
-        modifyInput: toggleIsModifiable,
+        modifyInput: () => {
+          setSalesData((prevState) => ({ ...prevState, isModifiable: !salesData.isModifiable }));
+        },
         placeholderProp: '할인 금액 출력',
         variableValue: salesData.totalPrice,
         adornment: '원',
-        isReadOnly: isModifiable,
+        isReadOnly: !salesData.isModifiable,
       })
     ),
     writeInfoTable(
@@ -180,7 +125,7 @@ const SalesInfoFrame = () => {
       CInput({
         labelProp: '특이사항',
         placeholderProp: '특이사항이 있을 시 기입하세요.',
-        handleInput: (event) => salesInfoChangeHandler('comments', event?.target.value),
+        handleInput: (event) => salesInfoChangeHandler('comments', event.target.value),
       })
     ),
   ];

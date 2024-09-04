@@ -6,12 +6,12 @@ import CDatePicker from '@/components/atom/CDatePicker';
 
 const rightinfo = [
   [
-    '휴무등록',
+    '정기휴무',
     <CDropDown contentList={WeekDays} contentName="요일 선택" />,
     <CCheckbox<state> label="휴무추가" isChecked={false} />,
   ],
 
-  ['휴무등록', <CDatePicker />, <CCheckbox<state> label="휴무추가" isChecked={false} />],
+  ['비정기휴무', <CDatePicker />, <CCheckbox<state> label="휴무추가" isChecked={false} />],
 ];
 
 export const RightInfoComponent = () => {

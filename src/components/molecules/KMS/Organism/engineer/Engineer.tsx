@@ -2,11 +2,12 @@ import CCheckbox from '@/components/atom/CCheckbox';
 import CInput from '@/components/atom/CInput';
 import { skill, skillArr } from '@/constants/definition';
 import { CheckBox } from '@mui/icons-material';
-import { Paper, Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/material';
+import { Modal, Paper, Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/material';
 import { ButtonTwo } from '../../Melecules/engineer/ButtonTwo';
 
 import { useState } from 'react';
 import { ButtonModal } from '../../Melecules/engineer/ButtonModal';
+import { CModal } from '../../Melecules/engineer/CModal';
 
 export type EngineerTableType = '기사성함' | '연락처' | '거주지역' | '가능품목' | '특이사항';
 
@@ -27,15 +28,37 @@ export const SkillCheckBoxs = () => (
 );
 
 const rows = [
-  createData('기사성함', CInput({ type: 'text' })),
+  createData('기사성함', CInput({ type: 'text', handleInput:})),
   createData('연락처', CInput({ type: 'text' })),
   createData('거주지역', CInput({ type: 'text' })),
   createData('가능품목', <SkillCheckBoxs />, CInput({ type: 'text' })),
   createData('특이사항', CInput({ type: 'text' })),
 ];
 
+export type EngineerInfoModel ={
+  name:string;
+  number:string;
+  address:string;
+  skill : string;
+  issue: string;
+}
+
 export const Engineer = () => {
+  const [engineerData, setEngineerData] = useState<EngineerInfoModel>({
+    name:'',
+    number:'',
+    address:'',
+    skill:'',
+    issue:'',
+  });
+
+const EngineerInfoChangeHandler = (key:string,value:string)=>{
+  setEngineerData((info)=>({...info,[key]:value}))
+  console.log(engineerData);
+}
+
   const [showModal, setModal] = useState(false);
+
 
   const openModal = () => {
     setModal(true);
@@ -85,17 +108,18 @@ export const Engineer = () => {
         rightButton="등록"
         onRightButton={openModal}
       />
-      {showModal && (
-        <ButtonModal
-          leftButton="아니오"
-          onLeftButton={closeModal}
-          rightButton="등록"
-          onRightButton={openInfo}
-          leftColor="black"
-          leftBgColor="gray"
-          modalText="해당 내용으로 기사정보를 등록하시겠습니까?"
-        />
-      )}
+      <CModal
+        title="해당 내용으로 기사정보를 등록하시겠습니까?"
+        open={showModal}
+        children={ButtonTwo({
+          leftButton: '아니오',
+          leftBgColor: 'gray',
+          leftColor: 'black',
+          rightButton: '등록',
+          onLeftButton: closeModal,
+          onRightButton: openInfo,
+        })}
+      />
     </div>
   );
 };

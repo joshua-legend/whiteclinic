@@ -1,8 +1,8 @@
-import { hideNumberInputArrows, InputPropses } from '@/constants/definition';
+import { InputProps } from '@/constants/definition';
+import { hideNumberInputArrows } from '@/styles/customize';
 import { containerStyle } from '@/styles/sizes';
-import { WidthFull } from '@mui/icons-material';
-
-import { FormControl, TextField } from '@mui/material';
+import { Box, FormControl, IconButton, TextField } from '@mui/material';
+import { FaPencil } from 'react-icons/fa6';
 
 /**
  * @param inputID id 를 통해 해당 컴포넌트 참조하기 위한 설정값 기본값 undefined
@@ -22,7 +22,6 @@ import { FormControl, TextField } from '@mui/material';
  * @param containerWidth 임시 CSS 스타일 값 차후 삭제 예정 기본값 '250px'
  * @returns FormControl 태그와 자식태그 TextField MUI 태그 반환
  */
-
 const CInput = ({
   inputID = undefined,
   isReadOnly = false,
@@ -33,7 +32,7 @@ const CInput = ({
   containerWidth = '260px',
   color,
   ...props
-}: InputPropses) => {
+}: InputProps) => {
   return (
     <FormControl sx={{ ...containerStyle.boxSize, width: containerWidth }}>
       <TextField
@@ -45,7 +44,14 @@ const CInput = ({
         InputProps={{
           inputProps: { min: props.minValue, max: props.maxValue },
           readOnly: isReadOnly,
-          endAdornment: props.adornment,
+          endAdornment: props.isModifiable ? (
+            <Box sx={{ display: 'flex', gap: 0.5, alignItems: 'center' }}>
+              {props.adornment}
+              <IconButton onClick={props.modifyInput}>
+                <FaPencil color="silver" size={15} />
+              </IconButton>
+            </Box>
+          ) : null,
           disabled: isDisabled,
           required: isRequired,
         }}

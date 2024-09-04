@@ -13,24 +13,24 @@ import { DropDownBarProps } from '@/constants/definition';
  * @returns 자식 태그로 MenuItem 를 갖는 Select MUI 태그 반환
  */
 const CDropDown = ({
-  contentName = '선택',
+  contentName = '',
   contentList,
   selectedValue,
   handleChange,
 }: DropDownBarProps) => {
   return (
-    <FormControl sx={{ alignSelf: 'center', minWidth: 120 }} size="small">
+    <FormControl sx={{ alignSelf: 'center', minWidth: 120, paddingRight: 1 }} size="small">
       <InputLabel id="demo-select-small-label">{contentName}</InputLabel>
       <Select
         labelId="demo-select-small-label"
         id="demo-select-small"
         value={selectedValue}
-        defaultValue={contentName}
+        defaultValue="선택"
         label={contentName}
         onChange={handleChange}
       >
-        <MenuItem value="">
-          <em>선택안함</em>
+        <MenuItem value="선택">
+          <em>선택</em>
         </MenuItem>
         {contentList?.map((item, i) => (
           <MenuItem key={i} value={item.label}>

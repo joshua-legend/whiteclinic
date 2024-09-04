@@ -1,8 +1,7 @@
 import { sizes } from '@/styles/sizes';
-import { UseInputParameters, UseInputReturnValue } from '@mui/base';
 import { SelectChangeEvent } from '@mui/material';
 import dayjs, { Dayjs } from 'dayjs';
-import { ChangeEvent, ComponentProps } from 'react';
+import { ComponentProps, FocusEvent, KeyboardEvent, PointerEvent } from 'react';
 
 export type ButtonContent = '취소' | '등록' | '등록중지' | '추가등록' | '아니오' | '급여사항확인';
 type btnType = 'button' | 'submit' | 'reset';
@@ -42,11 +41,14 @@ export type skill =
 
 export type allType = state | revenue | skill;
 
+export type salesInfoValue = string | number | boolean;
+export type orderInfoValue = string | boolean;
+
 export type CheckboxProps<T extends allType | engineerName> = {
   label: T;
   engineerName?: engineerName;
   isChecked?: boolean;
-  handleChange?: () => void;
+  handleChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 export type ProductDropdownList = {
@@ -54,7 +56,10 @@ export type ProductDropdownList = {
 };
 
 export type NumberInputType = {
-  handleChange: () => void;
+  handleChange: (
+    event: FocusEvent<HTMLInputElement, Element> | PointerEvent<Element> | KeyboardEvent<Element>,
+    value: number | null
+  ) => void;
 };
 
 export const CleaningItem: ProductDropdownList[] = [
@@ -147,12 +152,13 @@ type InputPlaceholderType =
   | '분류 불가능한 세척품목'
   | '연도 입력';
 
-// 인풋 프롭 유니온타입 지정
-export type InputPropses = {
+// 인풋 프롭 타입지정
+export type InputProps = {
   inputID?: string;
   labelProp?: LabelType;
   placeholderProp?: InputPlaceholderType;
-  handleInput?: (eventTarget: ChangeEvent<HTMLInputElement>) => void;
+  handleInput?: ComponentProps<'input'>['onChange'];
+  modifyInput?: () => void;
   minValue?: number;
   maxValue?: number;
   adornment?: '원';
@@ -161,21 +167,10 @@ export type InputPropses = {
   isReadOnly?: boolean;
   isDisabled?: boolean;
   isRequired?: boolean;
+  isModifiable?: boolean;
   helperText?: HelperTextType;
   variableValue?: number | string;
   containerWidth?: string;
-};
-
-/**
- number type input 화살표 요소 제거 style
- */
-export const hideNumberInputArrows = {
-  '& input::-webkit-outer-spin-button, & input::-webkit-inner-spin-button': {
-    display: 'none',
-  },
-  '& input[type=number]': {
-    MozAppearance: 'textfield',
-  },
 };
 
 // 현재 날짜 초기화
@@ -184,7 +179,9 @@ export const CURRENT_YEAR = TODAY.year();
 export const CURRENT_MONTH = TODAY.month() + 1; // dayjs에서 month()는 0-11을 반환
 export const CURRENT_DAY = TODAY.date();
 
-// 1900년 1월 1일을 minDate로 설정
+/**
+ * 클라이언트 기준 현재날짜 상수
+ */
 export const MIN_DATE = dayjs(`${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DAY}`);
 
 export type DatePickerProps = {
@@ -246,6 +243,36 @@ export type engineerInfo = {
   engineerClosedDate: string;
   engineerSalary: number;
   engineerWorkDay: string;
+};
+
+/**
+ * 주문정보 입력값 state 관리를 위한 타입
+ */
+export type OrderInfoModel = {
+  orderDate: string;
+  customerName: string;
+  customerPhoneNum: string;
+  customerAddr: string;
+  customerComments: string;
+  customerPayment: string;
+  customerReciept: string;
+  checkReciept: boolean;
+};
+
+/**
+ * 매출정보 입력값 state 관리를 위한 타입
+ */
+export type SalesInfoModel = {
+  item: string;
+  writtenItem?: string;
+  itemQuantity: number;
+  isComposite: boolean;
+  isRegular: boolean;
+  isDiscounted: boolean;
+  isModifiable: boolean;
+  discountRatio: string;
+  totalPrice: number;
+  comments?: string;
 };
 
 export type OrderInfoTableProp = {

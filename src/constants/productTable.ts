@@ -1,4 +1,4 @@
-type productInfoTable = {
+export type productInfoTable = {
   airconditional: {
     label: string;
     regularPrice?: number;

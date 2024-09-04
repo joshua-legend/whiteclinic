@@ -25,7 +25,7 @@ export const NameCheckboxs = () => (
       border: '1px solid black',
       backgroundColor: 'gray',
       width: '100%',
-      borderRadius: '10px',
+      // borderRadius: '10px',
       overflowX: 'scroll',
       overflowY: 'hidden',
       '&::-webkit-scrollbar': {

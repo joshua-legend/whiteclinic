@@ -8,7 +8,7 @@ import { ButtonTwo } from '../../Melecules/engineer/ButtonTwo';
 import { useState } from 'react';
 import { ButtonModal } from '../../Melecules/engineer/ButtonModal';
 
-type EngineerTableType = '기사성함' | '연락처' | '거주지역' | '가능품목' | '특이사항';
+export type EngineerTableType = '기사성함' | '연락처' | '거주지역' | '가능품목' | '특이사항';
 
 const createData = (
   row: EngineerTableType, //

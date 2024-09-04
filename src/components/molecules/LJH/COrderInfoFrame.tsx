@@ -4,8 +4,14 @@ import CCheckbox from '@/components/atom/CCheckbox';
 import CDatePicker from '@/components/atom/CDatePicker';
 import CDropDown from '@/components/atom/CDropdown';
 import CInput from '@/components/atom/CInput';
-import { Documents, OrderInfoModel, paymentOptions } from '@/constants/definition';
-import { useEffect, useState } from 'react';
+import {
+  Documents,
+  MIN_DATE,
+  OrderInfoModel,
+  orderInfoValue,
+  paymentOptions,
+} from '@/constants/definition';
+import { useState } from 'react';
 import { writeInfoTable } from '@/util/actionUtil';
 
 /**
@@ -13,8 +19,8 @@ import { writeInfoTable } from '@/util/actionUtil';
  */
 
 const OrderInfoTableFrame = () => {
-  const [sendData, setSendData] = useState<OrderInfoModel>({
-    orderDate: '',
+  const [orderData, setorderData] = useState<OrderInfoModel>({
+    orderDate: MIN_DATE.locale('ko').format('YYYY년 MM월 DD일'),
     customerName: '',
     customerPhoneNum: '',
     customerAddr: '',
@@ -24,15 +30,10 @@ const OrderInfoTableFrame = () => {
     checkReciept: false,
   });
 
-  const inputValueChangeHandler = (key: string, value: string | boolean) => {
-    setSendData((prevState) => ({ ...prevState, [key]: value }));
+  const orderInfoChangeHandler = (key: string, value: orderInfoValue) => {
+    setorderData((prevState) => ({ ...prevState, [key]: value }));
+    console.log(orderData);
   };
-  /**
-   * @param tableRow 테이블 첫번째 셀 텍스트 파라미터, 유니온으로 타입지정 되어있음
-   * @param components 렌더링할 컴포넌트 파라미터, 각 tableRow에 맞게 호출하여 사용
-   * @param subComponents 각 줄에 컴포넌트가 두 개 이상 존재할 시 사용할 컴포넌트 파라미터 -> ex) 체크박스
-   * @description 상태 관리도 오브젝트 타입으로 지정후 한번에 관리
-   */
 
   /**
    * 주문정보 테이블 셀 배열 (텍스트셀, 컴포넌트, Optional 서브컴포넌트(체크박스))
@@ -43,7 +44,7 @@ const OrderInfoTableFrame = () => {
       CDatePicker({
         label: '일정 선택',
         handleChange: (e) => {
-          inputValueChangeHandler('orderDate', String(e?.locale('ko').format('YYYY년 MM월 DD일')));
+          orderInfoChangeHandler('orderDate', String(e?.locale('ko').format('YYYY년 MM월 DD일')));
         },
       })
     ),
@@ -55,7 +56,7 @@ const OrderInfoTableFrame = () => {
         isRequired: true,
         placeholderProp: '이름을 입력하세요',
         handleInput: (e) => {
-          inputValueChangeHandler('customerName', e.target.value);
+          orderInfoChangeHandler('customerName', e.target.value);
         },
       })
     ),
@@ -67,7 +68,7 @@ const OrderInfoTableFrame = () => {
         isRequired: true,
         placeholderProp: '`-` 를 제외하고 입력하세요',
         handleInput: (e) => {
-          inputValueChangeHandler('customerPhoneNum', e.target.value);
+          orderInfoChangeHandler('customerPhoneNum', e.target.value);
         },
       })
     ),
@@ -79,7 +80,7 @@ const OrderInfoTableFrame = () => {
         isRequired: true,
         placeholderProp: '상세 주소를 입력하세요',
         handleInput: (e) => {
-          inputValueChangeHandler('customerAddr', e.target.value);
+          orderInfoChangeHandler('customerAddr', e.target.value);
         },
       })
     ),
@@ -90,7 +91,7 @@ const OrderInfoTableFrame = () => {
         type: 'text',
         placeholderProp: '특이사항이 있을 시 기입하세요.',
         handleInput: (e) => {
-          inputValueChangeHandler('customerComments', e.target.value);
+          orderInfoChangeHandler('customerComments', e.target.value);
         },
       })
     ),
@@ -98,19 +99,19 @@ const OrderInfoTableFrame = () => {
       '결제방식',
       CDropDown({
         contentList: paymentOptions,
-        handleChange: (e) => inputValueChangeHandler('customerPayment', e.target.value),
+        handleChange: (e) => orderInfoChangeHandler('customerPayment', e.target.value),
       })
     ),
     writeInfoTable(
       '증빙서류',
       CDropDown({
         contentList: Documents,
-        handleChange: (e) => inputValueChangeHandler('customerReciept', e.target.value),
+        handleChange: (e) => orderInfoChangeHandler('customerReciept', e.target.value),
       }),
       CCheckbox({
         label: '발행완료',
         isChecked: false,
-        handleChange: (e) => inputValueChangeHandler('checkReciept', e.target.checked),
+        handleChange: (e) => orderInfoChangeHandler('checkReciept', e.target.checked),
       })
     ),
   ];

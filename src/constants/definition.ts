@@ -1,8 +1,7 @@
 import { sizes } from '@/styles/sizes';
-import { UseInputParameters, UseInputReturnValue } from '@mui/base';
 import { SelectChangeEvent } from '@mui/material';
 import dayjs, { Dayjs } from 'dayjs';
-import { ChangeEvent, ComponentProps } from 'react';
+import { ComponentProps, FocusEvent, KeyboardEvent, PointerEvent } from 'react';
 
 type ButtonContent = '취소' | '등록' | '등록중지' | '추가등록' | '아니오' | '급여사항확인';
 type btnType = 'button' | 'submit' | 'reset';
@@ -41,6 +40,9 @@ export type skill =
 
 export type allType = state | revenue | skill;
 
+export type salesInfoValue = string | number | boolean;
+export type orderInfoValue = string | boolean;
+
 export type CheckboxProps<T extends allType | engineerName> = {
   label: T;
   engineerName?: engineerName;
@@ -53,7 +55,10 @@ export type ProductDropdownList = {
 };
 
 export type NumberInputType = {
-  handleChange: () => void;
+  handleChange: (
+    event: FocusEvent<HTMLInputElement, Element> | PointerEvent<Element> | KeyboardEvent<Element>,
+    value: number | null
+  ) => void;
 };
 
 export const CleaningItem: ProductDropdownList[] = [
@@ -152,6 +157,7 @@ export type InputProps = {
   labelProp?: LabelType;
   placeholderProp?: InputPlaceholderType;
   handleInput?: ComponentProps<'input'>['onChange'];
+  modifyInput?: () => void;
   minValue?: number;
   maxValue?: number;
   adornment?: '원';
@@ -160,6 +166,7 @@ export type InputProps = {
   isReadOnly?: boolean;
   isDisabled?: boolean;
   isRequired?: boolean;
+  isModifiable?: boolean;
   helperText?: HelperTextType;
   variableValue?: number | string;
   containerWidth?: string;
@@ -238,7 +245,7 @@ export type engineerInfo = {
 };
 
 /**
- * intput 입력값 state 관리를 위한 타입
+ * 주문정보 입력값 state 관리를 위한 타입
  */
 export type OrderInfoModel = {
   orderDate: string;
@@ -249,6 +256,22 @@ export type OrderInfoModel = {
   customerPayment: string;
   customerReciept: string;
   checkReciept: boolean;
+};
+
+/**
+ * 매출정보 입력값 state 관리를 위한 타입
+ */
+export type SalesInfoModel = {
+  item: string;
+  writtenItem?: string;
+  itemQuantity: number;
+  isComposite: boolean;
+  isRegular: boolean;
+  isDiscounted: boolean;
+  isModifiable: boolean;
+  discountRatio: string;
+  totalPrice: number;
+  comments?: string;
 };
 
 export type OrderInfoTableProp = {

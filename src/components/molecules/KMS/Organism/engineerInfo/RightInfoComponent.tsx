@@ -25,9 +25,7 @@ export const RightInfoComponent = () => {
       }}
     >
       {rightinfo.map((item) => (
-        <Box sx={{ border: '1px solid blue', display: 'flex', alignItems: 'center', gap: '10px' }}>
-          {item}
-        </Box> 
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: '10px' }}>{item}</Box>
       ))}
     </Box>
   );

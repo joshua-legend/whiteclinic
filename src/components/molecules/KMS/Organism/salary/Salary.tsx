@@ -1,21 +1,44 @@
-// import { WeekDays } from '@/components/(current_atom)atom/dropdown/LJW_dropdown/LJW_DropDownList';
-// import CDropDown from '@/components/atom/CDropdown';
-// import CInput from '@/components/atom/CInput';
+import CDropDown from '@/components/atom/CDropdown';
+import CInput from '@/components/atom/CInput';
+import { AllowanceRates } from '@/constants/definition';
+import { Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/material';
 
-// type SalaryType = '기사성함' | '수당률' | '급여요일';
+type SalaryType = '기사성함' | '수당률' | '급여요일';
 
-// const createData = (rows: SalaryType, first: JSX.Element) => {
-//   return { rows, first };
-// };
+const createData = (rows: SalaryType, first: JSX.Element) => {
+  return { rows, first };
+};
 
-// const rows = [
-//   createData('기사성함', CInput({ type: 'text' })),
-//   createData('수당률',(props)=><CDropDown {}/> ),
-//   createData('급여요일', CInput({ type: 'text' })),
-// ];
+const rows = [
+  createData('기사성함', CInput({ type: 'text' })),
+  createData('수당률', CDropDown({ contentList: AllowanceRates })),
+  createData('급여요일', CInput({ type: 'text' })),
+];
 
-// const Salary = () => {
-//   return <div></div>;
-// };
+export const Salary = () => {
+  return (
+    <div>
+      <TableContainer>
+        <Table>
+          <TableBody>
+            {rows.map((row) => (
+              <TableRow key={row.rows}>
+                <TableCell
+                  sx={{
+                    width: '100px',
+                  }}
+                >
+                  {row.rows}
+                </TableCell>
+                <TableCell>
+                    {row.first}
+                </TableCell>
 
-export {};
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </div>
+  );
+};

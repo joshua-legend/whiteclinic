@@ -19,10 +19,10 @@ export const EngineerInfo = () => {
       <NameCheckboxs />
 
       <Container sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr', flex: 1 }}>
-        <Box sx={{ border: '1px solid black' }}>
+        <Box>
           <LeftInfoComponent />
         </Box>
-        <Box sx={{ border: '1px solid black' }}>
+        <Box>
           <RightInfoComponent />
         </Box>
       </Container>

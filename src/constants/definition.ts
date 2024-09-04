@@ -39,6 +39,20 @@ export type skill =
   | '빌트인'
   | '건조기';
 
+export const skillArr: skill[] = [
+  '벽걸이',
+  '원웨이',
+  '포웨이',
+  '원형',
+  '스탠드',
+  '실외기',
+  '덕트',
+  '창문형',
+  '통돌이',
+  '드럼',
+  '빌트인',
+  '건조기',
+];
 export type allType = state | revenue | skill;
 
 export type salesInfoValue = string | number | boolean;
@@ -275,7 +289,7 @@ export type SalesInfoModel = {
   comments?: string;
 };
 
-export type OrderInfoTableProp = {
+export type InfoTableProp = {
   tableRowText: OrderInfoTableRowTextType;
   component: JSX.Element;
   subComponent?: JSX.Element;

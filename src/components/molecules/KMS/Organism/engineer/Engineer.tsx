@@ -1,6 +1,6 @@
 import CCheckbox from '@/components/atom/CCheckbox';
 import CInput from '@/components/atom/CInput';
-import { skill } from '@/constants/definition';
+import { skill, skillArr } from '@/constants/definition';
 import { CheckBox } from '@mui/icons-material';
 import { Paper, Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/material';
 import { ButtonTwo } from '../../Melecules/engineer/ButtonTwo';
@@ -18,24 +18,9 @@ const createData = (
   return { row, first, second };
 };
 
-const SKILLS: skill[] = [
-  '벽걸이',
-  '원웨이',
-  '포웨이',
-  '원형',
-  '스탠드',
-  '실외기',
-  '덕트',
-  '창문형',
-  '통돌이',
-  '드럼',
-  '빌트인',
-  '건조기',
-];
-
 export const SkillCheckBoxs = () => (
   <>
-    {SKILLS.map((skill) => (
+    {skillArr.map((skill) => (
       <CCheckbox<skill> key={skill} label={skill} isChecked={false} />
     ))}
   </>

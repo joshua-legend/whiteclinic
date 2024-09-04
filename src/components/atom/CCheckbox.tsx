@@ -14,7 +14,7 @@ import {
 const CCheckbox = <T extends allType | engineerName>({
   label,
   handleChange,
-  isChecked,
+  isChecked = true,
 }: CheckboxProps<T>) => {
   return (
     <FormControlLabel

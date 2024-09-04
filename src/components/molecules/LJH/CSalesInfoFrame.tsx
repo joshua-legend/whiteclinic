@@ -2,52 +2,50 @@ import CCheckbox from '@/components/atom/CCheckbox';
 import CDropDown from '@/components/atom/CDropdown';
 import CInput from '@/components/atom/CInput';
 import { CNumberInput } from '@/components/atom/CNumberInput';
+
 import { CleaningItem, SalesInfoModel, salesInfoValue } from '@/constants/definition';
-import { cleaningItemInfo } from '@/constants/productTable';
+
 import { StyledCompTableCell, StyledTextTableCell } from '@/styles/customize';
 import { writeInfoTable } from '@/util/actionUtil';
 import { Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/material';
-import { createContext, useContext, useEffect, useReducer, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 /**
  * @returns 매출정보 입력 테이블 컴포넌트
  */
 const SalesInfoFrame = () => {
+  const [isComposite, toggleComposite] = useState(false);
+  const [isRegular, toggleRegular] = useState(false);
+  const [isDiscounted, toggleDiscounted] = useState(false);
   const [salesData, setSalesData] = useState<SalesInfoModel>({
     item: '',
     writtenItem: '',
     itemQuantity: 0,
-    isComposite: false,
-    isRegular: false,
-    isDiscounted: false,
+    isComposite: isComposite,
+    isRegular: isRegular,
+    isDiscounted: isDiscounted,
     isModifiable: false,
     discountRatio: '',
     totalPrice: 0,
     comments: '',
   });
 
-  const [isComposite, toggleComposite] = useReducer((state) => !state, salesData.isComposite);
-  const [isRegular, toggleRegular] = useReducer((state) => !state, salesData.isRegular);
-  const [isDiscounted, toggleDiscounted] = useReducer((state) => !state, salesData.isDiscounted);
-
-  const cleaningItemContext = createContext(cleaningItemInfo);
-
   // 드롭다운 아이템 선택 시 수기입력칸 비활성화를 위한 boolean 상태변수
   const isItemSelected = !!salesData.item && salesData.item !== '선택';
-  const modifySwitch = true;
-  const { airconditional, washing } = useContext(cleaningItemContext);
-
-  // 수기입력을 위해 수정버튼 클릭 시 세척금액 인풋의 readOnly 속성 false 로 스위치하는 함수
 
   // 입력값 setStateAction 으로 최신화 하는 함수
   const salesInfoChangeHandler = (key: string, value: salesInfoValue | null) => {
-    if (value) {
+    if (!!value) {
       setSalesData((prevState) => ({ ...prevState, [key]: value }));
+      console.log('key : ' + key);
+      console.log('value : ' + value);
     }
   };
 
   useEffect(() => {
-    console.log(salesData);
+    console.log('isComposite State: ' + isComposite);
+    console.log('isRegular State: ' + isRegular);
+    console.log('isDiscounted State: ' + isDiscounted);
   }, [salesData]);
 
   const salesInfoTableRows = [
@@ -75,33 +73,26 @@ const SalesInfoFrame = () => {
       '세척방식',
       CCheckbox({
         label: '종합세척',
-        isChecked: salesData.isComposite,
-        handleChange: (event) => {
-          salesInfoChangeHandler('isComposite', event.target.checked);
-          toggleComposite;
-        },
+        isChecked: isComposite,
+        handleChange: () => toggleComposite((state) => !state),
       }),
       CCheckbox({
         label: '일반세척',
-        isChecked: salesData.isRegular,
-        handleChange: (event) => {
-          salesInfoChangeHandler('isRegular', event.target.checked);
-        },
+        isChecked: isRegular,
+        handleChange: () => toggleRegular((state) => !state),
       })
     ),
     writeInfoTable(
       '할인여부',
       CCheckbox({
         label: '할인적용',
-        isChecked: salesData.isDiscounted,
-        handleChange: (event) => {
-          salesInfoChangeHandler('isDiscounted', event.target.checked);
-        },
+        isChecked: isDiscounted,
+        handleChange: () => toggleDiscounted((state) => !state),
       }),
       CInput({
         labelProp: '할인율',
         placeholderProp: '할인율을 입력하세요',
-        isDisabled: !salesData.isDiscounted,
+        isDisabled: !isDiscounted,
         type: 'text',
         handleInput: (event) => salesInfoChangeHandler('discountRatio', event.target.value),
       })
@@ -109,7 +100,7 @@ const SalesInfoFrame = () => {
     writeInfoTable(
       '세척금액',
       CInput({
-        isModifiable: modifySwitch,
+        isModifiable: true,
         type: 'number',
         modifyInput: () => {
           setSalesData((prevState) => ({ ...prevState, isModifiable: !salesData.isModifiable }));
@@ -117,7 +108,7 @@ const SalesInfoFrame = () => {
         placeholderProp: '할인 금액 출력',
         variableValue: salesData.totalPrice,
         adornment: '원',
-        isReadOnly: !salesData.isModifiable,
+        isDisabled: !salesData.isModifiable,
       })
     ),
     writeInfoTable(

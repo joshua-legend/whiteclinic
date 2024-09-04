@@ -20,7 +20,7 @@ import { writeInfoTable } from '@/util/actionUtil';
 
 const OrderInfoTableFrame = () => {
   const [orderData, setorderData] = useState<OrderInfoModel>({
-    orderDate: MIN_DATE.locale('ko').format('YYYY년 MM월 DD일'),
+    orderDate: MIN_DATE.format('YYYY년 MM월 DD일'),
     customerName: '',
     customerPhoneNum: '',
     customerAddr: '',
@@ -29,6 +29,8 @@ const OrderInfoTableFrame = () => {
     customerReciept: '',
     checkReciept: false,
   });
+
+  const [recieptState, toggleReciept] = useState(false);
 
   const orderInfoChangeHandler = (key: string, value: orderInfoValue) => {
     setorderData((prevState) => ({ ...prevState, [key]: value }));
@@ -44,7 +46,7 @@ const OrderInfoTableFrame = () => {
       CDatePicker({
         label: '일정 선택',
         handleChange: (e) => {
-          orderInfoChangeHandler('orderDate', String(e?.locale('ko').format('YYYY년 MM월 DD일')));
+          orderInfoChangeHandler('orderDate', String(e?.format('YYYY년 MM월 DD일')));
         },
       })
     ),
@@ -110,8 +112,11 @@ const OrderInfoTableFrame = () => {
       }),
       CCheckbox({
         label: '발행완료',
-        isChecked: false,
-        handleChange: (e) => orderInfoChangeHandler('checkReciept', e.target.checked),
+        isChecked: recieptState,
+        handleChange: (e) => {
+          orderInfoChangeHandler('checkReciept', e.target.checked);
+          toggleReciept((state) => !state);
+        },
       })
     ),
   ];

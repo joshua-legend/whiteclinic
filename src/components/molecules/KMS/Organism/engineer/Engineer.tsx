@@ -50,7 +50,7 @@ export const Engineer = () => {
   const SkillCheckBoxs = () => (
     <>
       {skillArr.map((skill) => (
-        <CCheckbox<skill> key={skill} label={skill} isChecked={true} />
+        <CCheckbox<skill> key={skill} label={skill} isChecked={false} />
       ))}
     </>
   );
@@ -110,14 +110,6 @@ export const Engineer = () => {
     ),
   ];
 
-  const openModal = () => {
-    setModal(true);
-  };
-
-  const closeModal = () => {
-    setModal(false);
-  };
-
   const openInfo = () => {
     window.location.href = '/engineer/e_registration';
   };
@@ -156,7 +148,7 @@ export const Engineer = () => {
         leftColor="black"
         leftBgColor="gray"
         rightButton="등록"
-        onRightButton={openModal}
+        onRightButton={() => setModal(true)}
       />
       <CModal
         title="해당 내용으로 기사정보를 등록하시겠습니까?"
@@ -166,7 +158,7 @@ export const Engineer = () => {
           leftBgColor: 'gray',
           leftColor: 'black',
           rightButton: '등록',
-          onLeftButton: closeModal,
+          onLeftButton: () => setModal(false),
           onRightButton: openInfo,
         })}
       />

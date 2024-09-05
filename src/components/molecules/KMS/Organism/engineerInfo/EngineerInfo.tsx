@@ -1,5 +1,5 @@
 import { Box, Container, Grid } from '@mui/material';
-import { NameCheckboxs } from '../../Melecules/engineerInfo/CheckboxList';
+import { CheckboxList } from '../../Melecules/engineerInfo/CheckboxList';
 import { LeftInfoComponent } from './LeftInfoComponent';
 import { RightInfoComponent } from './RightInfoComponent';
 
@@ -21,7 +21,7 @@ export const EngineerInfo = () => {
       }}
     >
       <Box sx={{ mb: 3 }}>
-        <NameCheckboxs />
+        <CheckboxList />
       </Box>
 
       <Container

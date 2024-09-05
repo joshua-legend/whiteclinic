@@ -3,6 +3,7 @@
 import CCheckbox from '@/components/atom/CCheckbox';
 import { engineerName } from '@/constants/definition';
 import { Box } from '@mui/material';
+import { useState } from 'react';
 
 const PersonName = [
   '강민석',
@@ -22,30 +23,33 @@ const PersonName = [
   '강강강',
 ];
 
-export const NameCheckboxs = () => (
-  <Box
-    sx={{
-      display: 'flex',
-      backgroundColor: '#e0e0e0',
-      width: '100%',
-      borderRadius: '10px',
-      overflowX: 'scroll',
-      overflowY: 'hidden',
-      scrollbarWidth: 'thin',
-      scrollbarColor: 'darkgray lightgray',
-    }}
-  >
+export const CheckboxList = () => {
+  const [nameList, setNameList] = useState(false);
+  return (
     <Box
       sx={{
         display: 'flex',
-        flexWrap: 'nowrap',
+        backgroundColor: '#e0e0e0',
+        width: '100%',
+        borderRadius: '10px',
+        overflowX: 'scroll',
+        overflowY: 'hidden',
+        scrollbarWidth: 'thin',
+        scrollbarColor: 'darkgray lightgray',
       }}
     >
-      {PersonName.map((name) => (
-        <Box key={name} sx={{ flexShrink: 0, marginRight: '10px' }}>
-          <CCheckbox<engineerName> label={name} isChecked={false} />
-        </Box>
-      ))}
+      <Box
+        sx={{
+          display: 'flex',
+          flexWrap: 'nowrap',
+        }}
+      >
+        {PersonName.map((name) => (
+          <Box key={name} sx={{ flexShrink: 0, marginRight: '10px' }}>
+            <CCheckbox<engineerName> label={name} isChecked={false} />
+          </Box>
+        ))}
+      </Box>
     </Box>
-  </Box>
-);
+  );
+};

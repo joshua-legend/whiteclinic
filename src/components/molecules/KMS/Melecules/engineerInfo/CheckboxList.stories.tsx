@@ -1,8 +1,8 @@
-import { NameCheckboxs } from './CheckboxList';
+import { CheckboxList } from './CheckboxList';
 
 const meta = {
-  title: 'atoms/NameCheckboxs',
-  component: NameCheckboxs,
+  title: 'atoms/CheckboxList',
+  component: CheckboxList,
   argTypes: {},
 };
 

@@ -59,7 +59,7 @@ export const Engineer = () => {
     createData(
       '기사성함',
       CInput({
-        labelProp: '고객 성함',
+        labelProp: '기사 성함',
         type: 'text',
         placeholderProp: '이름을 입력하세요',
         handleInput: (e) => {
@@ -70,7 +70,7 @@ export const Engineer = () => {
     createData(
       '연락처',
       CInput({
-        labelProp: '고객 연락처',
+        labelProp: '기사 연락처',
         type: 'text',
         placeholderProp: '`-` 를 제외하고 입력하세요',
         handleInput: (e) => {
@@ -81,7 +81,7 @@ export const Engineer = () => {
     createData(
       '거주지역',
       CInput({
-        labelProp: '고객 주소지',
+        labelProp: '기사 주소지',
         type: 'text',
         placeholderProp: '상세 주소를 입력하세요',
         handleInput: (e) => {
@@ -95,13 +95,18 @@ export const Engineer = () => {
       CInput({
         labelProp: '제품명 입력',
         type: 'text',
-        placeholderProp: '분류 불가능한 세척품목',
+        placeholderProp: '제품명 직접입력',
         handleInput: (e) => EngineerInfoChangeHandler('skills', e.target.value),
       })
     ),
     createData(
       '특이사항',
-      <CInput handleInput={(e) => EngineerInfoChangeHandler('skills', e.target.value)} />
+      CInput({
+        labelProp: '특이사항',
+        type: 'text',
+        placeholderProp: '특이사항이 있을 시 기입하세요.',
+        handleInput: (e) => EngineerInfoChangeHandler('issue', e.target.value),
+      })
     ),
   ];
 

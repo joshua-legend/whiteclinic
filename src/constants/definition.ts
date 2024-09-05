@@ -143,7 +143,7 @@ type LabelType =
   | '수당'
   | '수당 합계'
   | '제품명 입력'
-  | '기사성함'
+  | '기사 성함'
   | '기사 연락처'
   | '기사 주소지';
 
@@ -168,9 +168,7 @@ type InputPlaceholderType =
   | '수량'
   | '분류 불가능한 세척품목'
   | '연도 입력'
-  | '제품명 직접입력'
-  | '특이사항';
-
+  | '제품명 직접입력';
 // 인풋 프롭 타입지정
 export type InputProps = {
   inputID?: string;

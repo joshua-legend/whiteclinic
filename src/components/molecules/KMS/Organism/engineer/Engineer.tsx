@@ -19,19 +19,6 @@ const createData = (
   return { row, first, second };
 };
 
-<<<<<<< Updated upstream
-=======
-export const SkillCheckBoxs = () => {
-  return (
-    <>
-      {skillArr.map((skill) => (
-        <CCheckbox<skill> key={skill} label={skill} isChecked={false} />
-      ))}
-    </>
-  );
-};
-
->>>>>>> Stashed changes
 // 엔지니어 상태 객체로 관리
 export type EngineerInfoModel = {
   name: string;

@@ -4,10 +4,8 @@ import { skill, skillArr } from '@/constants/definition';
 
 import { Paper, Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/material';
 import { ButtonTwo } from '../../Melecules/engineer/ButtonTwo';
-
-import { ChangeEventHandler, useState } from 'react';
 import { CModal } from '../../Melecules/engineer/CModal';
-import { CheckBox } from '@mui/icons-material';
+import { useState } from 'react';
 
 export type EngineerTableType = '기사성함' | '연락처' | '거주지역' | '가능품목' | '특이사항';
 
@@ -20,11 +18,10 @@ const createData = (
 };
 
 // 엔지니어 상태 객체로 관리
-export type EngineerInfoModel = {
+type EngineerInfoModel = {
   name: string;
   number: string;
   address: string;
-  skills: boolean;
   addskill: string;
   issue: string;
 };
@@ -32,11 +29,11 @@ export type EngineerInfoModel = {
 // 상태의 기본값을 지정해줌
 export const Engineer = () => {
   const [showModal, setModal] = useState(false);
+  const [checkBoxState, setCheckBoxState] = useState<boolean[]>(Array(12).fill(false));
   const [engineerData, setEngineerData] = useState<EngineerInfoModel>({
     name: '',
     number: '',
     address: '',
-    skills: false,
     addskill: '',
     issue: '',
   });
@@ -47,13 +44,38 @@ export const Engineer = () => {
     console.log(engineerData);
   };
 
-  const SkillCheckBoxs = () => (
-    <>
-      {skillArr.map((skill) => (
-        <CCheckbox<skill> key={skill} label={skill} isChecked={false} />
-      ))}
-    </>
-  );
+  //체크박스 상태관리 함수
+  const toggle = (index: number) => {
+    setCheckBoxState((prev) => {
+      const newState = [...prev];
+      newState[index] = !newState[index];
+      console.log(prev, index);
+      return newState;
+    });
+  };
+
+  const test = () => {
+    setCheckBoxState((prev)=>{
+      
+      return prev
+    })
+  };
+
+  //체크박스 뿌려주기
+  const SkillCheckBoxs = () => {
+    return (
+      <>
+        {skillArr.map((skill, index) => (
+          <CCheckbox
+            key={index}
+            label={skill}
+            isChecked={checkBoxState[index]}
+            handleChange={() => toggle(index)}
+          />
+        ))}
+      </>
+    );
+  };
 
   const rows = [
     createData(
@@ -96,7 +118,7 @@ export const Engineer = () => {
         labelProp: '제품명 입력',
         type: 'text',
         placeholderProp: '제품명 직접입력',
-        handleInput: (e) => EngineerInfoChangeHandler('skills', e.target.value),
+        handleInput: (e) => EngineerInfoChangeHandler('addskill', e.target.value),
       })
     ),
     createData(

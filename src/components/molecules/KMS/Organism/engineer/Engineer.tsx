@@ -19,6 +19,19 @@ const createData = (
   return { row, first, second };
 };
 
+<<<<<<< Updated upstream
+=======
+export const SkillCheckBoxs = () => {
+  return (
+    <>
+      {skillArr.map((skill) => (
+        <CCheckbox<skill> key={skill} label={skill} isChecked={false} />
+      ))}
+    </>
+  );
+};
+
+>>>>>>> Stashed changes
 // 엔지니어 상태 객체로 관리
 export type EngineerInfoModel = {
   name: string;
@@ -150,10 +163,8 @@ export const Engineer = () => {
         rightButton="등록"
         onRightButton={() => setModal(true)}
       />
-      <CModal
-        title="해당 내용으로 기사정보를 등록하시겠습니까?"
-        open={showModal}
-        children={ButtonTwo({
+      <CModal title="해당 내용으로 기사정보를 등록하시겠습니까?" open={showModal}>
+        {ButtonTwo({
           leftButton: '아니오',
           leftBgColor: 'gray',
           leftColor: 'black',
@@ -161,7 +172,7 @@ export const Engineer = () => {
           onLeftButton: () => setModal(false),
           onRightButton: openInfo,
         })}
-      />
+      </CModal>
     </div>
   );
 };

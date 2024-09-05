@@ -54,13 +54,6 @@ export const Engineer = () => {
     });
   };
 
-  const test = () => {
-    setCheckBoxState((prev)=>{
-      
-      return prev
-    })
-  };
-
   //체크박스 뿌려주기
   const SkillCheckBoxs = () => {
     return (

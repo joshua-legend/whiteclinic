@@ -53,9 +53,9 @@ const getBasePrice = (
   isDiscounted: boolean,
   itemTimesQuantity: void,
   discountedPrice: number,
-  cleaningItemInfo: productInfoTable,
+  cleaningItemInfo: productInfoTable
 ) => {
-  itemCategory == 'airconditional' ? cleaningItemInfo.airconditional : cleaningItemInfo.washing
+  itemCategory == 'airconditional' ? cleaningItemInfo.airconditional : cleaningItemInfo.washing;
 };
 
 export const calculateComplexPrice = (salesData: SalesInfoModel): number => {
@@ -68,12 +68,12 @@ export const calculateComplexPrice = (salesData: SalesInfoModel): number => {
   const discountedPrice = applyDiscount(salesData);
 
   // Get base price
-  basePrice = ;
+  // basePrice = ;
 
-  // Apply discount
-  basePrice =
-    // Adjust for quantity
-    basePrice = adjustForQuantity(basePrice, itemQuantity);
+  // // Apply discount
+  // basePrice =
+  //   // Adjust for quantity
+  //   basePrice = adjustForQuantity(basePrice, itemQuantity);
 
   return basePrice;
 };

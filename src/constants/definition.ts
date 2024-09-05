@@ -64,6 +64,7 @@ export type CheckboxProps<T extends allType | engineerName> = {
   isChecked?: boolean;
   width?: string;
   handleChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  isAnyChecked: boolean;
 };
 
 export type ProductDropdownList = {

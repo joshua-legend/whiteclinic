@@ -33,6 +33,7 @@ const PersonName = [
 
 export const CheckboxList = () => {
   const [nameList, setNameList] = useState<boolean[]>(Array(PersonName.length).fill(false));
+  const isAnyChecked = nameList.some((isCheckd) => isCheckd);
 
   //체크박스 상태관리 함수
   const toggle = (index: number) => {
@@ -59,6 +60,7 @@ export const CheckboxList = () => {
           isChecked={nameList[index]}
           width="100px"
           handleChange={() => toggle(index)}
+          isAnyChecked={isAnyChecked ? !nameList[index] : false}
         />
       </Box>
     ));

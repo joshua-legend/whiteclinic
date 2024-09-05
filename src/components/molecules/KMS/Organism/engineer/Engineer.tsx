@@ -7,6 +7,7 @@ import { ButtonTwo } from '../../Melecules/engineer/ButtonTwo';
 
 import { ChangeEventHandler, useState } from 'react';
 import { CModal } from '../../Melecules/engineer/CModal';
+import { CheckBox } from '@mui/icons-material';
 
 export type EngineerTableType = '기사성함' | '연락처' | '거주지역' | '가능품목' | '특이사항';
 
@@ -23,7 +24,7 @@ export type EngineerInfoModel = {
   name: string;
   number: string;
   address: string;
-  skills: skill[];
+  skills: boolean;
   addskill: string;
   issue: string;
 };
@@ -35,7 +36,7 @@ export const Engineer = () => {
     name: '',
     number: '',
     address: '',
-    skills: [],
+    skills: false,
     addskill: '',
     issue: '',
   });
@@ -44,21 +45,6 @@ export const Engineer = () => {
   const EngineerInfoChangeHandler = (key: keyof EngineerInfoModel, value: string) => {
     setEngineerData((prev) => ({ ...prev, [key]: value }));
     console.log(engineerData);
-  };
-
-  //필드와 인풋상태관리 연결
-  const handleInputChange =
-    (key: keyof EngineerInfoModel): ChangeEventHandler<HTMLInputElement> =>
-    (event) => {
-      EngineerInfoChangeHandler(key, event.target.value);
-    };
-
-  //체크박스 상태관리
-  const handleSkillChange = (skill: skill, isChecked: boolean) => {
-    setEngineerData((prev) => ({
-      ...prev,
-      skills: isChecked ? [...prev.skills, skill] : prev.skills.filter((s) => s !== skill),
-    }));
   };
 
   const SkillCheckBoxs = () => (
@@ -70,15 +56,53 @@ export const Engineer = () => {
   );
 
   const rows = [
-    createData('기사성함', <CInput type="text" handleInput={handleInputChange('name')} />),
-    createData('연락처', <CInput type="text" handleInput={handleInputChange('number')} />),
-    createData('거주지역', <CInput type="text" handleInput={handleInputChange('address')} />),
+    createData(
+      '기사성함',
+      CInput({
+        labelProp: '고객 성함',
+        type: 'text',
+        placeholderProp: '이름을 입력하세요',
+        handleInput: (e) => {
+          EngineerInfoChangeHandler('name', e.target.value);
+        },
+      })
+    ),
+    createData(
+      '연락처',
+      CInput({
+        labelProp: '고객 연락처',
+        type: 'text',
+        placeholderProp: '`-` 를 제외하고 입력하세요',
+        handleInput: (e) => {
+          EngineerInfoChangeHandler('number', e.target.value);
+        },
+      })
+    ),
+    createData(
+      '거주지역',
+      CInput({
+        labelProp: '고객 주소지',
+        type: 'text',
+        placeholderProp: '상세 주소를 입력하세요',
+        handleInput: (e) => {
+          EngineerInfoChangeHandler('address', e.target.value);
+        },
+      })
+    ),
     createData(
       '가능품목',
       <SkillCheckBoxs />,
-      <CInput type="text" handleInput={handleInputChange('skills')} />
+      CInput({
+        labelProp: '제품명 입력',
+        type: 'text',
+        placeholderProp: '분류 불가능한 세척품목',
+        handleInput: (e) => EngineerInfoChangeHandler('skills', e.target.value),
+      })
     ),
-    createData('특이사항', <CInput type="text" handleInput={handleInputChange('issue')} />),
+    createData(
+      '특이사항',
+      <CInput handleInput={(e) => EngineerInfoChangeHandler('skills', e.target.value)} />
+    ),
   ];
 
   const openModal = () => {

@@ -2,9 +2,8 @@ import CCheckbox from '@/components/atom/CCheckbox';
 import CDropDown from '@/components/atom/CDropdown';
 import CInput from '@/components/atom/CInput';
 import { CNumberInput } from '@/components/atom/CNumberInput';
-
 import { CleaningItem, SalesInfoModel, salesInfoValue } from '@/constants/definition';
-
+import { cleaningItemInfo } from '@/constants/productTable';
 import { StyledCompTableCell, StyledTextTableCell } from '@/styles/customize';
 import { writeInfoTable } from '@/util/actionUtil';
 import { Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/material';
@@ -24,6 +23,7 @@ const SalesInfoFrame = () => {
     comments: '',
   });
 
+  // 제품명 수기입력 readOnly 프롭 토글용 상태변수
   const isItemSelected = !!salesData.item && salesData.item !== '선택';
 
   // 체크박스 상태 관리 변수

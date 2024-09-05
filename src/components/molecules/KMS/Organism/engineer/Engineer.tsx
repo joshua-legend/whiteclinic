@@ -18,14 +18,6 @@ const createData = (
   return { row, first, second };
 };
 
-export const SkillCheckBoxs = () => (
-  <>
-    {skillArr.map((skill) => (
-      <CCheckbox<skill> key={skill} label={skill} isChecked={false} />
-    ))}
-  </>
-);
-
 // 엔지니어 상태 객체로 관리
 export type EngineerInfoModel = {
   name: string;
@@ -68,6 +60,14 @@ export const Engineer = () => {
       skills: isChecked ? [...prev.skills, skill] : prev.skills.filter((s) => s !== skill),
     }));
   };
+
+  const SkillCheckBoxs = () => (
+    <>
+      {skillArr.map((skill) => (
+        <CCheckbox<skill> key={skill} label={skill} isChecked={true} />
+      ))}
+    </>
+  );
 
   const rows = [
     createData('기사성함', <CInput type="text" handleInput={handleInputChange('name')} />),

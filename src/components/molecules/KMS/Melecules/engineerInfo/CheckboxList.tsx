@@ -50,15 +50,14 @@ export const CheckboxList = () => {
       <Box
         sx={{
           display: 'flex',
-          width: '300px',
           gap: '10px',
-          border: '1px solid black',
         }}
       >
         <CCheckbox<engineerName>
           key={index}
           label={name}
           isChecked={nameList[index]}
+          width="100px"
           handleChange={() => toggle(index)}
         />
       </Box>

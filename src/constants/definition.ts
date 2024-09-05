@@ -62,6 +62,7 @@ export type CheckboxProps<T extends allType | engineerName> = {
   label: T;
   engineerName?: engineerName;
   isChecked?: boolean;
+  width?: string;
   handleChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
@@ -142,7 +143,7 @@ type LabelType =
   | '연도'
   | '수당'
   | '수당 합계'
-  | '제품명 입력'
+  | '제품명 직접입력'
   | '기사 성함'
   | '기사 연락처'
   | '기사 주소지';

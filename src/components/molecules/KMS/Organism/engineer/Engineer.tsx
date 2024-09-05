@@ -2,7 +2,16 @@ import CCheckbox from '@/components/atom/CCheckbox';
 import CInput from '@/components/atom/CInput';
 import { skill, skillArr } from '@/constants/definition';
 
-import { Paper, Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/material';
+import {
+  Box,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableRow,
+  Typography,
+} from '@mui/material';
 import { ButtonTwo } from '../../Melecules/engineer/ButtonTwo';
 import { CModal } from '../../Melecules/engineer/CModal';
 import { useState } from 'react';
@@ -12,9 +21,10 @@ export type EngineerTableType = '기사성함' | '연락처' | '거주지역' | 
 const createData = (
   row: EngineerTableType, //
   first: JSX.Element, //
-  second?: JSX.Element
+  second?: JSX.Element,
+  thrid?: string
 ) => {
-  return { row, first, second };
+  return { row, first, second, thrid };
 };
 
 // 엔지니어 상태 객체로 관리
@@ -57,7 +67,14 @@ export const Engineer = () => {
   //체크박스 뿌려주기
   const SkillCheckBoxs = () => {
     return (
-      <>
+      <Box
+        sx={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(5, 1fr)',
+          gap: 2,
+          maxWidth: '600px',
+        }}
+      >
         {skillArr.map((skill, index) => (
           <CCheckbox
             key={index}
@@ -66,7 +83,7 @@ export const Engineer = () => {
             handleChange={() => toggle(index)}
           />
         ))}
-      </>
+      </Box>
     );
   };
 
@@ -106,13 +123,15 @@ export const Engineer = () => {
     ),
     createData(
       '가능품목',
-      <SkillCheckBoxs />,
-      CInput({
-        labelProp: '제품명 입력',
-        type: 'text',
-        placeholderProp: '제품명 직접입력',
-        handleInput: (e) => EngineerInfoChangeHandler('addskill', e.target.value),
-      })
+      <Box sx={{ display: 'flex', gap: 2 }}>
+        <SkillCheckBoxs />,
+        {CInput({
+          labelProp: '제품명 직접입력',
+          type: 'text',
+          placeholderProp: '제품명 직접입력',
+          handleInput: (e) => EngineerInfoChangeHandler('addskill', e.target.value),
+        })}
+      </Box>
     ),
     createData(
       '특이사항',
@@ -138,20 +157,21 @@ export const Engineer = () => {
               <TableRow key={row.row}>
                 <TableCell
                   sx={{
-                    width: '100px',
+                    fontSize: 16,
+                    fontWeight: 'bold',
+                    letterSpacing: 5,
+                    backgroundColor: '#f5f5f5',
+                    width: '120px',
+                    textAlign: 'center',
+                    border: 'none',
                   }}
                 >
                   {row.row}
                 </TableCell>
-                <TableCell
-                  sx={
-                    {
-                      //
-                    }
-                  }
-                >
-                  {row.first}
-                  {row.second}
+
+                <TableCell>
+                  <Box>{row.first}</Box>
+                  <Box>{row.second}</Box>
                 </TableCell>
               </TableRow>
             ))}

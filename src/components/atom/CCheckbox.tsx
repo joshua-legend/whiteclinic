@@ -15,11 +15,13 @@ const CCheckbox = <T extends allType | engineerName>({
   label,
   handleChange,
   isChecked = true,
+  width,
 }: CheckboxProps<T>) => {
   return (
     <FormControlLabel
       control={<Checkbox checked={isChecked} onChange={handleChange} />}
       label={label}
+      style={{ width: width }}
     />
   );
 };

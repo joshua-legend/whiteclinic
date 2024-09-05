@@ -11,8 +11,8 @@ const openInfo = () => {
 export const LeftInfoComponent = () => {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
-      {leftinfo.map((item) => (
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: '30px', width: '550px' }}>
+      {leftinfo.map((item, i) => (
+        <Box key={i} sx={{ display: 'flex', alignItems: 'center', gap: '30px', width: '550px' }}>
           {item} <CInput isReadOnly containerWidth="450px" />{' '}
         </Box>
       ))}

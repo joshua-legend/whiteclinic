@@ -24,8 +24,10 @@ export const RightInfoComponent = () => {
         gap: '50px',
       }}
     >
-      {rightinfo.map((item) => (
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: '10px' }}>{item}</Box>
+      {rightinfo.map((item, i) => (
+        <Box key={i} sx={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          {item}
+        </Box>
       ))}
     </Box>
   );

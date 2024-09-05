@@ -172,10 +172,8 @@ export const Engineer = () => {
         rightButton="등록"
         onRightButton={() => setModal(true)}
       />
-      <CModal
-        title="해당 내용으로 기사정보를 등록하시겠습니까?"
-        open={showModal}
-        children={ButtonTwo({
+      <CModal title="해당 내용으로 기사정보를 등록하시겠습니까?" open={showModal}>
+        {ButtonTwo({
           leftButton: '아니오',
           leftBgColor: 'gray',
           leftColor: 'black',
@@ -183,7 +181,7 @@ export const Engineer = () => {
           onLeftButton: () => setModal(false),
           onRightButton: openInfo,
         })}
-      />
+      </CModal>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import CDatePicker from '@/components/atom/CDatePicker';
-import CScheduleDateBox from './CScheduleDateBox';
+import CScheduleDateBox from '../molecules/LJW/CScheduleDateBox';
 import { useState } from 'react';
-import CScheduleTimeLineList from './CScheduleTimeLineList';
+import CScheduleTimeLineList from '../molecules/LJW/CScheduleTimeLineList';
 import { Dayjs } from 'dayjs';
 import { Box, ThemeProvider } from '@mui/material';
 import { theme } from '@/constants/theme';

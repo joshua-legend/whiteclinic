@@ -5,7 +5,6 @@ import { engineerInfo, TODAY } from '@/constants/definition';
 type CScheduleTimeLineListProps = {
   selectDate?: Dayjs | null;
   engineers?: engineerInfo[];
-  //engineers: string[]; //나중에 기사정보 페이지 완성되면 기사 type 가져와서 넣기
 };
 
 const CScheduleTimeLineList = ({ selectDate = TODAY, engineers }: CScheduleTimeLineListProps) => {

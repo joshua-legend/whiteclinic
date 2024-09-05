@@ -14,7 +14,7 @@ const CCustomerInfoContent = ({ customer }: CustomerInfoProps) => {
   return (
     <Box sx={{ ...StyledCustomerInfo }}>
       {customer.customerName} - {customer.customerContact} - {customer.customerAddress} -{' '}
-      {customer.cleaningItem} - {customer.cleaningType} - {customer.modelEA}대 - {priceRender}
+      {customer.cleaningItem} - {customer.cleaningType} - {customer.itemQuantity}대 - {priceRender}
     </Box>
   );
 };

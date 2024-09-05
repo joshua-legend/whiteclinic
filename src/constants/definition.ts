@@ -214,7 +214,7 @@ export type CustomerInfo = {
   customerAddress: string;
   cleaningItem: string;
   cleaningType: string;
-  modelEA: number;
+  itemQuantity: number;
   totalPrice: number;
   appointmentDate: string;
   appointmentTime: string;

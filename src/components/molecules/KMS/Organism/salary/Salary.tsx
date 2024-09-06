@@ -55,7 +55,7 @@ export const Salary = () => {
 
   return (
     <Box>
-      <TableContainer sx={{ border: '1px solid red', width: '500px' }}>
+      <TableContainer sx={{ width: '430px' }}>
         <Table>
           {rows.map((row) => (
             <TableRow key={row.rows}>
@@ -65,7 +65,7 @@ export const Salary = () => {
                   fontWeight: 'bold',
                   letterSpacing: 5,
                   backgroundColor: '#f5f5f5',
-                  width: '120px',
+                  width: '100px',
                   textAlign: 'center',
                   border: 'none',
                 }}

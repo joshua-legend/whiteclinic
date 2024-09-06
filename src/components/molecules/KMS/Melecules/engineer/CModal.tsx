@@ -16,7 +16,7 @@ export const CModal = ({ open = false, title, children }: modalProps) => {
         height: 70,
         border: '1px solid #000',
         boxShadow: 24,
-        backgroundColor: 'white',
+        backgroundColor: 'whitesmoke',
         p: 4,
       }}
       open={open}

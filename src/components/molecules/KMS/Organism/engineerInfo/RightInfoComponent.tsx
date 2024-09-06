@@ -73,6 +73,7 @@ export const RightInfoComponent = () => {
   return (
     <Box
       sx={{
+        // border: '1px solid pink',
         marginTop: '10px',
         display: 'flex',
         flexDirection: 'column',
@@ -80,7 +81,20 @@ export const RightInfoComponent = () => {
       }}
     >
       {rightinfo.map((item, i) => (
-        <Box key={i} sx={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+        <Box
+          key={i}
+          sx={{
+            // border: '1px solid green',
+            display: 'flex',
+            alignItems: 'center',
+            width: '500px',
+            gap: '10px',
+            fontSize: 16,
+            fontWeight: 'bold',
+            letterSpacing: 5,
+            textAlign: 'center',
+          }}
+        >
           {item}
         </Box>
       ))}

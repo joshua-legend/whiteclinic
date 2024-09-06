@@ -128,7 +128,7 @@ export const Engineer = () => {
   ];
 
   const openInfo = () => {
-    window.location.href = '/engineer/e_registration';
+    window.location.href = '/engineer/e_register';
   };
 
   return (

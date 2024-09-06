@@ -220,6 +220,7 @@ export type CustomerInfo = {
   totalPrice: number;
   appointmentDate: string;
   appointmentTime: string;
+  assignedEngineer: string;
 };
 
 export type CustomerInfoProps = {
@@ -250,6 +251,7 @@ export type CustomerTimeSlotProps = {
 export type CustomerTimeMappingProps = {
   selectDate: string;
   orderInfo?: CustomerInfo[];
+  engineerName: string;
 };
 
 export type engineerInfo = {

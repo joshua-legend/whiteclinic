@@ -123,14 +123,17 @@ export const Engineer = () => {
     ),
     createData(
       '가능품목',
-      <Box sx={{ display: 'flex', gap: 2 }}>
-        <SkillCheckBoxs />,
-        {CInput({
-          labelProp: '제품명 직접입력',
-          type: 'text',
-          placeholderProp: '제품명 직접입력',
-          handleInput: (e) => EngineerInfoChangeHandler('addskill', e.target.value),
-        })}
+      <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
+        <SkillCheckBoxs />
+        ||
+        <Box>
+          {CInput({
+            labelProp: '제품명 직접입력',
+            type: 'text',
+            placeholderProp: '제품명 직접입력',
+            handleInput: (e) => EngineerInfoChangeHandler('addskill', e.target.value),
+          })}
+        </Box>
       </Box>
     ),
     createData(

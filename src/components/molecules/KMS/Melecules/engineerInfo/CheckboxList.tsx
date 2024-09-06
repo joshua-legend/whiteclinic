@@ -49,6 +49,7 @@ export const CheckboxList = () => {
   const EngineerNames = () => {
     return PersonName.map((name, index) => (
       <Box
+        key={index}
         sx={{
           display: 'flex',
           gap: '10px',

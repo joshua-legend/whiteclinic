@@ -23,6 +23,7 @@ export const LeftInfoComponent = () => {
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
       {leftinfo.map((item, index) => (
         <Box
+          key={index}
           sx={{
             display: 'flex',
             alignItems: 'center',

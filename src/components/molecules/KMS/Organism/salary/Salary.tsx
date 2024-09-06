@@ -1,69 +1,97 @@
 import CDropDown from '@/components/atom/CDropdown';
 import CInput from '@/components/atom/CInput';
-import { AllowanceRates, WeekDays } from '@/constants/definition';
-import { Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/material';
+import { AllowanceRates, SalaryCreateData, SalaryType, WeekDays } from '@/constants/definition';
+import { Box, Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/material';
 import { ButtonTwo } from '../../Melecules/engineer/ButtonTwo';
 import { CModal } from '../../Melecules/engineer/CModal';
 import { useState } from 'react';
 
-type SalaryType = '기사성함' | '수당률' | '급여요일';
-
-const createData = (rows: SalaryType, first: JSX.Element) => {
-  return { rows, first };
-};
-
-const rows = [
-  createData('기사성함', CInput({ type: 'text' })),
-  createData('수당률', CDropDown({ contentList: AllowanceRates })),
-  createData('급여요일', CDropDown({ contentList: WeekDays })),
-];
-
 export const Salary = () => {
   const [Modal, setModal] = useState(false);
 
-  const openModal = () => {
-    setModal(true);
+  type SalaryModel = {
+    name: string;
+    rate: string;
+    payday: string;
+  };
+  const [SalaryData, setSalaryData] = useState<SalaryModel>({
+    name: '',
+    rate: '',
+    payday: '',
+  });
+
+  const SalaryHandleChange = (key: keyof SalaryModel, value: string) => {
+    setSalaryData((prev) => ({ ...prev, [key]: value }));
+    console.log(SalaryData);
   };
 
-  const closeModal = () => {
-    setModal(false);
-  };
+  const rows = [
+    SalaryCreateData(
+      '기사성함',
+      CInput({
+        type: 'text',
+        labelProp: '기사 성함',
+        placeholderProp: '이름을 입력하세요',
+        handleInput: (e) => SalaryHandleChange('name', e.target.value),
+      })
+    ),
+    SalaryCreateData(
+      '수당률',
+      CDropDown({
+        contentList: AllowanceRates,
+        handleChange: (e) => SalaryHandleChange('payday', e.target.value),
+      })
+    ),
+    SalaryCreateData(
+      '급여요일',
+      CDropDown({
+        contentList: WeekDays,
+        handleChange: (e) => {
+          SalaryHandleChange('rate', e.target.value);
+        },
+      })
+    ),
+  ];
 
   return (
-    <div>
-      <TableContainer>
+    <Box>
+      <TableContainer sx={{ border: '1px solid red', width: '500px' }}>
         <Table>
-          <TableBody>
-            {rows.map((row) => (
-              <TableRow key={row.rows}>
-                <TableCell
-                  sx={{
-                    width: '100px',
-                  }}
-                >
-                  {row.rows}
-                </TableCell>
-                <TableCell>{row.first}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
+          {rows.map((row) => (
+            <TableRow key={row.rows}>
+              <TableCell
+                sx={{
+                  fontSize: 16,
+                  fontWeight: 'bold',
+                  letterSpacing: 5,
+                  backgroundColor: '#f5f5f5',
+                  width: '120px',
+                  textAlign: 'center',
+                  border: 'none',
+                }}
+              >
+                {row.rows}
+              </TableCell>
+              <TableCell>{row.first}</TableCell>
+            </TableRow>
+          ))}
         </Table>
       </TableContainer>
       <ButtonTwo
         leftButton="취소"
-        onLeftButton={closeModal}
+        onLeftButton={() => setModal(false)}
         rightButton="등록"
-        onRightButton={openModal}
+        onRightButton={() => setModal(true)}
       />
       <CModal title="해당 내용으로 급여사항을 등록하겠습니까?" open={Modal}>
         {ButtonTwo({
           leftButton: '아니오',
-          onLeftButton: closeModal,
+          onLeftButton: () => setModal(false),
           leftBgColor: 'gray',
           leftColor: 'black',
           rightButton: '등록',
         })}
       </CModal>
-    </div>
+    </Box>
   );
 };

@@ -1,16 +1,9 @@
 import CCheckbox from '@/components/atom/CCheckbox';
 import CDropDown from '@/components/atom/CDropdown';
 import { Box, SelectChangeEvent } from '@mui/material';
-import { state, WeekDays } from '@/constants/definition';
+import { rightModel, state, WeekDays } from '@/constants/definition';
 import CDatePicker from '@/components/atom/CDatePicker';
 import { useState } from 'react';
-
-type rightModel = {
-  regularDay: string;
-  irregularDay: string;
-  regularCheckBox: boolean;
-  irregularCheckBox: boolean;
-};
 
 export const RightInfoComponent = () => {
   const [rightModel, setRightModel] = useState<rightModel>({

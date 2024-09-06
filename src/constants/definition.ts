@@ -339,3 +339,70 @@ export const salesTableTexts: ProductDropdownList[] = [
   { label: '세척금액' },
   { label: '특이사항' },
 ];
+
+//버튼 모달의 제목으로 들어가는 타입정의
+export type ButtoModalTextType =
+  | '해당 내용으로 기사정보를 등록하시겠습니까?'
+  | '해당 내용으로 급여사항을 등록하겠습니까?';
+
+//C모달에 들어가는 프롭스정의
+export type modalProps = {
+  open: boolean;
+  title: ButtoModalTextType;
+  children: JSX.Element;
+};
+
+//버튼TWo에 들어가는 프롭스정의
+export type ButtonTwoModalProps = {
+  leftButton: ButtonContent;
+  rightButton: ButtonContent;
+  leftColor?: string;
+  rightColor?: string;
+  leftBgColor?: string;
+  rightBgBolor?: string;
+  onLeftButton?: () => void;
+  onRightButton?: () => void;
+  modalText?: ButtoModalTextType;
+};
+
+// engineer컴포넌트 상태들을 객체로 관리
+export type EngineerInfoModel = {
+  name: string;
+  number: string;
+  address: string;
+  addskill: string;
+  issue: string;
+};
+
+//engineer컴포넌트의 테이블 타입정의
+export type EngineerTableType = '기사성함' | '연락처' | '거주지역' | '가능품목' | '특이사항';
+
+//engineer컴포넌트의 테이블의 함수정의
+export const engineerCreateData = (
+  row: EngineerTableType, //
+  first: JSX.Element, //
+  second?: JSX.Element,
+  thrid?: string
+) => {
+  return { row, first, second, thrid };
+};
+
+//LeftInfoComponent컴포넌트의 테이블의 행의 타입 정의 및 사용
+export type leftinfo = '연락처' | '거주지' | '가능품목' | '특이사항';
+export const leftinfo: leftinfo[] = ['연락처', '거주지', '가능품목', '특이사항'];
+
+//RightInfoComponent컴포넌트의 상태들을 객체로 관리
+export type rightModel = {
+  regularDay: string;
+  irregularDay: string;
+  regularCheckBox: boolean;
+  irregularCheckBox: boolean;
+};
+
+//Salary컴포넌트의 테이블행의 타입을 정의
+export type SalaryType = '기사성함' | '수당률' | '급여요일';
+
+//Salary컴포넌트의 테이블의 함수정의
+export const SalaryCreateData = (rows: SalaryType, first: JSX.Element) => {
+  return { rows, first };
+};

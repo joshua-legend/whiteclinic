@@ -178,3 +178,19 @@ export const StyledButtonContainer: CSSProperties = {
   padding: 3,
   justifyContent: 'center',
 };
+
+//CModal의 스타일을 정의해놓음
+export const CModal = {
+  position: 'absolute' as 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 415,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  pt: 2,
+  px: 4,
+  pb: 3,
+  gap: 10,
+};

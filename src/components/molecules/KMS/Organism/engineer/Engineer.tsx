@@ -1,6 +1,6 @@
 import CCheckbox from '@/components/atom/CCheckbox';
 import CInput from '@/components/atom/CInput';
-import { skill, skillArr } from '@/constants/definition';
+import { engineerCreateData, EngineerInfoModel, skill, skillArr } from '@/constants/definition';
 
 import {
   Box,
@@ -15,26 +15,6 @@ import {
 import { ButtonTwo } from '../../Melecules/engineer/ButtonTwo';
 import { CModal } from '../../Melecules/engineer/CModal';
 import { useState } from 'react';
-
-export type EngineerTableType = '기사성함' | '연락처' | '거주지역' | '가능품목' | '특이사항';
-
-const createData = (
-  row: EngineerTableType, //
-  first: JSX.Element, //
-  second?: JSX.Element,
-  thrid?: string
-) => {
-  return { row, first, second, thrid };
-};
-
-// 엔지니어 상태 객체로 관리
-type EngineerInfoModel = {
-  name: string;
-  number: string;
-  address: string;
-  addskill: string;
-  issue: string;
-};
 
 // 상태의 기본값을 지정해줌
 export const Engineer = () => {
@@ -88,7 +68,7 @@ export const Engineer = () => {
   };
 
   const rows = [
-    createData(
+    engineerCreateData(
       '기사성함',
       CInput({
         labelProp: '기사 성함',
@@ -99,7 +79,7 @@ export const Engineer = () => {
         },
       })
     ),
-    createData(
+    engineerCreateData(
       '연락처',
       CInput({
         labelProp: '기사 연락처',
@@ -110,7 +90,7 @@ export const Engineer = () => {
         },
       })
     ),
-    createData(
+    engineerCreateData(
       '거주지역',
       CInput({
         labelProp: '기사 주소지',
@@ -121,7 +101,7 @@ export const Engineer = () => {
         },
       })
     ),
-    createData(
+    engineerCreateData(
       '가능품목',
       <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
         <SkillCheckBoxs />
@@ -136,7 +116,7 @@ export const Engineer = () => {
         </Box>
       </Box>
     ),
-    createData(
+    engineerCreateData(
       '특이사항',
       CInput({
         labelProp: '특이사항',

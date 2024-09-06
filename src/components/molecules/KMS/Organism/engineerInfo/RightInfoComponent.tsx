@@ -5,14 +5,29 @@ import { state, WeekDays } from '@/constants/definition';
 import CDatePicker from '@/components/atom/CDatePicker';
 import { useState } from 'react';
 
-export const RightInfoComponent = () => {
-  const [regularHoliday, setRegularHoliday] = useState<string>();
-  const [irregularHoliday, setIrregularHoliday] = useState();
+type rightModel = {
+  regularDay: string;
+  irregularDay: string;
+  regularCheckBox: boolean;
+  irregularCheckBox: boolean;
+};
 
-  const handleRegularHoliday = (event:SelectChangeEvent<string>) => {
-    setRegularHoliday(event.target.value);
-    console.log(regularHoliday);
+export const RightInfoComponent = () => {
+  const [rightModel, setRightModel] = useState<rightModel>({
+    regularDay: '',
+    irregularDay: '',
+    regularCheckBox: false,
+    irregularCheckBox: false,
+  });
+
+  //드롭다운,체크박스 상태관리 함수
+  const rightModelHandler = (key: keyof rightModel, value: string | boolean) => {
+    setRightModel((prev) => ({ ...prev, [key]: value }));
+    console.log(rightModel);
   };
+
+  //체크박스 상태관리 함수
+  const [checkedState, toggleChckedSate] = useState(false);
 
   const rightinfo = [
     [
@@ -21,16 +36,37 @@ export const RightInfoComponent = () => {
         key="weekdays"
         contentList={WeekDays}
         contentName="요일 선택"
-        handleChange={handleRegularHoliday}
-        selectedValue={regularHoliday}
+        handleChange={(e) => rightModelHandler('regularDay', e.target.value)}
+        selectedValue={rightModel.regularDay}
       />,
-      <CCheckbox<state> key="dayoffCheckbox" label="휴무추가" isChecked={false} />,
+      <CCheckbox<state>
+        key="dayoffCheckbox"
+        label="휴무추가"
+        isChecked={rightModel.regularCheckBox}
+        handleChange={(e) => {
+          rightModelHandler('regularCheckBox', e.target.checked);
+          toggleChckedSate((state) => !state);
+        }}
+      />,
     ],
 
     [
       '비정기휴무',
-      <CDatePicker key="calenderComponent" />,
-      <CCheckbox<state> key="vacationCheckbox" label="휴무추가" isChecked={false} />,
+      <CDatePicker
+        key="calenderComponent"
+        handleChange={(e) =>
+          rightModelHandler('irregularDay', String(e?.format('YYYY년 MM월 DD일')))
+        }
+      />,
+      <CCheckbox<state>
+        key="vacationCheckbox"
+        label="휴무추가"
+        isChecked={rightModel.irregularCheckBox}
+        handleChange={(e) => {
+          rightModelHandler('irregularCheckBox', e.target.checked);
+          toggleChckedSate((state) => !state);
+        }}
+      />,
     ],
   ];
 

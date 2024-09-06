@@ -407,3 +407,4 @@ export type SalaryType = '기사성함' | '수당률' | '급여요일';
 export const SalaryCreateData = (rows: SalaryType, first: JSX.Element) => {
   return { rows, first };
 };
+

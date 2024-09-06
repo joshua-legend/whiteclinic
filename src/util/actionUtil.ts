@@ -1,6 +1,6 @@
 import { OrderInfoTableRowTextType, SalesInfoTableRowTextType } from '@/constants/definition';
-import { SalesInfoModel } from '@/constants/definition';
-import { cleaningItemInfo, productInfoTable } from '@/constants/productTable';
+import { SalesInfoModel, productLabelTypes } from '@/constants/definition';
+import { cleaningItemInfo } from '@/constants/productTable';
 /**
  *
  * @param tableRow 테이블 텍스트타입 OrderInfoTableRowTextType | SalesInfoTableRowTextType
@@ -16,64 +16,91 @@ export const writeInfoTable = (
   return { tableRow, components, subComponents };
 };
 
-const isAirconCategory = (salesData: SalesInfoModel) => {
-  if (
-    [...cleaningItemInfo.airconditional].map(
-      (airconItem, index) => airconItem.label === salesData.item
-    )
-  )
-    return 'airconditional';
-  else return 'washing';
+/**
+ *
+ * @param salesData 세척대수 정보추출 파라미터
+ * @param price 계산할 금액
+ * @returns 세척대수만큼 곱하여 반환
+ */
+const adjustItemQuantity = (salesData: SalesInfoModel, price: number | undefined) => {
+  if (salesData.itemQuantity != 0 && price) {
+    return price * salesData.itemQuantity;
+  }
 };
 
-const isCompositeCleaning = (salesData: SalesInfoModel) => {
-  const cleaningCategory = salesData.isComposite ? 'composite' : 'regular';
-  return cleaningCategory;
+/**
+ *
+ * @param salesData 할인여부와 할인율 파라미터
+ * @returns '%' 포함일 시 백분율계산, '-' 포함일 시 차액만큼 차감하여 반환
+ */
+const applyDiscount = (salesData: SalesInfoModel, price: number | undefined) => {
+  if (salesData.discountRatio.startsWith('-') && price)
+    return price - Number(salesData.discountRatio.split('-')[1]);
+  else if (salesData.discountRatio.includes('%') && price)
+    return price * (parseFloat(salesData.discountRatio.split('%')[0]) / 100);
 };
 
-const isDiscountedPrice = (salesData: SalesInfoModel) => {
-  const discountState = salesData.isDiscounted ? true : false;
-  return discountState;
+/**
+ *
+ * @param salesData 클라이언트 입력정보 파라미터
+ * @param price 일반,종합,빌트인,범위에 따라 금액 파라미터로 전달
+ * @returns
+ */
+const calculatePrice = (salesData: SalesInfoModel, price: number | undefined) => {
+  let tempPrice = price;
+  tempPrice = adjustItemQuantity(salesData, tempPrice);
+
+  // 할인여부에 따라 분기
+  if (salesData.isDiscounted) {
+    tempPrice = applyDiscount(salesData, tempPrice);
+  }
+
+  return tempPrice;
 };
 
-const adjustItemQuantity = (salesData: SalesInfoModel) => {
-  if (salesData.itemQuantity != 0) return salesData.totalPrice * salesData.itemQuantity;
+/**
+ *
+ * @param salesData 클라이언트 측에서 선택한 제품정보
+ * @returns productTable 에서 동일한 문자열 탐색하여 반환
+ */
+const findMatchedProduct = (salesData: SalesInfoModel) => {
+  const tempAircon = cleaningItemInfo.airconditional.filter((element) => {
+    return element.label === salesData.item;
+  });
+  const tempWashingMachine = cleaningItemInfo.washing.filter((element) => {
+    return element.label === salesData.item;
+  });
+
+  // airconditional에서 찾은 경우 해당 결과 반환
+  if (tempAircon.length > 0) return tempAircon[0];
+  // washing에서 찾은 경우 해당 결과 반환
+  if (tempWashingMachine.length > 0) return tempWashingMachine[0];
 };
 
-const applyDiscount = (salesData: SalesInfoModel) => {
-  if (salesData.discountRatio.startsWith('-'))
-    return salesData.totalPrice - Number(salesData.discountRatio.split('-')[1]);
-  else if (salesData.discountRatio.includes('%'))
-    return salesData.totalPrice * (parseFloat(salesData.discountRatio.split('%')[0]) / 100);
-};
+export const calculateComplexPrice = (salesData: SalesInfoModel): number | undefined => {
+  let finalPrice: number | undefined = 0;
+  const productInfo = findMatchedProduct(salesData);
 
-const getBasePrice = (
-  itemCategory: string,
-  washCategory: string,
-  isDiscounted: boolean,
-  itemTimesQuantity: void,
-  discountedPrice: number,
-  cleaningItemInfo: productInfoTable
-) => {
-  itemCategory == 'airconditional' ? cleaningItemInfo.airconditional : cleaningItemInfo.washing;
-};
+  // 종합, 일반세척
+  if (productInfo && 'compositePrice' in productInfo && 'regularPrice' in productInfo) {
+    const { compositePrice, regularPrice } = productInfo;
 
-export const calculateComplexPrice = (salesData: SalesInfoModel): number => {
-  let basePrice = 0;
+    salesData.isComposite
+      ? (finalPrice = calculatePrice(salesData, compositePrice))
+      : (finalPrice = calculatePrice(salesData, regularPrice));
+    return finalPrice;
+  }
+  // 고정단가
+  else if (productInfo && 'defaultPrice' in productInfo) {
+    const { defaultPrice } = productInfo;
+    return defaultPrice;
+  }
+  // 소 / 중 / 대 세탁기
+  else if (productInfo && 'smallPrice' in productInfo) {
+    const { smallPrice, mediumPrice, largePrice, builtInPrice } = productInfo;
+    console.log('소 / 중 / 대 구분할 지표나 상태변수가 필요함...');
+    return 0;
+  }
 
-  const itemCategory = isAirconCategory(salesData);
-  const washCategory = isCompositeCleaning(salesData);
-  const isDiscounted = isDiscountedPrice(salesData);
-  const itemTimesQuantity = adjustItemQuantity(salesData);
-  const discountedPrice = applyDiscount(salesData);
-
-  // Get base price
-  // basePrice = ;
-
-  // // Apply discount
-  // basePrice =
-  //   // Adjust for quantity
-  //   basePrice = adjustForQuantity(basePrice, itemQuantity);
-
-  return basePrice;
+  return finalPrice;
 };

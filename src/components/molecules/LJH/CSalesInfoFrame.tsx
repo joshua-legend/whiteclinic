@@ -3,9 +3,8 @@ import CDropDown from '@/components/atom/CDropdown';
 import CInput from '@/components/atom/CInput';
 import { CNumberInput } from '@/components/atom/CNumberInput';
 import { CleaningItem, SalesInfoModel, salesInfoValue } from '@/constants/definition';
-import { cleaningItemInfo } from '@/constants/productTable';
 import { StyledCompTableCell, StyledTextTableCell } from '@/styles/customize';
-import { writeInfoTable } from '@/util/actionUtil';
+import { calculateComplexPrice, writeInfoTable } from '@/util/actionUtil';
 import { Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/material';
 import { useEffect, useState } from 'react';
 
@@ -47,8 +46,19 @@ const SalesInfoFrame = () => {
     }
   };
 
+  const amountTotalPrice = (price: number | undefined) => {
+    if (price) {
+      setSalesData((prevState) => ({ ...prevState, totalPrice: price }));
+    }
+  };
+
   useEffect(() => {
     console.log({ ...salesData });
+    const totalPrice = calculateComplexPrice(salesData);
+
+    if (totalPrice !== salesData.totalPrice) {
+      amountTotalPrice(totalPrice);
+    }
   }, [salesData]);
 
   const salesInfoTableRows = [

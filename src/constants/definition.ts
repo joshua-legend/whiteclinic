@@ -20,9 +20,7 @@ export type ButtonProps = {
 };
 
 export type state = '발행완료' | '지급완료' | '휴무추가';
-
 export type revenue = '종합세척' | '일반세척' | '할인적용';
-
 export type engineerName = string;
 
 export type skill =
@@ -96,6 +94,31 @@ export const CleaningItem: ProductDropdownList[] = [
   { label: '일반 실외기' },
   { label: '대형 실외기' },
 ];
+
+export type builtInProductType = '드럼';
+export type defaultPriceProduct =
+  | '건조기'
+  | '트윈워시'
+  | '드럼형 아기사랑 세탁기'
+  | '통돌이형 아기사랑 세탁기';
+export type onlyCompositeProduct =
+  | '원형 360 에어컨'
+  | '파세코 창문형 에어컨'
+  | '사각 덕트'
+  | '원형 덕트'
+  | '메인 덕트'
+  | '일반실외기'
+  | '대형실외기';
+export type regularProduct = '벽걸이' | '원웨이' | '포웨이';
+export type rangedPriceProduct = '스탠드' | '투인원';
+
+export type productLabelTypes =
+  | builtInProductType
+  | regularProduct
+  | defaultPriceProduct
+  | onlyCompositeProduct
+  | rangedPriceProduct;
+
 export const paymentOptions: ProductDropdownList[] = [
   { label: '계좌이체' },
   { label: '카드결제' },

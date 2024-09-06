@@ -1,22 +1,9 @@
 import CButton from '@/components/atom/CButton';
-import { ButtonContent } from '@/constants/definition';
+import { ButtoModalTextType, ButtonContent, ButtonTwoModalProps } from '@/constants/definition';
 import { ButtonGroup } from '@mui/material';
-import { ButtoModalTextType } from './ButtonModal';
-
-export type ButtonTwoModalProps = {
-  leftButton: ButtonContent;
-  rightButton: ButtonContent;
-  leftColor?: string;
-  rightColor?: string;
-  leftBgColor?: string;
-  rightBgBolor?: string;
-  onLeftButton?: () => void;
-  onRightButton?: () => void;
-  modalText?: ButtoModalTextType;
-};
 
 export const ButtonTwo = ({
-  leftButton, //
+  leftButton,
   rightButton,
   leftColor,
   rightColor,
@@ -32,6 +19,7 @@ export const ButtonTwo = ({
         color={leftColor}
         bgColor={leftBgColor}
         handleClick={onLeftButton}
+        //넓이
       />
       <CButton
         content={rightButton}

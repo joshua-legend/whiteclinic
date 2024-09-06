@@ -17,7 +17,11 @@ const CScheduleTimeLine = ({ engineerName, selectDate, orderInfo }: CScheduleTim
     <ThemeProvider theme={theme}>
       <Box sx={{ ...StyledScheduleTimeline }}>
         <CEngineerTitle engineerName={engineerName} />
-        <CScheduleTimeMapping selectDate={selectDate} orderInfo={orderInfo} />
+        <CScheduleTimeMapping
+          selectDate={selectDate}
+          orderInfo={orderInfo}
+          engineerName={engineerName}
+        />
       </Box>
     </ThemeProvider>
   );

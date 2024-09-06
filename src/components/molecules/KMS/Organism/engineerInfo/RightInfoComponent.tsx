@@ -80,9 +80,9 @@ export const RightInfoComponent = () => {
         gap: '50px',
       }}
     >
-      {rightinfo.map((item, i) => (
+      {rightinfo.map((item, index) => (
         <Box
-          key={i}
+          key={index}
           sx={{
             // border: '1px solid green',
             display: 'flex',

@@ -70,7 +70,6 @@ export const CheckboxList = () => {
     <Box
       sx={{
         display: 'flex',
-        backgroundColor: '#e0e0e0',
         width: '100%',
         borderRadius: '10px',
         overflowX: 'scroll',

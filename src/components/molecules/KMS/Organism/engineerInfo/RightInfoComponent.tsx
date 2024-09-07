@@ -66,7 +66,6 @@ export const RightInfoComponent = () => {
   return (
     <Box
       sx={{
-        // border: '1px solid pink',
         marginTop: '10px',
         display: 'flex',
         flexDirection: 'column',
@@ -77,10 +76,9 @@ export const RightInfoComponent = () => {
         <Box
           key={index}
           sx={{
-            // border: '1px solid green',
             display: 'flex',
             alignItems: 'center',
-            width: '500px',
+            width: '550px',
             gap: '10px',
             fontSize: 16,
             fontWeight: 'bold',

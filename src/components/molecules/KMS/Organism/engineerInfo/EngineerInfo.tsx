@@ -5,10 +5,9 @@ import { RightInfoComponent } from './RightInfoComponent';
 
 export const EngineerInfo = () => {
   return (
-    <Container
+    <Box
       sx={{
-        width: '100%',
-        maxWidth: '1800px',
+        width: '1500px',
         minHeight: '800px',
         border: '1px solid #e0e0e0',
         borderRadius: '8px',
@@ -24,7 +23,7 @@ export const EngineerInfo = () => {
         <CheckboxList />
       </Box>
 
-      <Container
+      <Box
         sx={{
           display: 'grid',
           gridTemplateColumns: '1fr 1fr',
@@ -48,7 +47,7 @@ export const EngineerInfo = () => {
         >
           <RightInfoComponent />
         </Box>
-      </Container>
-    </Container>
+      </Box>
+    </Box>
   );
 };

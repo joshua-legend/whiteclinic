@@ -4,6 +4,7 @@ import { Box, SelectChangeEvent } from '@mui/material';
 import { rightModel, state, WeekDays } from '@/constants/definition';
 import CDatePicker from '@/components/atom/CDatePicker';
 import { useState } from 'react';
+import CButton from '@/components/atom/CButton';
 
 export const RightInfoComponent = () => {
   const [rightModel, setRightModel] = useState<rightModel>({
@@ -89,6 +90,7 @@ export const RightInfoComponent = () => {
           {item}
         </Box>
       ))}
+      <CButton content="휴무등록" type="button" />
     </Box>
   );
 };

@@ -3,7 +3,14 @@ import { SelectChangeEvent } from '@mui/material';
 import dayjs, { Dayjs } from 'dayjs';
 import { ComponentProps, FocusEvent, KeyboardEvent, PointerEvent } from 'react';
 
-export type ButtonContent = '취소' | '등록' | '등록중지' | '추가등록' | '아니오' | '급여사항확인';
+export type ButtonContent =
+  | '취소'
+  | '등록'
+  | '등록중지'
+  | '추가등록'
+  | '아니오'
+  | '급여사항확인'
+  | '휴무등록';
 type btnType = 'button' | 'submit' | 'reset';
 type fontSizeProps = keyof typeof sizes.fontSize;
 type fontWeightProps = keyof typeof sizes.fontWeight;
@@ -430,4 +437,3 @@ export type SalaryType = '기사성함' | '수당률' | '급여요일';
 export const SalaryCreateData = (rows: SalaryType, first: JSX.Element) => {
   return { rows, first };
 };
-

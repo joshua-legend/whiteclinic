@@ -64,7 +64,7 @@ export const LeftInfoComponent = () => {
       <CButton
         content="급여사항확인"
         fontSize="large"
-        handleClick={() => (window.location.href = '/engineer/e_salary')}
+        // handleClick={() => (window.location.href = '/engineer/e_salary')}
       />
     </Box>
   );

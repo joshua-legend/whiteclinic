@@ -121,7 +121,7 @@ export const hideNumberInputArrows = {
   },
 };
 
-export const StyledScheduleTable = { display: 'flex', gap: '6px' };
+export const StyledScheduleTable = { display: 'flex', gap: '10px' };
 export const StyledScheduleTimeline = { display: 'flex', flexDirection: 'column', gap: '6px' };
 export const StyledTimeSlot = {
   display: 'flex',
@@ -148,8 +148,8 @@ export const StyledTimeContent = {
   textAlign: 'center',
 };
 
-export const StyledCustomerInfo: CSSProperties = {
-  height: '20px',
+export const StyledCustomerInfo = {
+  height: '30px',
   padding: '3px',
   textAlign: 'center',
 };

@@ -266,7 +266,7 @@ export const workTimeLine: ProductDropdownList[] = [
   { label: '11시 ~ 12시' },
   { label: '12시 ~ 13시' },
   { label: '13시 ~ 14시' },
-  { label: '14시~  15시' },
+  { label: '14시 ~ 15시' },
   { label: '15시 ~ 16시' },
   { label: '16시 ~ 17시' },
   { label: '17시 ~ 18시' },
@@ -282,7 +282,6 @@ export type CustomerTimeSlotProps = {
 export type CustomerTimeMappingProps = {
   selectDate: string;
   orderInfo?: CustomerInfo[];
-  engineerName: string;
 };
 
 export type engineerInfo = {

@@ -12,16 +12,15 @@ export type CScheduleTimeLineProps = {
   selectDate: string;
   orderInfo?: CustomerInfo[];
 };
+
 const CScheduleTimeLine = ({ engineerName, selectDate, orderInfo }: CScheduleTimeLineProps) => {
+  console.log('timeLineData:', engineerName, selectDate, orderInfo);
+
   return (
     <ThemeProvider theme={theme}>
       <Box sx={{ ...StyledScheduleTimeline }}>
         <CEngineerTitle engineerName={engineerName} />
-        <CScheduleTimeMapping
-          selectDate={selectDate}
-          orderInfo={orderInfo}
-          engineerName={engineerName}
-        />
+        <CScheduleTimeMapping selectDate={selectDate} orderInfo={orderInfo} />
       </Box>
     </ThemeProvider>
   );

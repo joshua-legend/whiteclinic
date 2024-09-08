@@ -1,6 +1,6 @@
 import { CustomerInfoProps } from '@/constants/definition';
 import { StyledCustomerInfo } from '@/styles/customize';
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 
 //스케쥴 표에 나오는 사용자 정보
 const CCustomerInfoContent = ({ customer }: CustomerInfoProps) => {
@@ -13,8 +13,11 @@ const CCustomerInfoContent = ({ customer }: CustomerInfoProps) => {
 
   return (
     <Box sx={{ ...StyledCustomerInfo }}>
-      {customer.customerName} - {customer.customerContact} - {customer.customerAddress} -{' '}
-      {customer.cleaningItem} - {customer.cleaningType} - {customer.itemQuantity}대 - {priceRender}
+      <Typography variant="subtitle1" component="span">
+        {customer.customerName} - {customer.customerContact} - {customer.customerAddress} -{' '}
+        {customer.cleaningItem} - {customer.cleaningType} - {customer.itemQuantity}대 -{' '}
+        {priceRender}
+      </Typography>
     </Box>
   );
 };

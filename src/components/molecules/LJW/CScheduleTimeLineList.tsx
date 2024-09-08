@@ -18,16 +18,27 @@ const CScheduleTimeLineList = ({
   }
 
   const formattedDate = selectDate ? selectDate.format('YYYY-MM-DD') : '';
+  console.log('timeLineLIstData:', formattedDate, engineers, orderInfo);
   return (
     <div>
-      {engineers.map((item, i) => (
-        <CScheduleTimeLine
-          key={i}
-          engineerName={item.engineerName}
-          selectDate={formattedDate}
-          orderInfo={orderInfo}
-        />
-      ))}
+      {engineers.map((engineer, i) => {
+        const filteredOrderInfo = orderInfo?.filter(
+          (order) =>
+            order.assignedEngineer === engineer.engineerName &&
+            order.appointmentDate === formattedDate
+        );
+
+        // console.log('엔지티어 이름과 예약 정보:', engineer.engineerName, filteredOrderInfo);
+
+        return (
+          <CScheduleTimeLine
+            key={i}
+            engineerName={engineer.engineerName}
+            selectDate={formattedDate}
+            orderInfo={filteredOrderInfo}
+          />
+        );
+      })}
     </div>
   );
 };

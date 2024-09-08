@@ -211,7 +211,7 @@ export type InputProps = {
   modifyInput?: () => void;
   minValue?: number;
   maxValue?: number;
-  adornment?: '원';
+  adornment?: '원' | '%' | '';
   type?: 'number' | 'text';
   color?: object;
   isReadOnly?: boolean;

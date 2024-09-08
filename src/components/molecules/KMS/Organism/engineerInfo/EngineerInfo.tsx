@@ -34,14 +34,14 @@ export const EngineerInfo = () => {
   const LeftRows = [
     LeftInfoData(
       ['6월3일', '6월4일', '6월5일', '6월6일', '6월7일', '6월8일', '6월9일'],
-      ['100,000원', '100,000원', '100,000원', '100,000원', '200,000원', '100,000원', '0원']
+      ['100,000', '100,000', '100,000', '100,000', '200,000', '100,000', '0']
     ),
   ];
 
   const RightRows = [
     RightInfoData(
       ['합계수당', '수당률', '수당금액', '지급요일', '지급여부'],
-      ['700,000원', '50%', '350,000원', '금요일', '지급완료']
+      ['700,000', '50', '350,000', '금', '지급완료']
     ),
   ];
 
@@ -125,8 +125,9 @@ export const EngineerInfo = () => {
                     <TableCell sx={{ fontSize: 20, letterSpacing: 3 }}>
                       <CInput
                         variableValue={LeftRows[0].first[index]}
-                        isReadOnly={false}
-                        isDisabled={false}
+                        isReadOnly={true}
+                        adornment="원"
+                        isModifiable={true}
                       />
                     </TableCell>
                   </TableRow>
@@ -153,7 +154,12 @@ export const EngineerInfo = () => {
                       {right}
                     </TableCell>
                     <TableCell sx={{ fontSize: 20, letterSpacing: 3 }}>
-                      <CInput variableValue={RightRows[0].first[index]} />
+                      <CInput
+                        variableValue={RightRows[0].first[index]}
+                        isReadOnly={true}
+                        isModifiable={true}
+                        adornment={index === 0 || index === 2 ? '원' : index === 1 ? '%' : ''}
+                      />
                     </TableCell>
                   </TableRow>
                 ))}

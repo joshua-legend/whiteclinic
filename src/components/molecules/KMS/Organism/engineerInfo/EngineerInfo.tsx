@@ -14,6 +14,7 @@ import { RightInfoComponent } from './RightInfoComponent';
 import CButton from '@/components/atom/CButton';
 import { Children, useState } from 'react';
 import CCheckbox from '@/components/atom/CCheckbox';
+import CInput from '@/components/atom/CInput';
 
 export const LeftInfoData = (row: string[], first: string[]) => {
   return { row, first };
@@ -100,6 +101,7 @@ export const EngineerInfo = () => {
             gridTemplateColumns: '1fr 1fr',
             border: '1px solid black',
             height: '700px',
+            gap: '20px',
           }}
         >
           <TableContainer sx={{ display: 'flex', flexDirection: 'column' }}>
@@ -107,8 +109,26 @@ export const EngineerInfo = () => {
               <TableBody>
                 {LeftRows[0].row.map((left, index) => (
                   <TableRow key={index}>
-                    <TableCell>{left}</TableCell>
-                    <TableCell>{LeftRows[0].first[index]}</TableCell>
+                    <TableCell
+                      sx={{
+                        fontSize: 20,
+                        fontWeight: 'bold',
+                        letterSpacing: 5,
+                        backgroundColor: 'gray',
+                        width: '120px',
+                        textAlign: 'center',
+                        borderRight: '1px solid black',
+                      }}
+                    >
+                      {left}
+                    </TableCell>
+                    <TableCell sx={{ fontSize: 20, letterSpacing: 3 }}>
+                      <CInput
+                        variableValue={LeftRows[0].first[index]}
+                        isReadOnly={false}
+                        isDisabled={false}
+                      />
+                    </TableCell>
                   </TableRow>
                 ))}
               </TableBody>
@@ -119,13 +139,28 @@ export const EngineerInfo = () => {
               <TableBody>
                 {RightRows[0].row.map((right, index) => (
                   <TableRow key={index}>
-                    <TableCell>{right}</TableCell>
-                    <TableCell>{RightRows[0].first[index]}</TableCell>
+                    <TableCell
+                      sx={{
+                        fontSize: 20,
+                        fontWeight: 'bold',
+                        letterSpacing: 5,
+                        backgroundColor: 'gray',
+                        width: '120px',
+                        textAlign: 'center',
+                        borderRight: '1px solid black',
+                      }}
+                    >
+                      {right}
+                    </TableCell>
+                    <TableCell sx={{ fontSize: 20, letterSpacing: 3 }}>
+                      <CInput variableValue={RightRows[0].first[index]} />
+                    </TableCell>
                   </TableRow>
                 ))}
               </TableBody>
             </Table>
           </TableContainer>
+          <CButton content="등록" />
         </Box>
       )}
     </Box>

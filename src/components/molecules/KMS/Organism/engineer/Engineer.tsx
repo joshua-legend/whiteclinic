@@ -132,8 +132,8 @@ export const Engineer = () => {
   };
 
   return (
-    <div>
-      <TableContainer component={Paper}>
+    <Box sx={{ margin: '24px' }}>
+      <TableContainer component={Paper} sx={{ borderRadius: '8px', scrollbarWidth: 'thin' }}>
         <Table>
           <TableBody>
             {rows.map((row) => (
@@ -146,7 +146,6 @@ export const Engineer = () => {
                     backgroundColor: '#f5f5f5',
                     width: '120px',
                     textAlign: 'center',
-                    border: 'none',
                   }}
                 >
                   {row.row}
@@ -178,6 +177,6 @@ export const Engineer = () => {
           onRightButton: openInfo,
         })}
       </CModal>
-    </div>
+    </Box>
   );
 };

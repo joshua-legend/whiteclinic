@@ -70,11 +70,10 @@ export const EngineerInfo = () => {
         border: '1px solid #e0e0e0',
         borderRadius: '8px',
         padding: '24px !important',
-        margin: '24px auto',
+        margin: '24px',
         display: 'flex',
         flexDirection: 'column',
         backgroundColor: '#f5f5f5',
-        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
       }}
     >
       <Box sx={{ mb: 3 }}>

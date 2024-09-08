@@ -5,7 +5,7 @@ import { CheckboxTextType } from '@/constants/textType';
 export type CheckboxProps = {
   isCheck?: boolean;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  textprops?: Omit<TextProps, 'text'> & { text: CheckboxTextType };
+  textprops?: TextProps;
 };
 
 const ACheckbox = ({ isCheck, onChange, textprops }: CheckboxProps) => {

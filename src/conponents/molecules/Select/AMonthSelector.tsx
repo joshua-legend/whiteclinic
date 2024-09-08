@@ -1,5 +1,5 @@
-import ADropdownBox from '@/conponents/atom/DropdownBox/ADropdownBox';
-import { Months } from '@/constants/Months';
+import ADropdownBox from "@/conponents/atom/DropdownBox/ADropdownBox";
+import { Months } from "@/constants/Months";
 
 const AMonthSelector = () => {
   const MonthsOption = Months.map((month) => ({ text: month, value: month }));

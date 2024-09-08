@@ -8,6 +8,7 @@ const ACustomButton = ({
   onClick,
   color = 'default',
   size = 'medium',
+  sx,
 }: ACustomButtonProps) => {
   return (
     <Button
@@ -16,6 +17,7 @@ const ACustomButton = ({
       sx={{
         ...ButtonStyle.size[size],
         ...ButtonStyle.color[color],
+        ...sx,
       }}
     >
       {text}

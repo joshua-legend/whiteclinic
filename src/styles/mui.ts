@@ -58,12 +58,14 @@ export const ModalFormStyle = {
 
 export const ModalFormContentsStyle = {
   display: 'flex',
+  flexGrow: 1,
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
   gap: '12px',
   bgcolor: '#F3F3F3',
-  px: '5px',
+  borderRadius: 0,
+  px: 0,
 };
 
 // LinkButton hover Style

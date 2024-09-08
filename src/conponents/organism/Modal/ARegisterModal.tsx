@@ -1,14 +1,17 @@
-import * as React from "react";
-import { Box, Modal } from "@mui/material";
-import { RegisterModalProp } from "@/app/util/registerModalType";
-import { ModalMuiStyle } from "@/app/styles/mui";
-import ModalTwoInputBox from "../molecules/ModalTwoInputBox";
+import * as React from 'react';
+import { Box, Modal } from '@mui/material';
+import { ModalMuiStyle } from '@/styles/mui';
+import ModalTwoInputBox, {
+  ModalTwoInputBoxProps,
+} from '@/conponents/molecules/Modal/ModalTwoInputBox';
 
-const RegisterModal = ({
-  open,
-  handleClose,
-  modaltwoinputboxprops,
-}: RegisterModalProp) => {
+export type ARegisterModalProp = {
+  open: boolean;
+  handleClose: () => void;
+  modaltwoinputboxprops: ModalTwoInputBoxProps;
+};
+
+const ARegisterModal = ({ open, handleClose, modaltwoinputboxprops }: ARegisterModalProp) => {
   return (
     <Modal
       open={open}
@@ -23,4 +26,4 @@ const RegisterModal = ({
   );
 };
 
-export default RegisterModal;
+export default ARegisterModal;

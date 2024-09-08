@@ -12,7 +12,7 @@ import { CheckboxList } from '../../Melecules/engineerInfo/CheckboxList';
 import { LeftInfoComponent } from './LeftInfoComponent';
 import { RightInfoComponent } from './RightInfoComponent';
 import CButton from '@/components/atom/CButton';
-import { Children, useState } from 'react';
+import { Children, useEffect, useState } from 'react';
 import CCheckbox from '@/components/atom/CCheckbox';
 import CInput from '@/components/atom/CInput';
 
@@ -20,7 +20,7 @@ export const LeftInfoData = (row: string[], first: string[]) => {
   return { row, first };
 };
 
-type RightInfoType = {
+export type RightInfoType = {
   row: '합계수당' | '수당률' | '수당금액' | '지급요일' | '지급여부';
 };
 
@@ -28,8 +28,12 @@ export const RightInfoData = (row: RightInfoType['row'][], first: string[]) => {
   return { row, first };
 };
 
+// =====================================================
+
 export const EngineerInfo = () => {
   const [showInfo, setShowInfo] = useState<boolean>(true);
+  const [isModifiableLeft, setIsModifiableLeft] = useState<boolean[]>([]);
+  const [isModifiableRight, setIsModifiableRight] = useState<boolean[]>([]);
 
   const LeftRows = [
     LeftInfoData(
@@ -41,13 +45,23 @@ export const EngineerInfo = () => {
   const RightRows = [
     RightInfoData(
       ['합계수당', '수당률', '수당금액', '지급요일', '지급여부'],
-      ['700,000', '50', '350,000', '금', '지급완료']
+      ['700,000', '50', '350,000', '금요일', '지급완료']
     ),
   ];
 
-  const showInfoChangeHandler = () => {
-    setShowInfo(false);
+  useEffect(() => {
+    setIsModifiableLeft(new Array(LeftRows[0].first.length).fill(false));
+    setIsModifiableRight(new Array(LeftRows[0].first.length).fill(false));
+  }, []);
+
+  const handleModifyLeft = (index: number) => {
+    setIsModifiableLeft((prev) => prev.map((item, i) => (i === index ? !item : item)));
   };
+
+  const handleModifyRight = (index: number) => {
+    setIsModifiableRight((prev) => prev.map((item, i) => (i === index ? !item : item)));
+  };
+
   return (
     <Box
       sx={{
@@ -92,7 +106,7 @@ export const EngineerInfo = () => {
           >
             <RightInfoComponent />
           </Box>
-          <CButton content="급여사항확인" fontSize="large" handleClick={showInfoChangeHandler} />
+          <CButton content="급여사항확인" fontSize="large" handleClick={() => setShowInfo(false)} />
         </Box>
       ) : (
         <Box
@@ -125,9 +139,10 @@ export const EngineerInfo = () => {
                     <TableCell sx={{ fontSize: 20, letterSpacing: 3 }}>
                       <CInput
                         variableValue={LeftRows[0].first[index]}
-                        isReadOnly={true}
-                        adornment="원"
+                        isReadOnly={!isModifiableLeft[index]}
                         isModifiable={true}
+                        modifyInput={() => handleModifyLeft(index)}
+                        adornment="원"
                       />
                     </TableCell>
                   </TableRow>
@@ -146,7 +161,7 @@ export const EngineerInfo = () => {
                         fontWeight: 'bold',
                         letterSpacing: 5,
                         backgroundColor: 'gray',
-                        width: '120px',
+                        width: '150px',
                         textAlign: 'center',
                         borderRight: '1px solid black',
                       }}
@@ -156,8 +171,9 @@ export const EngineerInfo = () => {
                     <TableCell sx={{ fontSize: 20, letterSpacing: 3 }}>
                       <CInput
                         variableValue={RightRows[0].first[index]}
-                        isReadOnly={true}
+                        isReadOnly={!isModifiableRight[index]}
                         isModifiable={true}
+                        modifyInput={() => handleModifyRight(index)}
                         adornment={index === 0 || index === 2 ? '원' : index === 1 ? '%' : ''}
                       />
                     </TableCell>

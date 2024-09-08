@@ -20,7 +20,7 @@ export const LeftInfoComponent = () => {
   };
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
+    <Box id="leftInfo" sx={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
       {leftinfo.map((item, index) => (
         <Box
           key={index}
@@ -61,11 +61,6 @@ export const LeftInfoComponent = () => {
           </Box>
         </Box>
       ))}
-      <CButton
-        content="급여사항확인"
-        fontSize="large"
-        // handleClick={() => (window.location.href = '/engineer/e_salary')}
-      />
     </Box>
   );
 };

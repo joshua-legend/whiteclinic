@@ -88,17 +88,27 @@ export const calculateComplexPrice = (salesData: SalesInfoModel): number | undef
     salesData.isComposite
       ? (finalPrice = calculatePrice(salesData, compositePrice))
       : (finalPrice = calculatePrice(salesData, regularPrice));
+
+    return finalPrice;
+  } else if (productInfo && 'compositePrice' in productInfo && !('regularPrice' in productInfo)) {
+    const { compositePrice } = productInfo;
+    finalPrice = calculatePrice(salesData, compositePrice);
     return finalPrice;
   }
   // 고정단가
   else if (productInfo && 'defaultPrice' in productInfo) {
     const { defaultPrice } = productInfo;
-    return defaultPrice;
+    let defaultProduct = calculatePrice(salesData, defaultPrice);
+    return defaultProduct;
   }
   // 소 / 중 / 대 세탁기
   else if (productInfo && 'smallPrice' in productInfo) {
     const { smallPrice, mediumPrice, largePrice, builtInPrice } = productInfo;
     console.log('소 / 중 / 대 구분할 지표나 상태변수가 필요함...');
+    console.log('소형 가격 : ' + smallPrice);
+    console.log('중형 가격 : ' + mediumPrice);
+    console.log('대형 가격 : ' + largePrice);
+    console.log('빌트인 가격 : ' + builtInPrice);
     return 0;
   }
 

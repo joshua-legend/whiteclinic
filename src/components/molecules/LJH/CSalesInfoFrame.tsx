@@ -25,7 +25,7 @@ const SalesInfoFrame = () => {
   // 제품명 수기입력 readOnly 프롭 토글용 상태변수
   const isItemSelected = !!salesData.item && salesData.item !== '선택';
 
-  // 체크박스 상태 관리 변수
+  // 체크박스 중복 체크 방지 함수
   const handleCheckboxChange = (type: 'isComposite' | 'isRegular' | 'isDiscounted') => {
     setSalesData((prevState) => {
       const newState = { ...prevState };
@@ -59,7 +59,7 @@ const SalesInfoFrame = () => {
     if (totalPrice !== salesData.totalPrice) {
       amountTotalPrice(totalPrice);
     }
-  }, [salesData]);
+  }, [{ ...salesData }]);
 
   const salesInfoTableRows = [
     writeInfoTable(

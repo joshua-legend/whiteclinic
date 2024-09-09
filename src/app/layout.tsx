@@ -6,7 +6,7 @@ import Toolbar from '@mui/material/Toolbar';
 import { Typography } from '@mui/material';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import SideNav from './ui/SideNav';
+import SideNav from './ui/sidenav';
 
 const drawerWidth = 240;
 const inter = Inter({ subsets: ['latin'] });

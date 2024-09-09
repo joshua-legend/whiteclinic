@@ -1,8 +1,6 @@
-const generateMonths = () => {
-  return Array.from({ length: 12 }, (_, i) => `${i + 1}월`);
-};
+export const Months: string[] = Array.from({ length: 12 }, (_, i) => `${i + 1}월`);
 
-export const Months: string[] = generateMonths();
+export const monthTextWithvalue = Months.map((month) => ({ text: month, value: month }));
 // export const Months = [
 //   '1월',
 //   '2월',

@@ -26,17 +26,26 @@ const checkboxes: CheckboxGroupProps['checkboxes'] = Object.keys(WorkerWage).red
   {} as CheckboxGroupProps['checkboxes']
 );
 
+type Obj = {
+  worker: string;
+  rate: string;
+  payment: string;
+  amount: number;
+};
+
+// 0 '' -> falsy -> obj.some((v)_=> !!v)
+
 const Page = () => {
-  const [selectedWorker, setSelectedWorker] = useState<string | null>(null);
+  const [selectedWorker, setSelectedWorker] = useState<string | null>('');
   const [wageRate, setWageRate] = useState('0%');
   const [paymentDay, setPaymentDay] = useState('');
-  const [manualWageAmount, setManualWageAmount] = useState<number | null>(null);
+  const [manualWageAmount, setManualWageAmount] = useState<number | null>(0);
+
+  // const [obj,setObj] = useState<Obj>({amount:0,payment:"",rate:"",worker:""})
 
   const handleCheckboxChange = (worker: string | null) => {
     setSelectedWorker(worker);
-    if (worker === null) {
-      setManualWageAmount(null);
-    }
+    !!worker && setManualWageAmount(null);
   };
 
   const handleWageAmountChange = (newAmount: number) => {
@@ -61,7 +70,7 @@ const Page = () => {
 
   const totalWage = wage.reduce((sum, item) => sum + item.amount, 0);
   const wageAmount = Math.floor(
-    manualWageAmount !== null ? manualWageAmount : totalWage * (parseInt(wageRate) / 100)
+    manualWageAmount === null ? totalWage * (parseInt(wageRate) / 100) : manualWageAmount
   );
   return (
     <Box

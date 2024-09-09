@@ -28,8 +28,7 @@ const EngineerLabel: React.FC<EngineerRegisterProps> = ({
   textProps,
   checkBoxProps,
 }) => {
-  const { localData, handleInputChange, handleSkillChange, handleSave, handleCancel } =
-    useEngineerLabel();
+  const { localData, handleInputChange, handleSkillChange } = useEngineerLabel();
 
   return (
     <Box

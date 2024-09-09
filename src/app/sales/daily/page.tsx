@@ -4,32 +4,34 @@ import * as React from 'react';
 import { Box } from '@mui/material';
 import TwoButtons from '@/conponents/organism/Order/TwoButtons';
 import OrderForm from '@/conponents/organism/Order/OrderForm';
+import CenterLayout from '@/app/customers/c_list/CenterLayout';
 
-const containerStyle = {
-  height: 'calc(100vh - 112px)',
+export const columnCentered = {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
 };
 
+const containerStyle = {
+  height: 'calc(100vh - 112px)',
+  ...columnCentered,
+};
+
 const innerContainerStyle = {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  justifyContent: 'center',
+  ...columnCentered,
 };
 
 const Page = () => {
   return (
-    <Box sx={containerStyle}>
-      <Box sx={innerContainerStyle}>
-        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+    <CenterLayout
+      children={
+        <>
           <OrderForm />
           <TwoButtons />
-        </Box>
-      </Box>
-    </Box>
+        </>
+      }
+    />
   );
 };
 

@@ -11,12 +11,17 @@ const CCustomerInfoContent = ({ customer }: CustomerInfoProps) => {
   const customerPrice = cPrice > 10000;
   const priceRender = customerPrice ? cPrice / 10000 + '만원' : cPrice + '원';
 
+  //customer.comments의 존재 유무에 따라 다르게 출력
+  const renderCustomerInfo = () =>
+    customer.customerComments
+      ? `${customer.customerComments} - ${customer.cleaningType} - ${customer.itemQuantity}대 - ${priceRender}`
+      : `${customer.cleaningType} - ${customer.itemQuantity}대 - ${priceRender}`;
+
   return (
     <Box sx={{ ...StyledCustomerInfo }}>
       <Typography variant="subtitle1" component="span">
         {customer.customerName} - {customer.customerContact} - {customer.customerAddress} -{' '}
-        {customer.cleaningItem} - {customer.cleaningType} - {customer.itemQuantity}대 -{' '}
-        {priceRender}
+        {customer.cleaningItem} - {renderCustomerInfo()}
       </Typography>
     </Box>
   );

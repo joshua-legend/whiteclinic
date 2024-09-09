@@ -4,6 +4,7 @@ import { SelectChangeEvent, Typography } from '@mui/material';
 import { useState } from 'react';
 
 //옵션 이름 + dropdown으로 이루어진 컴포넌트
+//코드 리뷰 이후 삭제
 
 type OptionDropdownProps = {
   optionTitle: string;

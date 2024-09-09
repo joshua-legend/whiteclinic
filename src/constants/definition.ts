@@ -232,6 +232,7 @@ export const CURRENT_DAY = TODAY.date();
 /**
  * 클라이언트 기준 현재날짜 상수
  */
+// TODO : 현재일 기준 이전 날짜도 예약사항 조회 필요시 선택이 가능해야 함. -> 차후 삭제예정
 export const MIN_DATE = dayjs(`${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DAY}`);
 
 export type DatePickerProps = {

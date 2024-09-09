@@ -1,5 +1,5 @@
 import { OrderInfoTableRowTextType, SalesInfoTableRowTextType } from '@/constants/definition';
-import { SalesInfoModel, productLabelTypes } from '@/constants/definition';
+import { SalesInfoModel } from '@/constants/definition';
 import { cleaningItemInfo } from '@/constants/productTable';
 /**
  *

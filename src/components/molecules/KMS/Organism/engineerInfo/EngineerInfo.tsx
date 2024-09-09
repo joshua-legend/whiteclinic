@@ -1,11 +1,4 @@
-import {
-  Box,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableRow,
-} from '@mui/material';
+import { Box, Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/material';
 import { CheckboxList } from '../../Melecules/engineerInfo/CheckboxList';
 import { LeftInfoComponent } from './LeftInfoComponent';
 import { RightInfoComponent } from './RightInfoComponent';
@@ -15,27 +8,31 @@ import CInput from '@/components/atom/CInput';
 import { LeftInfoData, RightInfoData } from '@/constants/definition';
 
 export const EngineerInfo = () => {
-  const [showInfo, setShowInfo] = useState<boolean>(true);
-  const [isModifiableLeft, setIsModifiableLeft] = useState<boolean[]>([]);
-  const [isModifiableRight, setIsModifiableRight] = useState<boolean[]>([]);
-
   const LeftRows = [
     LeftInfoData(
       ['6월3일', '6월4일', '6월5일', '6월6일', '6월7일', '6월8일', '6월9일'],
-      ['100,000', '100,000', '100,000', '100,000', '200,000', '100,000', '0']
+      ['100000', '100000', '100000', '100000', '200000', '100000', '0']
     ),
   ];
 
   const RightRows = [
     RightInfoData(
       ['합계수당', '수당률', '수당금액', '지급요일', '지급여부'],
-      ['700,000', '50', '350,000', '금요일', '지급완료']
+      ['700,000', '5', '350,000', '금요일', '지급완료']
     ),
   ];
+
+  const [showInfo, setShowInfo] = useState<boolean>(true);
+  const [isModifiableLeft, setIsModifiableLeft] = useState<boolean[]>([]);
+  const [isModifiableRight, setIsModifiableRight] = useState<boolean[]>([]);
+  const [leftInputs, setLeftInputs] = useState(LeftRows[0].first);
+  const [rightInputs, setRightInputs] = useState(LeftRows[0].first);
 
   useEffect(() => {
     setIsModifiableLeft(new Array(LeftRows[0].first.length).fill(false));
     setIsModifiableRight(new Array(LeftRows[0].first.length).fill(false));
+    setLeftInputs(new Array(LeftRows[0].first.length).fill(false));
+    setRightInputs(new Array(RightRows[0].first.length).fill(false));
   }, []);
 
   const handleModifyLeft = (index: number) => {
@@ -46,6 +43,22 @@ export const EngineerInfo = () => {
     setIsModifiableRight((prev) => prev.map((item, i) => (i === index ? !item : item)));
   };
 
+  const handleLeftInput = (index: number, value: string) => {
+    setLeftInputs((prev) => {
+      const newInputs = [...prev];
+      newInputs[index] = value;
+      console.log(leftInputs);
+      return newInputs;
+    });
+  };
+  const handleRightInput = (index: number, value: string) => {
+    setRightInputs((prev) => {
+      const newInputs = [...prev];
+      newInputs[index] = value;
+      console.log(rightInputs);
+      return newInputs;
+    });
+  };
   return (
     <Box
       sx={{
@@ -124,7 +137,9 @@ export const EngineerInfo = () => {
                         variableValue={LeftRows[0].first[index]}
                         isReadOnly={!isModifiableLeft[index]}
                         isModifiable={true}
+                        type="number"
                         modifyInput={() => handleModifyLeft(index)}
+                        handleInput={(e) => handleLeftInput(index, e.target.value)}
                         adornment="원"
                       />
                     </TableCell>
@@ -156,6 +171,7 @@ export const EngineerInfo = () => {
                         variableValue={RightRows[0].first[index]}
                         isReadOnly={!isModifiableRight[index]}
                         isModifiable={true}
+                        handleInput={(e) => handleRightInput(index, e.target.value)}
                         modifyInput={() => handleModifyRight(index)}
                         adornment={index === 0 || index === 2 ? '원' : index === 1 ? '%' : ''}
                       />

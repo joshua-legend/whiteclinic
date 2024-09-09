@@ -5,7 +5,7 @@ import { engineerName } from '@/constants/definition';
 import { Box } from '@mui/material';
 import { useState } from 'react';
 
-const PersonName = [
+export const PersonName = [
   '김지훈',
   '이서연',
   '박민준',

@@ -443,7 +443,7 @@ export const LeftInfoData = (row: string[], first: string[]) => {
 };
 
 // 엔지니어 인포페이지 급여사항상세 페이지 정의(오른쪽)
-export const RightInfoData = (row: RightInfoType['row'][], first: string[]) => {
+export const RightInfoData = (row: RightInfoType['row'][], first: string[] | number[]) => {
   return { row, first };
 };
 

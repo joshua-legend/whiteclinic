@@ -13,7 +13,6 @@ export const LeftInfoComponent = () => {
     setInputState((prev) => {
       const newState = [...prev];
       newState[index] = value;
-
       console.log(inputState);
       return newState;
     });

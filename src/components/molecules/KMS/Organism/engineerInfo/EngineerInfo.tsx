@@ -1,7 +1,5 @@
 import {
   Box,
-  Container,
-  Grid,
   Table,
   TableBody,
   TableCell,
@@ -12,8 +10,7 @@ import { CheckboxList } from '../../Melecules/engineerInfo/CheckboxList';
 import { LeftInfoComponent } from './LeftInfoComponent';
 import { RightInfoComponent } from './RightInfoComponent';
 import CButton from '@/components/atom/CButton';
-import { Children, useEffect, useState } from 'react';
-import CCheckbox from '@/components/atom/CCheckbox';
+import { useEffect, useState } from 'react';
 import CInput from '@/components/atom/CInput';
 import { LeftInfoData, RightInfoData } from '@/constants/definition';
 

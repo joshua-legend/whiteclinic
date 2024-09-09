@@ -1,5 +1,5 @@
 import CButton from '@/components/atom/CButton';
-import { ButtoModalTextType, ButtonContent, ButtonTwoModalProps } from '@/constants/definition';
+import { ButtonTwoModalProps } from '@/constants/definition';
 import { ButtonGroup } from '@mui/material';
 
 export const ButtonTwo = ({

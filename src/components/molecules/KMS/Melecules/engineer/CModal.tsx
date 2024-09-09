@@ -1,6 +1,5 @@
 import { Box, Modal, Typography } from '@mui/material';
-import { ButtoModalTextType, modalProps } from '@/constants/definition';
-import { Directions } from '@mui/icons-material';
+import { modalProps } from '@/constants/definition';
 import { CModalStyle } from '@/styles/customize';
 
 export const CModal = ({ open = false, title, children }: modalProps) => {

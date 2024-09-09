@@ -1,12 +1,12 @@
 'use client';
 
-import { Engineer } from '@/components/molecules/KMS/Organism/engineer/Engineer';
+import { EngineerInfo } from '@/components/molecules/KMS/Organism/engineerInfo/EngineerInfo';
 
 export default function Page() {
   return (
     <div>
       {/* 민석님 페이지 */}
-      <Engineer />
+      <EngineerInfo />
     </div>
   );
 }

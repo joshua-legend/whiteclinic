@@ -109,7 +109,6 @@ export const EngineerInfo = () => {
           sx={{
             display: 'grid',
             gridTemplateColumns: '1fr 1fr',
-            border: '1px solid black',
             height: '700px',
             gap: '20px',
           }}
@@ -124,10 +123,9 @@ export const EngineerInfo = () => {
                         fontSize: 20,
                         fontWeight: 'bold',
                         letterSpacing: 5,
-                        backgroundColor: 'gray',
+                        backgroundColor: '#f5f5f5',
                         width: '120px',
                         textAlign: 'center',
-                        borderRight: '1px solid black',
                       }}
                     >
                       {left}
@@ -158,10 +156,9 @@ export const EngineerInfo = () => {
                         fontSize: 20,
                         fontWeight: 'bold',
                         letterSpacing: 5,
-                        backgroundColor: 'gray',
+                        backgroundColor: '#f5f5f5',
                         width: '150px',
                         textAlign: 'center',
-                        borderRight: '1px solid black',
                       }}
                     >
                       {right}

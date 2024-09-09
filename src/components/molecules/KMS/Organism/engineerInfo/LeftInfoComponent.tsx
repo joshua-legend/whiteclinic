@@ -43,7 +43,7 @@ export const LeftInfoComponent = () => {
                 fontSize: 16,
                 fontWeight: 'bold',
                 letterSpacing: 5,
-                width: '120px',
+                width: '150px',
                 textAlign: 'center',
               }}
             >

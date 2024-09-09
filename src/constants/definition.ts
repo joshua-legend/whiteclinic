@@ -420,8 +420,15 @@ export const engineerCreateData = (
 };
 
 //LeftInfoComponent컴포넌트의 테이블의 행의 타입 정의 및 사용
-export type leftinfo = '연락처' | '거주지' | '가능품목' | '특이사항';
-export const leftinfo: leftinfo[] = ['연락처', '거주지', '가능품목', '특이사항'];
+export type leftinfo = '연락처' | '거주지' | '가능품목' | '특이사항' | '정기휴무' | '비정기휴무';
+export const leftinfo: leftinfo[] = [
+  '연락처',
+  '거주지',
+  '가능품목',
+  '특이사항',
+  '정기휴무',
+  '비정기휴무',
+];
 
 //RightInfoComponent컴포넌트의 상태들을 객체로 관리
 export type rightModel = {

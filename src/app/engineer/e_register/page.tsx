@@ -1,12 +1,14 @@
 'use client';
 
-import { EngineerInfo } from "@/components/molecules/KMS/Organism/engineerInfo/EngineerInfo";
+import { Engineer } from "@/components/molecules/KMS/Organism/engineer/Engineer";
+
 
 
 export default function Page() {
   return (
     <div>
-      <EngineerInfo/>
+
+      <Engineer />
     </div>
   );
 }

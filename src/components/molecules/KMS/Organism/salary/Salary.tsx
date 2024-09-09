@@ -65,7 +65,7 @@ export const Salary = () => {
                   fontWeight: 'bold',
                   letterSpacing: 5,
                   backgroundColor: '#f5f5f5',
-                  width: '100px',
+                  width: '150px',
                   textAlign: 'center',
                   border: 'none',
                 }}

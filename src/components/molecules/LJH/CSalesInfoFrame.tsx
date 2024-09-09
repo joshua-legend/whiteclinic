@@ -4,7 +4,9 @@ import CInput from '@/components/atom/CInput';
 import { CNumberInput } from '@/components/atom/CNumberInput';
 import { CleaningItem, SalesInfoModel, salesInfoValue } from '@/constants/definition';
 import { StyledCompTableCell, StyledTextTableCell } from '@/styles/customize';
-import { calculateComplexPrice, writeInfoTable } from '@/util/actionUtil';
+import { writeInfoTable } from '@/util/actionUtil';
+import { amountTotalPrice, calculateComplexPrice } from '@/util/calculatePriceUtil';
+import { salesInfoChangeHandler } from '@/util/createDataArrUtil';
 import { Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/material';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 
@@ -43,26 +45,12 @@ const SalesInfoFrame = () => {
     });
   };
 
-  const salesInfoChangeHandler = (
-    key: keyof SalesInfoModel,
-    value: salesInfoValue | null,
-    stateFn: Dispatch<SetStateAction<SalesInfoModel>>
-  ) => {
-    value && stateFn((prevState) => ({ ...prevState, [key]: value }));
-    !!value && console.log('salesInfo parameter has no value');
-  };
-
-  const amountTotalPrice = (price: number | undefined) => {
-    price && setSalesData((prevState) => ({ ...prevState, totalPrice: price }));
-    !!price && console.log('price parameter has no value');
-  };
-
   useEffect(() => {
     console.log({ ...salesData });
     const totalPrice = calculateComplexPrice(salesData);
 
     if (totalPrice !== salesData.totalPrice) {
-      amountTotalPrice(totalPrice);
+      amountTotalPrice(totalPrice, setSalesData);
     }
   }, [{ ...salesData }]);
 

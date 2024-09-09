@@ -42,7 +42,7 @@ export const cleaningItemInfo: productInfoTable = {
     {
       label: '드럼',
       smallPrice: 120000,
-      mediumPrice: 1400000,
+      mediumPrice: 140000,
       largePrice: 160000,
       builtInPrice: 140000,
     },

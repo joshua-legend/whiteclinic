@@ -30,7 +30,6 @@ const CDatePicker = ({ label = '일정 선택', value = MIN_DATE, handleChange }
           format="YYYY년 MM월 DD일"
           defaultValue={value}
           onChange={handleChange}
-          minDate={MIN_DATE}
         />
       </DemoContainer>
     </LocalizationProvider>

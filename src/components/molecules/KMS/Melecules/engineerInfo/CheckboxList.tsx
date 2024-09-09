@@ -36,11 +36,12 @@ export const CheckboxList = () => {
   const isAnyChecked = nameList.some((isCheckd) => isCheckd);
 
   //체크박스 상태관리 함수
-  const toggle = (index: number) => {
+  const toggle = (index: number, name: string) => {
+    console.log({ index, name });
+
     setNameList((prev) => {
       const newState = [...prev];
       newState[index] = !newState[index];
-      console.log(prev, index);
       return newState;
     });
   };
@@ -60,7 +61,7 @@ export const CheckboxList = () => {
           label={name}
           isChecked={nameList[index]}
           width="100px"
-          handleChange={() => toggle(index)}
+          handleChange={() => toggle(index, name)}
           isAnyChecked={isAnyChecked ? !nameList[index] : false}
         />
       </Box>

@@ -8,7 +8,7 @@ export type CheckboxProps = {
   textprops?: TextProps;
 };
 
-const ACheckbox = ({ isCheck, onChange, textprops }: CheckboxProps) => {
+const ACheckbox = ({ isCheck = false, onChange, textprops }: CheckboxProps) => {
   return (
     <FormControlLabel
       control={<Checkbox checked={isCheck} onChange={onChange} />}

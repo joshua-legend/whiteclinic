@@ -11,6 +11,9 @@ import OneCheckbox, { CheckboxGroupProps } from '@/conponents/molecules/checkbox
 import AVariableModifyInputBox, {
   AVariableModifyInputBoxProp,
 } from '@/conponents/molecules/Input/AVariableModifyInputBox';
+import AVariableNumericInputBox, {
+  AVariableNumericInputBoxProps,
+} from './AVariableNumericInputBox';
 
 export type FormFieldType =
   | 'ACustomButton'
@@ -18,6 +21,7 @@ export type FormFieldType =
   | 'OneCheckbox'
   | 'AFixedModifyInputBox'
   | 'AVariableModifyInputBox'
+  | 'AVariableNumericInputBox'
   | 'ADropdownBox';
 
 export type FormFieldConfigProps = {
@@ -28,6 +32,7 @@ export type FormFieldConfigProps = {
     | CheckboxGroupProps
     | AFixedModifyInputBoxProp<string>
     | AVariableModifyInputBoxProp<string>
+    | AVariableNumericInputBoxProps
     | GenericDropdownBoxProps;
 };
 
@@ -42,6 +47,7 @@ const fieldTypeToComponentMap: Record<FormFieldType, React.ElementType> = {
   OneCheckbox,
   AFixedModifyInputBox,
   AVariableModifyInputBox,
+  AVariableNumericInputBox,
   ADropdownBox,
 };
 

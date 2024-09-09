@@ -4,13 +4,9 @@ import { CheckboxTextType } from './textType';
 // 종합세척, 일반세척 체크박스
 export const washCheckboxData: { [key: string]: CheckboxProps } = {
   comprehensiveWash: {
-    isCheck: false,
-    onChange: () => {},
     textprops: { text: '종합세척' as CheckboxTextType },
   },
   normalWash: {
-    isCheck: false,
-    onChange: () => {},
     textprops: { text: '일반세척' as CheckboxTextType },
   },
 };
@@ -18,8 +14,6 @@ export const washCheckboxData: { [key: string]: CheckboxProps } = {
 // 할인적용 체크박스
 export const discountCheckboxData: { [key: string]: CheckboxProps } = {
   discount: {
-    isCheck: false,
-    onChange: () => {},
     textprops: { text: '할인적용' as CheckboxTextType },
   },
 };
@@ -42,7 +36,25 @@ export const salesButtonData = [
 ];
 
 // 추가등록 모달
-export const salesModalData = {};
+export const salesModalData = {
+  textprops: {
+    text: '세척 품목을 추가 등록하겠습니까?',
+    size: 'large' as const,
+  },
+  abuttonprops: [
+    {
+      variant: 'contained' as const,
+      text: '등록중지' as const,
+      size: 'medium' as const,
+    },
+    {
+      variant: 'contained' as const,
+      text: '추가등록' as const,
+      size: 'medium' as const,
+      color: 'primary' as const,
+    },
+  ],
+};
 
 // 일반세척 모달 버튼
 export const normalWashModalData = {

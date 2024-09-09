@@ -1,7 +1,6 @@
 import { Box } from '@mui/material';
 import FormField, { FormFieldProps } from './FormField';
 import AText, { TextProps } from '@/conponents/atom/Text/AText';
-import { colors } from '@/styles/colors';
 
 export type TitledFormControlProps = {
   titleprops?: TextProps;
@@ -20,7 +19,7 @@ const TitledFormControl = ({ titleprops, formfieldprops }: TitledFormControlProp
     >
       <Box
         sx={{
-          height: '70px',
+          height: '57px',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',

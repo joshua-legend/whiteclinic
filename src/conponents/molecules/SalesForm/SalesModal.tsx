@@ -1,7 +1,5 @@
-import * as React from 'react';
 import { Box, Modal } from '@mui/material';
 import ModalContent, { ModalContentProps } from './ModalContent';
-import { ModalMuiStyle } from '@/styles/mui';
 
 export type SalesModalProps = {
   open: boolean;
@@ -9,7 +7,7 @@ export type SalesModalProps = {
   modalcontentprops: ModalContentProps;
 };
 
-const NormalWashModal = ({ open, handleClose, modalcontentprops }: SalesModalProps) => {
+const SalesModal = ({ open, handleClose, modalcontentprops }: SalesModalProps) => {
   return (
     <Modal
       open={open}
@@ -33,4 +31,4 @@ const NormalWashModal = ({ open, handleClose, modalcontentprops }: SalesModalPro
   );
 };
 
-export default NormalWashModal;
+export default SalesModal;

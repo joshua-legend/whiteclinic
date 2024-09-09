@@ -1,4 +1,3 @@
-import { CheckboxProps } from '@/conponents/atom/CheckBox/ACheckbox';
 import { GenericDropdownBoxProps } from '@/conponents/atom/DropdownBox/ADropdownBox';
 import { CheckboxGroupProps } from '@/conponents/molecules/checkbox/OneCheckbox';
 import { FormFieldType } from '@/conponents/molecules/SalesForm/FormField';
@@ -6,6 +5,7 @@ import { TitledFormControlProps } from '@/conponents/molecules/SalesForm/TitledF
 import { airConditionerCategories, washingMachineCategories } from './productCategory';
 import { AVariableModifyInputBoxProp } from '@/conponents/molecules/Input/AVariableModifyInputBox';
 import { discountCheckboxData, washCheckboxData } from './salesData';
+import { AVariableNumericInputBoxProps } from '@/conponents/molecules/SalesForm/AVariableNumericInputBox';
 
 export const salesInfoFormData: TitledFormControlProps[] = [
   {
@@ -18,9 +18,10 @@ export const salesInfoFormData: TitledFormControlProps[] = [
           formfieldtype: 'ADropdownBox' as FormFieldType,
           prevprops: {
             label: '에어컨',
-            options: airConditionerCategories.map((category) => ({
-              value: category,
-              text: category,
+            width: 'large',
+            options: airConditionerCategories.map((ac) => ({
+              value: ac.category,
+              text: ac.category,
             })),
           } as GenericDropdownBoxProps,
         },
@@ -28,9 +29,10 @@ export const salesInfoFormData: TitledFormControlProps[] = [
           formfieldtype: 'ADropdownBox' as FormFieldType,
           prevprops: {
             label: '세탁기',
-            options: washingMachineCategories.map((category) => ({
-              value: category,
-              text: category,
+            width: 'large',
+            options: washingMachineCategories.map((wm) => ({
+              value: wm.category,
+              text: wm.category,
             })),
           } as GenericDropdownBoxProps,
         },
@@ -51,11 +53,11 @@ export const salesInfoFormData: TitledFormControlProps[] = [
     formfieldprops: {
       fields: [
         {
-          formfieldtype: 'AVariableModifyInputBox' as FormFieldType,
+          formfieldtype: 'AVariableNumericInputBox' as FormFieldType,
           prevprops: {
             placeholder: '직접 수정',
             inputVariant: 'outlined',
-          } as AVariableModifyInputBoxProp<string>,
+          } as AVariableNumericInputBoxProps,
         },
       ],
     },
@@ -88,11 +90,11 @@ export const salesInfoFormData: TitledFormControlProps[] = [
           } as CheckboxGroupProps,
         },
         {
-          formfieldtype: 'AVariableModifyInputBox' as FormFieldType,
+          formfieldtype: 'AVariableNumericInputBox' as FormFieldType,
           prevprops: {
             placeholder: '직접 입력',
             inputVariant: 'outlined',
-          } as AVariableModifyInputBoxProp<string>,
+          } as AVariableNumericInputBoxProps,
         },
       ],
     },
@@ -104,11 +106,11 @@ export const salesInfoFormData: TitledFormControlProps[] = [
     formfieldprops: {
       fields: [
         {
-          formfieldtype: 'AVariableModifyInputBox' as FormFieldType,
+          formfieldtype: 'AVariableNumericInputBox' as FormFieldType,
           prevprops: {
             placeholder: '직접 입력',
             inputVariant: 'outlined',
-          } as AVariableModifyInputBoxProp<string>,
+          } as AVariableNumericInputBoxProps,
         },
       ],
     },

@@ -31,10 +31,10 @@ const LabelCheckBox: React.FC<LabelCheckBoxProps> = ({ checkBoxProps, inputProps
   };
 
   return (
-    <Box sx={{ display: 'flex', width: '100%', alignItems: 'center' }}>
+    <Box sx={{ display: 'flex', width: '80%', alignItems: 'center' }}>
       <Grid container spacing={0} sx={{ marginBottom: 0 }}>
         {option.map((v) => (
-          <Grid item xs={1.8} key={v}>
+          <Grid item xs={3} key={v}>
             <ACheckbox
               isCheck={selectedKeys.includes(v)}
               onChange={handleChange(v)}

@@ -4,7 +4,7 @@ import ACheckbox, { CheckboxProps } from '@/conponents/atom/CheckBox/ACheckbox';
 import { normalWashModalData } from '@/constants/salesData';
 import { Box } from '@mui/material';
 import React, { useState } from 'react';
-import NormalWashModal from '../SalesForm/NormalWashModal';
+import SalesModal from '../SalesForm/SalesModal';
 
 export type CheckboxGroupProps = {
   checkboxes: { [key: string | number]: CheckboxProps };
@@ -63,7 +63,7 @@ const OneCheckbox = ({ checkboxes, onChange, value }: CheckboxGroupProps) => {
           />
         ))}
       </Box>
-      <NormalWashModal
+      <SalesModal
         open={isModalOpen}
         handleClose={handleCloseModal}
         modalcontentprops={modalButtonProps}

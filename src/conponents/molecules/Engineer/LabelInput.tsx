@@ -28,7 +28,7 @@ const EnginnerLabel: React.FC<EngineerRegisterProps> = ({
     <>
       <Box
         sx={{
-          maxWidth: '1000px',
+          maxWidth: '800px',
           margin: '0 auto',
           border: '1px solid #ccc',
           borderRadius: '4px',

@@ -1,6 +1,6 @@
 import CCheckbox from '@/components/atom/CCheckbox';
 import CInput from '@/components/atom/CInput';
-import { engineerCreateData, EngineerInfoModel, skill, skillArr } from '@/constants/definition';
+import { engineerCreateData, EngineerInfoModel, skillArr } from '@/constants/definition';
 
 import {
   Box,

@@ -1,6 +1,6 @@
 import CCheckbox from '@/components/atom/CCheckbox';
 import CDropDown from '@/components/atom/CDropdown';
-import { Box, SelectChangeEvent } from '@mui/material';
+import { Box } from '@mui/material';
 import { rightModel, state, WeekDays } from '@/constants/definition';
 import CDatePicker from '@/components/atom/CDatePicker';
 import { useState } from 'react';

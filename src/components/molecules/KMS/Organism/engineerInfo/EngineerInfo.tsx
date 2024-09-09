@@ -1,7 +1,5 @@
 import {
   Box,
-  Container,
-  Grid,
   Table,
   TableBody,
   TableCell,
@@ -12,23 +10,9 @@ import { CheckboxList } from '../../Melecules/engineerInfo/CheckboxList';
 import { LeftInfoComponent } from './LeftInfoComponent';
 import { RightInfoComponent } from './RightInfoComponent';
 import CButton from '@/components/atom/CButton';
-import { Children, useEffect, useState } from 'react';
-import CCheckbox from '@/components/atom/CCheckbox';
+import { useEffect, useState } from 'react';
 import CInput from '@/components/atom/CInput';
-
-export const LeftInfoData = (row: string[], first: string[]) => {
-  return { row, first };
-};
-
-export type RightInfoType = {
-  row: '합계수당' | '수당률' | '수당금액' | '지급요일' | '지급여부';
-};
-
-export const RightInfoData = (row: RightInfoType['row'][], first: string[]) => {
-  return { row, first };
-};
-
-// =====================================================
+import { LeftInfoData, RightInfoData } from '@/constants/definition';
 
 export const EngineerInfo = () => {
   const [showInfo, setShowInfo] = useState<boolean>(true);

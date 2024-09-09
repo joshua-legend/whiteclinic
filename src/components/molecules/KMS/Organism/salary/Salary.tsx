@@ -1,7 +1,7 @@
 import CDropDown from '@/components/atom/CDropdown';
 import CInput from '@/components/atom/CInput';
-import { AllowanceRates, SalaryCreateData, SalaryType, WeekDays } from '@/constants/definition';
-import { Box, Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/material';
+import { AllowanceRates, SalaryCreateData, WeekDays } from '@/constants/definition';
+import { Box, Table, TableCell, TableContainer, TableRow } from '@mui/material';
 import { ButtonTwo } from '../../Melecules/engineer/ButtonTwo';
 import { CModal } from '../../Melecules/engineer/CModal';
 import { useState } from 'react';

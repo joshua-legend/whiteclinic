@@ -436,3 +436,18 @@ export type SalaryType = '기사성함' | '수당률' | '급여요일';
 export const SalaryCreateData = (rows: SalaryType, first: JSX.Element) => {
   return { rows, first };
 };
+
+// 엔지니어 인포페이지 급여사항상세 페이지 정의(왼쪽)
+export const LeftInfoData = (row: string[], first: string[]) => {
+  return { row, first };
+};
+
+// 엔지니어 인포페이지 급여사항상세 페이지 정의(오른쪽)
+export const RightInfoData = (row: RightInfoType['row'][], first: string[]) => {
+  return { row, first };
+};
+
+// 엔지니어 인포페이지 급여사항상세 페이지 정의(오른쪽)
+export type RightInfoType = {
+  row: '합계수당' | '수당률' | '수당금액' | '지급요일' | '지급여부';
+};

@@ -245,7 +245,6 @@ export type CustomerInfo = {
   customerName: string;
   customerContact: string;
   customerAddress: string;
-  customerComments?: string;
   cleaningItem: string;
   cleaningType: string;
   itemQuantity: number;

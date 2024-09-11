@@ -1,11 +1,11 @@
 import * as React from 'react';
-import dayjs from 'dayjs';
+import dayjs, { Dayjs } from 'dayjs';
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import 'dayjs/locale/ko';
-import { DatePickerProps, MIN_DATE } from '@/constants/definition';
+import { DatePickerProps, MIN_DATE, TODAY } from '@/constants/definition';
 
 /**
  * @param label 일정 선택 문자열로 타입 고정 되어있음
@@ -16,11 +16,13 @@ import { DatePickerProps, MIN_DATE } from '@/constants/definition';
 const CDatePicker = ({
   label = '일정 선택',
   value = MIN_DATE,
+  mindateValue = TODAY,
   handleChange,
-  isMinDate = false,
 }: DatePickerProps) => {
   dayjs.locale('ko');
-  const today = dayjs(); // 현재 날짜
+
+  // null을 undefined로 변환() minDate안에 null타입이 안들어가서)
+  const minDate = mindateValue ?? undefined;
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="ko">
@@ -36,7 +38,7 @@ const CDatePicker = ({
           format="YYYY년 MM월 DD일"
           defaultValue={value}
           onChange={handleChange}
-          minDate={isMinDate ? today : undefined}
+          minDate={minDate}
         />
       </DemoContainer>
     </LocalizationProvider>

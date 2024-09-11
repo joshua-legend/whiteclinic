@@ -10,7 +10,9 @@ export type ButtonContent =
   | '추가등록'
   | '아니오'
   | '급여사항확인'
-  | '휴무등록';
+  | '휴무등록'
+  | '수정완료';
+
 type btnType = 'button' | 'submit' | 'reset';
 type fontSizeProps = keyof typeof sizes.fontSize;
 type fontWeightProps = keyof typeof sizes.fontWeight;
@@ -26,7 +28,7 @@ export type ButtonProps = {
   handleClick?: (event: any) => void;
 };
 
-export type state = '발행완료' | '지급완료' | '휴무추가';
+export type state = '발행완료' | '지급완료' | '휴무추가' | '단일휴무';
 export type revenue = '종합세척' | '일반세척' | '할인적용';
 export type engineerName = string;
 
@@ -236,9 +238,9 @@ export const CURRENT_DAY = TODAY.date();
 export const MIN_DATE = dayjs(`${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DAY}`);
 
 export type DatePickerProps = {
-  label?: '일정 선택';
+  label?: '일정 선택' | '출발 날짜' | '도착 날짜';
   value?: Dayjs | null;
-  isMinDate?: boolean;
+  mindateValue?: Dayjs | null;  // null을 허용
   handleChange?: (date: Dayjs | null) => void; //스케쥴에 필요해서 매개변수 입력
 };
 
@@ -434,9 +436,8 @@ export const leftinfo: leftinfo[] = [
 //RightInfoComponent컴포넌트의 상태들을 객체로 관리
 export type rightModel = {
   regularDay: string;
-  irregularDay: string;
-  regularCheckBox: boolean;
-  irregularCheckBox: boolean;
+  irregularDayGo: Dayjs | null;
+  irregularDayEnd: Dayjs | null;
 };
 
 //Salary컴포넌트의 테이블행의 타입을 정의

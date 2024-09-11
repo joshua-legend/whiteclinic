@@ -12,7 +12,7 @@ import {
   paymentOptions,
 } from '@/constants/definition';
 import { useState } from 'react';
-import { writeInfoTable } from '@/util/actionUtil';
+import { writeInfoTable } from '@/util/makeTableFrameUtil';
 
 /**
  * @returns 주문정보 입력 테이블 컴포넌트

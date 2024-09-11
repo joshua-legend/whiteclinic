@@ -87,7 +87,7 @@ export const EngineerInfo = () => {
         <Box
           sx={{
             display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
+            gridTemplateColumns: '1fr 2.5fr',
             flex: 1,
             padding: '0 !important',
           }}
@@ -184,7 +184,7 @@ export const EngineerInfo = () => {
               </TableBody>
             </Table>
           </TableContainer>
-          <CButton content="등록" />
+          <CButton content="수정완료" />
         </Box>
       )}
     </Box>

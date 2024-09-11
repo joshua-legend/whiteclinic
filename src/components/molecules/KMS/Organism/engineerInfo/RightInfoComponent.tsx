@@ -48,6 +48,7 @@ export const RightInfoComponent = () => {
       '비정기휴무',
       <CDatePicker
         key="calenderComponent"
+        isMinDate={true}
         handleChange={(e) =>
           rightModelHandler('irregularDay', String(e?.format('YYYY년 MM월 DD일')))
         }

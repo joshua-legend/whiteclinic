@@ -5,34 +5,40 @@ import { RightInfoComponent } from './RightInfoComponent';
 import CButton from '@/components/atom/CButton';
 import { useEffect, useState } from 'react';
 import CInput from '@/components/atom/CInput';
-import { LeftInfoData, RightInfoData } from '@/constants/definition';
+import { LeftInfoData, RightInfoData, RightInfoType } from '@/constants/definition';
 
 export const EngineerInfo = () => {
-  const LeftRows = [
-    LeftInfoData(
-      ['6월3일', '6월4일', '6월5일', '6월6일', '6월7일', '6월8일', '6월9일'],
-      ['100000', '100000', '100000', '100000', '200000', '100000', '0']
-    ),
-  ];
+  const LeftRows = {
+    '6월3일': '100000',
+    '6월4일': '100000',
+    '6월5일': '100000',
+    '6월6일': '100000',
+    '6월7일': '200000',
+    '6월8일': '100000',
+    '6월9일': '0',
+    '6월10일': '111',
+  };
+  const dates = Object.keys(LeftRows);
+  const value = Object.values(LeftRows);
 
   const RightRows = [
-    RightInfoData(
-      ['합계수당', '수당률', '수당금액', '지급요일', '지급여부'],
-      ['700,000', '5', '350,000', '금요일', '지급완료']
-    ),
+    {
+      row: ['합계수당', '수당률', '수당금액', '지급요일', '지급여부'], //기본적인 틀은 프론트에서 고정
+      first: [700000, 50, 350000, '금요일', '지급완료'], // 틀에 맞게 배열의 주소값으로 데이터 쏴줌
+    },
   ];
 
   const [showInfo, setShowInfo] = useState<boolean>(true);
   const [isModifiableLeft, setIsModifiableLeft] = useState<boolean[]>([]);
   const [isModifiableRight, setIsModifiableRight] = useState<boolean[]>([]);
-  const [leftInputs, setLeftInputs] = useState(LeftRows[0].first);
-  const [rightInputs, setRightInputs] = useState(LeftRows[0].first);
+  const [leftInputs, setLeftInputs] = useState(dates);
+  const [rightInputs, setRightInputs] = useState(value);
 
   useEffect(() => {
-    setIsModifiableLeft(new Array(LeftRows[0].first.length).fill(false));
-    setIsModifiableRight(new Array(LeftRows[0].first.length).fill(false));
-    setLeftInputs(new Array(LeftRows[0].first.length).fill(false));
-    setRightInputs(new Array(RightRows[0].first.length).fill(false));
+    setIsModifiableLeft(new Array(value.length).fill(false)); //연필모양 (왼쪽)
+    setIsModifiableRight(new Array(value.length).fill(false)); //연필모양 (오른쪽)
+    setLeftInputs(new Array(value.length).fill(false)); // 인풋 (왼쪽)
+    setRightInputs(new Array(value.length).fill(false)); // 인풋 (오른쪽)
   }, []);
 
   const handleModifyLeft = (index: number) => {
@@ -116,7 +122,7 @@ export const EngineerInfo = () => {
           <TableContainer sx={{ display: 'flex', flexDirection: 'column' }}>
             <Table>
               <TableBody>
-                {LeftRows[0].row.map((left, index) => (
+                {dates.map((left, index) => (
                   <TableRow key={index}>
                     <TableCell
                       sx={{
@@ -132,7 +138,7 @@ export const EngineerInfo = () => {
                     </TableCell>
                     <TableCell sx={{ fontSize: 20, letterSpacing: 3 }}>
                       <CInput
-                        variableValue={LeftRows[0].first[index]}
+                        variableValue={value[index]}
                         isReadOnly={!isModifiableLeft[index]}
                         isModifiable={true}
                         type="number"

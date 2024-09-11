@@ -238,6 +238,7 @@ export const MIN_DATE = dayjs(`${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DAY}`)
 export type DatePickerProps = {
   label?: '일정 선택';
   value?: Dayjs | null;
+  minDate?: boolean;
   handleChange?: (date: Dayjs | null) => void; //스케쥴에 필요해서 매개변수 입력
 };
 
@@ -447,12 +448,12 @@ export const SalaryCreateData = (rows: SalaryType, first: JSX.Element) => {
 };
 
 // 엔지니어 인포페이지 급여사항상세 페이지 정의(왼쪽)
-export const LeftInfoData = (row: string[], first: string[]) => {
-  return { row, first };
+export const LeftInfoData = (row: string) => {
+  return { row };
 };
 
 // 엔지니어 인포페이지 급여사항상세 페이지 정의(오른쪽)
-export const RightInfoData = (row: RightInfoType['row'][], first: string[] | number[]) => {
+export const RightInfoData = (row: RightInfoType[], first: string[] | number[]) => {
   return { row, first };
 };
 

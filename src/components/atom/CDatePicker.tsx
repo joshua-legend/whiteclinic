@@ -13,8 +13,14 @@ import { DatePickerProps, MIN_DATE } from '@/constants/definition';
  * @param handleChange 달력에서 일정선택 시 상태변화 추적함수 전달
  * @returns MUI DatePicker 컴포넌트 반환
  */
-const CDatePicker = ({ label = '일정 선택', value = MIN_DATE, handleChange }: DatePickerProps) => {
+const CDatePicker = ({
+  label = '일정 선택',
+  value = MIN_DATE,
+  handleChange,
+  minDate,
+}: DatePickerProps) => {
   dayjs.locale('ko');
+  const today = dayjs(); // 현재 날짜
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="ko">
@@ -30,6 +36,7 @@ const CDatePicker = ({ label = '일정 선택', value = MIN_DATE, handleChange }
           format="YYYY년 MM월 DD일"
           defaultValue={value}
           onChange={handleChange}
+          minDate={today}
         />
       </DemoContainer>
     </LocalizationProvider>

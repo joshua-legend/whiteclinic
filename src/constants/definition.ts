@@ -238,7 +238,7 @@ export const MIN_DATE = dayjs(`${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DAY}`)
 export type DatePickerProps = {
   label?: '일정 선택';
   value?: Dayjs | null;
-  minDate?: boolean;
+  isMinDate?: boolean;
   handleChange?: (date: Dayjs | null) => void; //스케쥴에 필요해서 매개변수 입력
 };
 

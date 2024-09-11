@@ -17,7 +17,7 @@ const CDatePicker = ({
   label = '일정 선택',
   value = MIN_DATE,
   handleChange,
-  minDate,
+  isMinDate = false,
 }: DatePickerProps) => {
   dayjs.locale('ko');
   const today = dayjs(); // 현재 날짜
@@ -36,7 +36,7 @@ const CDatePicker = ({
           format="YYYY년 MM월 DD일"
           defaultValue={value}
           onChange={handleChange}
-          minDate={today}
+          minDate={isMinDate ? today : undefined}
         />
       </DemoContainer>
     </LocalizationProvider>

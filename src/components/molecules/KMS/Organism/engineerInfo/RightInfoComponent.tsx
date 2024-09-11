@@ -1,27 +1,24 @@
 import CCheckbox from '@/components/atom/CCheckbox';
 import CDropDown from '@/components/atom/CDropdown';
 import { Box } from '@mui/material';
-import { rightModel, state, WeekDays } from '@/constants/definition';
+import { rightModel, TODAY, WeekDays } from '@/constants/definition';
 import CDatePicker from '@/components/atom/CDatePicker';
 import { useState } from 'react';
 import CButton from '@/components/atom/CButton';
+import dayjs, { Dayjs } from 'dayjs';
 
 export const RightInfoComponent = () => {
   const [rightModel, setRightModel] = useState<rightModel>({
     regularDay: '',
-    irregularDay: '',
-    regularCheckBox: false,
-    irregularCheckBox: false,
+    irregularDayGo: TODAY,
+    irregularDayEnd: TODAY,
   });
 
   //드롭다운,체크박스 상태관리 함수
-  const rightModelHandler = (key: keyof rightModel, value: string | boolean) => {
+  const rightModelHandler = (key: keyof rightModel, value: string | boolean | Dayjs | null) => {
     setRightModel((prev) => ({ ...prev, [key]: value }));
-    console.log(rightModel);
+    console.log(rightModel[key]);
   };
-
-  //체크박스 상태관리 함수
-  const [checkedState, toggleChckedSate] = useState(false);
 
   const rightinfo = [
     [
@@ -31,36 +28,23 @@ export const RightInfoComponent = () => {
         contentList={WeekDays}
         contentName="요일 선택"
         handleChange={(e) => rightModelHandler('regularDay', e.target.value)}
-        selectedValue={rightModel.regularDay}
-      />,
-      <CCheckbox<state>
-        key="dayoffCheckbox"
-        label="휴무추가"
-        isChecked={rightModel.regularCheckBox}
-        handleChange={(e) => {
-          rightModelHandler('regularCheckBox', e.target.checked);
-          toggleChckedSate((state) => !state);
-        }}
       />,
     ],
 
     [
       '비정기휴무',
       <CDatePicker
-        key="calenderComponent"
-        isMinDate={true}
-        handleChange={(e) =>
-          rightModelHandler('irregularDay', String(e?.format('YYYY년 MM월 DD일')))
-        }
+        key="irregularDayGo"
+        label="출발 날짜"
+        value={rightModel.irregularDayGo}
+        handleChange={(date) => rightModelHandler('irregularDayGo', date)}
       />,
-      <CCheckbox<state>
-        key="vacationCheckbox"
-        label="휴무추가"
-        isChecked={rightModel.irregularCheckBox}
-        handleChange={(e) => {
-          rightModelHandler('irregularCheckBox', e.target.checked);
-          toggleChckedSate((state) => !state);
-        }}
+
+      <CDatePicker
+        key="irregularDayEnd"
+        label="도착 날짜"
+        mindateValue={rightModel.irregularDayGo}
+        handleChange={(date) => rightModelHandler('irregularDayEnd', date)}
       />,
     ],
   ];
@@ -80,7 +64,7 @@ export const RightInfoComponent = () => {
           sx={{
             display: 'flex',
             alignItems: 'center',
-            width: '550px',
+            width: '850px',
             gap: '10px',
             fontSize: 16,
             fontWeight: 'bold',

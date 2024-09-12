@@ -3,7 +3,7 @@
 import CCheckbox from '@/components/atom/CCheckbox';
 import { engineerName } from '@/constants/definition';
 import { Box } from '@mui/material';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export const PersonName = [
   '김지훈',
@@ -34,17 +34,23 @@ export const PersonName = [
 export const CheckboxList = () => {
   const [nameList, setNameList] = useState<boolean[]>(Array(PersonName.length).fill(false));
   const isAnyChecked = nameList.some((isCheckd) => isCheckd);
+  const [name, setName] = useState<string>('');
+
+  useEffect(() => {
+    localStorage.setItem('name', name);
+  }, [name]);
 
   //체크박스 상태관리 함수
   const toggle = (index: number, name: string) => {
     console.log({ index, name });
 
     setNameList((prev) => {
+      setName(name);
       const newState = [...prev];
       newState[index] = !newState[index];
+
       return newState;
     });
-    localStorage.setItem('name', name);
   };
 
   //이름 리스트 뿌려주기

@@ -22,9 +22,6 @@ import { join } from 'path';
 export const Engineer = () => {
   const [showModal, setModal] = useState(false);
   const [checkBoxState, setCheckBoxState] = useState<boolean[]>(Array(12).fill(false));
-  // 자식컴포넌트의 input데이터 가져오기(localStorage에서)
-  // const [inputData, setinputData] = useState<string[]>([]);
-  // const [nameData, setNameData] = useState<string[]>([]);
 
   const [engineerData, setEngineerData] = useState<EngineerInfoModel>({
     name: '',
@@ -38,7 +35,6 @@ export const Engineer = () => {
 
   useEffect(() => {
     const inputData = localStorage.getItem('inputData');
-
     const nameData = localStorage.getItem('name');
 
     if (inputData) {

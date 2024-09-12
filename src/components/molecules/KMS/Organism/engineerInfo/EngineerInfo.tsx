@@ -5,27 +5,9 @@ import { RightInfoComponent } from './RightInfoComponent';
 import CButton from '@/components/atom/CButton';
 import { useEffect, useState } from 'react';
 import CInput from '@/components/atom/CInput';
-import { LeftInfoData, RightInfoData, RightInfoType } from '@/constants/definition';
-import { json } from 'stream/consumers';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 
 export const EngineerInfo = () => {
-  const [inputState, setInputState] = useState<string[]>(Array(4).fill(''));
-  const [loadedData, setLoadedData] = useState<string[]>([]);
-
-  // 자식컴포넌트의 input데이터 가져오기(localStorage에서)
-  const loadData = () => {
-    const savedData = localStorage.getItem('inputData');
-
-    if (savedData) {
-      const parseData: string[] = JSON.parse(savedData);
-      setLoadedData(parseData);
-
-      console.log(loadedData);
-    }
-  };
-
   const LeftRows = {
     '6월3일': '100000',
     '6월4일': '100000',
@@ -134,7 +116,7 @@ export const EngineerInfo = () => {
               handleClick={() => setShowInfo(false)}
             />
             <Link href="/engineer/e_register">
-              <CButton content="기사정보수정" fontSize="large" handleClick={loadData} />
+              <CButton content="기사정보수정" fontSize="large" />
             </Link>
           </Box>
         </Box>

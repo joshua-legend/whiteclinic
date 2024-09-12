@@ -126,8 +126,6 @@ export const StyledScheduleTimeline = { display: 'flex', flexDirection: 'column'
 export const StyledTimeSlot = {
   display: 'flex',
   gap: '4px',
-  alignItems: 'center',
-  textAlign: 'center',
 };
 export const StyledTitleBox = {
   backgroundColor: '#007fff' || '#fff',
@@ -149,9 +147,9 @@ export const StyledTimeContent = {
 };
 
 export const StyledCustomerInfo = {
+  width: '100%',
   height: '30px',
   padding: '3px',
-  textAlign: 'center',
 };
 
 export const StyledTextTableCell: CSSProperties = {

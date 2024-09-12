@@ -9,7 +9,9 @@ const CScheduleTimeSlot = ({ timeSlot, customer }: CustomerTimeSlotProps) => {
   return (
     <Box sx={{ ...StyledTimeSlot }}>
       <CScheduleTimeContent content={timeSlot} />
-      <CCustomerInfoContent customer={customer} />
+      <Box sx={{ width: '850px' }}>
+        <CCustomerInfoContent customer={customer} />
+      </Box>
     </Box>
   );
 };

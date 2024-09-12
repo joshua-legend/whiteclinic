@@ -1,7 +1,7 @@
 import CDatePicker from '@/components/atom/CDatePicker';
-import CScheduleDateBox from '../molecules/LJW/CScheduleDateBox';
+import CScheduleDateBox from '../molecules/LJW/ShowSchedule/CScheduleDateBox';
 import { useEffect, useState } from 'react';
-import CScheduleTimeLineList from '../molecules/LJW/CScheduleTimeLineList';
+import CScheduleTimeLineList from '../molecules/LJW/ShowSchedule/CScheduleTimeLineList';
 import { Dayjs } from 'dayjs';
 import { Box, ThemeProvider, Typography } from '@mui/material';
 import { theme } from '@/constants/theme';
@@ -100,27 +100,36 @@ const CScheduleTable = () => {
     setSelectedDate(date);
   };
 
+  const isLoading = () => {
+    if (loading) {
+      return <div>loading...</div>;
+    }
+
+    if (engineers.length > 0) {
+      return (
+        <CScheduleTimeLineList
+          selectDate={selectedDate}
+          engineers={engineers}
+          orderInfo={customerInfo}
+        />
+      );
+    }
+
+    return (
+      <Typography variant="h4" component="div">
+        데이터 없음
+      </Typography>
+    );
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <Box sx={{ ...StyledScheduleTable }}>
         <CDatePicker value={selectedDate} handleChange={handleSelect} />
-
-        <div>
+        <Box>
           <CScheduleDateBox dateInfo={selectedDate} />
-          {loading ? (
-            <div>loading...</div>
-          ) : engineers.length > 0 ? (
-            <CScheduleTimeLineList
-              selectDate={selectedDate}
-              engineers={engineers}
-              orderInfo={customerInfo}
-            />
-          ) : (
-            <Typography variant="h4" component="div">
-              데이터 없음
-            </Typography>
-          )}
-        </div>
+          {isLoading()}
+        </Box>
       </Box>
     </ThemeProvider>
   );

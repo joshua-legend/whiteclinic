@@ -1,6 +1,8 @@
 import { Dayjs } from 'dayjs';
 import CScheduleTimeLine from './CScheduleTimeLine';
 import { CustomerInfo, engineerInfo, TODAY } from '@/constants/definition';
+import { filterOrdersForEngineer } from '@/util/dateUtil';
+import { Box } from '@mui/material';
 
 type CScheduleTimeLineListProps = {
   selectDate?: Dayjs | null;
@@ -9,7 +11,7 @@ type CScheduleTimeLineListProps = {
 };
 
 const CScheduleTimeLineList = ({
-  selectDate = TODAY,
+  selectDate,
   engineers,
   orderInfo,
 }: CScheduleTimeLineListProps) => {
@@ -20,26 +22,19 @@ const CScheduleTimeLineList = ({
   const formattedDate = selectDate ? selectDate.format('YYYY-MM-DD') : '';
   console.log('timeLineLIstData:', formattedDate, engineers, orderInfo);
   return (
-    <div>
+    <Box>
       {engineers.map((engineer, i) => {
-        const filteredOrderInfo = orderInfo?.filter(
-          (order) =>
-            order.assignedEngineer === engineer.engineerName &&
-            order.appointmentDate === formattedDate
-        );
-
         // console.log('엔지티어 이름과 예약 정보:', engineer.engineerName, filteredOrderInfo);
-
         return (
           <CScheduleTimeLine
             key={i}
             engineerName={engineer.engineerName}
             selectDate={formattedDate}
-            orderInfo={filteredOrderInfo}
+            orderInfo={filterOrdersForEngineer(orderInfo, engineer.engineerName, formattedDate)}
           />
         );
       })}
-    </div>
+    </Box>
   );
 };
 

@@ -478,3 +478,9 @@ export const RightInfoData = (row: RightInfoType[], first: string[] | number[]) 
 export type RightInfoType = {
   row: '합계수당' | '수당률' | '수당금액' | '지급요일' | '지급여부';
 };
+
+export type CScheduleTimeLineListProps = {
+  selectDate?: Dayjs | null;
+  engineers?: engineerInfo[];
+  orderInfo?: CustomerInfo[];
+};

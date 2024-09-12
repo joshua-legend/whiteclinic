@@ -1,3 +1,6 @@
+'use client';
+import CEditSchedule from '@/components/organism/CEditSchedule';
+
 export default function Page() {
-  return <div>스케줄 수정 하기</div>;
+  return <CEditSchedule />;
 }

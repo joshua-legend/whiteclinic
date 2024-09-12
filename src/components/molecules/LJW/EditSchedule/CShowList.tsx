@@ -2,21 +2,25 @@ import { Box } from '@mui/material';
 import { Dayjs } from 'dayjs';
 
 type CShowListProps = {
-  selectDate?: Dayjs | null;
+  children: React.ReactNode;
 };
-const CShowList = ({ selectDate }: CShowListProps) => {
-  const formattedDate = selectDate ? selectDate.format('YYYY-MM-DD') : '';
+const CShowList = ({ children }: CShowListProps) => {
   return (
     <Box
       sx={{
-        width: '150px',
-        height: '450px',
+        width: '300px',
+        height: '550px',
         padding: '4px',
         display: 'flex',
         flexDirection: 'column',
         gap: '4px',
+        border: '1px solid #bdbdbd',
+        borderRadius: '6px',
+        overflow: 'scroll',
       }}
-    ></Box>
+    >
+      {children}
+    </Box>
   );
 };
 

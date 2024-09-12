@@ -4,23 +4,33 @@ import { Dayjs } from 'dayjs';
 import 'dayjs/locale/ko';
 
 type CDateEngineerProps = {
-  selectDate: Dayjs | null;
+  selectDate: string;
+  selectDay: string;
   engineer?: engineerInfo[];
+  onEngineerClick: (engineer: engineerInfo) => void;
 };
-const CDateEngineer = ({ selectDate, engineer }: CDateEngineerProps) => {
+const CDateEngineer = ({
+  selectDate,
+  selectDay,
+  engineer,
+  onEngineerClick,
+}: CDateEngineerProps) => {
+  console.log('기사 정보', selectDate, selectDay, engineer);
   if (!engineer) {
     return <div></div>;
   }
-  const selectDay = selectDate?.locale('ko').format('ddd');
-  const formattedDate = selectDate ? selectDate.format('YYYY-MM-DD') : '';
+
   const filterEngineer = engineer.filter(
     (engineer) =>
-      engineer.engineerClosedDate !== formattedDate && engineer.engineerClosedDay !== selectDay
+      engineer.engineerClosedDate !== selectDate && engineer.engineerClosedDay !== selectDay
   );
+
   return (
     <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '4px' }}>
       {filterEngineer.map((order) => (
-        <Box>`${order.engineerName}</Box>
+        <Box key={order.engineerName} onClick={() => onEngineerClick(order)}>
+          {order.engineerName}
+        </Box>
       ))}
     </Box>
   );

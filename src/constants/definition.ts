@@ -11,7 +11,9 @@ export type ButtonContent =
   | '아니오'
   | '급여사항확인'
   | '휴무등록'
-  | '수정완료';
+  | '수정완료'
+  | '휴무수정'
+  | '기사정보수정';
 
 type btnType = 'button' | 'submit' | 'reset';
 type fontSizeProps = keyof typeof sizes.fontSize;
@@ -180,7 +182,9 @@ type LabelType =
   | '기사 성함'
   | '기사 연락처'
   | '기사 주소지'
-  | '제품명 입력';
+  | '제품명 입력'
+  | '정기휴무'
+  | '비정기휴무';
 
 type HelperTextType =
   | '이름을 정확히 입력하세요'
@@ -203,7 +207,9 @@ type InputPlaceholderType =
   | '수량'
   | '분류 불가능한 세척품목'
   | '연도 입력'
-  | '제품명 직접입력';
+  | '제품명 직접입력'
+  | '정기휴무가 있을 시 기입하세요.'
+  | '비정기휴무가 있을 시 기입하세요.';
 // 인풋 프롭 타입지정
 export type InputProps = {
   inputID?: string;
@@ -223,6 +229,7 @@ export type InputProps = {
   helperText?: HelperTextType;
   variableValue?: number | string;
   containerWidth?: string;
+  value?: string;
 };
 
 // 현재 날짜 초기화
@@ -240,7 +247,7 @@ export const MIN_DATE = dayjs(`${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DAY}`)
 export type DatePickerProps = {
   label?: '일정 선택' | '출발 날짜' | '도착 날짜';
   value?: Dayjs | null;
-  mindateValue?: Dayjs | null;  // null을 허용
+  mindateValue?: Dayjs | null; // null을 허용
   handleChange?: (date: Dayjs | null) => void; //스케쥴에 필요해서 매개변수 입력
 };
 
@@ -407,10 +414,19 @@ export type EngineerInfoModel = {
   address: string;
   addskill: string;
   issue: string;
+  regularDay: string;
+  irregular: string;
 };
 
 //engineer컴포넌트의 테이블 타입정의
-export type EngineerTableType = '기사성함' | '연락처' | '거주지역' | '가능품목' | '특이사항';
+export type EngineerTableType =
+  | '기사성함'
+  | '연락처'
+  | '거주지역'
+  | '가능품목'
+  | '특이사항'
+  | '정기휴무'
+  | '비정기휴무';
 
 //engineer컴포넌트의 테이블의 함수정의
 export const engineerCreateData = (

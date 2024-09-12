@@ -6,8 +6,26 @@ import CButton from '@/components/atom/CButton';
 import { useEffect, useState } from 'react';
 import CInput from '@/components/atom/CInput';
 import { LeftInfoData, RightInfoData, RightInfoType } from '@/constants/definition';
+import { json } from 'stream/consumers';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 export const EngineerInfo = () => {
+  const [inputState, setInputState] = useState<string[]>(Array(4).fill(''));
+  const [loadedData, setLoadedData] = useState<string[]>([]);
+
+  // 자식컴포넌트의 input데이터 가져오기(localStorage에서)
+  const loadData = () => {
+    const savedData = localStorage.getItem('inputData');
+
+    if (savedData) {
+      const parseData: string[] = savedData.split(',');
+      setLoadedData(parseData);
+
+      console.log(loadedData);
+    }
+  };
+
   const LeftRows = {
     '6월3일': '100000',
     '6월4일': '100000',
@@ -31,8 +49,8 @@ export const EngineerInfo = () => {
   const [showInfo, setShowInfo] = useState<boolean>(true);
   const [isModifiableLeft, setIsModifiableLeft] = useState<boolean[]>([]);
   const [isModifiableRight, setIsModifiableRight] = useState<boolean[]>([]);
-  const [leftInputs, setLeftInputs] = useState(dates);
-  const [rightInputs, setRightInputs] = useState(value);
+  const [leftInputs, setLeftInputs] = useState(dates); //급여사항 페이지
+  const [rightInputs, setRightInputs] = useState(value); //급여사항 페이지
 
   useEffect(() => {
     setIsModifiableLeft(new Array(value.length).fill(false)); //연필모양 (왼쪽)
@@ -65,6 +83,7 @@ export const EngineerInfo = () => {
       return newInputs;
     });
   };
+
   return (
     <Box
       sx={{
@@ -108,7 +127,16 @@ export const EngineerInfo = () => {
           >
             <RightInfoComponent />
           </Box>
-          <CButton content="급여사항확인" fontSize="large" handleClick={() => setShowInfo(false)} />
+          <Box sx={{ display: 'flex', gap: '50px', paddingTop: '30px' }}>
+            <CButton
+              content="급여사항확인"
+              fontSize="large"
+              handleClick={() => setShowInfo(false)}
+            />
+            <Link href="/engineer/e_register">
+              <CButton content="기사정보수정" fontSize="large" handleClick={loadData} />
+            </Link>
+          </Box>
         </Box>
       ) : (
         <Box

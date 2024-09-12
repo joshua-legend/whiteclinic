@@ -14,19 +14,55 @@ import {
 } from '@mui/material';
 import { ButtonTwo } from '../../Melecules/engineer/ButtonTwo';
 import { CModal } from '../../Melecules/engineer/CModal';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { split } from 'postcss/lib/list';
+import { join } from 'path';
 
 // 상태의 기본값을 지정해줌
 export const Engineer = () => {
   const [showModal, setModal] = useState(false);
   const [checkBoxState, setCheckBoxState] = useState<boolean[]>(Array(12).fill(false));
+  // 자식컴포넌트의 input데이터 가져오기(localStorage에서)
+  const [inputData, setinputData] = useState<string[]>([]);
+  const [nameData, setNameData] = useState<string[]>([]);
+
   const [engineerData, setEngineerData] = useState<EngineerInfoModel>({
     name: '',
     number: '',
     address: '',
     addskill: '',
     issue: '',
+    regularDay: '',
+    irregular: '',
   });
+
+  useEffect(() => {
+    const inputData = localStorage.getItem('inputData');
+
+    const inputDataChange = inputData?.split(',');
+    const nameData = localStorage.getItem('name');
+    console.log('inputDataChange :', inputDataChange);
+    console.log('inputData :', inputData);
+    console.log('nameData: ', nameData);
+
+    if (inputDataChange) {
+      setEngineerData((prevData) => ({
+        ...prevData,
+        number: inputDataChange[0] || '',
+        address: inputDataChange[1] || '',
+        issue: inputDataChange[3] || '',
+        regularDay: inputDataChange[4] || '',
+        irregular: inputDataChange[5] || '',
+      }));
+    }
+
+    if (nameData) {
+      setEngineerData((prevData) => ({
+        ...prevData,
+        name: nameData || '',
+      }));
+    }
+  }, []);
 
   //인풋 상태관리
   const EngineerInfoChangeHandler = (key: keyof EngineerInfoModel, value: string) => {
@@ -77,6 +113,7 @@ export const Engineer = () => {
         handleInput: (e) => {
           EngineerInfoChangeHandler('name', e.target.value);
         },
+        value: engineerData.name,
       })
     ),
     engineerCreateData(
@@ -88,6 +125,7 @@ export const Engineer = () => {
         handleInput: (e) => {
           EngineerInfoChangeHandler('number', e.target.value);
         },
+        value: engineerData.number,
       })
     ),
     engineerCreateData(
@@ -99,6 +137,7 @@ export const Engineer = () => {
         handleInput: (e) => {
           EngineerInfoChangeHandler('address', e.target.value);
         },
+        value: engineerData.address,
       })
     ),
     engineerCreateData(
@@ -123,13 +162,31 @@ export const Engineer = () => {
         type: 'text',
         placeholderProp: '특이사항이 있을 시 기입하세요.',
         handleInput: (e) => EngineerInfoChangeHandler('issue', e.target.value),
+        value: engineerData.issue,
+      })
+    ),
+
+    engineerCreateData(
+      '정기휴무',
+      CInput({
+        labelProp: '정기휴무',
+        type: 'text',
+        placeholderProp: '정기휴무가 있을 시 기입하세요.',
+        handleInput: (e) => EngineerInfoChangeHandler('issue', e.target.value),
+        value: engineerData.regularDay,
+      })
+    ),
+    engineerCreateData(
+      '비정기휴무',
+      CInput({
+        labelProp: '비정기휴무',
+        type: 'text',
+        placeholderProp: '비정기휴무가 있을 시 기입하세요.',
+        handleInput: (e) => EngineerInfoChangeHandler('issue', e.target.value),
+        value: engineerData.irregular,
       })
     ),
   ];
-
-  const openInfo = () => {
-    window.location.href = '/engineer/e_register';
-  };
 
   return (
     <Box sx={{ margin: '24px' }}>
@@ -144,7 +201,7 @@ export const Engineer = () => {
                     fontWeight: 'bold',
                     letterSpacing: 5,
                     backgroundColor: '#f5f5f5',
-                    width: '120px',
+                    width: '150px',
                     textAlign: 'center',
                   }}
                 >
@@ -174,7 +231,6 @@ export const Engineer = () => {
           leftColor: 'black',
           rightButton: '등록',
           onLeftButton: () => setModal(false),
-          onRightButton: openInfo,
         })}
       </CModal>
     </Box>

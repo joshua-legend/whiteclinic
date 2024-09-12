@@ -75,7 +75,9 @@ export const RightInfoComponent = () => {
           {item}
         </Box>
       ))}
-      <CButton content="휴무등록" type="button" />
+      <Box sx={{ display: 'flex', gap: '10px' }}>
+        <CButton content="휴무등록" type="button" />
+      </Box>
     </Box>
   );
 };

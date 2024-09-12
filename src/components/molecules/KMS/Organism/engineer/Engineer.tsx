@@ -38,12 +38,10 @@ export const Engineer = () => {
 
   useEffect(() => {
     const inputData = localStorage.getItem('inputData');
-
     const inputDataChange = inputData?.split(',');
+
     const nameData = localStorage.getItem('name');
-    console.log('inputDataChange :', inputDataChange);
-    console.log('inputData :', inputData);
-    console.log('nameData: ', nameData);
+    const nameDataChange = nameData;
 
     if (inputDataChange) {
       setEngineerData((prevData) => ({
@@ -56,10 +54,10 @@ export const Engineer = () => {
       }));
     }
 
-    if (nameData) {
+    if (nameDataChange) {
       setEngineerData((prevData) => ({
         ...prevData,
-        name: nameData || '',
+        name: nameDataChange || '',
       }));
     }
   }, []);
@@ -172,7 +170,7 @@ export const Engineer = () => {
         labelProp: '정기휴무',
         type: 'text',
         placeholderProp: '정기휴무가 있을 시 기입하세요.',
-        handleInput: (e) => EngineerInfoChangeHandler('issue', e.target.value),
+        handleInput: (e) => EngineerInfoChangeHandler('regularDay', e.target.value),
         value: engineerData.regularDay,
       })
     ),
@@ -182,7 +180,7 @@ export const Engineer = () => {
         labelProp: '비정기휴무',
         type: 'text',
         placeholderProp: '비정기휴무가 있을 시 기입하세요.',
-        handleInput: (e) => EngineerInfoChangeHandler('issue', e.target.value),
+        handleInput: (e) => EngineerInfoChangeHandler('irregular', e.target.value),
         value: engineerData.irregular,
       })
     ),

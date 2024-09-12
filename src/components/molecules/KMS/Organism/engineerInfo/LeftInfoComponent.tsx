@@ -2,7 +2,7 @@ import CButton from '@/components/atom/CButton';
 import CInput from '@/components/atom/CInput';
 import { leftinfo } from '@/constants/definition';
 import { Box } from '@mui/material';
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 export const LeftInfoComponent = () => {
   //배열로 상태를 담아줄 그릇생성
@@ -17,6 +17,14 @@ export const LeftInfoComponent = () => {
       return newState;
     });
   };
+
+  const handelSetData = () => {
+    localStorage.setItem('inputData', inputState.join(','));
+  };
+
+  useEffect(() => {
+    handelSetData();
+  }, [inputState]);
 
   return (
     <Box id="leftInfo" sx={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
@@ -51,7 +59,7 @@ export const LeftInfoComponent = () => {
             </Box>
             <CInput
               containerWidth="300px"
-              isReadOnly
+              // isReadOnly
               key={index}
               handleInput={(e) => {
                 LeftInputStateChangeHandler(index, e.target.value);

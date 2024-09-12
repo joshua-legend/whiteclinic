@@ -44,7 +44,7 @@ export const CheckboxList = () => {
       newState[index] = !newState[index];
       return newState;
     });
-    localStorage.setItem('name', JSON.stringify(name));
+    localStorage.setItem('name', name);
   };
 
   //이름 리스트 뿌려주기

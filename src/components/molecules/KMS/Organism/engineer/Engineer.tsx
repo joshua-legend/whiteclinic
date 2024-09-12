@@ -22,7 +22,7 @@ import { join } from 'path';
 export const Engineer = () => {
   const [showModal, setModal] = useState(false);
   const [checkBoxState, setCheckBoxState] = useState<boolean[]>(Array(12).fill(false));
-
+  const [checkBoxChecked, setCheckBoxChecked] = useState<string>('');
   const [engineerData, setEngineerData] = useState<EngineerInfoModel>({
     name: '',
     number: '',
@@ -37,6 +37,9 @@ export const Engineer = () => {
     const inputData = localStorage.getItem('inputData');
     const nameData = localStorage.getItem('name');
 
+    console.log(inputData);
+    console.log(nameData);
+
     if (inputData) {
       const inputDataChange = JSON.parse(inputData);
       setEngineerData((prevData) => ({
@@ -47,6 +50,12 @@ export const Engineer = () => {
         regularDay: inputDataChange[4] || '',
         irregular: inputDataChange[5] || '',
       }));
+
+      if (inputDataChange[2]) {
+        const checkedSkills = inputDataChange[2].split(',');
+        setCheckBoxChecked(checkedSkills);
+        console.log('checkedSkills : ', checkedSkills);
+      }
     }
 
     if (nameData) {
@@ -57,6 +66,12 @@ export const Engineer = () => {
       }));
     }
   }, []);
+
+  // 로컬스토리지의 값을 기반으로 체크박스 상태 업데이트
+  useEffect(() => {
+    const updatedCheckBoxState = skillArr.map((skill) => checkBoxChecked.includes(skill));
+    setCheckBoxState(updatedCheckBoxState);
+  }, [checkBoxChecked]);
 
   //인풋 상태관리
   const EngineerInfoChangeHandler = (key: keyof EngineerInfoModel, value: string) => {

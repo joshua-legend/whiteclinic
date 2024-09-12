@@ -31,6 +31,7 @@ const CInput = ({
   helperText = ' ',
   containerWidth = '260px',
   color,
+  value,
   ...props
 }: InputProps) => {
   return (
@@ -61,6 +62,7 @@ const CInput = ({
         onChange={props.handleInput}
         helperText={helperText}
         defaultValue={props.variableValue}
+        value={value}
       />
     </FormControl>
   );

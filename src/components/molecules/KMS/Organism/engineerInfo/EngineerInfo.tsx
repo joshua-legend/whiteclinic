@@ -19,7 +19,7 @@ export const EngineerInfo = () => {
     const savedData = localStorage.getItem('inputData');
 
     if (savedData) {
-      const parseData: string[] = savedData.split(',');
+      const parseData: string[] = JSON.parse(savedData);
       setLoadedData(parseData);
 
       console.log(loadedData);
@@ -87,7 +87,7 @@ export const EngineerInfo = () => {
   return (
     <Box
       sx={{
-        width: '1500px',
+        width: '1550px',
         minHeight: '500px',
         border: '1px solid #e0e0e0',
         borderRadius: '8px',

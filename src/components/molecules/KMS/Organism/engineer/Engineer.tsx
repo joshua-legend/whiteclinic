@@ -23,8 +23,8 @@ export const Engineer = () => {
   const [showModal, setModal] = useState(false);
   const [checkBoxState, setCheckBoxState] = useState<boolean[]>(Array(12).fill(false));
   // 자식컴포넌트의 input데이터 가져오기(localStorage에서)
-  const [inputData, setinputData] = useState<string[]>([]);
-  const [nameData, setNameData] = useState<string[]>([]);
+  // const [inputData, setinputData] = useState<string[]>([]);
+  // const [nameData, setNameData] = useState<string[]>([]);
 
   const [engineerData, setEngineerData] = useState<EngineerInfoModel>({
     name: '',
@@ -38,12 +38,11 @@ export const Engineer = () => {
 
   useEffect(() => {
     const inputData = localStorage.getItem('inputData');
-    const inputDataChange = inputData?.split(',');
 
     const nameData = localStorage.getItem('name');
-    const nameDataChange = nameData;
 
-    if (inputDataChange) {
+    if (inputData) {
+      const inputDataChange = JSON.parse(inputData);
       setEngineerData((prevData) => ({
         ...prevData,
         number: inputDataChange[0] || '',
@@ -54,7 +53,8 @@ export const Engineer = () => {
       }));
     }
 
-    if (nameDataChange) {
+    if (nameData) {
+      const nameDataChange = nameData;
       setEngineerData((prevData) => ({
         ...prevData,
         name: nameDataChange || '',
@@ -69,11 +69,11 @@ export const Engineer = () => {
   };
 
   //체크박스 상태관리 함수
-  const toggle = (index: number) => {
+  const toggle = (index: number, value: string) => {
     setCheckBoxState((prev) => {
       const newState = [...prev];
       newState[index] = !newState[index];
-      console.log(prev, index);
+      console.log(value);
       return newState;
     });
   };
@@ -94,7 +94,7 @@ export const Engineer = () => {
             key={index}
             label={skill}
             isChecked={checkBoxState[index]}
-            handleChange={() => toggle(index)}
+            handleChange={() => toggle(index, skill)}
           />
         ))}
       </Box>

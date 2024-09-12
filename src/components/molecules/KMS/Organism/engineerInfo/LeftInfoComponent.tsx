@@ -19,7 +19,7 @@ export const LeftInfoComponent = () => {
   };
 
   const handelSetData = () => {
-    localStorage.setItem('inputData', inputState.join(','));
+    localStorage.setItem('inputData', JSON.stringify(inputState));
   };
 
   useEffect(() => {

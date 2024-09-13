@@ -1,4 +1,5 @@
 import { engineerInfo } from '@/constants/definition';
+import { StyledScheduleTimeline } from '@/styles/customize';
 import { Box } from '@mui/material';
 import { Dayjs } from 'dayjs';
 import 'dayjs/locale/ko';
@@ -26,7 +27,7 @@ const CDateEngineer = ({
   );
 
   return (
-    <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '4px' }}>
+    <Box sx={{ width: '100%', ...StyledScheduleTimeline }}>
       {filterEngineer.map((order) => (
         <Box key={order.engineerName} onClick={() => onEngineerClick(order)}>
           {order.engineerName}

@@ -1,25 +1,16 @@
-import { Box } from '@mui/material';
+import { StyledShowList } from '@/styles/customize';
+import { Box, FormLabel } from '@mui/material';
 import { Dayjs } from 'dayjs';
 
 type CShowListProps = {
   children: React.ReactNode;
+  label?: string;
 };
-const CShowList = ({ children }: CShowListProps) => {
+const CShowList = ({ children, label }: CShowListProps) => {
   return (
-    <Box
-      sx={{
-        width: '300px',
-        height: '550px',
-        padding: '4px',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '4px',
-        border: '1px solid #bdbdbd',
-        borderRadius: '6px',
-        overflow: 'scroll',
-      }}
-    >
-      {children}
+    <Box>
+      <FormLabel>{label}</FormLabel>
+      <Box sx={{ ...StyledShowList }}>{children}</Box>
     </Box>
   );
 };

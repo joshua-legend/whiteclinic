@@ -190,3 +190,21 @@ export const CModalStyle = {
   p: 4,
   gap: '20px',
 };
+
+//일정 수정 박스 스타일
+export const StyledShowList = {
+  width: '300px',
+  height: '550px',
+  padding: '4px',
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '4px',
+  border: '1px solid #bdbdbd',
+  borderRadius: '6px',
+  overflow: 'scroll',
+};
+
+export const styledEngBoxDetail = {
+  width: '100%',
+  height: '300px',
+};

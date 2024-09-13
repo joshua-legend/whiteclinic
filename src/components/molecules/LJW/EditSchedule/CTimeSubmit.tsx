@@ -1,6 +1,7 @@
 import { Stack } from '@mui/material';
 import CTimeSelect, { CtimeSelectProps } from './CTImeSelect';
 import CEditButton from './CEditButton';
+import { StyledScheduleTimeline } from '@/styles/customize';
 
 type CTImeSubmitProps = {
   timeprops: CtimeSelectProps;
@@ -8,7 +9,7 @@ type CTImeSubmitProps = {
 };
 const CTimeSubmit = ({ timeprops, handleClick }: CTImeSubmitProps) => {
   return (
-    <Stack>
+    <Stack sx={{ ...StyledScheduleTimeline }}>
       <CTimeSelect {...timeprops} />
       <CEditButton handleClick={handleClick} />
     </Stack>

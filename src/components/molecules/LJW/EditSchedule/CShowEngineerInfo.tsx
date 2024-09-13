@@ -1,4 +1,5 @@
 import { engineerInfo } from '@/constants/definition';
+import { styledEngBoxDetail } from '@/styles/customize';
 import { Box, Typography } from '@mui/material';
 
 type CShowEngineerInfoProps = {
@@ -17,7 +18,7 @@ const CShowEngineerInfo = ({ engineer }: CShowEngineerInfoProps) => {
     { label: '경력', value: engineer.engineerSignificant },
   ];
   return (
-    <Box sx={{ width: '100%', height: '300px' }}>
+    <Box sx={{ ...styledEngBoxDetail }}>
       {engineerDetails.map((detail, index) => (
         <Typography key={index} variant="subtitle1" component="span">
           {detail.label}: {detail.value}

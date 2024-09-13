@@ -6,12 +6,11 @@ import { Dayjs } from 'dayjs';
 import { engineerInfo, TODAY } from '@/constants/definition';
 import { Box, ThemeProvider } from '@mui/material';
 import CDateCustomer from '../molecules/LJW/EditSchedule/CDateCustomer';
-import CScheduleDateBox from '../molecules/LJW/ShowSchedule/CScheduleDateBox';
 import { theme } from '@/constants/theme';
 
-import CTimePicker from '../molecules/LJW/EditSchedule/CTmePicker';
 import CShowEngineerInfo from '../molecules/LJW/EditSchedule/CShowEngineerInfo';
 import CTimeSubmit from '../molecules/LJW/EditSchedule/CTimeSubmit';
+import { StyledScheduleTimeline, StyledTimeSlot } from '@/styles/customize';
 
 const CEditSchedule = () => {
   const [selectedDate, setSelectedDate] = useState<Dayjs | null>(TODAY);
@@ -43,14 +42,15 @@ const CEditSchedule = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Box sx={{ width: '1200px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
+      <Box sx={{ width: '1200px', ...StyledScheduleTimeline }}>
         <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <CDatePicker value={selectedDate} handleChange={handleSelect} />
         </Box>
 
-        <Box sx={{ display: 'flex', gap: '5px' }}>
-          <CShowList children={<CDateCustomer selectDate={formattedDate} />} />
+        <Box sx={{ ...StyledTimeSlot }}>
+          <CShowList label="주문 목록" children={<CDateCustomer selectDate={formattedDate} />} />
           <CShowList
+            label="기사 목록"
             children={
               <CDateEngineer
                 selectDate={formattedDate}
@@ -59,11 +59,17 @@ const CEditSchedule = () => {
               />
             }
           />
-          <CShowList children={<CShowEngineerInfo engineer={selectEng} />} />
+          <CShowList label="기사 상세 정보" children={<CShowEngineerInfo engineer={selectEng} />} />
           <CShowList
+            label="예약 시간"
             children={
               <CTimeSubmit
-                timeprops={{ handleStart: handleStartTime, handleEnd: handleEndTime }}
+                timeprops={{
+                  handleStart: handleStartTime,
+                  handleEnd: handleEndTime,
+                  startValue: startTime,
+                  endValue: endTime,
+                }}
                 handleClick={handleButtonClick}
               />
             }

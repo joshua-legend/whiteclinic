@@ -29,8 +29,8 @@ export const Engineer = () => {
     address: '',
     addskill: '',
     issue: '',
-    regularDay: '',
-    irregular: '',
+    // regularDay: '',
+    // irregular: '',
   });
 
   useEffect(() => {
@@ -175,26 +175,26 @@ export const Engineer = () => {
       })
     ),
 
-    engineerCreateData(
-      '정기휴무',
-      CInput({
-        labelProp: '정기휴무',
-        type: 'text',
-        placeholderProp: '정기휴무가 있을 시 기입하세요.',
-        handleInput: (e) => EngineerInfoChangeHandler('regularDay', e.target.value),
-        value: engineerData.regularDay,
-      })
-    ),
-    engineerCreateData(
-      '비정기휴무',
-      CInput({
-        labelProp: '비정기휴무',
-        type: 'text',
-        placeholderProp: '비정기휴무가 있을 시 기입하세요.',
-        handleInput: (e) => EngineerInfoChangeHandler('irregular', e.target.value),
-        value: engineerData.irregular,
-      })
-    ),
+    // engineerCreateData(
+    //   '정기휴무',
+    //   CInput({
+    //     labelProp: '정기휴무',
+    //     type: 'text',
+    //     placeholderProp: '정기휴무가 있을 시 기입하세요.',
+    //     handleInput: (e) => EngineerInfoChangeHandler('regularDay', e.target.value),
+    //     value: engineerData.regularDay,
+    //   })
+    // ),
+    // engineerCreateData(
+    //   '비정기휴무',
+    //   CInput({
+    //     labelProp: '비정기휴무',
+    //     type: 'text',
+    //     placeholderProp: '비정기휴무가 있을 시 기입하세요.',
+    //     handleInput: (e) => EngineerInfoChangeHandler('irregular', e.target.value),
+    //     value: engineerData.irregular,
+    //   })
+    // ),
   ];
 
   return (

@@ -1,11 +1,11 @@
 'use client';
 
-import { Salary } from '@/components/molecules/KMS/Organism/salary/Salary';
+import { SalaryCheck } from '@/components/molecules/KMS/Organism/salayCheck/SalaryCheck';
 
 export default function Page() {
   return (
     <div>
-      <Salary />
+      <SalaryCheck />
     </div>
   );
 }

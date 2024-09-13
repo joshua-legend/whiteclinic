@@ -414,8 +414,8 @@ export type EngineerInfoModel = {
   address: string;
   addskill: string;
   issue: string;
-  regularDay: string;
-  irregular: string;
+  // regularDay: string;
+  // irregular: string;
 };
 
 //engineer컴포넌트의 테이블 타입정의
@@ -425,8 +425,8 @@ export type EngineerTableType =
   | '거주지역'
   | '가능품목'
   | '특이사항'
-  | '정기휴무'
-  | '비정기휴무';
+  // | '정기휴무'
+  // | '비정기휴무';
 
 //engineer컴포넌트의 테이블의 함수정의
 export const engineerCreateData = (

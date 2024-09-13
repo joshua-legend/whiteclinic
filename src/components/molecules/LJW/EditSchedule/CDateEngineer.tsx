@@ -1,7 +1,6 @@
 import { engineerInfo } from '@/constants/definition';
 import { StyledScheduleTimeline } from '@/styles/customize';
 import { Box } from '@mui/material';
-import { Dayjs } from 'dayjs';
 import 'dayjs/locale/ko';
 
 type CDateEngineerProps = {

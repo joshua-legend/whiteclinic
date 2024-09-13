@@ -18,25 +18,25 @@ const CEditSchedule = () => {
   const [startTime, setStartTime] = useState<Dayjs | null>(null);
   const [endTime, setEndTime] = useState<Dayjs | null>(null);
 
-  const handleSelect = (date: Dayjs | null) => {
-    setSelectedDate(date);
-  };
-
-  const handleEngineer = (engineer: engineerInfo) => {
-    setSelectEng(engineer);
-  };
-
-  const handleStartTime = (time: Dayjs | null) => {
-    setStartTime(time);
-  };
-
-  const handleEndTime = (time: Dayjs | null) => {
-    setEndTime(time);
-  };
+  const handleSelect = (date: Dayjs | null) => setSelectedDate(date);
+  const handleEngineer = (engineer: engineerInfo) => setSelectEng(engineer);
+  const handleStartTime = (time: Dayjs | null) => setStartTime(time);
+  const handleEndTime = (time: Dayjs | null) => setEndTime(time);
 
   const handleButtonClick = () => {
-    alert('클릭됨');
+    if (!selectedDate) {
+      alert('날짜를 선택하세요');
+    }
+    if (!selectEng) {
+      alert('담당 기사를 선택하세요');
+    }
+    if (!startTime || !endTime) {
+      alert('시간을 선택하세요');
+    }
+
+    alert('등록완료');
   };
+
   const formattedDate = selectedDate ? selectedDate.format('YYYY-MM-DD') : '';
   const formattedDay = selectedDate ? selectedDate.locale('ko').format('ddd') : '';
 

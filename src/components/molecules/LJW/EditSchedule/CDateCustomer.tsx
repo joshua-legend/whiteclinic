@@ -1,7 +1,6 @@
-import { CustomerInfo, CustomerTimeMappingProps } from '@/constants/definition';
+import { CustomerTimeMappingProps } from '@/constants/definition';
 import { Box } from '@mui/material';
 import CCustomerInfoContent from '../ShowSchedule/CCustomerInfoContent';
-import { Dayjs } from 'dayjs';
 
 const CDateCustomer = ({ selectDate, orderInfo }: CustomerTimeMappingProps) => {
   console.log('고객정보', selectDate, orderInfo);
@@ -13,7 +12,9 @@ const CDateCustomer = ({ selectDate, orderInfo }: CustomerTimeMappingProps) => {
   return (
     <Box>
       {filterOrder.map((order, index) => (
-        <CCustomerInfoContent key={index} customer={order} />
+        <Box>
+          <CCustomerInfoContent key={index} customer={order} />
+        </Box>
       ))}
     </Box>
   );

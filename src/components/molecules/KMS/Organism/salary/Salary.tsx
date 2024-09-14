@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { Box, Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/material';
 import { ButtonTwo } from '../../Melecules/engineer/ButtonTwo';
 import { CModal } from '../../Melecules/engineer/CModal';
-import { SalaryTable, SalaryModel } from './SalaryTable';
+import { SalaryTable,  } from './SalaryTable';
+import { SalaryModel } from '@/constants/definition';
 
 export const Salary = () => {
   const [modal, setModal] = useState(false); // 모달상태 관리

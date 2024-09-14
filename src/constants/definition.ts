@@ -419,14 +419,9 @@ export type EngineerInfoModel = {
 };
 
 //engineer컴포넌트의 테이블 타입정의
-export type EngineerTableType =
-  | '기사성함'
-  | '연락처'
-  | '거주지역'
-  | '가능품목'
-  | '특이사항'
-  // | '정기휴무'
-  // | '비정기휴무';
+export type EngineerTableType = '기사성함' | '연락처' | '거주지역' | '가능품목' | '특이사항';
+// | '정기휴무'
+// | '비정기휴무';
 
 //engineer컴포넌트의 테이블의 함수정의
 export const engineerCreateData = (
@@ -459,11 +454,6 @@ export type rightModel = {
 //Salary컴포넌트의 테이블행의 타입을 정의
 export type SalaryType = '기사성함' | '수당률' | '급여요일';
 
-//Salary컴포넌트의 테이블의 함수정의
-export const SalaryCreateData = (rows: SalaryType, first: JSX.Element) => {
-  return { rows, first };
-};
-
 // 엔지니어 인포페이지 급여사항상세 페이지 정의(왼쪽)
 export const LeftInfoData = (row: string) => {
   return { row };
@@ -483,4 +473,17 @@ export type CScheduleTimeLineListProps = {
   selectDate?: Dayjs | null;
   engineers?: engineerInfo[];
   orderInfo?: CustomerInfo[];
+};
+
+//Salary 컴포넌트 내용들의 요소
+export type SalaryModel = {
+  name: string;
+  rate: string;
+  payday: string;
+};
+
+//SalaryTable 컴포넌트 프롭스
+export type SalaryTableProps = {
+  salaryData: SalaryModel;
+  onSalaryChange: (key: keyof SalaryModel, value: string) => void;
 };

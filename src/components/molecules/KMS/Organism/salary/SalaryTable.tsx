@@ -2,20 +2,11 @@ import React from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/material';
 import CDropDown from '@/components/atom/CDropdown';
 import CInput from '@/components/atom/CInput';
-import { AllowanceRates, WeekDays } from '@/constants/definition';
+import { AllowanceRates, SalaryTableProps, WeekDays } from '@/constants/definition';
+import { createSalaryRow } from '@/util/SalaryTableUtil';
 
-export type SalaryModel = {
-  name: string;
-  rate: string;
-  payday: string;
-};
 
-export type SalaryTableProps = {
-  salaryData: SalaryModel;
-  onSalaryChange: (key: keyof SalaryModel, value: string) => void;
-};
 
-export const createSalaryRow = (label: string, element: JSX.Element) => ({ label, element });
 
 export const SalaryTable = ({ salaryData, onSalaryChange }: SalaryTableProps) => {
   const rows = [

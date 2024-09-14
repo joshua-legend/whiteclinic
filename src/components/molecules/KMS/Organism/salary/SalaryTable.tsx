@@ -15,9 +15,9 @@ export type SalaryTableProps = {
   onSalaryChange: (key: keyof SalaryModel, value: string) => void;
 };
 
-const createSalaryRow = (label: string, element: JSX.Element) => ({ label, element });
+export const createSalaryRow = (label: string, element: JSX.Element) => ({ label, element });
 
-export const SalaryTable: React.FC<SalaryTableProps> = ({ salaryData, onSalaryChange }) => {
+export const SalaryTable = ({ salaryData, onSalaryChange }: SalaryTableProps) => {
   const rows = [
     createSalaryRow(
       '기사성함',

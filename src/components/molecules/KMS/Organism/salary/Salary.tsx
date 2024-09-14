@@ -4,8 +4,8 @@ import { ButtonTwo } from '../../Melecules/engineer/ButtonTwo';
 import { CModal } from '../../Melecules/engineer/CModal';
 import { SalaryTable, SalaryModel } from './SalaryTable';
 
-export const Salary: React.FC = () => {
-  const [modal, setModal] = useState(false);
+export const Salary = () => {
+  const [modal, setModal] = useState(false); // 모달상태 관리
   const [salaryData, setSalaryData] = useState<SalaryModel>({
     name: '',
     rate: '',
@@ -13,7 +13,8 @@ export const Salary: React.FC = () => {
   });
 
   const handleSalaryChange = (key: keyof SalaryModel, value: string) => {
-    setSalaryData(prev => ({ ...prev, [key]: value }));
+    setSalaryData((prev) => ({ ...prev, [key]: value }));
+    console.log(value);
   };
 
   return (

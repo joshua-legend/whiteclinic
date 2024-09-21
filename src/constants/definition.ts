@@ -302,10 +302,11 @@ export type engineerInfo = {
   engineerAddress: string;
   engineerAbleItem: string;
   engineerSignificant: string;
+  engineerWorkDay: string;
   engineerClosedDay: string;
   engineerClosedDate: string;
   engineerSalary: number;
-  engineerWorkDay: string;
+  engineerImgUrl?: string;
 };
 
 /**

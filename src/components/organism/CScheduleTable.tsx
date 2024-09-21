@@ -2,7 +2,7 @@ import CDatePicker from '@/components/atom/CDatePicker';
 import CScheduleDateBox from '../molecules/LJW/ShowSchedule/CScheduleDateBox';
 import { useEffect, useState } from 'react';
 import CScheduleTimeLineList from '../molecules/LJW/ShowSchedule/CScheduleTimeLineList';
-import { Dayjs } from 'dayjs';
+import dayjs, { Dayjs } from 'dayjs';
 import { Box, ThemeProvider, Typography } from '@mui/material';
 import { theme } from '@/constants/theme';
 import { CustomerInfo, engineerInfo, TODAY } from '@/constants/definition';
@@ -53,7 +53,7 @@ const CScheduleTable = () => {
           cleaningType: '청소',
           itemQuantity: 1,
           totalPrice: 100000,
-          appointmentDate: '2024-09-10',
+          appointmentDate: '2024-09-20',
           appointmentTime: '10시 ~ 11시',
           assignedEngineer: '박영식',
         },
@@ -65,7 +65,7 @@ const CScheduleTable = () => {
           cleaningType: '수리',
           itemQuantity: 1,
           totalPrice: 150000,
-          appointmentDate: '2024-09-10',
+          appointmentDate: '2024-09-20',
           appointmentTime: '14시 ~ 15시',
           assignedEngineer: '김철수',
         },
@@ -77,7 +77,7 @@ const CScheduleTable = () => {
           cleaningType: '점검',
           itemQuantity: 1,
           totalPrice: 80000,
-          appointmentDate: '2024-09-11',
+          appointmentDate: '2024-09-21',
           appointmentTime: '9시 ~ 10시',
           assignedEngineer: '김철수',
         },
@@ -108,7 +108,7 @@ const CScheduleTable = () => {
     if (engineers.length > 0) {
       return (
         <CScheduleTimeLineList
-          selectDate={selectedDate}
+          selectDate={formattedDate}
           engineers={engineers}
           orderInfo={customerInfo}
         />
@@ -122,10 +122,16 @@ const CScheduleTable = () => {
     );
   };
 
+  const formattedDate = selectedDate ? selectedDate.format('YYYY-MM-DD') : '';
+
   return (
     <ThemeProvider theme={theme}>
       <Box sx={{ ...StyledScheduleTable }}>
-        <CDatePicker value={selectedDate} handleChange={handleSelect} />
+        <CDatePicker
+          value={selectedDate}
+          handleChange={handleSelect}
+          mindateValue={dayjs('1900-01-01')}
+        />
         <Box>
           <CScheduleDateBox dateInfo={selectedDate} />
           {isLoading()}

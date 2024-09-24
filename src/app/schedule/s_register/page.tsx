@@ -1,3 +1,6 @@
+'use client';
+import CEngineerCardTable from '@/components/organism/CEngineerCardTable';
+
 export default function Page() {
-  return <div>스케줄 등록하기</div>;
+  return <CEngineerCardTable />;
 }

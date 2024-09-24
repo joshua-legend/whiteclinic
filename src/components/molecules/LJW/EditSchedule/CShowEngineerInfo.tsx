@@ -6,6 +6,7 @@ type CShowEngineerInfoProps = {
   engineer: engineerInfo | null;
 };
 
+//선택한 기사의 상세 정보를 가져와 보여주는 컴포넌트
 const CShowEngineerInfo = ({ engineer }: CShowEngineerInfoProps) => {
   if (!engineer) {
     return <div></div>;

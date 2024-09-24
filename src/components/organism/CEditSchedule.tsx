@@ -3,7 +3,7 @@ import CDateEngineer from '../molecules/LJW/EditSchedule/CDateEngineer';
 import CShowList from '../molecules/LJW/EditSchedule/CShowList';
 import { useState } from 'react';
 import { Dayjs } from 'dayjs';
-import { engineerInfo, TODAY } from '@/constants/definition';
+import { CustomerInfo, engineerInfo, TODAY } from '@/constants/definition';
 import { Box, ThemeProvider } from '@mui/material';
 import CDateCustomer from '../molecules/LJW/EditSchedule/CDateCustomer';
 import { theme } from '@/constants/theme';
@@ -17,24 +17,26 @@ const CEditSchedule = () => {
   const [selectEng, setSelectEng] = useState<engineerInfo | null>(null);
   const [startTime, setStartTime] = useState<Dayjs | null>(null);
   const [endTime, setEndTime] = useState<Dayjs | null>(null);
+  const [selectCustomer, setSelectCustomer] = useState<CustomerInfo | null>(null);
 
   const handleSelect = (date: Dayjs | null) => setSelectedDate(date);
   const handleEngineer = (engineer: engineerInfo) => setSelectEng(engineer);
   const handleStartTime = (time: Dayjs | null) => setStartTime(time);
   const handleEndTime = (time: Dayjs | null) => setEndTime(time);
+  const handleCustomer = (customer: CustomerInfo) => setSelectCustomer(customer);
 
   const handleButtonClick = () => {
     if (!selectedDate) {
       alert('날짜를 선택하세요');
-    }
-    if (!selectEng) {
+    } else if (!handleCustomer) {
+      alert('주문을 선택하세요');
+    } else if (!selectEng) {
       alert('담당 기사를 선택하세요');
-    }
-    if (!startTime || !endTime) {
+    } else if (!startTime || !endTime) {
       alert('시간을 선택하세요');
     }
-
     alert('등록완료');
+    //추후 수정
   };
 
   const formattedDate = selectedDate ? selectedDate.format('YYYY-MM-DD') : '';
@@ -48,7 +50,10 @@ const CEditSchedule = () => {
         </Box>
 
         <Box sx={{ ...StyledTimeSlot }}>
-          <CShowList label="주문 목록" children={<CDateCustomer selectDate={formattedDate} />} />
+          <CShowList
+            label="주문 목록"
+            children={<CDateCustomer selectDate={formattedDate} onCustomerClick={handleCustomer} />}
+          />
           <CShowList
             label="기사 목록"
             children={

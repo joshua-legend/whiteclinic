@@ -5,7 +5,7 @@ import { filterOrdersForEngineer } from '@/util/dateUtil';
 import { Box } from '@mui/material';
 
 type CScheduleTimeLineListProps = {
-  selectDate?: Dayjs | null;
+  selectDate: string;
   engineers?: engineerInfo[];
   orderInfo?: CustomerInfo[];
 };
@@ -19,8 +19,7 @@ const CScheduleTimeLineList = ({
     return <div></div>;
   }
 
-  const formattedDate = selectDate ? selectDate.format('YYYY-MM-DD') : '';
-  console.log('timeLineLIstData:', formattedDate, engineers, orderInfo);
+  console.log('timeLineLIstData:', selectDate, engineers, orderInfo);
   return (
     <Box>
       {engineers.map((engineer, i) => {
@@ -29,8 +28,8 @@ const CScheduleTimeLineList = ({
           <CScheduleTimeLine
             key={i}
             engineerName={engineer.engineerName}
-            selectDate={formattedDate}
-            orderInfo={filterOrdersForEngineer(orderInfo, engineer.engineerName, formattedDate)}
+            selectDate={selectDate}
+            orderInfo={filterOrdersForEngineer(orderInfo, engineer.engineerName, selectDate)}
           />
         );
       })}

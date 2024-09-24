@@ -1,35 +1,10 @@
 'use client';
 
 import CCheckbox from '@/components/atom/CCheckbox';
-import { engineerName } from '@/constants/definition';
+import { engineerName, PersonName } from '@/constants/definition';
+import { CheckBoxListStyle } from '@/styles/customize';
 import { Box } from '@mui/material';
 import { useEffect, useState } from 'react';
-
-export const PersonName = [
-  '김지훈',
-  '이서연',
-  '박민준',
-  '정소율',
-  '최예준',
-  '강다은',
-  '조현우',
-  '윤지민',
-  '송태윤',
-  '임서현',
-  '황준서',
-  '신지원',
-  '오동현',
-  '한예린',
-  '구민재',
-  '남효주',
-  '백승현',
-  '문혜진',
-  '양도윤',
-  '노은서',
-  '류태호',
-  '곽민서',
-  '권지유',
-];
 
 export const CheckboxList = () => {
   const [nameList, setNameList] = useState<boolean[]>(Array(PersonName.length).fill(false));
@@ -78,13 +53,7 @@ export const CheckboxList = () => {
   return (
     <Box
       sx={{
-        display: 'flex',
-        width: '100%',
-        borderRadius: '10px',
-        overflowX: 'scroll',
-        overflowY: 'hidden',
-        scrollbarWidth: 'thin',
-        scrollbarColor: 'darkgray lightgray',
+        ...CheckBoxListStyle,
       }}
     >
       <EngineerNames />

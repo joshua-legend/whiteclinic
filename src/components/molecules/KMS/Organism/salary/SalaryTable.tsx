@@ -4,9 +4,7 @@ import CDropDown from '@/components/atom/CDropdown';
 import CInput from '@/components/atom/CInput';
 import { AllowanceRates, SalaryTableProps, WeekDays } from '@/constants/definition';
 import { createSalaryRow } from '@/util/SalaryTableUtil';
-
-
-
+import { SalaryTableStyle } from '@/styles/customize';
 
 export const SalaryTable = ({ salaryData, onSalaryChange }: SalaryTableProps) => {
   const rows = [
@@ -48,13 +46,7 @@ export const SalaryTable = ({ salaryData, onSalaryChange }: SalaryTableProps) =>
             <TableRow key={row.label}>
               <TableCell
                 sx={{
-                  fontSize: 16,
-                  fontWeight: 'bold',
-                  letterSpacing: 5,
-                  backgroundColor: '#f5f5f5',
-                  width: '150px',
-                  textAlign: 'center',
-                  border: 'none',
+                  ...SalaryTableStyle,
                 }}
               >
                 {row.label}

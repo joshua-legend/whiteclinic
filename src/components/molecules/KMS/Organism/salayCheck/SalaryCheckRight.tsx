@@ -1,4 +1,5 @@
 import CInput from '@/components/atom/CInput';
+import { SalaryCheckRightStyle } from '@/styles/customize';
 import { Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/material';
 import { useEffect, useState } from 'react';
 
@@ -44,12 +45,7 @@ export const SalaryCheckRight = () => {
               <TableRow key={index}>
                 <TableCell
                   sx={{
-                    fontSize: 20,
-                    fontWeight: 'bold',
-                    letterSpacing: 5,
-                    backgroundColor: '#f5f5f5',
-                    width: '150px',
-                    textAlign: 'center',
+                    ...SalaryCheckRightStyle,
                   }}
                 >
                   {right}

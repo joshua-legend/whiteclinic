@@ -6,6 +6,7 @@ import CDatePicker from '@/components/atom/CDatePicker';
 import { useState } from 'react';
 import CButton from '@/components/atom/CButton';
 import dayjs, { Dayjs } from 'dayjs';
+import { RightInfoComponentStyleOne, RightInfoComponentStyleTwo } from '@/styles/customize';
 
 export const RightInfoComponent = () => {
   const [rightModel, setRightModel] = useState<rightModel>({
@@ -52,24 +53,14 @@ export const RightInfoComponent = () => {
   return (
     <Box
       sx={{
-        marginTop: '10px',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '50px',
+        ...RightInfoComponentStyleOne,
       }}
     >
       {rightinfo.map((item, index) => (
         <Box
           key={index}
           sx={{
-            display: 'flex',
-            alignItems: 'center',
-            width: '850px',
-            gap: '10px',
-            fontSize: 16,
-            fontWeight: 'bold',
-            letterSpacing: 5,
-            textAlign: 'center',
+            ...RightInfoComponentStyleTwo,
           }}
         >
           {item}

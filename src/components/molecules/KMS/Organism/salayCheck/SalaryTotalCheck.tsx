@@ -4,15 +4,13 @@ import { Box, Table, TableBody, TableCell, TableContainer, TableRow } from '@mui
 import { useEffect, useState } from 'react';
 import { SalaryCheckLeft } from './SalaryCheckLeft';
 import { SalaryCheckRight } from './SalaryCheckRight';
+import { SalaryTotalCheckStyle } from '@/styles/customize';
 
 export const SalaryTotalCheck = () => {
   return (
     <Box
       sx={{
-        display: 'grid',
-        gridTemplateColumns: '1fr 1fr',
-        height: '700px',
-        gap: '20px',
+       ...SalaryTotalCheckStyle
       }}
     >
       <SalaryCheckLeft />

@@ -208,3 +208,109 @@ export const styledEngBoxDetail = {
   width: '100%',
   height: '300px',
 };
+
+export const EngineerTableStyle = {
+  fontSize: 16,
+  fontWeight: 'bold',
+  letterSpacing: 5,
+  backgroundColor: '#f5f5f5',
+  width: '150px',
+  textAlign: 'center',
+};
+
+export const CheckBoxListStyle = {
+  display: 'flex',
+  width: '100%',
+  borderRadius: '10px',
+  overflowX: 'scroll',
+  overflowY: 'hidden',
+  scrollbarWidth: 'thin',
+  scrollbarColor: 'darkgray lightgray',
+};
+
+export const SalaryCheckLeftStyle = {
+  fontSize: 20,
+  fontWeight: 'bold',
+  letterSpacing: 5,
+  backgroundColor: '#f5f5f5',
+  width: '120px',
+  textAlign: 'center',
+};
+
+export const SalaryCheckRightStyle = {
+  fontSize: 20,
+  fontWeight: 'bold',
+  letterSpacing: 5,
+  backgroundColor: '#f5f5f5',
+  width: '150px',
+  textAlign: 'center',
+};
+
+export const SalaryTotalCheckStyle = {
+  display: 'grid',
+  gridTemplateColumns: '1fr 1fr',
+  height: '700px',
+  gap: '20px',
+};
+
+export const EngineerTotalInfoStyle = {
+  width: '1550px',
+  minHeight: '500px',
+  border: '1px solid #e0e0e0',
+  borderRadius: '8px',
+  padding: '24px !important',
+  margin: '24px',
+  display: 'flex',
+  flexDirection: 'column',
+  backgroundColor: '#f5f5f5',
+};
+
+export const RightInfoComponentStyleOne = {
+  marginTop: '10px',
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '50px',
+};
+
+export const RightInfoComponentStyleTwo = {
+  display: 'flex',
+  alignItems: 'center',
+  width: '850px',
+  gap: '10px',
+  fontSize: 16,
+  fontWeight: 'bold',
+  letterSpacing: 5,
+  textAlign: 'center',
+};
+
+export const SalaryTableStyle = {
+  fontSize: 16,
+  fontWeight: 'bold',
+  letterSpacing: 5,
+  backgroundColor: '#f5f5f5',
+  width: '150px',
+  textAlign: 'center',
+  border: 'none',
+};
+
+export const LeftInfoComponentStyleOne = {
+  display: 'flex',
+  alignItems: 'center',
+  gap: '30px',
+  width: '550px',
+};
+
+export const LeftInfoComponentStyleTWo = {
+  display: 'flex',
+  width: '380px',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+};
+
+export const LeftInfoComponentStyleThree = {
+  fontSize: 16,
+  fontWeight: 'bold',
+  letterSpacing: 5,
+  width: '150px',
+  textAlign: 'center',
+};

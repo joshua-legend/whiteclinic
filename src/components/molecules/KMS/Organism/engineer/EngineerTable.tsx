@@ -1,6 +1,7 @@
 import CCheckbox from '@/components/atom/CCheckbox';
 import CInput from '@/components/atom/CInput';
 import { engineerCreateData, EngineerInfoModel, skillArr } from '@/constants/definition';
+import { EngineerTableStyle } from '@/styles/customize';
 import { Box, Paper, Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/material';
 
 type EngineerTableProps = {
@@ -112,12 +113,7 @@ export const EngineerTable = ({
               <TableRow key={row.row}>
                 <TableCell
                   sx={{
-                    fontSize: 16,
-                    fontWeight: 'bold',
-                    letterSpacing: 5,
-                    backgroundColor: '#f5f5f5',
-                    width: '150px',
-                    textAlign: 'center',
+                    ...EngineerTableStyle,
                   }}
                 >
                   {row.row}

@@ -1,6 +1,11 @@
 import CButton from '@/components/atom/CButton';
 import CInput from '@/components/atom/CInput';
 import { leftinfo } from '@/constants/definition';
+import {
+  LeftInfoComponentStyleOne,
+  LeftInfoComponentStyleThree,
+  LeftInfoComponentStyleTWo,
+} from '@/styles/customize';
 import { Box } from '@mui/material';
 import { useCallback, useEffect, useState } from 'react';
 
@@ -32,27 +37,17 @@ export const LeftInfoComponent = () => {
         <Box
           key={index}
           sx={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '30px',
-            width: '550px',
+            ...LeftInfoComponentStyleOne,
           }}
         >
           <Box
             sx={{
-              display: 'flex',
-              width: '380px',
-              justifyContent: 'space-between',
-              alignItems: 'center',
+              ...LeftInfoComponentStyleTWo,
             }}
           >
             <Box
               sx={{
-                fontSize: 16,
-                fontWeight: 'bold',
-                letterSpacing: 5,
-                width: '150px',
-                textAlign: 'center',
+                ...LeftInfoComponentStyleThree,
               }}
             >
               {item}

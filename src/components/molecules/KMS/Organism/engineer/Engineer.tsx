@@ -11,14 +11,14 @@ import { EngineerTable } from './EngineerTable';
 // 상태의 기본값을 지정해줌
 export const Engineer = () => {
   const [showModal, setModal] = useState(false); // 확인모달
-  const [checkBoxState, setCheckBoxState] = useState<boolean[]>(Array(12).fill(false)); //체크박스 상태저장(boolean)
-  const [checkBoxString, setcheckBoxString] = useState<string>(''); //체크박스라벨 저장(string)
   const [engineerData, setEngineerData] = useState<EngineerInfoModel>({
     name: '',
     number: '',
     address: '',
     addskill: '',
     issue: '',
+    checkBoxState: Array(skillArr.length).fill(false),
+    selectedSkills: [],
   });
 
   useEffect(() => {
@@ -38,11 +38,13 @@ export const Engineer = () => {
 
       if (inputDataChange[2]) {
         const checkedSkills = inputDataChange[2].split(',');
-        setcheckBoxString(checkedSkills);
-        console.log('checkedSkills : ', checkedSkills);
+        setEngineerData((prevData) => ({
+          ...prevData,
+          selectedSkills: checkedSkills,
+          checkBoxState: skillArr.map((skill) => checkedSkills.includes(skill)),
+        }));
       }
     }
-
     if (nameData) {
       const nameDataChange = nameData;
       setEngineerData((prevData) => ({
@@ -52,25 +54,30 @@ export const Engineer = () => {
     }
   }, []);
 
-  // 로컬스토리지의 값을 기반으로 체크박스 상태 업데이트
-  useEffect(() => {
-    const updatedCheckBoxState = skillArr.map((skill) => checkBoxString.includes(skill));
-    setCheckBoxState(updatedCheckBoxState);
-  }, [checkBoxString]);
-
   //인풋 상태관리
   const EngineerInfoChangeHandler = (key: keyof EngineerInfoModel, value: string) => {
     setEngineerData((prev) => ({ ...prev, [key]: value }));
     console.log(engineerData);
   };
-
   //체크박스 상태관리 함수
   const toggle = (index: number, value: string) => {
-    setCheckBoxState((prev) => {
-      const newState = [...prev];
-      newState[index] = !newState[index];
-      console.log(value);
-      return newState;
+    console.log(index, value);
+
+    setEngineerData((prev) => {
+      const newCheckBoxState = [...prev.checkBoxState];
+      newCheckBoxState[index] = !newCheckBoxState[index]; // 토글기능
+
+      const newSelectedSkills = newCheckBoxState[index]
+        ? [...prev.selectedSkills, value]
+        : prev.selectedSkills.filter((skill) => skill !== value);
+      console.log(newSelectedSkills);
+      console.log(newCheckBoxState);
+
+      return {
+        ...prev,
+        checkBoxState: newCheckBoxState,
+        selectedSkills: newSelectedSkills,
+      };
     });
   };
 
@@ -79,7 +86,6 @@ export const Engineer = () => {
       <EngineerTable
         engineerData={engineerData}
         onEngineerChange={EngineerInfoChangeHandler}
-        CheckBoxState={checkBoxState}
         onToggle={toggle}
       />
       <ButtonTwo

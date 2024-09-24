@@ -7,7 +7,7 @@ import {
   LeftInfoComponentStyleTWo,
 } from '@/styles/customize';
 import { Box } from '@mui/material';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export const LeftInfoComponent = () => {
   //배열로 상태를 담아줄 그릇생성

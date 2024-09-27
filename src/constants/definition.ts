@@ -415,8 +415,8 @@ export type EngineerInfoModel = {
   address: string;
   addskill: string;
   issue: string;
-  // regularDay: string;
-  // irregular: string;
+  checkBoxState: boolean[];
+  selectedSkills: string[];
 };
 
 //engineer컴포넌트의 테이블 타입정의
@@ -489,29 +489,3 @@ export type SalaryTableProps = {
   salaryData: SalaryModel;
   onSalaryChange: (key: keyof SalaryModel, value: string) => void;
 };
-
-export const PersonName: string[] = [
-  '김지훈',
-  '이서연',
-  '박민준',
-  '정소율',
-  '최예준',
-  '강다은',
-  '조현우',
-  '윤지민',
-  '송태윤',
-  '임서현',
-  '황준서',
-  '신지원',
-  '오동현',
-  '한예린',
-  '구민재',
-  '남효주',
-  '백승현',
-  '문혜진',
-  '양도윤',
-  '노은서',
-  '류태호',
-  '곽민서',
-  '권지유',
-];

@@ -1,36 +1,49 @@
-'use client';
-
 import CCheckbox from '@/components/atom/CCheckbox';
-import { engineerName, PersonName } from '@/constants/definition';
+import { engineerName } from '@/constants/definition';
 import { CheckBoxListStyle } from '@/styles/customize';
 import { Box } from '@mui/material';
 import { useEffect, useState } from 'react';
+import { useEngineerStore } from '../../Organism/EngineerTotalInfo/stoeres/EngineerStore';
 
 export const CheckboxList = () => {
-  const [nameList, setNameList] = useState<boolean[]>(Array(PersonName.length).fill(false));
-  const isAnyChecked = nameList.some((isCheckd) => isCheckd);
-  const [name, setName] = useState<string>('');
+  const { engineerName, fetchEngineer } = useEngineerStore(); //이름배열  가져오면 여기에 저장
+  const [nameList, setNameList] = useState<boolean[]>(Array(engineerName.length).fill(false)); // 상태관리
+  const isAnyChecked = nameList.some((isCheckd) => isCheckd); //리스트에 하나만 체크되게끔
+  const [selectedName, setSelectedName] = useState<string>(''); //선택한 체크박스
 
+  //전역으로 만든 함수를 실행시켜준다.
   useEffect(() => {
-    localStorage.setItem('name', name);
-  }, [name]);
+    fetchEngineer();
+  }, [fetchEngineer]);
+
+  //useEngineerStore이 먼저 실행되고 나서야 lenght를 구할수있으니 조건문으로 순서를 늦춰준다.
+  useEffect(() => {
+    if (engineerName.length > 0) {
+      setNameList(new Array(engineerName.length).fill(false));
+    }
+  }, [engineerName]);
+
+  //로컬에 담는용도
+  useEffect(() => {
+    //로컬에 선택한이름 넣기
+    localStorage.setItem('name', selectedName);
+  }, [selectedName]);
 
   //체크박스 상태관리 함수
   const toggle = (index: number, name: string) => {
     console.log({ index, name });
 
     setNameList((prev) => {
-      setName(name);
+      setSelectedName(name);
       const newState = [...prev];
       newState[index] = !newState[index];
-
       return newState;
     });
   };
 
   //이름 리스트 뿌려주기
   const EngineerNames = () => {
-    return PersonName.map((name, index) => (
+    return engineerName.map((name, index) => (
       <Box
         key={index}
         sx={{

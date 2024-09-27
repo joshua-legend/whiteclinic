@@ -7,7 +7,6 @@ import { Box, Paper, Table, TableBody, TableCell, TableContainer, TableRow } fro
 type EngineerTableProps = {
   engineerData: EngineerInfoModel;
   onEngineerChange: (key: keyof EngineerInfoModel, value: string) => void;
-  // CheckBoxState: boolean[];
   onToggle: (index: number, value: string) => void;
 };
 

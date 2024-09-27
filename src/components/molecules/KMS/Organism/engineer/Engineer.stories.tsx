@@ -1,8 +1,8 @@
-import { Engineer } from './Engineer';
+import { EngineerReg } from './EngineerReg';
 
 const meta = {
-  title: 'atoms/Engineer',
-  component: Engineer,
+  title: 'atoms/EngineerReg',
+  component: EngineerReg,
   argTypes: {},
 };
 

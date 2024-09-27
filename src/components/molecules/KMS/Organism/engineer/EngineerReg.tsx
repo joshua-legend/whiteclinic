@@ -7,9 +7,10 @@ import { ButtonTwo } from '../../Melecules/engineer/ButtonTwo';
 import { CModal } from '../../Melecules/engineer/CModal';
 import { useEffect, useState } from 'react';
 import { EngineerTable } from './EngineerTable';
+import { Engineer } from '../../../../../../Backend/white-clinic-back/src/whiteClinic/entity/engineer.entity';
 
 // 상태의 기본값을 지정해줌
-export const Engineer = () => {
+export const EngineerReg = () => {
   const [showModal, setModal] = useState(false); // 확인모달
   const [engineerData, setEngineerData] = useState<EngineerInfoModel>({
     name: '',
@@ -67,9 +68,9 @@ export const Engineer = () => {
       const newCheckBoxState = [...prev.checkBoxState];
       newCheckBoxState[index] = !newCheckBoxState[index]; // 토글기능
 
-      const newSelectedSkills = newCheckBoxState[index]
-        ? [...prev.selectedSkills, value]
-        : prev.selectedSkills.filter((skill) => skill !== value);
+      const newSelectedSkills = newCheckBoxState[index] // 선택한 체크박스가
+        ? [...prev.selectedSkills, value] // 참이면 값을 배열에 넣어주고
+        : prev.selectedSkills.filter((skill) => skill !== value); // 거짓이라면 slectedskills 배열안에 요소중 같지 않은것만 리턴
       console.log(newSelectedSkills);
       console.log(newCheckBoxState);
 

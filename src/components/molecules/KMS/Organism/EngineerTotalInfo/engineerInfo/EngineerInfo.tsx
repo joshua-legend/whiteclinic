@@ -3,6 +3,7 @@ import { LeftInfoComponent } from './LeftInfoComponent';
 import { RightInfoComponent } from './RightInfoComponent';
 import CButton from '@/components/atom/CButton';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 export const EngineerInfo = () => {
   return (
@@ -32,9 +33,11 @@ export const EngineerInfo = () => {
           <RightInfoComponent />
         </Box>
         <Box sx={{ display: 'flex', gap: '50px', paddingTop: '30px' }}>
-          <Link href={'/'}>
+          
+          <Link href="/engineer/e_salaryTotalCheck">
             <CButton content="급여사항확인" fontSize="large" />
           </Link>
+
           <Link href="/engineer/e_register">
             <CButton content="기사정보수정" fontSize="large" />
           </Link>

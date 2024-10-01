@@ -1,10 +1,6 @@
 'use client';
 
-import { EngineerTotalInfo } from "@/components/molecules/KMS/Organism/EngineerTotalInfo/EngineerTotalInfo";
-
-
-
-
+import { EngineerTotalInfo } from '@/components/molecules/KMS/Organism/EngineerTotalInfo/EngineerTotalInfo';
 
 export default function Page() {
   return (

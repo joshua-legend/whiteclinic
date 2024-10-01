@@ -3,15 +3,11 @@ import { Engineer } from '../../../../../../../Backend/white-clinic-back/src/whi
 import { engineerName } from '@/constants/definition';
 
 type EngineerData = {
-  fetchEngineer: () => Promise<void>; //데이터를 가져오는 함수
-  
   engineers: Engineer[]; //엔지니어의 정보를 담아주는 객체생성
   setEngineers: (engineers: Engineer[]) => void; //가져온 데이터를 set해주는 함수
-
+  fetchEngineer: () => Promise<void>; //데이터를 가져오는 함수
   engineerName: string[];
   setEngineerName: (engineerName: string[]) => void;
-
-  
 };
 
 export const useEngineerStore = create<EngineerData>((set) => ({
@@ -19,7 +15,6 @@ export const useEngineerStore = create<EngineerData>((set) => ({
   setEngineers: (engineers) => set({ engineers }),
   engineerName: [],
   setEngineerName: (engineerName) => set({ engineerName }),
-
   fetchEngineer: async () => {
     try {
       const response = await fetch('http://localhost:9090/engineer/info');

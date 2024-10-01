@@ -1,5 +1,3 @@
-import CCheckbox from '@/components/atom/CCheckbox';
-import CInput from '@/components/atom/CInput';
 import { engineerCreateData, EngineerInfoModel, skillArr } from '@/constants/definition';
 
 import { Box, Paper, Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/material';
@@ -71,8 +69,6 @@ export const EngineerReg = () => {
       const newSelectedSkills = newCheckBoxState[index] // 선택한 체크박스가
         ? [...prev.selectedSkills, value] // 참이면 값을 배열에 넣어주고
         : prev.selectedSkills.filter((skill) => skill !== value); // 거짓이라면 slectedskills 배열안에 요소중 같지 않은것만 리턴
-      console.log(newSelectedSkills);
-      console.log(newCheckBoxState);
 
       return {
         ...prev,

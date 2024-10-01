@@ -1,14 +1,11 @@
 'use client';
 
-import { Engineer } from "@/components/molecules/KMS/Organism/engineer/Engineer";
-
-
+import { EngineerReg } from '@/components/molecules/KMS/Organism/engineer/EngineerReg';
 
 export default function Page() {
   return (
     <div>
-
-      <Engineer />
+      <EngineerReg />
     </div>
   );
 }

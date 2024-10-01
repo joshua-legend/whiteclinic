@@ -21,7 +21,7 @@ export const LeftInfoComponent = () => {
     fetchEngineer();
   }, [fetchEngineer]);
 
-  //로컬에서 선택된 이름 가져오는 함수 1초마다갱신
+  //로컬에서 선택된 이름 가져오는 함수 0.5초마다갱신
   useEffect(() => {
     const checkLocalStorage = () => {
       const storedName = localStorage.getItem('name');
@@ -29,11 +29,14 @@ export const LeftInfoComponent = () => {
         setSelectedName(storedName);
         console.log('선택한 이름 가져옴', storedName);
       }
+      if (storedName == '') {
+        setInputState(Array(6).fill(''));
+      }
     };
 
     checkLocalStorage();
 
-    const intervalid = setInterval(checkLocalStorage, 1000);
+    const intervalid = setInterval(checkLocalStorage, 500);
     return () => clearInterval(intervalid);
   }, [selectedName]);
 

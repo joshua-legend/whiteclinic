@@ -1,7 +1,9 @@
 import CInput from '@/components/atom/CInput';
 import { SalaryCheckLeftStyle } from '@/styles/customize';
 import { Box, Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/material';
+import { error } from 'console';
 import { useEffect, useState } from 'react';
+import { EngineerSalary } from '../../../../../../Backend/white-clinic-back/src/whiteClinic/entity/EngineerSalary.entity';
 
 export const LeftRows = {
   '6월3일': '100000',
@@ -19,10 +21,27 @@ export const SalaryCheckLeft = () => {
   const value = Object.values(LeftRows); // 왼쪽 금액
   const [isModifiableLeft, setIsModifiableLeft] = useState<boolean[]>([]); //연필 왼쪽
   const [leftInputs, setLeftInputs] = useState(dates); //왼쪽인풋
+
+  useEffect(() => {
+    const fetchEngineerSalary = async () => {
+      try {
+        const response = await fetch('http://localhost:9090/engineer/salary');
+        if (!response.ok) {
+          throw new Error('수당정보를 가져오지 못했습니다.');
+        }
+        const engineerSalaryData: EngineerSalary[] = await response.json();
+        console.log(engineerSalaryData);
+      } catch (error) {
+        console.error('오류', error);
+      }
+    };
+    fetchEngineerSalary();
+  }, []);
+
   useEffect(() => {
     setIsModifiableLeft(new Array(dates.length).fill(false)); //연필모양 (왼쪽)
     setLeftInputs(new Array(value.length).fill(false)); // 인풋 (왼쪽)
-  }, []);
+  }, [value.length]);
 
   //왼쪽 연필상태 관리 함수
   const handleModifyLeft = (index: number) => {

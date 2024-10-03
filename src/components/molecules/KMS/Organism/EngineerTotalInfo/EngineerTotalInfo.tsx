@@ -3,11 +3,9 @@ import { CheckboxList } from '../../Melecules/engineerInfo/CheckboxList';
 import { EngineerInfo } from './engineerInfo/EngineerInfo';
 import { EngineerTotalInfoStyle } from '@/styles/customize';
 import { useEffect, useState } from 'react';
-import { Engineer } from '../../../../../../Backend/white-clinic-back/src/whiteClinic/entity/engineer.entity';
+import { Engineer } from '../../../../../../Backend/white-clinic-back/src/whiteClinic/entity/Engineer.entity';
 
 export const EngineerTotalInfo = () => {
-
-
   return (
     <Box
       sx={{

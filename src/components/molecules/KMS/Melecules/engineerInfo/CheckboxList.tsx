@@ -28,11 +28,14 @@ export const CheckboxList = () => {
   //로컬에 담는용도
   useEffect(() => {
     if (selectedEngineer) {
-      localStorage.setItem('name', selectedEngineer.name);
+      // localStorage.setItem('name', selectedEngineer.name);
       localStorage.setItem('id', selectedEngineer.id.toString());
     } else {
-      localStorage.removeItem('name');
+      // localStorage.removeItem('name');
+      // localStorage.removeItem('id');
+
       localStorage.removeItem('id');
+      // localStorage.setItem('name', '');
     }
   }, [selectedEngineer]);
 
@@ -45,10 +48,9 @@ export const CheckboxList = () => {
       newState[index] = !newState[index]; // boolean 반전시켜준다.
 
       if (newState[index]) {
-        //만약 선택한 이름이  거짓이라면 즉 체크박스 체크 안되어있으면
-        setSelectedEngineer({ id, name }); // 선택한 이름을 공백으로 지정
+        setSelectedEngineer({ id, name });
       } else {
-        setSelectedEngineer(null); // 체크 되어있으면 선택한 이름으로 설정
+        setSelectedEngineer(null);
       }
 
       return newState;

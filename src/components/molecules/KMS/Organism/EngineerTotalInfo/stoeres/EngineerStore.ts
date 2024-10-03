@@ -7,7 +7,7 @@ type EngineerData = {
   setEngineers: (engineers: Engineer[]) => void; //가져온 데이터를 set해주는 함수
   fetchEngineer: () => Promise<void>; //데이터를 가져오는 함수
   engineerNameId: { id: number; name: string }[];
-  setEngineerName: (engineerName: {id:number; name:string}[]) => void;
+  setEngineerName: (engineerName: { id: number; name: string }[]) => void;
 };
 
 export const useEngineerStore = create<EngineerData>((set) => ({
@@ -33,7 +33,6 @@ export const useEngineerStore = create<EngineerData>((set) => ({
         id: engineers.engineerId,
         name: engineers.name,
       }));
-
 
       //이름을 설정해준다.
       set({ engineerNameId });

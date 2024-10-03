@@ -17,6 +17,10 @@ export const SalaryCheckRight = () => {
   const [rightInputs, setRightInputs] = useState(rightData); //오른쪽인풋
 
   useEffect(() => {
+    // const fetchEngineerSalaryEdit
+  });
+
+  useEffect(() => {
     setIsModifiableRight(new Array(RightRows[0].first.length).fill(false)); //연필모양 (오른쪽)
     // setLeftInputs(new Array(value.length).fill(false)); // 인풋 (왼쪽)
     setRightInputs(new Array(RightRows[0].first.length).fill('')); // 인풋 (오른쪽)

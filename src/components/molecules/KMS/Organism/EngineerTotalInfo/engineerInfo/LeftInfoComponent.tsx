@@ -25,15 +25,22 @@ export const LeftInfoComponent = () => {
   useEffect(() => {
     const checkLocalStorage = () => {
       const selectedEngineerId = localStorage.getItem('id');
-      //만약 로컬에 선택한 기사의 id가 있고 기존의 담아놓은 id와 다르다면
 
-      if (selectedId === null) {
+      //로컬에 아무것도 선택되지않았을때
+      if (selectedEngineerId === null) {
+        console.log('아무것도 선택되지않았습니다.');
+        //상태 null 초기화
         setSelectedId(null);
+        //input전부 null
         setInputState(Array(6).fill(''));
-      }
-      if (selectedEngineerId && parseInt(selectedEngineerId) != selectedId) {
-        //상태관리 최신화
-        setSelectedId(parseInt(selectedEngineerId));
+      } else {
+        // 로컬에 Id가 있다면
+        const parseId = parseInt(selectedEngineerId);
+        //존재하고 기존에 상태관리와 로컬의 Id다 다르다면
+        if (!isNaN(parseId) && parseId !== selectedId) {
+          // 상태 최신화
+          setSelectedId(parseId);
+        }
       }
     };
 

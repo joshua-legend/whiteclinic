@@ -38,26 +38,31 @@ const CCardList = ({
   //근무기사를 먼저 상단에 보여주고 휴무기사는 리스트의 마지막에 나열
   //휴무인 기사는 상세 정보를 볼 수 없음
   return (
-    <Box>
+    <Box sx={{ display: 'flex', flexDirection: 'row', gap: '12px' }}>
       {workingEngineers.map((engineer, i) => (
-        <CCardAtom
-          key={i}
-          {...cardatomprops}
-          engineerName={engineer.engineerName}
-          onBtnClick={() => onEngineerClick(engineer)}
-          selectDate={selectDate}
-        />
+        <Box sx={{ width: '300px', height: '300px' }} key={engineer.engineerId}>
+          <CCardAtom
+            {...cardatomprops}
+            engineerId={engineer.engineerId}
+            engineerName={engineer.engineerName}
+            onBtnClick={() => onEngineerClick(engineer)}
+            selectDate={selectDate}
+          />
+        </Box>
       ))}
 
       {offDutyEngineers.map((engineer, i) => (
-        <CCardAtom
-          key={i + workingEngineers.length}
-          engineerName={engineer.engineerName}
-          imgURL={cardatomprops.imgURL}
-          cardContent={'휴무'}
-          btnContent={undefined}
-          selectDate={selectDate}
-        />
+        <Box sx={{ width: '300px', height: '300px' }} key={engineer.engineerId}>
+          <CCardAtom
+            // key={i + workingEngineers.length}
+            engineerId={engineer.engineerId}
+            engineerName={engineer.engineerName}
+            imgURL={cardatomprops.imgURL}
+            cardContent={'휴무'}
+            btnContent={undefined}
+            selectDate={selectDate}
+          />
+        </Box>
       ))}
     </Box>
   );

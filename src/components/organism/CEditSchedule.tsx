@@ -1,46 +1,107 @@
+/* eslint-disable react/no-children-prop */
 import CDatePicker from '@/components/atom/CDatePicker';
 import CDateEngineer from '../molecules/LJW/EditSchedule/CDateEngineer';
 import CShowList from '../molecules/LJW/EditSchedule/CShowList';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Dayjs } from 'dayjs';
 import { CustomerInfo, engineerInfo, TODAY } from '@/constants/definition';
 import { Box, ThemeProvider } from '@mui/material';
 import CDateCustomer from '../molecules/LJW/EditSchedule/CDateCustomer';
 import { theme } from '@/constants/theme';
-
 import CShowEngineerInfo from '../molecules/LJW/EditSchedule/CShowEngineerInfo';
 import CTimeSubmit from '../molecules/LJW/EditSchedule/CTimeSubmit';
 import { StyledScheduleTimeline, StyledTimeSlot } from '@/styles/customize';
+import { dummyCustomers, dummyEngineers } from '../molecules/LJW/EditSchedule/editDummy';
 
 const CEditSchedule = () => {
+  // 이것도 한번에 관리? 고민..
   const [selectedDate, setSelectedDate] = useState<Dayjs | null>(TODAY);
   const [selectEng, setSelectEng] = useState<engineerInfo | null>(null);
   const [startTime, setStartTime] = useState<Dayjs | null>(null);
   const [endTime, setEndTime] = useState<Dayjs | null>(null);
   const [selectCustomer, setSelectCustomer] = useState<CustomerInfo | null>(null);
+  const [filteredCustomers, setFilteredCustomers] = useState<CustomerInfo[]>([]);
+  const [filteredEngineers, setFilteredEngineers] = useState<engineerInfo[]>([]);
 
-  const handleSelect = (date: Dayjs | null) => setSelectedDate(date);
-  const handleEngineer = (engineer: engineerInfo) => setSelectEng(engineer);
-  const handleStartTime = (time: Dayjs | null) => setStartTime(time);
-  const handleEndTime = (time: Dayjs | null) => setEndTime(time);
-  const handleCustomer = (customer: CustomerInfo) => setSelectCustomer(customer);
+  const handleSelect = (date: Dayjs | null) => {
+    setSelectedDate(date);
+    setSelectEng(null);
+  };
+  const handleSelectEngineer = (engineer: engineerInfo) => {
+    setSelectEng(engineer);
+    console.log('선택한 기사 정보: ', engineer);
+  };
+  const handleStartTime = (time: Dayjs | null) => {
+    setStartTime(time);
+    console.log('시작 시간: ', time);
+  };
+  const handleEndTime = (time: Dayjs | null) => {
+    setEndTime(time);
+    console.log('종료 시간: ', time);
+  };
+  const handleSelectCustomer = (customer: CustomerInfo) => {
+    setSelectCustomer(customer);
+    console.log('선택한 고객 정보', customer);
+  };
 
-  const handleButtonClick = () => {
+  const handleButtonClick = async () => {
     if (!selectedDate) {
       alert('날짜를 선택하세요');
-    } else if (!handleCustomer) {
+      return;
+    } else if (!handleSelectCustomer) {
       alert('주문을 선택하세요');
+      return;
     } else if (!selectEng) {
       alert('담당 기사를 선택하세요');
+      return;
     } else if (!startTime || !endTime) {
       alert('시간을 선택하세요');
+      return;
     }
-    alert('등록완료');
+
+    const requestData = {
+      selectedCustomer: selectCustomer,
+      selectedEngineer: selectEng,
+      startTime: startTime.format('HH:mm'),
+      endTime: endTime.format('HH:mm'),
+    };
+
+    try {
+      const response = await fetch(`/api/submitSchedule/`, {
+        // post..
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        alert(result.message);
+      } else {
+        alert('예약 등록에 실패했습니다.');
+      }
+    } catch (error) {
+      console.error('예약 등록 중 오류 발생:', error);
+      alert('서버에 오류가 발생했습니다.');
+    }
+
     //추후 수정
   };
 
   const formattedDate = selectedDate ? selectedDate.format('YYYY-MM-DD') : '';
   const formattedDay = selectedDate ? selectedDate.locale('ko').format('ddd') : '';
+
+  useEffect(() => {
+    const customerData = dummyCustomers.filter(
+      (customer) => customer.appointmentDate === formattedDate
+    );
+    setFilteredCustomers(customerData);
+
+    const engineerData = dummyEngineers.filter(
+      (engineer) =>
+        engineer.engineerClosedDate !== formattedDate &&
+        engineer.engineerWorkDay.split(',').includes(formattedDay)
+    );
+    setFilteredEngineers(engineerData);
+    setSelectEng(null);
+  }, [selectedDate, formattedDate, formattedDay]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -52,7 +113,13 @@ const CEditSchedule = () => {
         <Box sx={{ ...StyledTimeSlot }}>
           <CShowList
             label="주문 목록"
-            children={<CDateCustomer selectDate={formattedDate} onCustomerClick={handleCustomer} />}
+            children={
+              <CDateCustomer
+                selectDate={formattedDate}
+                orderInfo={filteredCustomers}
+                onCustomerClick={handleSelectCustomer}
+              />
+            }
           />
           <CShowList
             label="기사 목록"
@@ -60,7 +127,8 @@ const CEditSchedule = () => {
               <CDateEngineer
                 selectDate={formattedDate}
                 selectDay={formattedDay}
-                onEngineerClick={handleEngineer}
+                engineer={filteredEngineers}
+                onEngineerClick={handleSelectEngineer}
               />
             }
           />

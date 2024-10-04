@@ -5,112 +5,64 @@ import CScheduleTimeLineList from '../molecules/LJW/ShowSchedule/CScheduleTimeLi
 import dayjs, { Dayjs } from 'dayjs';
 import { Box, ThemeProvider, Typography } from '@mui/material';
 import { theme } from '@/constants/theme';
-import { CustomerInfo, engineerInfo, TODAY } from '@/constants/definition';
+import { CustomerInfo, engineerInfo, SchInfoModel, TODAY } from '@/constants/definition';
 import { StyledScheduleTable } from '@/styles/customize';
 
 const CScheduleTable = () => {
-  const [selectedDate, setSelectedDate] = useState<Dayjs | null>(TODAY);
-  const [engineers, setEngineers] = useState<engineerInfo[]>([]);
-  const [customerInfo, setCustomerInfo] = useState<CustomerInfo[]>([]);
-  const [loading, setLoading] = useState(true);
+  // const [selectedDate, setSelectedDate] = useState<Dayjs | null>(TODAY);
+  // const [engineers, setEngineers] = useState<engineerInfo[]>([]);
+  // const [customerInfo, setCustomerInfo] = useState<CustomerInfo[]>([]);
+  // const [loading, setLoading] = useState(true);
 
-  // 확인위해 useEffect사용하여 더미 데이터 생성 - nextjs로 데이터 받아오는 형식으로 바꿔야함
+  const [scheduleState, setScheduleState] = useState<SchInfoModel>({
+    selectedDate: TODAY,
+    engineers: [],
+    customerInfo: [],
+    isLoading: true,
+  });
+
   useEffect(() => {
     const fetchData = async () => {
-      // 엔지니어 더미 데이터
-      const dummyEngineers: engineerInfo[] = [
-        {
-          engineerName: '박영식',
-          engineerContact: '010-1234-5678',
-          engineerAddress: '서울시 강남구',
-          engineerAbleItem: '에어컨, 보일러',
-          engineerSignificant: '경력 10년',
-          engineerClosedDay: '토요일',
-          engineerClosedDate: '',
-          engineerSalary: 3000,
-          engineerWorkDay: '월, 화, 수, 목, 금',
-        },
-        {
-          engineerName: '김철수',
-          engineerContact: '010-9876-5432',
-          engineerAddress: '서울시 마포구',
-          engineerAbleItem: '세탁기, 냉장고',
-          engineerSignificant: '경력 8년',
-          engineerClosedDay: '일요일',
-          engineerClosedDate: '',
-          engineerSalary: 2800,
-          engineerWorkDay: '월, 화, 수, 목, 금, 토',
-        },
-      ];
-
-      // 고객 더미 데이터 (엔지니어에 매핑됨)
-      const dummyCustomerInfo: CustomerInfo[] = [
-        {
-          customerName: '이영희',
-          customerContact: '010-5678-1234',
-          customerAddress: '서울시 송파구',
-          cleaningItem: '에어컨',
-          cleaningType: '청소',
-          itemQuantity: 1,
-          totalPrice: 100000,
-          appointmentDate: '2024-09-20',
-          appointmentTime: '10시 ~ 11시',
-          assignedEngineer: '박영식',
-        },
-        {
-          customerName: '홍길동',
-          customerContact: '010-4321-8765',
-          customerAddress: '서울시 강북구',
-          cleaningItem: '세탁기',
-          cleaningType: '수리',
-          itemQuantity: 1,
-          totalPrice: 150000,
-          appointmentDate: '2024-09-20',
-          appointmentTime: '14시 ~ 15시',
-          assignedEngineer: '김철수',
-        },
-        {
-          customerName: '강민수',
-          customerContact: '010-2222-3333',
-          customerAddress: '서울시 은평구',
-          cleaningItem: '냉장고',
-          cleaningType: '점검',
-          itemQuantity: 1,
-          totalPrice: 80000,
-          appointmentDate: '2024-09-21',
-          appointmentTime: '9시 ~ 10시',
-          assignedEngineer: '김철수',
-        },
-      ];
-
       try {
-        setLoading(true);
-        setEngineers(dummyEngineers);
-        setCustomerInfo(dummyCustomerInfo);
+        setScheduleState((prevState) => ({ ...prevState, isLoading: true }));
+        const resEngineers = await fetch('api 주소 입력');
+        const engineersData: engineerInfo[] = await resEngineers.json();
+
+        const resCustomers = await fetch('api 주소 입력');
+        const customersData: CustomerInfo[] = await resCustomers.json();
+
+        setScheduleState((prevState) => ({
+          ...prevState,
+          engineers: engineersData,
+          customerInfo: customersData,
+          isLoading: false,
+        }));
       } catch (error) {
-        console.log('데이터 오류:', error);
-      } finally {
-        setLoading(false);
+        console.error('데이터 호출 오류', error);
+        setScheduleState((prevState) => ({ ...prevState, isLoading: false }));
       }
     };
     fetchData();
   }, []);
 
   const handleSelect = (date: Dayjs | null) => {
-    setSelectedDate(date);
+    setScheduleState((prevState) => ({
+      ...prevState,
+      selectedDate: date,
+    }));
   };
 
   const isLoading = () => {
-    if (loading) {
+    if (scheduleState.isLoading) {
       return <div>loading...</div>;
     }
 
-    if (engineers.length > 0) {
+    if (scheduleState.engineers.length > 0) {
       return (
         <CScheduleTimeLineList
           selectDate={formattedDate}
-          engineers={engineers}
-          orderInfo={customerInfo}
+          engineers={scheduleState.engineers}
+          orderInfo={scheduleState.customerInfo}
         />
       );
     }
@@ -122,18 +74,20 @@ const CScheduleTable = () => {
     );
   };
 
-  const formattedDate = selectedDate ? selectedDate.format('YYYY-MM-DD') : '';
+  const formattedDate = scheduleState.selectedDate
+    ? scheduleState.selectedDate.format('YYYY-MM-DD')
+    : '';
 
   return (
     <ThemeProvider theme={theme}>
       <Box sx={{ ...StyledScheduleTable }}>
         <CDatePicker
-          value={selectedDate}
+          value={scheduleState.selectedDate}
           handleChange={handleSelect}
           mindateValue={dayjs('1900-01-01')}
         />
         <Box>
-          <CScheduleDateBox dateInfo={selectedDate} />
+          <CScheduleDateBox dateInfo={scheduleState.selectedDate} />
           {isLoading()}
         </Box>
       </Box>

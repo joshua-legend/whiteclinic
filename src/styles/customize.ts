@@ -205,6 +205,9 @@ export const StyledShowList = {
 };
 
 export const styledEngBoxDetail = {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '2px',
   width: '100%',
   height: '300px',
 };

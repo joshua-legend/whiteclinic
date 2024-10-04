@@ -7,6 +7,7 @@ import {
   CardMedia,
   Typography,
 } from '@mui/material';
+import Link from 'next/link';
 
 export type CCardAtomProps = {
   engineerName: string;
@@ -15,6 +16,7 @@ export type CCardAtomProps = {
   btnContent?: String;
   onBtnClick?: () => void;
   selectDate: string;
+  engineerId: number;
 };
 
 const CCardAtom = ({
@@ -23,6 +25,7 @@ const CCardAtom = ({
   cardContent,
   btnContent = '상세 보기',
   onBtnClick,
+  engineerId,
 }: CCardAtomProps) => {
   return (
     <Card sx={{ maxWidth: 345 }}>

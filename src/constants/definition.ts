@@ -270,6 +270,7 @@ export type CustomerInfoProps = {
   customer?: CustomerInfo;
 };
 
+//일하는 시간 설정
 export const workTimeLine: ProductDropdownList[] = [
   { label: '8시 이전' },
   { label: '8시 ~ 9시' },
@@ -286,17 +287,21 @@ export const workTimeLine: ProductDropdownList[] = [
   { label: '19시 이후' },
 ];
 
+//고객 정보와 예약 시간을 가져오는데 사용하는 타입
 export type CustomerTimeSlotProps = {
   timeSlot: string;
   customer?: CustomerInfo;
 };
 
+//고객과 기사의 시간을 매치하는데 사용하는 타입
 export type CustomerTimeMappingProps = {
   selectDate: string;
   orderInfo?: CustomerInfo[];
 };
 
+//기사 타입
 export type engineerInfo = {
+  engineerId: number;
   engineerName: string;
   engineerContact: string;
   engineerAddress: string;

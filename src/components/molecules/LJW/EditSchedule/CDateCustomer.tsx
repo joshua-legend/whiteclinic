@@ -17,9 +17,19 @@ const CDateCustomer = ({ selectDate, orderInfo, onCustomerClick }: CDateCustomer
 
   const filterOrder = orderInfo.filter((order) => order.appointmentDate === selectDate);
   return (
-    <Box>
+    <Box sx={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
       {filterOrder.map((order, index) => (
-        <Box key={index} onClick={() => onCustomerClick(order)}>
+        <Box
+          key={index}
+          onClick={() => onCustomerClick(order)}
+          sx={{
+            height: '100px',
+            border: '1px solid #bdbdbd',
+            borderRadius: '6px',
+            padding: '4px',
+            '&hover': { backgroundColor: '#bdbdbd', cursor: 'pointer' },
+          }}
+        >
           <CCustomerInfoContent customer={order} />
         </Box>
       ))}

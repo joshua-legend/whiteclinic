@@ -28,14 +28,11 @@ export const CheckboxList = () => {
   //로컬에 담는용도
   useEffect(() => {
     if (selectedEngineer) {
-      // localStorage.setItem('name', selectedEngineer.name);
+      localStorage.setItem('name', selectedEngineer.name);
       localStorage.setItem('id', selectedEngineer.id.toString());
     } else {
-      // localStorage.removeItem('name');
-      // localStorage.removeItem('id');
-
       localStorage.removeItem('id');
-      // localStorage.setItem('name', '');
+      localStorage.removeItem('name');
     }
   }, [selectedEngineer]);
 

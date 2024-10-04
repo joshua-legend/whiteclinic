@@ -25,6 +25,7 @@ export const LeftInfoComponent = () => {
   useEffect(() => {
     const checkLocalStorage = () => {
       const selectedEngineerId = localStorage.getItem('id');
+      const selectedEngineerName = localStorage.getItem('name');
 
       //로컬에 아무것도 선택되지않았을때
       if (selectedEngineerId === null) {
@@ -36,6 +37,7 @@ export const LeftInfoComponent = () => {
       } else {
         // 로컬에 Id가 있다면
         const parseId = parseInt(selectedEngineerId);
+
         //존재하고 기존에 상태관리와 로컬의 Id다 다르다면
         if (!isNaN(parseId) && parseId !== selectedId) {
           // 상태 최신화
